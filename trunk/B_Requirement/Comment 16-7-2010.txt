@@ -1,0 +1,30 @@
+Dang ky: nguoi dung buoc phai dien cac thong tin cua cong ty.
+
+Admin: duoc phep lam tat ca
+Admin: Tu loc ra so luong cong ty
+	Theo xep loai ( top 5, top 10,... )
+	Bao nhieu cong ty duoi muc trung binh
+	Bao nhieu cong ty tren muc trung binh
+
+Cho nguoi dung chon cac kieu do thi khac nhau
+
+Ve van de cau hoi - tra loi
+	Co kha nang hoan doi cau tra loi
+
+Trang phong van:
+	Chinh lai giao dien
+	Phan trang cac cau tra loi
+	
+
+Nghiep vu thong ke: 
+
+Thong ke lai so luong cong ty
+Danh gia thu hang cua cong ty
+Danh gia so voi tieu chuan
+Danh gia so voi nguoi tham gia
+
+asp.net 3.5 sp1
+nettiers
+sql server development 2005
+wcsf framework
+ajax control toolkit
