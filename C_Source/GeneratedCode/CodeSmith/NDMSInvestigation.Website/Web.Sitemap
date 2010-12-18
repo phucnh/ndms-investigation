@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  
+    <siteMapNode url="" title="Admin"  description="">
+        <siteMapNode url="~/Admin/Default.aspx" title="Admin"  description="Admin" />  
+	<siteMapNode url="~/Admin/AnswerDetails.aspx" title="Answer Details"  description="" />
+	<siteMapNode url="~/Admin/AspnetApplications.aspx" title="Aspnet Applications"  description="" />
+	<siteMapNode url="~/Admin/AspnetMembership.aspx" title="Aspnet Membership"  description="" />
+	<siteMapNode url="~/Admin/AspnetPaths.aspx" title="Aspnet Paths"  description="" />
+	<siteMapNode url="~/Admin/AspnetPersonalizationAllUsers.aspx" title="Aspnet Personalization All Users"  description="" />
+	<siteMapNode url="~/Admin/AspnetPersonalizationPerUser.aspx" title="Aspnet Personalization Per User"  description="" />
+	<siteMapNode url="~/Admin/AspnetProfile.aspx" title="Aspnet Profile"  description="" />
+	<siteMapNode url="~/Admin/AspnetRoles.aspx" title="Aspnet Roles"  description="" />
+	<siteMapNode url="~/Admin/AspnetSchemaVersions.aspx" title="Aspnet Schema Versions"  description="" />
+	<siteMapNode url="~/Admin/AspnetUsers.aspx" title="Aspnet Users"  description="" />
+	<siteMapNode url="~/Admin/AspnetUsersInRoles.aspx" title="Aspnet Users In Roles"  description="" />
+	<siteMapNode url="~/Admin/AspnetWebEventEvents.aspx" title="Aspnet Web Event Events"  description="" />
+	<siteMapNode url="~/Admin/QuestionAnswer.aspx" title="Question Answer"  description="" />
+	<siteMapNode url="~/Admin/QuestionDetails.aspx" title="Question Details"  description="" />
+	<siteMapNode url="~/Admin/QuestionGroup.aspx" title="Question Group"  description="" />
+	<siteMapNode url="~/Admin/Result.aspx" title="Result"  description="" />
+	<siteMapNode url="~/Admin/User.aspx" title="User"  description="" />
+        </siteMapNode>              
+</siteMap>

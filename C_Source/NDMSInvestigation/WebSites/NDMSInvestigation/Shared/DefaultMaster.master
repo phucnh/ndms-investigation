@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DefaultMaster.master.cs"
+    Inherits="NDMSInvestigation.Shell.MasterPages.DefaultMaster" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%--<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dx" %>--%>
+<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
+<%--<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>--%>
+<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head" runat="server">
+    <title>NDMSInvestigation</title>
+</head>
+<body>
+    <form id="mainForm" runat="server">
+    <asp:ScriptManager ID="DefaultMasterScriptManager" runat="server">
+    </asp:ScriptManager>
+    &nbsp;
+    <div id="mainwrapper">
+        <div id="header">
+            <span>NDMS Investigation</span>
+            <div style="float: right; font-size: 14px;">
+                <asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome {0}" />
+                <asp:LoginView ID="ctlRightNavbar" runat="server">
+                    <AnonymousTemplate>
+                        <%--<asp:HyperLink ID="HyperLink1" runat="server">Login</asp:HyperLink>--%>
+                        <%--<a id="aLogin" runat="Server" href="~/Admin/authenticated/login.aspx">
+                            <asp:Literal ID="ltrLogin" Text="Login" runat="server"></asp:Literal></a>--%>
+                        <a id="aLogin">
+                            <asp:Literal ID="ltrLogin" Text="Login" runat="server"></asp:Literal></a> &nbsp;|&nbsp
+                        <%--<a id="aRegister" runat="Server" href="~/UserControl/Register.aspx">--%>
+                        <a id="aRegister">
+                            <asp:Literal ID="ltrRegister" runat="Server" Text="Register" /></a>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <asp:HyperLink ID="HyperLink2" runat="server" Text="Logout" NavigateUrl="~/Admin/authenticated/logout.aspx"></asp:HyperLink>&nbsp;|&nbsp;
+                        <a id="aChangePass">
+                            <asp:Literal ID="ltrChangePass" Text="Change Password" runat="server"></asp:Literal></a>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+        </div>
+        <table id="content" width="100%">
+            <tr>
+                <td id="content-left" valign="top">
+                    <%--<asp:TreeView ID="NavigationTreeView" runat="server" ExpandDepth="2" DataSourceID="ApplicationSiteMap" />--%>
+                    <dx:ASPxNavBar Style="background-color: inherit" ID="ASPxNavBar1" runat="server"
+                        DataSourceID="ApplicationSiteMap" AllowSelectItem="True" Width="180px" EnableAnimation="True">
+                    </dx:ASPxNavBar>
+                </td>
+                <td id="content-right">
+                    <div id="breadcrumb">
+                        <asp:SiteMapPath ID="DefaultBreadCrumb" SiteMapProvider="DefaultSiteMapProvider"
+                            runat="server" />
+                    </div>
+                    <asp:ContentPlaceHolder ID="DefaultContent" runat="server" />
+                </td>
+            </tr>
+        </table>
+        <div id="footer">
+        </div>
+    </div>
+    <asp:SiteMapDataSource ID="ApplicationSiteMap" runat="server" SiteMapProvider="DefaultSiteMapProvider"
+        ShowStartingNode="False" />
+    <dx:ASPxPopupControl ID="ASPxPopupControl1" runat="server" ShowCloseButton="True">
+        <ContentCollection>
+            <dx:PopupControlContentControl runat="server">
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+        <HeaderStyle>
+            <Paddings PaddingBottom="3px" PaddingTop="3px" />
+        </HeaderStyle>
+        <Windows>
+            <dx:PopupWindow Modal="True" PopupElementID="aLogin" PopupAction="LeftMouseClick"
+                ShowCloseButton="True" ShowHeader="True" AutoUpdatePosition="True" CloseAction="OuterMouseClick"
+                Name="Login" ShowFooter="False">
+                <HeaderStyle HorizontalAlign="Left" />
+                <ContentTemplate>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <asp:Login ID="Login2" runat="server" CreateUserText="Register" CreateUserUrl="~/UserControl/Register.aspx"
+                                DestinationPageUrl="~/Admin/authenticated/changepwd.aspx">
+                            </asp:Login>
+                            <asp:HyperLink ID="HyperLink1" runat="Server" Text="Forgot your password?" NavigateUrl="~/Admin/authenticated/forgotpwd.aspx" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </ContentTemplate>
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:PopupWindow>
+            <dx:PopupWindow AutoUpdatePosition="True" CloseAction="OuterMouseClick" Modal="True"
+                Name="Change password" PopupAction="LeftMouseClick" PopupElementID="aChangePass"
+                ShowFooter="False" ShowHeader="True" Height="200px" Width="300px">
+                <HeaderStyle HorizontalAlign="Left" />
+                <ContentTemplate>
+                    <asp:ChangePassword ID="ChangePassword2" runat="server">
+                    </asp:ChangePassword>
+                </ContentTemplate>
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:PopupWindow>
+            <dx:PopupWindow AutoUpdatePosition="True" CloseAction="OuterMouseClick" Modal="True"
+                Name="Create User" PopupAction="LeftMouseClick" PopupElementID="aRegister"
+                ShowFooter="False" ShowHeader="True" Height="200px" Width="300px">
+                <HeaderStyle HorizontalAlign="Left" />
+                <ContentTemplate>
+                    <asp:CreateUserWizard ID="CreateUserWizard2" runat="server">
+                        <WizardSteps>
+                            <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
+                            </asp:CreateUserWizardStep>
+                            <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
+                            </asp:CompleteWizardStep>
+                        </WizardSteps>
+                    </asp:CreateUserWizard>
+                </ContentTemplate>
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:PopupWindow>
+        </Windows>
+    </dx:ASPxPopupControl>
+    &nbsp;
+    </form>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+﻿<html>
+  <head>
+    <link href="http://nettiers.com/common/styles.css" rel="stylesheet" type="text/css" />
+    <style>
+				      span.executionTime {font-style: italic; color: #55AEED;}
+	            </style>
+  </head>
+  <body>
+    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td width="700">
+          <a href="http://code.google.com/p/nettiers/downloads/" target="_blank">
+            <img border="0" src="http://nettiers.com/img/netTiersLogo2.0_small.gif" alt=".netTiers 2.2" />
+          </a>
+          <hr />
+          <div>
+            <a href="http://nettiers.com/">Website</a>
+                                |    
+                             <a href="http://community.codesmithtools.com/forums/default.aspx?GroupID=11/">Forums</a>
+                                |    
+                             <a href="http://code.google.com/p/nettiers/">Google Code</a>
+                                |    
+                             <a href="http://code.google.com/p/nettiers/downloads/">Downloads</a></div>
+          <hr />
+          <h2>Generation Report</h2>
+          <div style="width:70%">
+            <span class="content">.netTiers is a set of open source code generation templates that
+                            simplify the tasks of creating customized Application Framework for your Microsoft.Net
+                            applications in just a few minutes. 
+                            <br /><br />
+                            This report shows you a list of all of your selected .net class that were generated.  This report
+                            also shows gives a quick start configuration instructions so that you can get started using .netTiers.
+                            If you need further documentation, please check out the documentation section of this report.
+                         </span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td>
+          <h2>Sections</h2>
+          <ol>
+            <li>
+              <a href="#summary">Summary</a>
+            </li>
+            <li>
+              <a href="#Configuration">Configuration</a>
+            </li>
+            <li>
+              <a href="#documentation">Documentation</a>
+            </li>
+            <li>
+              <a href="#details">Details - Generated Classes</a>
+            </li>
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="100%">
+          <div id="Summary" style="display:inline">
+            <a name="summary" />
+            <h3>Generation Summary <a href="#top" class="calloutlink">Top</a></h3>
+            <span class="docSubHeader">Generated Solution Found: </span>
+            <br />
+            <span class="content">
+              <ul>
+                <li>file:\\\D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.sln</li>
+              </ul>
+            </span>
+            <table>
+              <tr>
+                <td width="200">Total Object Created</td>
+                <td>239</td>
+              </tr>
+              <tr>
+                <td width="200">Total Errors / Warnings</td>
+                <td>0</td>
+              </tr>
+            </table>
+          </div>
+          <div id="Configuration" style="display:inline">
+            <a name="Configuration" />
+            <h3>.netTiers Quick Configuration <a href="#top" class="calloutlink">Top</a></h3>
+            <p> Below are the steps to to configure the .netTiers components.</p>
+            <p>To Configure your application to use .netTiers, add the following sections to your App / Web config files.
+			
+			 You can find more information on how to set this up at<br /><a href="http://docs.nettiers.com">.netTiers 2 Install and Configuration Document @ http://docs.netTiers.com</a></p>
+            <p>1. Add a new section to the configSections</p>
+            <pre>
+  &lt;section name="NDMSInvestigation.Data"
+		type="NDMSInvestigation.Data.Bases.NetTiersServiceSection, NDMSInvestigation.Data"
+		allowDefinition="MachineToApplication"
+		restartOnExternalChanges="true" /&gt;
+</pre>
+            <p>2.  Add an item to the ConnectionStrings Section</p>
+            <pre>
+&lt;connectionStrings&gt;
+  &lt;add name="netTiersConnectionString" connectionString="Data Source=PHUC-PC;Initial Catalog=NDMSInvestigation;User ID=sa;Password=sa" /&gt;
+&lt;/connectionStrings&gt;
+</pre>
+            <p>3.  Add the netTierService configuration section to your configuration file. Comment / Uncomment which provider you plan on using / not using</p>
+            <pre>
+&lt;NDMSInvestigation.Data defaultProvider="SqlNetTiersProvider"&gt;
+  &lt;providers&gt;
+    
+    &lt;add 
+	name="SqlNetTiersProvider" 
+	type="NDMSInvestigation.Data.SqlClient.SqlNetTiersProvider, NDMSInvestigation.Data.SqlClient"
+	connectionStringName="netTiersConnectionString"
+	providerInvariantName="System.Data.SqlClient" 
+	entityFactoryType="NDMSInvestigation.Entities.EntityFactory"
+	useEntityFactory="true"
+	enableEntityTracking="false"
+	enableMethodAuthorization="false"
+	useStoredProcedure="false"
+  /&gt;
+    
+  &lt;/providers&gt;
+&lt;/NDMSInvestigation.Data&gt;
+ </pre>
+          </div>
+          <div id="Documentation" style="display:inline">
+            <a name="documentation" />
+            <h3>Documentation <a href="#top" class="calloutlink">Top</a></h3>
+            <a href="http://wiki.nettiers.com">.netTiers 2.0 Getting Started</a>
+            <br />
+            <br />
+            <b>Sample API Usage</b>
+            <br />
+            <table style="border: 1px dashed rgb(255, 153, 0); background-color: rgb(255, 255, 223);" bgcolor="#ffffdf">
+              <tbody>
+                <tr>
+                  <td>
+                    <pre>
+                      <font color="black" face="Courier New" size="2">
+AccountService accountsService = <font color="blue">new</font> AccountsService();<font color="green">
+//GetAll()</font>
+TList&lt;Accounts&gt; accountList = accountsService.GetAll();
+
+<font color="green">//GetPagedl()</font>
+TList&lt;Accounts&gt; accountList = 
+accountsService.GetPaged("IsActive = 1 AND AccountName LIKE 'smi%'");
+
+<font color="green">//GetByFk()</font>
+TList&lt;Accounts&gt; accountList = accountsService.GetByCustomerId(25);
+
+<font color="green">//GetIX()</font>
+TList&lt;Accounts&gt; accountList = accountsService.GetByAccountCreatedDate(<font color="blue">new</font> DateTime("1/1/2006"));<br /><br /><font color="green">
+//Get()</font>
+entity.Entitykey;
+Accounts account = accountsService.Get(entity.EntityKey);
+
+<font color="green">//Insert()</font>
+Account accountEntity = <font color="blue">new</font> Account();
+accountEntity.AccountName = "MyAccountName";
+accountEntity.CreatedDate = DateTime.Now;
+
+accountsService.Insert(accountEntity);
+accountEntity.AccountId <font color="green">// is now populated</font><font color="green">
+//Delete()</font>
+bool result = accountsService.Delete(accountEntity);
+
+<font color="green">//Delete()</font>
+bool result = accountsService.Delete(23);
+
+<font color="green">//Update()</font>
+accountEntity.AccountName = "MyAccountName 2";
+accountsService.Update(accountEntity);
+        
+<font color="green">//GetByManyToManyl()</font>
+TList&lt;Customers&gt; accountList = accountsService.GetCustomers_From_AccountsReceivable();
+					            
+<font color="green">//GetCustomProcedureName()</font>
+TList&lt;Accounts&gt; accountList = accountsService.GetByAccountMaturationDate();
+    
+<font color="green">//DeepLoadByIdl() using PK</font>
+Account account = accountsService.DeepLoadByAccountId(id, <font color="blue">false</font>, DeepLoadType.IncludeChildren, typeof(Customers), typeof(TList&lt;ChartOfAccounts&gt;));<br /><br /><font color="green">//DeepLoadByIdl() using FK</font>
+TList&lt;Account&gt; account = accountsService.DeepLoadByCustomerId(id, <font color="blue">false</font>, DeepLoadType.IncludeChildren, typeof(Customers), typeof(TList&lt;ChartOfAccounts&gt;));<br /><br /><font color="green">//already instatiated objects</font><font color="green">//DeepLoad</font>
+accountsService.DeepLoad(myAccountEntity, <font color="blue">false</font>, DeepLoadType.IncludeChildren, typeof(Customers), typeof(TList&lt;ChartOfAccounts&gt;));<br /><br /><font color="green">
+Response.Write(accountsService.CustomerIdSource.LastName); <font color="green">// is now filled</font>
+Response.Write(accountsService.ChartOfAccountsCollection.Count); <font color="green">// is now filled</font>
+
+//DeepSave</font>
+accountsService.DeepSave(myAccountEntity, <font color="blue">false</font>, DeepSaveType.IncludeChildren, typeof(Customers), typeof(TList&lt;ChartOfAccounts&gt;));<br /><br /></font>
+                    </pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </div>
+          <div id="ReportDetails" style="display:inline">
+            <a name="details" />
+            <h3>Report Details <a href="#top" class="calloutlink">Top</a></h3>
+            <ul>
+              <li>
+                <h3>Initialization</h3>
+                <ul>
+                  <li>
+                    <span class="message0">Validating parameters.</span>
+                    <ul />
+                  </li>
+                  <li>
+                    <span class="message0">Loading templates.</span>
+                    <ul />[00:00:02.9640119]<br /></li>
+                  <li>
+                    <span class="message0">Creating folders and copying dependencies.</span>
+                    <ul />
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:03.8064153</span><p /></li>
+              <li>
+                <h3>Common files</h3>
+                <ul>
+                  <li>
+                    <span class="file">ListBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">TList.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">VList.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">TestUtility.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntity.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityId.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityKey.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityFactory.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityFactoryBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityFactory.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityCacheItem.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityCache.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityLocator.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityManager.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">PropertyValidator.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">PropertyValidatorValueAccess.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">PropertyValidatorValueAccessBuilder.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityBaseCore.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityKeyBaseCore.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SecurityContextBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ContextView.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IProcessor.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IProcessorResult.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ProcessorBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">GenericProcessorResult.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">DomainUtil.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IConnectionScope.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ConnectionScope.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ConnectionScopeBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IComponentService.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ServiceBaseCore.cst.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ServiceViewBaseCore.cst.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ServiceResult.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityFilter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityPropertyComparer.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">GenericTypeConverter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">Procedures.xml</span>
+                  </li>
+                  <li>
+                    <span class="file">Utility.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ITransactionManager.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">TransactionManager.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">DataRepository.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IEntityViewProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityProviderBaseCore.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityViewProviderBaseCore.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">INetTiersProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">NetTiersProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">NetTiersProviderBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">NetTiersProviderCollection.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">NetTiersServiceSection.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ExpressionParserBase.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlExpressionParser.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlStringBuilder.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlUtil.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">StringTokenizer.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlNetTiersProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">StoredProcedureProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsNetTiersProvider.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigationBLLServices.asmx</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigationServices.asmx</span>
+                  </li>
+                  <li>
+                    <span class="file">BaseDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">BaseDataSourceDesigner.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">CustomDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">CustomDataSourceDesigner.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">CustomParameter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">DataParameter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityDataSourceFilter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityRelationship.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityRelationshipMember.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityTransactionModule.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ILinkedDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ManyToManyListRelationship.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ManyToManyViewRelationship.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">OneToManyGridRelationship.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">OneToOneViewRelationship.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ProviderDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ProviderDataSourceDesigner.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ReadOnlyDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ReadOnlyDataSourceDesigner.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlParameter.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionGroupDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AnswerDetailsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetWebEventEventsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersInRolesDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ResultDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionDetailsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionAnswerDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetSchemaVersionsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetApplicationsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetRolesDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetMembershipDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPathsDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetProfileDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationAllUsersDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">UserDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationPerUserDataSource.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">FormUtilBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">MultiBindableTemplate.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">MultiFormView.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityGridView.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityDropDownList.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">BoundEntityDropDownField.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">BoundRadioButtonField.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">GridViewSearchPanel.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">GridViewSearchPanelState.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityLabel.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">HyperlinkField.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionGroupRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AnswerDetailsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetWebEventEventsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersInRolesRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ResultRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionDetailsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionAnswerRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetSchemaVersionsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetApplicationsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetRolesRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetMembershipRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPathsRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetProfileRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationAllUsersRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">UserRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationPerUserRepeater.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">Services.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigation.Entities.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigation.Data.Data.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigation.Entities.Data.SqlClient.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.Data.WebServiceClient\NDMSInvestigation.Data.WebServiceClient.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">NDMSInvestigation.Web.csproj</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityHelper.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">EntityUtil.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:44.6941793</span><p /></li>
+              <li>
+                <h3>AnswerDetails</h3>
+                <ul>
+                  <li>
+                    <span class="file">AnswerDetails.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAnswerDetails.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AnswerDetailsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AnswerDetailsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAnswerDetailsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAnswerDetailsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:02.9016116</span><p /></li>
+              <li>
+                <h3>aspnet_Applications</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetApplications.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetApplications.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetApplicationsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetApplicationsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetApplicationsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetApplicationsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.8876076</span><p /></li>
+              <li>
+                <h3>aspnet_Membership</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetMembership.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetMembership.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetMembershipServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetMembershipProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetMembershipProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetMembershipProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.7784072</span><p /></li>
+              <li>
+                <h3>aspnet_Paths</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetPaths.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetPaths.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPathsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPathsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetPathsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetPathsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:02.1840087</span><p /></li>
+              <li>
+                <h3>aspnet_PersonalizationAllUsers</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetPersonalizationAllUsers.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetPersonalizationAllUsers.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationAllUsersServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationAllUsersProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetPersonalizationAllUsersProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetPersonalizationAllUsersProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.7628071</span><p /></li>
+              <li>
+                <h3>aspnet_PersonalizationPerUser</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetPersonalizationPerUser.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetPersonalizationPerUser.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationPerUserServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetPersonalizationPerUserProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetPersonalizationPerUserProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetPersonalizationPerUserProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.7160069</span><p /></li>
+              <li>
+                <h3>aspnet_Profile</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetProfile.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetProfile.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetProfileServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetProfileProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetProfileProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetProfileProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:02.6988108</span><p /></li>
+              <li>
+                <h3>aspnet_Roles</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetRoles.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetRoles.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetRolesServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetRolesProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetRolesProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetRolesProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:05.0700204</span><p /></li>
+              <li>
+                <h3>aspnet_SchemaVersions</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetSchemaVersions.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetSchemaVersions.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetSchemaVersionsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetSchemaVersionsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetSchemaVersionsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetSchemaVersionsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:05.7096229</span><p /></li>
+              <li>
+                <h3>aspnet_Users</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetUsers.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetUsers.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetUsersProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetUsersProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:04.9920200</span><p /></li>
+              <li>
+                <h3>aspnet_UsersInRoles</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetUsersInRoles.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetUsersInRoles.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersInRolesServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetUsersInRolesProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetUsersInRolesProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetUsersInRolesProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:03.2292130</span><p /></li>
+              <li>
+                <h3>aspnet_WebEvent_Events</h3>
+                <ul>
+                  <li>
+                    <span class="file">AspnetWebEventEvents.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IAspnetWebEventEvents.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetWebEventEventsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">AspnetWebEventEventsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlAspnetWebEventEventsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsAspnetWebEventEventsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.6068064</span><p /></li>
+              <li>
+                <h3>Question_Answer</h3>
+                <ul>
+                  <li>
+                    <span class="file">QuestionAnswer.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IQuestionAnswer.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionAnswerServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionAnswerProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlQuestionAnswerProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsQuestionAnswerProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:01.2168049</span><p /></li>
+              <li>
+                <h3>QuestionDetails</h3>
+                <ul>
+                  <li>
+                    <span class="file">QuestionDetails.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IQuestionDetails.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionDetailsServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionDetailsProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlQuestionDetailsProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsQuestionDetailsProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:00.9828039</span><p /></li>
+              <li>
+                <h3>QuestionGroup</h3>
+                <ul>
+                  <li>
+                    <span class="file">QuestionGroup.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IQuestionGroup.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionGroupServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">QuestionGroupProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlQuestionGroupProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsQuestionGroupProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:00.9360038</span><p /></li>
+              <li>
+                <h3>Result</h3>
+                <ul>
+                  <li>
+                    <span class="file">Result.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IResult.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ResultServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">ResultProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlResultProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsResultProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:00.7488030</span><p /></li>
+              <li>
+                <h3>User</h3>
+                <ul>
+                  <li>
+                    <span class="file">User.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">IUser.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">UserServiceBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">UserProviderBase.generatedCore.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">SqlClient\SqlUserProviderBase.generated.cs</span>
+                  </li>
+                  <li>
+                    <span class="file">WebServiceClient\WsUserProviderBase.cs</span>
+                  </li>
+                </ul>
+			Execution time: <span class="executionTime">00:00:00.9672039</span><p /></li>
+              <li>
+                <h3>
+            Custom Stored Procedures
+         </h3>
+                <ul />
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <hr noshade="noshade" />
+    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td />
+        <td />
+      </tr>
+    </table>
+    <div align="center">
+			.netTiers Open Source Group, 2008
+		</div>
+    <div align="center">
+      <a href="http://code.google.com/p/nettiers/">
+        <img src="http://code.google.com/hosting/images/code_sm.png" border="0" alt="Google Code Logo" />
+      </a>
+    </div>
+  </body>
+</html>
