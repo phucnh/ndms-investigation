@@ -1,0 +1,284 @@
+<NetTiersReport DALNameSpace="NDMSInvestigation.Data" SolutionLink="file:\\\D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.sln" ConnectionString="Data Source=PHUC-PC;Initial Catalog=NDMSInvestigation;User ID=sa;Password=sa" FactoryType="NDMSInvestigation.Entities.EntityFactory">
+  <initialization startTime="129232586573995890" executionTime="00:00:03.8064153">
+    <Message level="0" startTime="129232586573995890" message="Validating parameters." />
+    <Message level="0" startTime="129232586576959902" message="Loading templates." executionTime="00:00:02.9640119" />
+    <Message level="0" startTime="129232586606600021" message="Creating folders and copying dependencies." />
+  </initialization>
+  <customStoredProcedures includeCustoms="true" />
+  <common startTime="129232586612060043" executionTime="00:00:44.6941793">
+    <File name="ListBase.cs" startTime="129232586612060043" />
+    <File name="TList.cs" startTime="129232586614244051" />
+    <File name="VList.cs" startTime="129232586615492056" />
+    <File name="TestUtility.cs" startTime="129232586616584061" />
+    <File name="IEntity.cs" startTime="129232586618300068" />
+    <File name="IEntityId.cs" startTime="129232586619392072" />
+    <File name="IEntityKey.cs" startTime="129232586620328076" />
+    <File name="EntityFactory.cs" startTime="129232586622200083" />
+    <File name="EntityFactoryBase.cs" startTime="129232586623604089" />
+    <File name="IEntityFactory.cs" startTime="129232586624696093" />
+    <File name="IEntityCacheItem.cs" startTime="129232586625632097" />
+    <File name="EntityCache.cs" startTime="129232586626568101" />
+    <File name="EntityLocator.cs" startTime="129232586627660105" />
+    <File name="EntityManager.cs" startTime="129232586628596109" />
+    <File name="PropertyValidator.cs" startTime="129232586630624117" />
+    <File name="PropertyValidatorValueAccess.cs" startTime="129232586632652125" />
+    <File name="PropertyValidatorValueAccessBuilder.cs" startTime="129232586633744130" />
+    <File name="EntityBaseCore.generated.cs" startTime="129232586634836134" />
+    <File name="EntityKeyBaseCore.generated.cs" startTime="129232586636084139" />
+    <File name="SecurityContextBase.generated.cs" startTime="129232586637176143" />
+    <File name="ContextView.cs" startTime="129232586638424148" />
+    <File name="IProcessor.cs" startTime="129232586639828154" />
+    <File name="IProcessorResult.cs" startTime="129232586640920158" />
+    <File name="ProcessorBase.cs" startTime="129232586642636165" />
+    <File name="GenericProcessorResult.cs" startTime="129232586644508173" />
+    <File name="DomainUtil.cs" startTime="129232586645600177" />
+    <File name="IConnectionScope.cs" startTime="129232586646848182" />
+    <File name="ConnectionScope.cs" startTime="129232586647784186" />
+    <File name="ConnectionScopeBase.cs" startTime="129232586648876190" />
+    <File name="IComponentService.cs" startTime="129232586649968195" />
+    <File name="ServiceBaseCore.cst.cs" startTime="129232586651060199" />
+    <File name="ServiceViewBaseCore.cst.cs" startTime="129232586652152203" />
+    <File name="ServiceResult.cs" startTime="129232586653244208" />
+    <File name="EntityFilter.cs" startTime="129232586654336212" />
+    <File name="EntityPropertyComparer.cs" startTime="129232586656052219" />
+    <File name="GenericTypeConverter.cs" startTime="129232586656832222" />
+    <File name="Procedures.xml" startTime="129232586657768226" />
+    <File name="Utility.cs" startTime="129232586773520690" />
+    <File name="ITransactionManager.cs" startTime="129232586775392698" />
+    <File name="TransactionManager.cs" startTime="129232586776172701" />
+    <File name="DataRepository.cs" startTime="129232586777108705" />
+    <File name="IEntityProvider.cs" startTime="129232586779760716" />
+    <File name="IEntityViewProvider.cs" startTime="129232586783504731" />
+    <File name="EntityProviderBaseCore.generated.cs" startTime="129232586784596735" />
+    <File name="EntityViewProviderBaseCore.generated.cs" startTime="129232586788028749" />
+    <File name="INetTiersProvider.cs" startTime="129232586789900756" />
+    <File name="NetTiersProvider.cs" startTime="129232586790836760" />
+    <File name="NetTiersProviderBase.cs" startTime="129232586792864768" />
+    <File name="NetTiersProviderCollection.cs" startTime="129232586797700788" />
+    <File name="NetTiersServiceSection.cs" startTime="129232586801288802" />
+    <File name="ExpressionParserBase.cs" startTime="129232586805500819" />
+    <File name="SqlExpressionParser.cs" startTime="129232586807684828" />
+    <File name="SqlStringBuilder.cs" startTime="129232586810336838" />
+    <File name="SqlUtil.cs" startTime="129232586813456851" />
+    <File name="StringTokenizer.cs" startTime="129232586815328858" />
+    <File name="SqlClient\SqlNetTiersProvider.cs" startTime="129232586816732864" />
+    <File name="StoredProcedureProvider.cs" startTime="129232586817980869" />
+    <File name="WebServiceClient\WsNetTiersProvider.cs" startTime="129232586819072873" />
+    <File name="NDMSInvestigationBLLServices.asmx" startTime="129232586820944881" />
+    <File name="NDMSInvestigationServices.asmx" startTime="129232586824532895" />
+    <File name="BaseDataSource.cs" startTime="129232586828432911" />
+    <File name="BaseDataSourceDesigner.cs" startTime="129232586832644928" />
+    <File name="CustomDataSource.cs" startTime="129232586834672936" />
+    <File name="CustomDataSourceDesigner.cs" startTime="129232586836232942" />
+    <File name="CustomParameter.cs" startTime="129232586837012945" />
+    <File name="DataParameter.cs" startTime="129232586837948949" />
+    <File name="EntityDataSource.cs" startTime="129232586838884953" />
+    <File name="EntityDataSourceFilter.cs" startTime="129232586843252970" />
+    <File name="EntityRelationship.cs" startTime="129232586844500975" />
+    <File name="EntityRelationshipMember.cs" startTime="129232586845592980" />
+    <File name="EntityTransactionModule.cs" startTime="129232586847152986" />
+    <File name="ILinkedDataSource.cs" startTime="129232586848088990" />
+    <File name="ManyToManyListRelationship.cs" startTime="129232586849648996" />
+    <File name="ManyToManyViewRelationship.cs" startTime="129232586850741000" />
+    <File name="OneToManyGridRelationship.cs" startTime="129232586851677004" />
+    <File name="OneToOneViewRelationship.cs" startTime="129232586853081010" />
+    <File name="ProviderDataSource.cs" startTime="129232586854641016" />
+    <File name="ProviderDataSourceDesigner.cs" startTime="129232586856357023" />
+    <File name="ReadOnlyDataSource.cs" startTime="129232586857293027" />
+    <File name="ReadOnlyDataSourceDesigner.cs" startTime="129232586858385031" />
+    <File name="SqlParameter.cs" startTime="129232586859321035" />
+    <File name="QuestionGroupDataSource.cs" startTime="129232586862441047" />
+    <File name="AnswerDetailsDataSource.cs" startTime="129232586863845053" />
+    <File name="AspnetWebEventEventsDataSource.cs" startTime="129232586864937057" />
+    <File name="AspnetUsersInRolesDataSource.cs" startTime="129232586865873061" />
+    <File name="ResultDataSource.cs" startTime="129232586866965065" />
+    <File name="QuestionDetailsDataSource.cs" startTime="129232586868837073" />
+    <File name="QuestionAnswerDataSource.cs" startTime="129232586869929077" />
+    <File name="AspnetUsersDataSource.cs" startTime="129232586870865081" />
+    <File name="AspnetSchemaVersionsDataSource.cs" startTime="129232586871801085" />
+    <File name="AspnetApplicationsDataSource.cs" startTime="129232586872737089" />
+    <File name="AspnetRolesDataSource.cs" startTime="129232586874453095" />
+    <File name="AspnetMembershipDataSource.cs" startTime="129232586875233099" />
+    <File name="AspnetPathsDataSource.cs" startTime="129232586876169102" />
+    <File name="AspnetProfileDataSource.cs" startTime="129232586877105106" />
+    <File name="AspnetPersonalizationAllUsersDataSource.cs" startTime="129232586878197111" />
+    <File name="UserDataSource.cs" startTime="129232586879757117" />
+    <File name="AspnetPersonalizationPerUserDataSource.cs" startTime="129232586880693121" />
+    <File name="FormUtilBase.generated.cs" startTime="129232586883345131" />
+    <File name="MultiBindableTemplate.cs" startTime="129232586885841141" />
+    <File name="MultiFormView.cs" startTime="129232586886777145" />
+    <File name="EntityGridView.cs" startTime="129232586887869149" />
+    <File name="EntityDropDownList.cs" startTime="129232586889585156" />
+    <File name="BoundEntityDropDownField.cs" startTime="129232586890833161" />
+    <File name="BoundRadioButtonField.cs" startTime="129232586892081166" />
+    <File name="GridViewSearchPanel.cs" startTime="129232586893329171" />
+    <File name="GridViewSearchPanelState.cs" startTime="129232586894889178" />
+    <File name="EntityLabel.cs" startTime="129232586895981182" />
+    <File name="HyperlinkField.cs" startTime="129232586896761185" />
+    <File name="QuestionGroupRepeater.cs" startTime="129232586898009190" />
+    <File name="AnswerDetailsRepeater.cs" startTime="129232586899101194" />
+    <File name="AspnetWebEventEventsRepeater.cs" startTime="129232586900037198" />
+    <File name="AspnetUsersInRolesRepeater.cs" startTime="129232586900973202" />
+    <File name="ResultRepeater.cs" startTime="129232586903625213" />
+    <File name="QuestionDetailsRepeater.cs" startTime="129232586904561216" />
+    <File name="QuestionAnswerRepeater.cs" startTime="129232586905653221" />
+    <File name="AspnetUsersRepeater.cs" startTime="129232586906745225" />
+    <File name="AspnetSchemaVersionsRepeater.cs" startTime="129232586907681229" />
+    <File name="AspnetApplicationsRepeater.cs" startTime="129232586908773233" />
+    <File name="AspnetRolesRepeater.cs" startTime="129232586909553236" />
+    <File name="AspnetMembershipRepeater.cs" startTime="129232586910645241" />
+    <File name="AspnetPathsRepeater.cs" startTime="129232586912205247" />
+    <File name="AspnetProfileRepeater.cs" startTime="129232586914233255" />
+    <File name="AspnetPersonalizationAllUsersRepeater.cs" startTime="129232586915325260" />
+    <File name="UserRepeater.cs" startTime="129232586916105263" />
+    <File name="AspnetPersonalizationPerUserRepeater.cs" startTime="129232586916885266" />
+    <File name="Services.csproj" startTime="129232587031077724" />
+    <File name="NDMSInvestigation.Entities.csproj" startTime="129232587034977740" />
+    <File name="NDMSInvestigation.Data.Data.csproj" startTime="129232587037005748" />
+    <File name="NDMSInvestigation.Entities.Data.SqlClient.csproj" startTime="129232587039189757" />
+    <File name="D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.Data.WebServiceClient\NDMSInvestigation.Data.WebServiceClient.csproj" startTime="129232587040905763" />
+    <File name="NDMSInvestigation.Web.csproj" startTime="129232587046365785" />
+    <File name="EntityHelper.cs" startTime="129232587048237793" />
+    <File name="EntityUtil.cs" startTime="129232587051825807" />
+  </common>
+  <Table name="AnswerDetails" startTime="129232587059001836" executionTime="00:00:02.9016116">
+    <File name="AnswerDetails.generated.cs" startTime="129232587059001836" executionTime="00:00:00.6084024" />
+    <File name="IAnswerDetails.cs" startTime="129232587065085860" executionTime="00:00:00.1248005" />
+    <File name="AnswerDetailsServiceBase.generated.cs" startTime="129232587066333865" executionTime="00:00:00.9048037" />
+    <File name="AnswerDetailsProviderBase.generatedCore.cs" startTime="129232587075381902" executionTime="00:00:00.6864027" />
+    <File name="SqlClient\SqlAnswerDetailsProviderBase.generated.cs" startTime="129232587082245929" executionTime="00:00:00.3276013" />
+    <File name="WebServiceClient\WsAnswerDetailsProviderBase.cs" startTime="129232587085521942" executionTime="00:00:00.2496010" />
+  </Table>
+  <Table name="aspnet_Applications" startTime="129232587088017952" executionTime="00:00:01.8876076">
+    <File name="AspnetApplications.generated.cs" startTime="129232587088017952" executionTime="00:00:00.2964012" />
+    <File name="IAspnetApplications.cs" startTime="129232587091137965" executionTime="00:00:00.1560006" />
+    <File name="AspnetApplicationsServiceBase.generated.cs" startTime="129232587092697971" executionTime="00:00:00.4524018" />
+    <File name="AspnetApplicationsProviderBase.generatedCore.cs" startTime="129232587097221989" executionTime="00:00:00.1716007" />
+    <File name="SqlClient\SqlAspnetApplicationsProviderBase.generated.cs" startTime="129232587098937996" executionTime="00:00:00.1716007" />
+    <File name="WebServiceClient\WsAspnetApplicationsProviderBase.cs" startTime="129232587100654003" executionTime="00:00:00.6240025" />
+  </Table>
+  <Table name="aspnet_Membership" startTime="129232587106894028" executionTime="00:00:01.7784072">
+    <File name="AspnetMembership.generated.cs" startTime="129232587106894028" executionTime="00:00:00.4836020" />
+    <File name="IAspnetMembership.cs" startTime="129232587111730048" executionTime="00:00:00.1872007" />
+    <File name="AspnetMembershipServiceBase.generated.cs" startTime="129232587113602055" executionTime="00:00:00.4056016" />
+    <File name="AspnetMembershipProviderBase.generatedCore.cs" startTime="129232587117658071" executionTime="00:00:00.2028009" />
+    <File name="SqlClient\SqlAspnetMembershipProviderBase.generated.cs" startTime="129232587119686080" executionTime="00:00:00.2652010" />
+    <File name="WebServiceClient\WsAspnetMembershipProviderBase.cs" startTime="129232587122494091" executionTime="00:00:00.2184009" />
+  </Table>
+  <Table name="aspnet_Paths" startTime="129232587124678100" executionTime="00:00:02.1840087">
+    <File name="AspnetPaths.generated.cs" startTime="129232587124678100" executionTime="00:00:00.3900015" />
+    <File name="IAspnetPaths.cs" startTime="129232587128578115" executionTime="00:00:00.2496010" />
+    <File name="AspnetPathsServiceBase.generated.cs" startTime="129232587131074125" executionTime="00:00:00.8112033" />
+    <File name="AspnetPathsProviderBase.generatedCore.cs" startTime="129232587139186158" executionTime="00:00:00.1872007" />
+    <File name="SqlClient\SqlAspnetPathsProviderBase.generated.cs" startTime="129232587141058165" executionTime="00:00:00.2964012" />
+    <File name="WebServiceClient\WsAspnetPathsProviderBase.cs" startTime="129232587144022177" executionTime="00:00:00.2496010" />
+  </Table>
+  <Table name="aspnet_PersonalizationAllUsers" startTime="129232587146518187" executionTime="00:00:01.7628071">
+    <File name="AspnetPersonalizationAllUsers.generated.cs" startTime="129232587146518187" executionTime="00:00:00.5148021" />
+    <File name="IAspnetPersonalizationAllUsers.cs" startTime="129232587151666208" executionTime="00:00:00.2340009" />
+    <File name="AspnetPersonalizationAllUsersServiceBase.generated.cs" startTime="129232587154006217" executionTime="00:00:00.3432014" />
+    <File name="AspnetPersonalizationAllUsersProviderBase.generatedCore.cs" startTime="129232587157438231" executionTime="00:00:00.1560006" />
+    <File name="SqlClient\SqlAspnetPersonalizationAllUsersProviderBase.generated.cs" startTime="129232587158998237" executionTime="00:00:00.1560007" />
+    <File name="WebServiceClient\WsAspnetPersonalizationAllUsersProviderBase.cs" startTime="129232587160558244" executionTime="00:00:00.3588014" />
+  </Table>
+  <Table name="aspnet_PersonalizationPerUser" startTime="129232587164146258" executionTime="00:00:01.7160069">
+    <File name="AspnetPersonalizationPerUser.generated.cs" startTime="129232587164146258" executionTime="00:00:00.4056016" />
+    <File name="IAspnetPersonalizationPerUser.cs" startTime="129232587168202274" executionTime="00:00:00.2496010" />
+    <File name="AspnetPersonalizationPerUserServiceBase.generated.cs" startTime="129232587170698284" executionTime="00:00:00.4212017" />
+    <File name="AspnetPersonalizationPerUserProviderBase.generatedCore.cs" startTime="129232587174910301" executionTime="00:00:00.2496010" />
+    <File name="SqlClient\SqlAspnetPersonalizationPerUserProviderBase.generated.cs" startTime="129232587177406311" executionTime="00:00:00.2184009" />
+    <File name="WebServiceClient\WsAspnetPersonalizationPerUserProviderBase.cs" startTime="129232587179590320" executionTime="00:00:00.1716007" />
+  </Table>
+  <Table name="aspnet_Profile" startTime="129232587181306327" executionTime="00:00:02.6988108">
+    <File name="AspnetProfile.generated.cs" startTime="129232587181306327" executionTime="00:00:00.3432014" />
+    <File name="IAspnetProfile.cs" startTime="129232587184738341" executionTime="00:00:00.1560006" />
+    <File name="AspnetProfileServiceBase.generated.cs" startTime="129232587186298347" executionTime="00:00:00.4368017" />
+    <File name="AspnetProfileProviderBase.generatedCore.cs" startTime="129232587190666364" executionTime="00:00:00.8424034" />
+    <File name="SqlClient\SqlAspnetProfileProviderBase.generated.cs" startTime="129232587199090398" executionTime="00:00:00.3588015" />
+    <File name="WebServiceClient\WsAspnetProfileProviderBase.cs" startTime="129232587202678413" executionTime="00:00:00.5616022" />
+  </Table>
+  <Table name="aspnet_Roles" startTime="129232587208294435" executionTime="00:00:05.0700204">
+    <File name="AspnetRoles.generated.cs" startTime="129232587208294435" executionTime="00:00:01.2480050" />
+    <File name="IAspnetRoles.cs" startTime="129232587220774485" executionTime="00:00:00.6708027" />
+    <File name="AspnetRolesServiceBase.generated.cs" startTime="129232587227638513" executionTime="00:00:01.6068064" />
+    <File name="AspnetRolesProviderBase.generatedCore.cs" startTime="129232587243706577" executionTime="00:00:00.5148021" />
+    <File name="SqlClient\SqlAspnetRolesProviderBase.generated.cs" startTime="129232587248854598" executionTime="00:00:00.3900016" />
+    <File name="WebServiceClient\WsAspnetRolesProviderBase.cs" startTime="129232587252754614" executionTime="00:00:00.6240025" />
+  </Table>
+  <Table name="aspnet_SchemaVersions" startTime="129232587258994639" executionTime="00:00:05.7096229">
+    <File name="AspnetSchemaVersions.generated.cs" startTime="129232587258994639" executionTime="00:00:01.4196057" />
+    <File name="IAspnetSchemaVersions.cs" startTime="129232587273190696" executionTime="00:00:00.7020028" />
+    <File name="AspnetSchemaVersionsServiceBase.generated.cs" startTime="129232587280210724" executionTime="00:00:01.2948052" />
+    <File name="AspnetSchemaVersionsProviderBase.generatedCore.cs" startTime="129232587293158776" executionTime="00:00:00.5148020" />
+    <File name="SqlClient\SqlAspnetSchemaVersionsProviderBase.generated.cs" startTime="129232587298306796" executionTime="00:00:00.7332030" />
+    <File name="WebServiceClient\WsAspnetSchemaVersionsProviderBase.cs" startTime="129232587305794826" executionTime="00:00:01.0296042" />
+  </Table>
+  <Table name="aspnet_Users" startTime="129232587316090868" executionTime="00:00:04.9920200">
+    <File name="AspnetUsers.generated.cs" startTime="129232587316090868" executionTime="00:00:01.7316069" />
+    <File name="IAspnetUsers.cs" startTime="129232587333406937" executionTime="00:00:00.7020028" />
+    <File name="AspnetUsersServiceBase.generated.cs" startTime="129232587340582966" executionTime="00:00:01.1700047" />
+    <File name="AspnetUsersProviderBase.generatedCore.cs" startTime="129232587352283013" executionTime="00:00:00.4524018" />
+    <File name="SqlClient\SqlAspnetUsersProviderBase.generated.cs" startTime="129232587356807031" executionTime="00:00:00.4212017" />
+    <File name="WebServiceClient\WsAspnetUsersProviderBase.cs" startTime="129232587361175049" executionTime="00:00:00.4836019" />
+  </Table>
+  <Table name="aspnet_UsersInRoles" startTime="129232587366011068" executionTime="00:00:03.2292130">
+    <File name="AspnetUsersInRoles.generated.cs" startTime="129232587366167069" executionTime="00:00:00.7488030" />
+    <File name="IAspnetUsersInRoles.cs" startTime="129232587373655099" executionTime="00:00:00.5148020" />
+    <File name="AspnetUsersInRolesServiceBase.generated.cs" startTime="129232587378803119" executionTime="00:00:01.1232045" />
+    <File name="AspnetUsersInRolesProviderBase.generatedCore.cs" startTime="129232587390035164" executionTime="00:00:00.3900016" />
+    <File name="SqlClient\SqlAspnetUsersInRolesProviderBase.generated.cs" startTime="129232587393935180" executionTime="00:00:00.2340009" />
+    <File name="WebServiceClient\WsAspnetUsersInRolesProviderBase.cs" startTime="129232587396275189" executionTime="00:00:00.2028009" />
+  </Table>
+  <Table name="aspnet_WebEvent_Events" startTime="129232587398303198" executionTime="00:00:01.6068064">
+    <File name="AspnetWebEventEvents.generated.cs" startTime="129232587398303198" executionTime="00:00:00.4212017" />
+    <File name="IAspnetWebEventEvents.cs" startTime="129232587402515215" executionTime="00:00:00.2340009" />
+    <File name="AspnetWebEventEventsServiceBase.generated.cs" startTime="129232587404855224" executionTime="00:00:00.4524018" />
+    <File name="AspnetWebEventEventsProviderBase.generatedCore.cs" startTime="129232587409379242" executionTime="00:00:00.1872008" />
+    <File name="SqlClient\SqlAspnetWebEventEventsProviderBase.generated.cs" startTime="129232587411251250" executionTime="00:00:00.1872007" />
+    <File name="WebServiceClient\WsAspnetWebEventEventsProviderBase.cs" startTime="129232587413123257" executionTime="00:00:00.1248005" />
+  </Table>
+  <Table name="Question_Answer" startTime="129232587414371262" executionTime="00:00:01.2168049">
+    <File name="QuestionAnswer.generated.cs" startTime="129232587414371262" executionTime="00:00:00.1872008" />
+    <File name="IQuestionAnswer.cs" startTime="129232587416399270" executionTime="00:00:00.1560006" />
+    <File name="QuestionAnswerServiceBase.generated.cs" startTime="129232587417959276" executionTime="00:00:00.5148021" />
+    <File name="QuestionAnswerProviderBase.generatedCore.cs" startTime="129232587423107297" executionTime="00:00:00.0936004" />
+    <File name="SqlClient\SqlQuestionAnswerProviderBase.generated.cs" startTime="129232587424043301" executionTime="00:00:00.1092004" />
+    <File name="WebServiceClient\WsQuestionAnswerProviderBase.cs" startTime="129232587425135305" executionTime="00:00:00.1404006" />
+  </Table>
+  <Table name="QuestionDetails" startTime="129232587426539311" executionTime="00:00:00.9828039">
+    <File name="QuestionDetails.generated.cs" startTime="129232587426539311" executionTime="00:00:00.3276013" />
+    <File name="IQuestionDetails.cs" startTime="129232587429971325" executionTime="00:00:00.1404005" />
+    <File name="QuestionDetailsServiceBase.generated.cs" startTime="129232587431375330" executionTime="00:00:00.2028008" />
+    <File name="QuestionDetailsProviderBase.generatedCore.cs" startTime="129232587433403338" executionTime="00:00:00.1092005" />
+    <File name="SqlClient\SqlQuestionDetailsProviderBase.generated.cs" startTime="129232587434495343" executionTime="00:00:00.0936004" />
+    <File name="WebServiceClient\WsQuestionDetailsProviderBase.cs" startTime="129232587435431347" executionTime="00:00:00.0936003" />
+  </Table>
+  <Table name="QuestionGroup" startTime="129232587436367350" executionTime="00:00:00.9360038">
+    <File name="QuestionGroup.generated.cs" startTime="129232587436367350" executionTime="00:00:00.2028008" />
+    <File name="IQuestionGroup.cs" startTime="129232587438395358" executionTime="00:00:00.0780004" />
+    <File name="QuestionGroupServiceBase.generated.cs" startTime="129232587439175362" executionTime="00:00:00.2964012" />
+    <File name="QuestionGroupProviderBase.generatedCore.cs" startTime="129232587442139374" executionTime="00:00:00.1092004" />
+    <File name="SqlClient\SqlQuestionGroupProviderBase.generated.cs" startTime="129232587443231378" executionTime="00:00:00.1404006" />
+    <File name="WebServiceClient\WsQuestionGroupProviderBase.cs" startTime="129232587444635384" executionTime="00:00:00.1092004" />
+  </Table>
+  <Table name="Result" startTime="129232587445727388" executionTime="00:00:00.7488030">
+    <File name="Result.generated.cs" startTime="129232587445727388" executionTime="00:00:00.2028008" />
+    <File name="IResult.cs" startTime="129232587447755396" executionTime="00:00:00.0780003" />
+    <File name="ResultServiceBase.generated.cs" startTime="129232587448535399" executionTime="00:00:00.1872008" />
+    <File name="ResultProviderBase.generatedCore.cs" startTime="129232587450407407" executionTime="00:00:00.1092004" />
+    <File name="SqlClient\SqlResultProviderBase.generated.cs" startTime="129232587451499411" executionTime="00:00:00.0936004" />
+    <File name="WebServiceClient\WsResultProviderBase.cs" startTime="129232587452435415" executionTime="00:00:00.0780003" />
+  </Table>
+  <Table name="User" startTime="129232587453215418" executionTime="00:00:00.9672039">
+    <File name="User.generated.cs" startTime="129232587453215418" executionTime="00:00:00.1872007" />
+    <File name="IUser.cs" startTime="129232587455087425" executionTime="00:00:00.0936004" />
+    <File name="UserServiceBase.generated.cs" startTime="129232587456179430" executionTime="00:00:00.2496010" />
+    <File name="UserProviderBase.generatedCore.cs" startTime="129232587458675440" executionTime="00:00:00.0936004" />
+    <File name="SqlClient\SqlUserProviderBase.generated.cs" startTime="129232587459611444" executionTime="00:00:00.2340009" />
+    <File name="WebServiceClient\WsUserProviderBase.cs" startTime="129232587461951453" executionTime="00:00:00.0936004" />
+  </Table>
+  <summary>
+    <objectCount>239</objectCount>
+    <messageCount>0</messageCount>
+  </summary>
+</NetTiersReport>

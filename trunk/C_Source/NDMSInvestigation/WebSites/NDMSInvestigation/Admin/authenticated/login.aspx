@@ -1,0 +1,14 @@
+<%@ Page Language="C#" MasterPageFile="~/Shared/DefaultMaster.master" %>
+
+<script runat="server">
+    private void Page_Load()
+    {
+        Login1.Focus();
+    }
+</script>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="DefaultContent" runat="Server">
+    <asp:Login ID="Login1" runat="server" CreateUserText="Register" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Admin/authenticated/changepwd.aspx">
+    </asp:Login>
+    <asp:HyperLink runat="Server" Text="Forgot your password?" NavigateUrl="~/Admin/authenticated/forgotpwd.aspx" />
+</asp:Content>
