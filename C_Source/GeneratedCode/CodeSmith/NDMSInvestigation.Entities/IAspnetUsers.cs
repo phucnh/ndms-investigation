@@ -17,6 +17,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Users"</remarks>
 		System.Guid UserId { get; set; }
 				
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		System.Guid OriginalUserId { get; set; }
+			
 		
 		
 		/// <summary>
@@ -74,9 +79,9 @@ namespace NDMSInvestigation.Entities
 		
 		/// <summary>
 		///	Holds a collection of entity objects
-		///	which are related to this object through the junction table groupIdQuestionGroupCollectionFromResult
+		///	which are related to this object through the junction table groupIdQuestionGroupsCollectionFromResults
 		/// </summary>	
-		TList<QuestionGroup> GroupIdQuestionGroupCollection_From_Result { get; set; }	
+		TList<QuestionGroups> GroupIdQuestionGroupsCollection_From_Results { get; set; }	
 
 
 		/// <summary>
@@ -91,20 +96,20 @@ namespace NDMSInvestigation.Entities
 		///	which are related to this object through the relation _aspnetUsersInRolesUserId
 		/// </summary>	
 		TList<AspnetUsersInRoles> AspnetUsersInRolesCollection {  get;  set;}	
-	
-
-		/// <summary>
-		///	Holds a  User entity object
-		///	which is related to this object through the relation _userUserId
-		/// </summary>
-		User User { get; set; }
 
 
 		/// <summary>
 		///	Holds a collection of entity objects
-		///	which are related to this object through the relation _resultUserId
+		///	which are related to this object through the relation _resultsUserId
 		/// </summary>	
-		TList<Result> ResultCollection {  get;  set;}	
+		TList<Results> ResultsCollection {  get;  set;}	
+	
+
+		/// <summary>
+		///	Holds a  CompanyDetails entity object
+		///	which is related to this object through the relation _companyDetailsUserId
+		/// </summary>
+		CompanyDetails CompanyDetails { get; set; }
 
 		
 		/// <summary>

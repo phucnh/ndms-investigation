@@ -17,12 +17,13 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
+				<data:HyperLinkField HeaderText="Application Id" DataNavigateUrlFormatString="AspnetApplicationsEdit.aspx?ApplicationId={0}" DataNavigateUrlFields="ApplicationId" DataContainer="ApplicationIdSource" DataTextField="ApplicationName" />
+				<asp:BoundField DataField="UserId" HeaderText="User Id" SortExpression="[UserId]" ReadOnly="True" />
+				<asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="[UserName]"  />
+				<asp:BoundField DataField="LoweredUserName" HeaderText="Lowered User Name" SortExpression="[LoweredUserName]"  />
 				<asp:BoundField DataField="MobileAlias" HeaderText="Mobile Alias" SortExpression="[MobileAlias]"  />
 				<data:BoundRadioButtonField DataField="IsAnonymous" HeaderText="Is Anonymous" SortExpression="[IsAnonymous]"  />
 				<asp:BoundField DataField="LastActivityDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Last Activity Date" SortExpression="[LastActivityDate]"  />
-				<data:HyperLinkField HeaderText="Application Id" DataNavigateUrlFormatString="AspnetApplicationsEdit.aspx?ApplicationId={0}" DataNavigateUrlFields="ApplicationId" DataContainer="ApplicationIdSource" DataTextField="ApplicationName" />
-				<asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="[UserName]"  />
-				<asp:BoundField DataField="LoweredUserName" HeaderText="Lowered User Name" SortExpression="[LoweredUserName]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetUsers Found!</b>
@@ -41,11 +42,11 @@
 					<data:AspnetUsersProperty Name="AspnetApplications"/> 
 					<%--<data:AspnetUsersProperty Name="AspnetMembership" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetProfile" />--%>
-					<%--<data:AspnetUsersProperty Name="GroupIdQuestionGroupCollection_From_Result" />--%>
+					<%--<data:AspnetUsersProperty Name="GroupIdQuestionGroupsCollection_From_Results" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetPersonalizationPerUserCollection" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetUsersInRolesCollection" />--%>
-					<%--<data:AspnetUsersProperty Name="User" />--%>
-					<%--<data:AspnetUsersProperty Name="ResultCollection" />--%>
+					<%--<data:AspnetUsersProperty Name="ResultsCollection" />--%>
+					<%--<data:AspnetUsersProperty Name="CompanyDetails" />--%>
 					<%--<data:AspnetUsersProperty Name="RoleIdAspnetRolesCollection_From_AspnetUsersInRoles" />--%>
 				</Types>
 			</DeepLoadProperties>

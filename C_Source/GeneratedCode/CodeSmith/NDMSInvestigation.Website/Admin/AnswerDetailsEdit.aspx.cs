@@ -22,11 +22,6 @@ public partial class AnswerDetailsEdit : System.Web.UI.Page
 		FormUtil.RedirectAfterCancel(FormView1, "AnswerDetails.aspx");
 		FormUtil.SetDefaultMode(FormView1, "AnswerId");
 	}
-	protected void GridViewQuestionAnswer1_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		string urlParams = string.Format("QuestionAnswerId={0}", GridViewQuestionAnswer1.SelectedDataKey.Values[0]);
-		Response.Redirect("QuestionAnswerEdit.aspx?" + urlParams, true);		
-	}	
 }
 
 

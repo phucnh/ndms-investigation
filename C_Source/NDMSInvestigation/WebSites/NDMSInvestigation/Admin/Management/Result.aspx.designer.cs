@@ -37,5 +37,5 @@ public partial class Result {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NDMSInvestigation.Web.Data.ResultDataSource ResultDataSource;
+    protected global::NDMSInvestigation.Web.Data.ResultsDataSource ResultDataSource;
 }

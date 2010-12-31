@@ -17,10 +17,11 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
+				<data:HyperLinkField HeaderText="Application Id" DataNavigateUrlFormatString="AspnetApplicationsEdit.aspx?ApplicationId={0}" DataNavigateUrlFields="ApplicationId" DataContainer="ApplicationIdSource" DataTextField="ApplicationName" />
+				<asp:BoundField DataField="RoleId" HeaderText="Role Id" SortExpression="[RoleId]" ReadOnly="True" />
+				<asp:BoundField DataField="RoleName" HeaderText="Role Name" SortExpression="[RoleName]"  />
 				<asp:BoundField DataField="LoweredRoleName" HeaderText="Lowered Role Name" SortExpression="[LoweredRoleName]"  />
 				<asp:BoundField DataField="Description" HeaderText="Description" SortExpression="[Description]"  />
-				<data:HyperLinkField HeaderText="Application Id" DataNavigateUrlFormatString="AspnetApplicationsEdit.aspx?ApplicationId={0}" DataNavigateUrlFields="ApplicationId" DataContainer="ApplicationIdSource" DataTextField="ApplicationName" />
-				<asp:BoundField DataField="RoleName" HeaderText="Role Name" SortExpression="[RoleName]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetRoles Found!</b>

@@ -52,13 +52,15 @@ namespace NDMSInvestigation.Services
 		///<summary>
 		/// A simple factory method to create a new <see cref="AspnetPersonalizationPerUser"/> instance.
 		///</summary>
+		///<param name="_id"></param>
 		///<param name="_pathId"></param>
 		///<param name="_userId"></param>
 		///<param name="_pageSettings"></param>
 		///<param name="_lastUpdatedDate"></param>
-		public static AspnetPersonalizationPerUser CreateAspnetPersonalizationPerUser(System.Guid? _pathId, System.Guid? _userId, System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
+		public static AspnetPersonalizationPerUser CreateAspnetPersonalizationPerUser(System.Guid _id, System.Guid? _pathId, System.Guid? _userId, System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
 		{
 			AspnetPersonalizationPerUser newEntityAspnetPersonalizationPerUser = new AspnetPersonalizationPerUser();
+			newEntityAspnetPersonalizationPerUser.Id  = _id;
 			newEntityAspnetPersonalizationPerUser.PathId  = _pathId;
 			newEntityAspnetPersonalizationPerUser.UserId  = _userId;
 			newEntityAspnetPersonalizationPerUser.PageSettings  = _pageSettings;

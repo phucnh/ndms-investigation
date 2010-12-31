@@ -160,9 +160,10 @@ namespace NDMSInvestigation.Web.Data
 			QuestionDetails item;
 			count = 0;
 			
-			System.Int32 _groupId;
 			System.Int32? _orderNumber_nullable;
+			System.Int32? _groupId_nullable;
 			System.Int32 _questionId;
+			System.Int32 _answerId;
 
 			switch ( SelectMethod )
 			{
@@ -195,20 +196,24 @@ namespace NDMSInvestigation.Web.Data
 					count = results.Count;
 					break;
 				// IX
-				case QuestionDetailsSelectMethod.GetByGroupIdOrderNumber:
-					_groupId = ( values["GroupId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["GroupId"], typeof(System.Int32)) : (int)0;
+				case QuestionDetailsSelectMethod.GetByOrderNumberGroupId:
 					_orderNumber_nullable = (System.Int32?) EntityUtil.ChangeType(values["OrderNumber"], typeof(System.Int32?));
-					item = QuestionDetailsProvider.GetByGroupIdOrderNumber(_groupId, _orderNumber_nullable);
+					_groupId_nullable = (System.Int32?) EntityUtil.ChangeType(values["GroupId"], typeof(System.Int32?));
+					item = QuestionDetailsProvider.GetByOrderNumberGroupId(_orderNumber_nullable, _groupId_nullable);
 					results = new TList<QuestionDetails>();
 					if ( item != null ) results.Add(item);
 					count = results.Count;
 					break;
 				// FK
 				case QuestionDetailsSelectMethod.GetByGroupId:
-					_groupId = ( values["GroupId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["GroupId"], typeof(System.Int32)) : (int)0;
-					results = QuestionDetailsProvider.GetByGroupId(_groupId, this.StartIndex, this.PageSize, out count);
+					_groupId_nullable = (System.Int32?) EntityUtil.ChangeType(values["GroupId"], typeof(System.Int32?));
+					results = QuestionDetailsProvider.GetByGroupId(_groupId_nullable, this.StartIndex, this.PageSize, out count);
 					break;
 				// M:M
+				case QuestionDetailsSelectMethod.GetByAnswerIdFromQuestionAnswer:
+					_answerId = ( values["AnswerId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["AnswerId"], typeof(System.Int32)) : (int)0;
+					results = QuestionDetailsProvider.GetByAnswerIdFromQuestionAnswer(_answerId, this.StartIndex, this.PageSize, out count);
+					break;
 				// Custom
 				default:
 					break;
@@ -389,9 +394,9 @@ namespace NDMSInvestigation.Web.Data
 		/// </summary>
 		Find,
 		/// <summary>
-		/// Represents the GetByGroupIdOrderNumber method.
+		/// Represents the GetByOrderNumberGroupId method.
 		/// </summary>
-		GetByGroupIdOrderNumber,
+		GetByOrderNumberGroupId,
 		/// <summary>
 		/// Represents the GetByQuestionId method.
 		/// </summary>
@@ -399,7 +404,11 @@ namespace NDMSInvestigation.Web.Data
 		/// <summary>
 		/// Represents the GetByGroupId method.
 		/// </summary>
-		GetByGroupId
+		GetByGroupId,
+		/// <summary>
+		/// Represents the GetByAnswerIdFromQuestionAnswer method.
+		/// </summary>
+		GetByAnswerIdFromQuestionAnswer
 	}
 	
 	#endregion QuestionDetailsSelectMethod

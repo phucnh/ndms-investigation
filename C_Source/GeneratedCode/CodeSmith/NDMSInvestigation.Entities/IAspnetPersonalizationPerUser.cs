@@ -17,6 +17,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_PersonalizationPerUser"</remarks>
 		System.Guid Id { get; set; }
 				
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		System.Guid OriginalId { get; set; }
+			
 		
 		
 		/// <summary>

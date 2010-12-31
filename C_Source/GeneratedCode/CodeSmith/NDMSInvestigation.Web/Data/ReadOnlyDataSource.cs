@@ -208,10 +208,10 @@ namespace NDMSInvestigation.Web.Data
 			switch ( SelectMethod )
 			{
 				case ReadOnlyDataSourceSelectMethod.Get:
-					entityList = Provider.Get(WhereClause, OrderBy, PageIndex, PageSize, out count);
+					entityList = Provider.Get(WhereClause, OrderBy, StartIndex, PageSize, out count);
 					break;
 				case ReadOnlyDataSourceSelectMethod.GetPaged:
-					entityList = Provider.GetPaged(WhereClause, OrderBy, PageIndex, PageSize, out count);
+					entityList = Provider.GetPaged(WhereClause, OrderBy, StartIndex, PageSize, out count);
 					break;
 				case ReadOnlyDataSourceSelectMethod.GetAll:
 					entityList = Provider.GetAll(StartIndex, PageSize, out count);

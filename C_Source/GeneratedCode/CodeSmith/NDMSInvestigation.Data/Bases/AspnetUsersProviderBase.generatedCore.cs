@@ -119,58 +119,58 @@ namespace NDMSInvestigation.Data.Bases
 		
 		#endregion GetByRoleIdFromAspnetUsersInRoles
 		
-		#region GetByGroupIdFromResult
+		#region GetByGroupIdFromResults
 		
 		/// <summary>
 		///		Gets aspnet_Users objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="_groupId"></param>
 		/// <returns>Returns a typed collection of AspnetUsers objects.</returns>
-		public TList<AspnetUsers> GetByGroupIdFromResult(System.Int32 _groupId)
+		public TList<AspnetUsers> GetByGroupIdFromResults(System.Int32 _groupId)
 		{
 			int count = -1;
-			return GetByGroupIdFromResult(null,_groupId, 0, int.MaxValue, out count);
+			return GetByGroupIdFromResults(null,_groupId, 0, int.MaxValue, out count);
 			
 		}
 		
 		/// <summary>
 		///		Gets NDMSInvestigation.Entities.AspnetUsers objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="_groupId"></param>
 		/// <remarks></remarks>
 		/// <returns>Returns a TList of AspnetUsers objects.</returns>
-		public TList<AspnetUsers> GetByGroupIdFromResult(System.Int32 _groupId, int start, int pageLength)
+		public TList<AspnetUsers> GetByGroupIdFromResults(System.Int32 _groupId, int start, int pageLength)
 		{
 			int count = -1;
-			return GetByGroupIdFromResult(null, _groupId, start, pageLength, out count);
+			return GetByGroupIdFromResults(null, _groupId, start, pageLength, out count);
 		}
 		
 		/// <summary>
 		///		Gets AspnetUsers objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_groupId"></param>
 		/// <remarks></remarks>
 		/// <returns>Returns a typed collection of aspnet_Users objects.</returns>
-		public TList<AspnetUsers> GetByGroupIdFromResult(TransactionManager transactionManager, System.Int32 _groupId)
+		public TList<AspnetUsers> GetByGroupIdFromResults(TransactionManager transactionManager, System.Int32 _groupId)
 		{
 			int count = -1;
-			return GetByGroupIdFromResult(transactionManager, _groupId, 0, int.MaxValue, out count);
+			return GetByGroupIdFromResults(transactionManager, _groupId, 0, int.MaxValue, out count);
 		}
 		
 		
 		/// <summary>
 		///		Gets AspnetUsers objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_groupId"></param>
@@ -178,16 +178,16 @@ namespace NDMSInvestigation.Data.Bases
 		///  <param name="pageLength">Number of rows to return.</param>
 		/// <remarks></remarks>
 		/// <returns>Returns a typed collection of aspnet_Users objects.</returns>
-		public TList<AspnetUsers> GetByGroupIdFromResult(TransactionManager transactionManager, System.Int32 _groupId,int start, int pageLength)
+		public TList<AspnetUsers> GetByGroupIdFromResults(TransactionManager transactionManager, System.Int32 _groupId,int start, int pageLength)
 		{
 			int count = -1;
-			return GetByGroupIdFromResult(transactionManager, _groupId, start, pageLength, out count);
+			return GetByGroupIdFromResults(transactionManager, _groupId, start, pageLength, out count);
 		}
 		
 		/// <summary>
 		///		Gets AspnetUsers objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="_groupId"></param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -195,17 +195,17 @@ namespace NDMSInvestigation.Data.Bases
 		/// <param name="count">out parameter to get total records for query</param>
 		/// <remarks></remarks>
 		/// <returns>Returns a typed collection of aspnet_Users objects.</returns>
-		public TList<AspnetUsers> GetByGroupIdFromResult(System.Int32 _groupId,int start, int pageLength, out int count)
+		public TList<AspnetUsers> GetByGroupIdFromResults(System.Int32 _groupId,int start, int pageLength, out int count)
 		{
 			
-			return GetByGroupIdFromResult(null, _groupId, start, pageLength, out count);
+			return GetByGroupIdFromResults(null, _groupId, start, pageLength, out count);
 		}
 
 
 		/// <summary>
 		///		Gets aspnet_Users objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -214,9 +214,9 @@ namespace NDMSInvestigation.Data.Bases
 		/// <param name="_groupId"></param>
 		/// <remarks></remarks>
 		/// <returns>Returns a TList of AspnetUsers objects.</returns>
-		public abstract TList<AspnetUsers> GetByGroupIdFromResult(TransactionManager transactionManager,System.Int32 _groupId, int start, int pageLength, out int count);
+		public abstract TList<AspnetUsers> GetByGroupIdFromResults(TransactionManager transactionManager,System.Int32 _groupId, int start, int pageLength, out int count);
 		
-		#endregion GetByGroupIdFromResult
+		#endregion GetByGroupIdFromResults
 		
 		#endregion	
 		
@@ -674,6 +674,7 @@ namespace NDMSInvestigation.Data.Bases
 					c.SuppressEntityEvents = true;
 					c.ApplicationId = (System.Guid)reader[((int)AspnetUsersColumn.ApplicationId - 1)];
 					c.UserId = (System.Guid)reader[((int)AspnetUsersColumn.UserId - 1)];
+					c.OriginalUserId = c.UserId;
 					c.UserName = (System.String)reader[((int)AspnetUsersColumn.UserName - 1)];
 					c.LoweredUserName = (System.String)reader[((int)AspnetUsersColumn.LoweredUserName - 1)];
 					c.MobileAlias = (reader.IsDBNull(((int)AspnetUsersColumn.MobileAlias - 1)))?null:(System.String)reader[((int)AspnetUsersColumn.MobileAlias - 1)];
@@ -698,6 +699,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)reader[((int)AspnetUsersColumn.ApplicationId - 1)];
 			entity.UserId = (System.Guid)reader[((int)AspnetUsersColumn.UserId - 1)];
+			entity.OriginalUserId = (System.Guid)reader["UserId"];
 			entity.UserName = (System.String)reader[((int)AspnetUsersColumn.UserName - 1)];
 			entity.LoweredUserName = (System.String)reader[((int)AspnetUsersColumn.LoweredUserName - 1)];
 			entity.MobileAlias = (reader.IsDBNull(((int)AspnetUsersColumn.MobileAlias - 1)))?null:(System.String)reader[((int)AspnetUsersColumn.MobileAlias - 1)];
@@ -717,6 +719,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)dataRow["ApplicationId"];
 			entity.UserId = (System.Guid)dataRow["UserId"];
+			entity.OriginalUserId = (System.Guid)dataRow["UserId"];
 			entity.UserName = (System.String)dataRow["UserName"];
 			entity.LoweredUserName = (System.String)dataRow["LoweredUserName"];
 			entity.MobileAlias = Convert.IsDBNull(dataRow["MobileAlias"]) ? null : (System.String)dataRow["MobileAlias"];
@@ -819,21 +822,21 @@ namespace NDMSInvestigation.Data.Bases
 			
 			
 			
-			#region GroupIdQuestionGroupCollection_From_Result
+			#region GroupIdQuestionGroupsCollection_From_Results
 			// RelationshipType.ManyToMany
-			if (CanDeepLoad(entity, "List<QuestionGroup>|GroupIdQuestionGroupCollection_From_Result", deepLoadType, innerList))
+			if (CanDeepLoad(entity, "List<QuestionGroups>|GroupIdQuestionGroupsCollection_From_Results", deepLoadType, innerList))
 			{
-				entity.GroupIdQuestionGroupCollection_From_Result = DataRepository.QuestionGroupProvider.GetByUserIdFromResult(transactionManager, entity.UserId);			 
+				entity.GroupIdQuestionGroupsCollection_From_Results = DataRepository.QuestionGroupsProvider.GetByUserIdFromResults(transactionManager, entity.UserId);			 
 		
 				#if NETTIERS_DEBUG
-				System.Diagnostics.Debug.WriteLine("- property 'GroupIdQuestionGroupCollection_From_Result' loaded. key " + entity.EntityTrackingKey);
+				System.Diagnostics.Debug.WriteLine("- property 'GroupIdQuestionGroupsCollection_From_Results' loaded. key " + entity.EntityTrackingKey);
 				#endif 
 				
-				if (deep && entity.GroupIdQuestionGroupCollection_From_Result != null)
+				if (deep && entity.GroupIdQuestionGroupsCollection_From_Results != null)
 				{
-					deepHandles.Add("GroupIdQuestionGroupCollection_From_Result",
-						new KeyValuePair<Delegate, object>((DeepLoadHandle< QuestionGroup >) DataRepository.QuestionGroupProvider.DeepLoad,
-						new object[] { transactionManager, entity.GroupIdQuestionGroupCollection_From_Result, deep, deepLoadType, childTypes, innerList }
+					deepHandles.Add("GroupIdQuestionGroupsCollection_From_Results",
+						new KeyValuePair<Delegate, object>((DeepLoadHandle< QuestionGroups >) DataRepository.QuestionGroupsProvider.DeepLoad,
+						new object[] { transactionManager, entity.GroupIdQuestionGroupsCollection_From_Results, deep, deepLoadType, childTypes, innerList }
 					));
 				}
 			}
@@ -883,46 +886,46 @@ namespace NDMSInvestigation.Data.Bases
 			#endregion 
 			
 			
-			#region User
-			// RelationshipType.OneToOne
-			if (CanDeepLoad(entity, "User|User", deepLoadType, innerList))
+			#region ResultsCollection
+			//Relationship Type One : Many
+			if (CanDeepLoad(entity, "List<Results>|ResultsCollection", deepLoadType, innerList)) 
 			{
-				entity.User = DataRepository.UserProvider.GetByUserId(transactionManager, entity.UserId);
 				#if NETTIERS_DEBUG
-				System.Diagnostics.Debug.WriteLine("- property 'User' loaded. key " + entity.EntityTrackingKey);
+				System.Diagnostics.Debug.WriteLine("- property 'ResultsCollection' loaded. key " + entity.EntityTrackingKey);
 				#endif 
 
-				if (deep && entity.User != null)
+				entity.ResultsCollection = DataRepository.ResultsProvider.GetByUserId(transactionManager, entity.UserId);
+
+				if (deep && entity.ResultsCollection.Count > 0)
 				{
-					deepHandles.Add("User",
-						new KeyValuePair<Delegate, object>((DeepLoadSingleHandle< User >) DataRepository.UserProvider.DeepLoad,
-						new object[] { transactionManager, entity.User, deep, deepLoadType, childTypes, innerList }
+					deepHandles.Add("ResultsCollection",
+						new KeyValuePair<Delegate, object>((DeepLoadHandle<Results>) DataRepository.ResultsProvider.DeepLoad,
+						new object[] { transactionManager, entity.ResultsCollection, deep, deepLoadType, childTypes, innerList }
+					));
+				}
+			}		
+			#endregion 
+			
+			
+			#region CompanyDetails
+			// RelationshipType.OneToOne
+			if (CanDeepLoad(entity, "CompanyDetails|CompanyDetails", deepLoadType, innerList))
+			{
+				entity.CompanyDetails = DataRepository.CompanyDetailsProvider.GetByUserId(transactionManager, entity.UserId);
+				#if NETTIERS_DEBUG
+				System.Diagnostics.Debug.WriteLine("- property 'CompanyDetails' loaded. key " + entity.EntityTrackingKey);
+				#endif 
+
+				if (deep && entity.CompanyDetails != null)
+				{
+					deepHandles.Add("CompanyDetails",
+						new KeyValuePair<Delegate, object>((DeepLoadSingleHandle< CompanyDetails >) DataRepository.CompanyDetailsProvider.DeepLoad,
+						new object[] { transactionManager, entity.CompanyDetails, deep, deepLoadType, childTypes, innerList }
 					));
 				}
 			}
 			#endregion 
 			
-			
-			
-			#region ResultCollection
-			//Relationship Type One : Many
-			if (CanDeepLoad(entity, "List<Result>|ResultCollection", deepLoadType, innerList)) 
-			{
-				#if NETTIERS_DEBUG
-				System.Diagnostics.Debug.WriteLine("- property 'ResultCollection' loaded. key " + entity.EntityTrackingKey);
-				#endif 
-
-				entity.ResultCollection = DataRepository.ResultProvider.GetByUserId(transactionManager, entity.UserId);
-
-				if (deep && entity.ResultCollection.Count > 0)
-				{
-					deepHandles.Add("ResultCollection",
-						new KeyValuePair<Delegate, object>((DeepLoadHandle<Result>) DataRepository.ResultProvider.DeepLoad,
-						new object[] { transactionManager, entity.ResultCollection, deep, deepLoadType, childTypes, innerList }
-					));
-				}
-			}		
-			#endregion 
 			
 			
 			#region RoleIdAspnetRolesCollection_From_AspnetUsersInRoles
@@ -1030,33 +1033,33 @@ namespace NDMSInvestigation.Data.Bases
 			} 
 			#endregion 
 
-			#region User
-			if (CanDeepSave(entity.User, "User|User", deepSaveType, innerList))
+			#region CompanyDetails
+			if (CanDeepSave(entity.CompanyDetails, "CompanyDetails|CompanyDetails", deepSaveType, innerList))
 			{
 
-				if (entity.User != null)
+				if (entity.CompanyDetails != null)
 				{
 					// update each child parent id with the real parent id (mostly used on insert)
 
-					entity.User.UserId = entity.UserId;
-					//DataRepository.UserProvider.Save(transactionManager, entity.User);
-					deepHandles.Add("User",
-						new KeyValuePair<Delegate, object>((DeepSaveSingleHandle< User >) DataRepository.UserProvider.DeepSave,
-						new object[] { transactionManager, entity.User, deepSaveType, childTypes, innerList }
+					entity.CompanyDetails.UserId = entity.UserId;
+					//DataRepository.CompanyDetailsProvider.Save(transactionManager, entity.CompanyDetails);
+					deepHandles.Add("CompanyDetails",
+						new KeyValuePair<Delegate, object>((DeepSaveSingleHandle< CompanyDetails >) DataRepository.CompanyDetailsProvider.DeepSave,
+						new object[] { transactionManager, entity.CompanyDetails, deepSaveType, childTypes, innerList }
 					));
 				}
 			} 
 			#endregion 
 
-			#region GroupIdQuestionGroupCollection_From_Result>
-			if (CanDeepSave(entity.GroupIdQuestionGroupCollection_From_Result, "List<QuestionGroup>|GroupIdQuestionGroupCollection_From_Result", deepSaveType, innerList))
+			#region GroupIdQuestionGroupsCollection_From_Results>
+			if (CanDeepSave(entity.GroupIdQuestionGroupsCollection_From_Results, "List<QuestionGroups>|GroupIdQuestionGroupsCollection_From_Results", deepSaveType, innerList))
 			{
-				if (entity.GroupIdQuestionGroupCollection_From_Result.Count > 0 || entity.GroupIdQuestionGroupCollection_From_Result.DeletedItems.Count > 0)
+				if (entity.GroupIdQuestionGroupsCollection_From_Results.Count > 0 || entity.GroupIdQuestionGroupsCollection_From_Results.DeletedItems.Count > 0)
 				{
-					DataRepository.QuestionGroupProvider.Save(transactionManager, entity.GroupIdQuestionGroupCollection_From_Result); 
-					deepHandles.Add("GroupIdQuestionGroupCollection_From_Result",
-						new KeyValuePair<Delegate, object>((DeepSaveHandle<QuestionGroup>) DataRepository.QuestionGroupProvider.DeepSave,
-						new object[] { transactionManager, entity.GroupIdQuestionGroupCollection_From_Result, deepSaveType, childTypes, innerList }
+					DataRepository.QuestionGroupsProvider.Save(transactionManager, entity.GroupIdQuestionGroupsCollection_From_Results); 
+					deepHandles.Add("GroupIdQuestionGroupsCollection_From_Results",
+						new KeyValuePair<Delegate, object>((DeepSaveHandle<QuestionGroups>) DataRepository.QuestionGroupsProvider.DeepSave,
+						new object[] { transactionManager, entity.GroupIdQuestionGroupsCollection_From_Results, deepSaveType, childTypes, innerList }
 					));
 				}
 			}
@@ -1137,11 +1140,11 @@ namespace NDMSInvestigation.Data.Bases
 			#endregion 
 				
 	
-			#region List<Result>
-				if (CanDeepSave(entity.ResultCollection, "List<Result>|ResultCollection", deepSaveType, innerList)) 
+			#region List<Results>
+				if (CanDeepSave(entity.ResultsCollection, "List<Results>|ResultsCollection", deepSaveType, innerList)) 
 				{	
 					// update each child parent id with the real parent id (mostly used on insert)
-					foreach(Result child in entity.ResultCollection)
+					foreach(Results child in entity.ResultsCollection)
 					{
 						if(child.UserIdSource != null)
 						{
@@ -1155,13 +1158,13 @@ namespace NDMSInvestigation.Data.Bases
 
 					}
 
-					if (entity.ResultCollection.Count > 0 || entity.ResultCollection.DeletedItems.Count > 0)
+					if (entity.ResultsCollection.Count > 0 || entity.ResultsCollection.DeletedItems.Count > 0)
 					{
-						//DataRepository.ResultProvider.Save(transactionManager, entity.ResultCollection);
+						//DataRepository.ResultsProvider.Save(transactionManager, entity.ResultsCollection);
 						
-						deepHandles.Add("ResultCollection",
-						new KeyValuePair<Delegate, object>((DeepSaveHandle< Result >) DataRepository.ResultProvider.DeepSave,
-							new object[] { transactionManager, entity.ResultCollection, deepSaveType, childTypes, innerList }
+						deepHandles.Add("ResultsCollection",
+						new KeyValuePair<Delegate, object>((DeepSaveHandle< Results >) DataRepository.ResultsProvider.DeepSave,
+							new object[] { transactionManager, entity.ResultsCollection, deepSaveType, childTypes, innerList }
 						));
 					}
 				} 
@@ -1211,10 +1214,10 @@ namespace NDMSInvestigation.Data.Bases
 		AspnetProfile,
 
 		///<summary>
-		/// Collection of <c>AspnetUsers</c> as ManyToMany for QuestionGroupCollection_From_Result
+		/// Collection of <c>AspnetUsers</c> as ManyToMany for QuestionGroupsCollection_From_Results
 		///</summary>
-		[ChildEntityType(typeof(TList<QuestionGroup>))]
-		GroupIdQuestionGroupCollection_From_Result,
+		[ChildEntityType(typeof(TList<QuestionGroups>))]
+		GroupIdQuestionGroupsCollection_From_Results,
 
 		///<summary>
 		/// Collection of <c>AspnetUsers</c> as OneToMany for AspnetPersonalizationPerUserCollection
@@ -1227,17 +1230,17 @@ namespace NDMSInvestigation.Data.Bases
 		///</summary>
 		[ChildEntityType(typeof(TList<AspnetUsersInRoles>))]
 		AspnetUsersInRolesCollection,
-		///<summary>
-		/// Entity <c>User</c> as OneToOne for User
-		///</summary>
-		[ChildEntityType(typeof(User))]
-		User,
 
 		///<summary>
-		/// Collection of <c>AspnetUsers</c> as OneToMany for ResultCollection
+		/// Collection of <c>AspnetUsers</c> as OneToMany for ResultsCollection
 		///</summary>
-		[ChildEntityType(typeof(TList<Result>))]
-		ResultCollection,
+		[ChildEntityType(typeof(TList<Results>))]
+		ResultsCollection,
+		///<summary>
+		/// Entity <c>CompanyDetails</c> as OneToOne for CompanyDetails
+		///</summary>
+		[ChildEntityType(typeof(CompanyDetails))]
+		CompanyDetails,
 
 		///<summary>
 		/// Collection of <c>AspnetUsers</c> as ManyToMany for AspnetRolesCollection_From_AspnetUsersInRoles

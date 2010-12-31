@@ -17,9 +17,13 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="AnswerDescription" HeaderText="Answer Description" SortExpression="[AnswerDescription]"  />
-				<asp:BoundField DataField="AnswerMark" HeaderText="Answer Mark" SortExpression="[AnswerMark]"  />
 				<asp:BoundField DataField="AnswerContent" HeaderText="Answer Content" SortExpression="[AnswerContent]"  />
+				<asp:BoundField DataField="AnswerMark" HeaderText="Answer Mark" SortExpression="[AnswerMark]"  />
+				<asp:BoundField DataField="AnswerDescription" HeaderText="Answer Description" SortExpression="[AnswerDescription]"  />
+				<asp:BoundField DataField="CreatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Created Date" SortExpression="[CreatedDate]"  />
+				<asp:BoundField DataField="CreatedBy" HeaderText="Created By" SortExpression="[CreatedBy]"  />
+				<asp:BoundField DataField="UpdateDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Update Date" SortExpression="[UpdateDate]"  />
+				<asp:BoundField DataField="UpdateBy" HeaderText="Update By" SortExpression="[UpdateBy]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AnswerDetails Found!</b>

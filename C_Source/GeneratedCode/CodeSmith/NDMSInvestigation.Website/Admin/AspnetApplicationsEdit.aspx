@@ -176,11 +176,11 @@
 					<data:AspnetUsersProperty Name="AspnetApplications"/> 
 					<%--<data:AspnetUsersProperty Name="AspnetMembership" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetProfile" />--%>
-					<%--<data:AspnetUsersProperty Name="GroupIdQuestionGroupCollection_From_Result" />--%>
+					<%--<data:AspnetUsersProperty Name="GroupIdQuestionGroupsCollection_From_Results" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetPersonalizationPerUserCollection" />--%>
 					<%--<data:AspnetUsersProperty Name="AspnetUsersInRolesCollection" />--%>
-					<%--<data:AspnetUsersProperty Name="User" />--%>
-					<%--<data:AspnetUsersProperty Name="ResultCollection" />--%>
+					<%--<data:AspnetUsersProperty Name="ResultsCollection" />--%>
+					<%--<data:AspnetUsersProperty Name="CompanyDetails" />--%>
 					<%--<data:AspnetUsersProperty Name="RoleIdAspnetRolesCollection_From_AspnetUsersInRoles" />--%>
 				</Types>
 			</DeepLoadProperties>

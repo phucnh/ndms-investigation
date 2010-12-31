@@ -4,9 +4,9 @@
 	<ItemTemplate>
 		<table border="0" cellpadding="3" cellspacing="1">
 			<tr>
-        <td class="literal"><asp:Label ID="lbldataDescription" runat="server" Text="Description:" AssociatedControlID="dataDescription" /></td>
+        <td class="literal"><asp:Label ID="lbldataApplicationName" runat="server" Text="Application Name:" AssociatedControlID="dataApplicationName" /></td>
         <td>
-					<asp:TextBox runat="server" ID="dataDescription" Text='<%# Bind("Description") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox>
+					<asp:TextBox runat="server" ID="dataApplicationName" Text='<%# Bind("ApplicationName") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataApplicationName" runat="server" Display="Dynamic" ControlToValidate="dataApplicationName" ErrorMessage="Required"></asp:RequiredFieldValidator>
 				</td>
 			</tr>
 			<tr>
@@ -16,9 +16,15 @@
 				</td>
 			</tr>
 			<tr>
-        <td class="literal"><asp:Label ID="lbldataApplicationName" runat="server" Text="Application Name:" AssociatedControlID="dataApplicationName" /></td>
+        <td class="literal"><asp:Label ID="lbldataApplicationId" runat="server" Text="Application Id:" AssociatedControlID="dataApplicationId" /></td>
         <td>
-					<asp:TextBox runat="server" ID="dataApplicationName" Text='<%# Bind("ApplicationName") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataApplicationName" runat="server" Display="Dynamic" ControlToValidate="dataApplicationName" ErrorMessage="Required"></asp:RequiredFieldValidator>
+					<asp:HiddenField runat="server" id="dataApplicationId" Value='<%# Bind("ApplicationId") %>'></asp:HiddenField>
+				</td>
+			</tr>
+			<tr>
+        <td class="literal"><asp:Label ID="lbldataDescription" runat="server" Text="Description:" AssociatedControlID="dataDescription" /></td>
+        <td>
+					<asp:TextBox runat="server" ID="dataDescription" Text='<%# Bind("Description") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox>
 				</td>
 			</tr>
 			

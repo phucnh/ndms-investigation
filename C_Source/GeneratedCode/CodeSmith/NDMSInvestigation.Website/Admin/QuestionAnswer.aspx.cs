@@ -24,7 +24,7 @@ public partial class QuestionAnswer : System.Web.UI.Page
 
 	protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		string urlParams = string.Format("QuestionAnswerId={0}", GridView1.SelectedDataKey.Values[0]);
+		string urlParams = string.Format("QuestionId={0}&AnswerId={1}", GridView1.SelectedDataKey.Values[0], GridView1.SelectedDataKey.Values[1]);
 		Response.Redirect("QuestionAnswerEdit.aspx?" + urlParams, true);
 	}
 	

@@ -86,10 +86,17 @@ namespace NDMSInvestigation.Entities
 		///<param name="_questionContent"></param>
 		///<param name="_questionSuggest"></param>
 		///<param name="_questionDescription"></param>
-		///<param name="_groupId"></param>
 		///<param name="_orderNumber"></param>
+		///<param name="_groupId"></param>
+		///<param name="_createdDate"></param>
+		///<param name="_createdBy"></param>
+		///<param name="_updatedDate"></param>
+		///<param name="_updatedBy"></param>
+		///<param name="_questionTitle"></param>
 		public QuestionDetailsBase(System.String _questionContent, System.String _questionSuggest, 
-			System.String _questionDescription, System.Int32 _groupId, System.Int32? _orderNumber)
+			System.String _questionDescription, System.Int32? _orderNumber, System.Int32? _groupId, 
+			System.DateTime? _createdDate, System.String _createdBy, System.DateTime? _updatedDate, 
+			System.String _updatedBy, System.String _questionTitle)
 		{
 			this.entityData = new QuestionDetailsEntityData();
 			this.backupData = null;
@@ -97,8 +104,13 @@ namespace NDMSInvestigation.Entities
 			this.QuestionContent = _questionContent;
 			this.QuestionSuggest = _questionSuggest;
 			this.QuestionDescription = _questionDescription;
-			this.GroupId = _groupId;
 			this.OrderNumber = _orderNumber;
+			this.GroupId = _groupId;
+			this.CreatedDate = _createdDate;
+			this.CreatedBy = _createdBy;
+			this.UpdatedDate = _updatedDate;
+			this.UpdatedBy = _updatedBy;
+			this.QuestionTitle = _questionTitle;
 		}
 		
 		///<summary>
@@ -107,17 +119,29 @@ namespace NDMSInvestigation.Entities
 		///<param name="_questionContent"></param>
 		///<param name="_questionSuggest"></param>
 		///<param name="_questionDescription"></param>
-		///<param name="_groupId"></param>
 		///<param name="_orderNumber"></param>
+		///<param name="_groupId"></param>
+		///<param name="_createdDate"></param>
+		///<param name="_createdBy"></param>
+		///<param name="_updatedDate"></param>
+		///<param name="_updatedBy"></param>
+		///<param name="_questionTitle"></param>
 		public static QuestionDetails CreateQuestionDetails(System.String _questionContent, System.String _questionSuggest, 
-			System.String _questionDescription, System.Int32 _groupId, System.Int32? _orderNumber)
+			System.String _questionDescription, System.Int32? _orderNumber, System.Int32? _groupId, 
+			System.DateTime? _createdDate, System.String _createdBy, System.DateTime? _updatedDate, 
+			System.String _updatedBy, System.String _questionTitle)
 		{
 			QuestionDetails newQuestionDetails = new QuestionDetails();
 			newQuestionDetails.QuestionContent = _questionContent;
 			newQuestionDetails.QuestionSuggest = _questionSuggest;
 			newQuestionDetails.QuestionDescription = _questionDescription;
-			newQuestionDetails.GroupId = _groupId;
 			newQuestionDetails.OrderNumber = _orderNumber;
+			newQuestionDetails.GroupId = _groupId;
+			newQuestionDetails.CreatedDate = _createdDate;
+			newQuestionDetails.CreatedBy = _createdBy;
+			newQuestionDetails.UpdatedDate = _updatedDate;
+			newQuestionDetails.UpdatedBy = _updatedBy;
+			newQuestionDetails.QuestionTitle = _questionTitle;
 			return newQuestionDetails;
 		}
 				
@@ -168,15 +192,15 @@ namespace NDMSInvestigation.Entities
 		/// </summary>
 		/// <value>This type is nvarchar.</value>
 		/// <remarks>
-		/// This property can be set to null. 
+		/// This property can not be set to null. 
 		/// </remarks>
+		/// <exception cref="ArgumentNullException">If you attempt to set to null.</exception>
+		[NotNullValidator(MessageTemplate="Property does not allow null values.", Tag="QuestionContent")]
+		[ValidatorComposition(CompositionType.And, Tag="QuestionContent")]
 
-
-		[NotNullValidator(Negated=true, Tag="QuestionContent")]
-		[ValidatorComposition(CompositionType.Or, Tag="QuestionContent")]
-		[StringLengthValidator(512, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionContent")]
+		[StringLengthValidator(2048, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionContent")]
 		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(false, false, true, 512)]
+		[DataObjectField(false, false, false, 2048)]
 		public virtual System.String QuestionContent
 		{
 			get
@@ -210,9 +234,9 @@ namespace NDMSInvestigation.Entities
 
 		[NotNullValidator(Negated=true, Tag="QuestionSuggest")]
 		[ValidatorComposition(CompositionType.Or, Tag="QuestionSuggest")]
-		[StringLengthValidator(1024, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionSuggest")]
+		[StringLengthValidator(2048, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionSuggest")]
 		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(false, false, true, 1024)]
+		[DataObjectField(false, false, true, 2048)]
 		public virtual System.String QuestionSuggest
 		{
 			get
@@ -246,9 +270,9 @@ namespace NDMSInvestigation.Entities
 
 		[NotNullValidator(Negated=true, Tag="QuestionDescription")]
 		[ValidatorComposition(CompositionType.Or, Tag="QuestionDescription")]
-		[StringLengthValidator(1024, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionDescription")]
+		[StringLengthValidator(2048, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionDescription")]
 		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(false, false, true, 1024)]
+		[DataObjectField(false, false, true, 2048)]
 		public virtual System.String QuestionDescription
 		{
 			get
@@ -267,41 +291,6 @@ namespace NDMSInvestigation.Entities
 					this.EntityState = EntityState.Changed;
 				OnColumnChanged(QuestionDetailsColumn.QuestionDescription, this.entityData.QuestionDescription);
 				OnPropertyChanged("QuestionDescription");
-			}
-		}
-		
-		/// <summary>
-		/// 	Gets or sets the GroupId property. 
-		///		
-		/// </summary>
-		/// <value>This type is int.</value>
-		/// <remarks>
-		/// This property can not be set to null. 
-		/// </remarks>
-
-
-
-
-		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(false, false, false)]
-		public virtual System.Int32 GroupId
-		{
-			get
-			{
-				return this.entityData.GroupId; 
-			}
-			
-			set
-			{
-				if (this.entityData.GroupId == value)
-					return;
-					
-				OnColumnChanging(QuestionDetailsColumn.GroupId, this.entityData.GroupId);
-				this.entityData.GroupId = value;
-				if (this.EntityState == EntityState.Unchanged)
-					this.EntityState = EntityState.Changed;
-				OnColumnChanged(QuestionDetailsColumn.GroupId, this.entityData.GroupId);
-				OnPropertyChanged("GroupId");
 			}
 		}
 		
@@ -342,17 +331,236 @@ namespace NDMSInvestigation.Entities
 			}
 		}
 		
+		/// <summary>
+		/// 	Gets or sets the GroupId property. 
+		///		
+		/// </summary>
+		/// <value>This type is int.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// If this column is null, this property will return (int)0. It is up to the developer
+		/// to check the value of IsGroupIdNull() and perform business logic appropriately.
+		/// </remarks>
+
+
+
+
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true)]
+		public virtual System.Int32? GroupId
+		{
+			get
+			{
+				return this.entityData.GroupId; 
+			}
+			
+			set
+			{
+				if (this.entityData.GroupId == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.GroupId, this.entityData.GroupId);
+				this.entityData.GroupId = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.GroupId, this.entityData.GroupId);
+				OnPropertyChanged("GroupId");
+			}
+		}
+		
+		/// <summary>
+		/// 	Gets or sets the CreatedDate property. 
+		///		
+		/// </summary>
+		/// <value>This type is datetime.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// If this column is null, this property will return DateTime.MinValue. It is up to the developer
+		/// to check the value of IsCreatedDateNull() and perform business logic appropriately.
+		/// </remarks>
+
+
+
+
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true)]
+		public virtual System.DateTime? CreatedDate
+		{
+			get
+			{
+				return this.entityData.CreatedDate; 
+			}
+			
+			set
+			{
+				if (this.entityData.CreatedDate == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.CreatedDate, this.entityData.CreatedDate);
+				this.entityData.CreatedDate = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.CreatedDate, this.entityData.CreatedDate);
+				OnPropertyChanged("CreatedDate");
+			}
+		}
+		
+		/// <summary>
+		/// 	Gets or sets the CreatedBy property. 
+		///		
+		/// </summary>
+		/// <value>This type is nvarchar.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// </remarks>
+
+
+		[NotNullValidator(Negated=true, Tag="CreatedBy")]
+		[ValidatorComposition(CompositionType.Or, Tag="CreatedBy")]
+		[StringLengthValidator(1024, MessageTemplate="Maximum length has been exceeded.", Tag="CreatedBy")]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true, 1024)]
+		public virtual System.String CreatedBy
+		{
+			get
+			{
+				return this.entityData.CreatedBy; 
+			}
+			
+			set
+			{
+				if (this.entityData.CreatedBy == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.CreatedBy, this.entityData.CreatedBy);
+				this.entityData.CreatedBy = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.CreatedBy, this.entityData.CreatedBy);
+				OnPropertyChanged("CreatedBy");
+			}
+		}
+		
+		/// <summary>
+		/// 	Gets or sets the UpdatedDate property. 
+		///		
+		/// </summary>
+		/// <value>This type is datetime.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// If this column is null, this property will return DateTime.MinValue. It is up to the developer
+		/// to check the value of IsUpdatedDateNull() and perform business logic appropriately.
+		/// </remarks>
+
+
+
+
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true)]
+		public virtual System.DateTime? UpdatedDate
+		{
+			get
+			{
+				return this.entityData.UpdatedDate; 
+			}
+			
+			set
+			{
+				if (this.entityData.UpdatedDate == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.UpdatedDate, this.entityData.UpdatedDate);
+				this.entityData.UpdatedDate = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.UpdatedDate, this.entityData.UpdatedDate);
+				OnPropertyChanged("UpdatedDate");
+			}
+		}
+		
+		/// <summary>
+		/// 	Gets or sets the UpdatedBy property. 
+		///		
+		/// </summary>
+		/// <value>This type is nvarchar.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// </remarks>
+
+
+		[NotNullValidator(Negated=true, Tag="UpdatedBy")]
+		[ValidatorComposition(CompositionType.Or, Tag="UpdatedBy")]
+		[StringLengthValidator(1024, MessageTemplate="Maximum length has been exceeded.", Tag="UpdatedBy")]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true, 1024)]
+		public virtual System.String UpdatedBy
+		{
+			get
+			{
+				return this.entityData.UpdatedBy; 
+			}
+			
+			set
+			{
+				if (this.entityData.UpdatedBy == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.UpdatedBy, this.entityData.UpdatedBy);
+				this.entityData.UpdatedBy = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.UpdatedBy, this.entityData.UpdatedBy);
+				OnPropertyChanged("UpdatedBy");
+			}
+		}
+		
+		/// <summary>
+		/// 	Gets or sets the QuestionTitle property. 
+		///		
+		/// </summary>
+		/// <value>This type is nvarchar.</value>
+		/// <remarks>
+		/// This property can be set to null. 
+		/// </remarks>
+
+
+		[NotNullValidator(Negated=true, Tag="QuestionTitle")]
+		[ValidatorComposition(CompositionType.Or, Tag="QuestionTitle")]
+		[StringLengthValidator(1024, MessageTemplate="Maximum length has been exceeded.", Tag="QuestionTitle")]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(false, false, true, 1024)]
+		public virtual System.String QuestionTitle
+		{
+			get
+			{
+				return this.entityData.QuestionTitle; 
+			}
+			
+			set
+			{
+				if (this.entityData.QuestionTitle == value)
+					return;
+					
+				OnColumnChanging(QuestionDetailsColumn.QuestionTitle, this.entityData.QuestionTitle);
+				this.entityData.QuestionTitle = value;
+				if (this.EntityState == EntityState.Unchanged)
+					this.EntityState = EntityState.Changed;
+				OnColumnChanged(QuestionDetailsColumn.QuestionTitle, this.entityData.QuestionTitle);
+				OnPropertyChanged("QuestionTitle");
+			}
+		}
+		
 		#endregion Data Properties		
 
 		#region Source Foreign Key Property
 				
 		/// <summary>
-		/// Gets or sets the source <see cref="QuestionGroup"/>.
+		/// Gets or sets the source <see cref="QuestionGroups"/>.
 		/// </summary>
-		/// <value>The source QuestionGroup for GroupId.</value>
+		/// <value>The source QuestionGroups for GroupId.</value>
         [XmlIgnore()]
 		[Browsable(false), System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
-		public virtual QuestionGroup GroupIdSource
+		public virtual QuestionGroups GroupIdSource
       	{
             get { return entityData.GroupIdSource; }
             set { entityData.GroupIdSource = value; }
@@ -363,13 +571,24 @@ namespace NDMSInvestigation.Entities
 	
 		/// <summary>
 		///	Holds a collection of QuestionAnswer objects
-		///	which are related to this object through the relation FK_Question_Answer_QuestionDetails
+		///	which are related to this object through the relation FK_QuestionAnswer_QuestionDetails
 		/// </summary>	
 		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
 		public virtual TList<QuestionAnswer> QuestionAnswerCollection
 		{
 			get { return entityData.QuestionAnswerCollection; }
 			set { entityData.QuestionAnswerCollection = value; }	
+		}
+
+		/// <summary>
+		///	Holds a collection of AnswerDetailsFromQuestionAnswer objects
+		///	which are related to this object through the junction table QuestionAnswer
+		/// </summary>	
+		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
+		public virtual TList<AnswerDetails> AnswerIdAnswerDetailsCollection_From_QuestionAnswer
+		{
+			get { return entityData.AnswerIdAnswerDetailsCollection_From_QuestionAnswer; }
+			set { entityData.AnswerIdAnswerDetailsCollection_From_QuestionAnswer = value; }	
 		}
 		#endregion Children Collections
 		
@@ -393,7 +612,7 @@ namespace NDMSInvestigation.Entities
 		{
 			get
 			{
-				return new string[] {"QuestionId", "QuestionContent", "QuestionSuggest", "QuestionDescription", "GroupId", "OrderNumber"};
+				return new string[] {"QuestionId", "QuestionContent", "QuestionSuggest", "QuestionDescription", "OrderNumber", "GroupId", "CreatedDate", "CreatedBy", "UpdatedDate", "UpdatedBy", "QuestionTitle"};
 			}
 		}
 		#endregion 
@@ -545,16 +764,22 @@ namespace NDMSInvestigation.Entities
 				copy.QuestionContent = this.QuestionContent;
 				copy.QuestionSuggest = this.QuestionSuggest;
 				copy.QuestionDescription = this.QuestionDescription;
-				copy.GroupId = this.GroupId;
 				copy.OrderNumber = this.OrderNumber;
+				copy.GroupId = this.GroupId;
+				copy.CreatedDate = this.CreatedDate;
+				copy.CreatedBy = this.CreatedBy;
+				copy.UpdatedDate = this.UpdatedDate;
+				copy.UpdatedBy = this.UpdatedBy;
+				copy.QuestionTitle = this.QuestionTitle;
 			
 			if (this.GroupIdSource != null && existingCopies.Contains(this.GroupIdSource))
-				copy.GroupIdSource = existingCopies[this.GroupIdSource] as QuestionGroup;
+				copy.GroupIdSource = existingCopies[this.GroupIdSource] as QuestionGroups;
 			else
-				copy.GroupIdSource = MakeCopyOf(this.GroupIdSource, existingCopies) as QuestionGroup;
+				copy.GroupIdSource = MakeCopyOf(this.GroupIdSource, existingCopies) as QuestionGroups;
 		
 			//deep copy nested objects
 			copy.QuestionAnswerCollection = (TList<QuestionAnswer>) MakeCopyOf(this.QuestionAnswerCollection, existingCopies); 
+			copy.AnswerIdAnswerDetailsCollection_From_QuestionAnswer = (TList<AnswerDetails>) MakeCopyOf(this.AnswerIdAnswerDetailsCollection_From_QuestionAnswer, existingCopies); 
 			copy.EntityState = this.EntityState;
 			copy.SuppressEntityEvents = false;
 			return copy;
@@ -693,10 +918,20 @@ namespace NDMSInvestigation.Entities
 					return entityData.QuestionSuggest != _originalData.QuestionSuggest;
 					case QuestionDetailsColumn.QuestionDescription:
 					return entityData.QuestionDescription != _originalData.QuestionDescription;
-					case QuestionDetailsColumn.GroupId:
-					return entityData.GroupId != _originalData.GroupId;
 					case QuestionDetailsColumn.OrderNumber:
 					return entityData.OrderNumber != _originalData.OrderNumber;
+					case QuestionDetailsColumn.GroupId:
+					return entityData.GroupId != _originalData.GroupId;
+					case QuestionDetailsColumn.CreatedDate:
+					return entityData.CreatedDate != _originalData.CreatedDate;
+					case QuestionDetailsColumn.CreatedBy:
+					return entityData.CreatedBy != _originalData.CreatedBy;
+					case QuestionDetailsColumn.UpdatedDate:
+					return entityData.UpdatedDate != _originalData.UpdatedDate;
+					case QuestionDetailsColumn.UpdatedBy:
+					return entityData.UpdatedBy != _originalData.UpdatedBy;
+					case QuestionDetailsColumn.QuestionTitle:
+					return entityData.QuestionTitle != _originalData.QuestionTitle;
 			
 				default:
 					return false;
@@ -728,8 +963,13 @@ namespace NDMSInvestigation.Entities
 			result = result || entityData.QuestionContent != _originalData.QuestionContent;
 			result = result || entityData.QuestionSuggest != _originalData.QuestionSuggest;
 			result = result || entityData.QuestionDescription != _originalData.QuestionDescription;
-			result = result || entityData.GroupId != _originalData.GroupId;
 			result = result || entityData.OrderNumber != _originalData.OrderNumber;
+			result = result || entityData.GroupId != _originalData.GroupId;
+			result = result || entityData.CreatedDate != _originalData.CreatedDate;
+			result = result || entityData.CreatedBy != _originalData.CreatedBy;
+			result = result || entityData.UpdatedDate != _originalData.UpdatedDate;
+			result = result || entityData.UpdatedBy != _originalData.UpdatedBy;
+			result = result || entityData.QuestionTitle != _originalData.QuestionTitle;
 			return result;
 		}	
 		
@@ -743,8 +983,13 @@ namespace NDMSInvestigation.Entities
 				_originalData.QuestionContent,
 				_originalData.QuestionSuggest,
 				_originalData.QuestionDescription,
+				_originalData.OrderNumber,
 				_originalData.GroupId,
-				_originalData.OrderNumber
+				_originalData.CreatedDate,
+				_originalData.CreatedBy,
+				_originalData.UpdatedDate,
+				_originalData.UpdatedBy,
+				_originalData.QuestionTitle
 				);
 				
 			return (QuestionDetails)this.Clone();
@@ -775,11 +1020,16 @@ namespace NDMSInvestigation.Entities
         public override int GetHashCode()
         {
 			return this.QuestionId.GetHashCode() ^ 
-					((this.QuestionContent == null) ? string.Empty : this.QuestionContent.ToString()).GetHashCode() ^ 
+					this.QuestionContent.GetHashCode() ^ 
 					((this.QuestionSuggest == null) ? string.Empty : this.QuestionSuggest.ToString()).GetHashCode() ^ 
 					((this.QuestionDescription == null) ? string.Empty : this.QuestionDescription.ToString()).GetHashCode() ^ 
-					this.GroupId.GetHashCode() ^ 
-					((this.OrderNumber == null) ? string.Empty : this.OrderNumber.ToString()).GetHashCode();
+					((this.OrderNumber == null) ? string.Empty : this.OrderNumber.ToString()).GetHashCode() ^ 
+					((this.GroupId == null) ? string.Empty : this.GroupId.ToString()).GetHashCode() ^ 
+					((this.CreatedDate == null) ? string.Empty : this.CreatedDate.ToString()).GetHashCode() ^ 
+					((this.CreatedBy == null) ? string.Empty : this.CreatedBy.ToString()).GetHashCode() ^ 
+					((this.UpdatedDate == null) ? string.Empty : this.UpdatedDate.ToString()).GetHashCode() ^ 
+					((this.UpdatedBy == null) ? string.Empty : this.UpdatedBy.ToString()).GetHashCode() ^ 
+					((this.QuestionTitle == null) ? string.Empty : this.QuestionTitle.ToString()).GetHashCode();
         }
 		
 		///<summary>
@@ -814,15 +1064,8 @@ namespace NDMSInvestigation.Entities
 			bool equal = true;
 			if (Object1.QuestionId != Object2.QuestionId)
 				equal = false;
-			if ( Object1.QuestionContent != null && Object2.QuestionContent != null )
-			{
-				if (Object1.QuestionContent != Object2.QuestionContent)
-					equal = false;
-			}
-			else if (Object1.QuestionContent == null ^ Object2.QuestionContent == null )
-			{
+			if (Object1.QuestionContent != Object2.QuestionContent)
 				equal = false;
-			}
 			if ( Object1.QuestionSuggest != null && Object2.QuestionSuggest != null )
 			{
 				if (Object1.QuestionSuggest != Object2.QuestionSuggest)
@@ -841,14 +1084,66 @@ namespace NDMSInvestigation.Entities
 			{
 				equal = false;
 			}
-			if (Object1.GroupId != Object2.GroupId)
-				equal = false;
 			if ( Object1.OrderNumber != null && Object2.OrderNumber != null )
 			{
 				if (Object1.OrderNumber != Object2.OrderNumber)
 					equal = false;
 			}
 			else if (Object1.OrderNumber == null ^ Object2.OrderNumber == null )
+			{
+				equal = false;
+			}
+			if ( Object1.GroupId != null && Object2.GroupId != null )
+			{
+				if (Object1.GroupId != Object2.GroupId)
+					equal = false;
+			}
+			else if (Object1.GroupId == null ^ Object2.GroupId == null )
+			{
+				equal = false;
+			}
+			if ( Object1.CreatedDate != null && Object2.CreatedDate != null )
+			{
+				if (Object1.CreatedDate != Object2.CreatedDate)
+					equal = false;
+			}
+			else if (Object1.CreatedDate == null ^ Object2.CreatedDate == null )
+			{
+				equal = false;
+			}
+			if ( Object1.CreatedBy != null && Object2.CreatedBy != null )
+			{
+				if (Object1.CreatedBy != Object2.CreatedBy)
+					equal = false;
+			}
+			else if (Object1.CreatedBy == null ^ Object2.CreatedBy == null )
+			{
+				equal = false;
+			}
+			if ( Object1.UpdatedDate != null && Object2.UpdatedDate != null )
+			{
+				if (Object1.UpdatedDate != Object2.UpdatedDate)
+					equal = false;
+			}
+			else if (Object1.UpdatedDate == null ^ Object2.UpdatedDate == null )
+			{
+				equal = false;
+			}
+			if ( Object1.UpdatedBy != null && Object2.UpdatedBy != null )
+			{
+				if (Object1.UpdatedBy != Object2.UpdatedBy)
+					equal = false;
+			}
+			else if (Object1.UpdatedBy == null ^ Object2.UpdatedBy == null )
+			{
+				equal = false;
+			}
+			if ( Object1.QuestionTitle != null && Object2.QuestionTitle != null )
+			{
+				if (Object1.QuestionTitle != Object2.QuestionTitle)
+					equal = false;
+			}
+			else if (Object1.QuestionTitle == null ^ Object2.QuestionTitle == null )
 			{
 				equal = false;
 			}
@@ -920,14 +1215,44 @@ namespace NDMSInvestigation.Entities
             		                 
             	
             	
-            	case QuestionDetailsColumn.GroupId:
-            		return this.GroupId.CompareTo(rhs.GroupId);
+            	case QuestionDetailsColumn.OrderNumber:
+            		return this.OrderNumber.Value.CompareTo(rhs.OrderNumber.Value);
             		
             		                 
             	
             	
-            	case QuestionDetailsColumn.OrderNumber:
-            		return this.OrderNumber.Value.CompareTo(rhs.OrderNumber.Value);
+            	case QuestionDetailsColumn.GroupId:
+            		return this.GroupId.Value.CompareTo(rhs.GroupId.Value);
+            		
+            		                 
+            	
+            	
+            	case QuestionDetailsColumn.CreatedDate:
+            		return this.CreatedDate.Value.CompareTo(rhs.CreatedDate.Value);
+            		
+            		                 
+            	
+            	
+            	case QuestionDetailsColumn.CreatedBy:
+            		return this.CreatedBy.CompareTo(rhs.CreatedBy);
+            		
+            		                 
+            	
+            	
+            	case QuestionDetailsColumn.UpdatedDate:
+            		return this.UpdatedDate.Value.CompareTo(rhs.UpdatedDate.Value);
+            		
+            		                 
+            	
+            	
+            	case QuestionDetailsColumn.UpdatedBy:
+            		return this.UpdatedBy.CompareTo(rhs.UpdatedBy);
+            		
+            		                 
+            	
+            	
+            	case QuestionDetailsColumn.QuestionTitle:
+            		return this.QuestionTitle.CompareTo(rhs.QuestionTitle);
             		
             		                 
             }
@@ -1064,13 +1389,18 @@ namespace NDMSInvestigation.Entities
 		public override string ToString()
 		{
 			return string.Format(System.Globalization.CultureInfo.InvariantCulture,
-				"{7}{6}- QuestionId: {0}{6}- QuestionContent: {1}{6}- QuestionSuggest: {2}{6}- QuestionDescription: {3}{6}- GroupId: {4}{6}- OrderNumber: {5}{6}{8}", 
+				"{12}{11}- QuestionId: {0}{11}- QuestionContent: {1}{11}- QuestionSuggest: {2}{11}- QuestionDescription: {3}{11}- OrderNumber: {4}{11}- GroupId: {5}{11}- CreatedDate: {6}{11}- CreatedBy: {7}{11}- UpdatedDate: {8}{11}- UpdatedBy: {9}{11}- QuestionTitle: {10}{11}{13}", 
 				this.QuestionId,
-				(this.QuestionContent == null) ? string.Empty : this.QuestionContent.ToString(),
+				this.QuestionContent,
 				(this.QuestionSuggest == null) ? string.Empty : this.QuestionSuggest.ToString(),
 				(this.QuestionDescription == null) ? string.Empty : this.QuestionDescription.ToString(),
-				this.GroupId,
 				(this.OrderNumber == null) ? string.Empty : this.OrderNumber.ToString(),
+				(this.GroupId == null) ? string.Empty : this.GroupId.ToString(),
+				(this.CreatedDate == null) ? string.Empty : this.CreatedDate.ToString(),
+				(this.CreatedBy == null) ? string.Empty : this.CreatedBy.ToString(),
+				(this.UpdatedDate == null) ? string.Empty : this.UpdatedDate.ToString(),
+				(this.UpdatedBy == null) ? string.Empty : this.UpdatedBy.ToString(),
+				(this.QuestionTitle == null) ? string.Empty : this.QuestionTitle.ToString(),
 				System.Environment.NewLine, 
 				this.GetType(),
 				this.Error.Length == 0 ? string.Empty : string.Format("- Error: {0}\n",this.Error));
@@ -1108,7 +1438,7 @@ namespace NDMSInvestigation.Entities
 		/// <summary>
 		/// QuestionContent : 
 		/// </summary>
-		public System.String		  QuestionContent = null;
+		public System.String		  QuestionContent = string.Empty;
 		
 		/// <summary>
 		/// QuestionSuggest : 
@@ -1121,27 +1451,52 @@ namespace NDMSInvestigation.Entities
 		public System.String		  QuestionDescription = null;
 		
 		/// <summary>
-		/// GroupId : 
-		/// </summary>
-		public System.Int32		  GroupId = (int)0;
-		
-		/// <summary>
 		/// OrderNumber : 
 		/// </summary>
 		public System.Int32?		  OrderNumber = null;
+		
+		/// <summary>
+		/// GroupId : 
+		/// </summary>
+		public System.Int32?		  GroupId = null;
+		
+		/// <summary>
+		/// CreatedDate : 
+		/// </summary>
+		public System.DateTime?		  CreatedDate = null;
+		
+		/// <summary>
+		/// CreatedBy : 
+		/// </summary>
+		public System.String		  CreatedBy = null;
+		
+		/// <summary>
+		/// UpdatedDate : 
+		/// </summary>
+		public System.DateTime?		  UpdatedDate = null;
+		
+		/// <summary>
+		/// UpdatedBy : 
+		/// </summary>
+		public System.String		  UpdatedBy = null;
+		
+		/// <summary>
+		/// QuestionTitle : 
+		/// </summary>
+		public System.String		  QuestionTitle = null;
 		#endregion
 			
 		#region Source Foreign Key Property
 				
-		private QuestionGroup _groupIdSource = null;
+		private QuestionGroups _groupIdSource = null;
 		
 		/// <summary>
-		/// Gets or sets the source <see cref="QuestionGroup"/>.
+		/// Gets or sets the source <see cref="QuestionGroups"/>.
 		/// </summary>
-		/// <value>The source QuestionGroup for GroupId.</value>
+		/// <value>The source QuestionGroups for GroupId.</value>
 		[XmlIgnore()]
 		[Browsable(false)]
-		public virtual QuestionGroup GroupIdSource
+		public virtual QuestionGroups GroupIdSource
       	{
             get { return this._groupIdSource; }
             set { this._groupIdSource = value; }
@@ -1176,6 +1531,31 @@ namespace NDMSInvestigation.Entities
 		
 		#endregion
 
+		#region AnswerIdAnswerDetailsCollection_From_QuestionAnswer
+		
+		private TList<AnswerDetails> answerIdAnswerDetailsCollectionFromQuestionAnswer;
+		
+		/// <summary>
+		///	Holds a collection of entity objects
+		///	which are related to this object through the junction table answerIdAnswerDetailsCollectionFromQuestionAnswer
+		/// </summary>
+		
+		public TList<AnswerDetails> AnswerIdAnswerDetailsCollection_From_QuestionAnswer
+		{
+			get
+			{
+				if (answerIdAnswerDetailsCollectionFromQuestionAnswer == null)
+				{
+				answerIdAnswerDetailsCollectionFromQuestionAnswer = new TList<AnswerDetails>();
+				}
+	
+				return answerIdAnswerDetailsCollectionFromQuestionAnswer;
+			}
+			set { answerIdAnswerDetailsCollectionFromQuestionAnswer = value; }
+		}
+		
+		#endregion 
+
 		#endregion Data Properties
 		
 		#region Clone Method
@@ -1193,18 +1573,25 @@ namespace NDMSInvestigation.Entities
 			_tmp.QuestionContent = this.QuestionContent;
 			_tmp.QuestionSuggest = this.QuestionSuggest;
 			_tmp.QuestionDescription = this.QuestionDescription;
-			_tmp.GroupId = this.GroupId;
 			_tmp.OrderNumber = this.OrderNumber;
+			_tmp.GroupId = this.GroupId;
+			_tmp.CreatedDate = this.CreatedDate;
+			_tmp.CreatedBy = this.CreatedBy;
+			_tmp.UpdatedDate = this.UpdatedDate;
+			_tmp.UpdatedBy = this.UpdatedBy;
+			_tmp.QuestionTitle = this.QuestionTitle;
 			
 			#region Source Parent Composite Entities
 			if (this.GroupIdSource != null)
-				_tmp.GroupIdSource = MakeCopyOf(this.GroupIdSource) as QuestionGroup;
+				_tmp.GroupIdSource = MakeCopyOf(this.GroupIdSource) as QuestionGroups;
 			#endregion
 		
 			#region Child Collections
 			//deep copy nested objects
 			if (this._questionAnswerQuestionId != null)
 				_tmp.QuestionAnswerCollection = (TList<QuestionAnswer>) MakeCopyOf(this.QuestionAnswerCollection); 
+			if (this.answerIdAnswerDetailsCollectionFromQuestionAnswer != null)
+				_tmp.AnswerIdAnswerDetailsCollection_From_QuestionAnswer = (TList<AnswerDetails>) MakeCopyOf(this.AnswerIdAnswerDetailsCollection_From_QuestionAnswer); 
 			#endregion Child Collections
 			
 			//EntityState
@@ -1229,19 +1616,25 @@ namespace NDMSInvestigation.Entities
 			_tmp.QuestionContent = this.QuestionContent;
 			_tmp.QuestionSuggest = this.QuestionSuggest;
 			_tmp.QuestionDescription = this.QuestionDescription;
-			_tmp.GroupId = this.GroupId;
 			_tmp.OrderNumber = this.OrderNumber;
+			_tmp.GroupId = this.GroupId;
+			_tmp.CreatedDate = this.CreatedDate;
+			_tmp.CreatedBy = this.CreatedBy;
+			_tmp.UpdatedDate = this.UpdatedDate;
+			_tmp.UpdatedBy = this.UpdatedBy;
+			_tmp.QuestionTitle = this.QuestionTitle;
 			
 			#region Source Parent Composite Entities
 			if (this.GroupIdSource != null && existingCopies.Contains(this.GroupIdSource))
-				_tmp.GroupIdSource = existingCopies[this.GroupIdSource] as QuestionGroup;
+				_tmp.GroupIdSource = existingCopies[this.GroupIdSource] as QuestionGroups;
 			else
-				_tmp.GroupIdSource = MakeCopyOf(this.GroupIdSource, existingCopies) as QuestionGroup;
+				_tmp.GroupIdSource = MakeCopyOf(this.GroupIdSource, existingCopies) as QuestionGroups;
 			#endregion
 		
 			#region Child Collections
 			//deep copy nested objects
 			_tmp.QuestionAnswerCollection = (TList<QuestionAnswer>) MakeCopyOf(this.QuestionAnswerCollection, existingCopies); 
+			_tmp.AnswerIdAnswerDetailsCollection_From_QuestionAnswer = (TList<AnswerDetails>) MakeCopyOf(this.AnswerIdAnswerDetailsCollection_From_QuestionAnswer, existingCopies); 
 			#endregion Child Collections
 			
 			//EntityState
@@ -1620,32 +2013,62 @@ namespace NDMSInvestigation.Entities
 		/// QuestionContent : 
 		/// </summary>
 		[EnumTextValue("QuestionContent")]
-		[ColumnEnum("QuestionContent", typeof(System.String), System.Data.DbType.String, false, false, true, 512)]
+		[ColumnEnum("QuestionContent", typeof(System.String), System.Data.DbType.String, false, false, false, 2048)]
 		QuestionContent = 2,
 		/// <summary>
 		/// QuestionSuggest : 
 		/// </summary>
 		[EnumTextValue("QuestionSuggest")]
-		[ColumnEnum("QuestionSuggest", typeof(System.String), System.Data.DbType.String, false, false, true, 1024)]
+		[ColumnEnum("QuestionSuggest", typeof(System.String), System.Data.DbType.String, false, false, true, 2048)]
 		QuestionSuggest = 3,
 		/// <summary>
 		/// QuestionDescription : 
 		/// </summary>
 		[EnumTextValue("QuestionDescription")]
-		[ColumnEnum("QuestionDescription", typeof(System.String), System.Data.DbType.String, false, false, true, 1024)]
+		[ColumnEnum("QuestionDescription", typeof(System.String), System.Data.DbType.String, false, false, true, 2048)]
 		QuestionDescription = 4,
-		/// <summary>
-		/// GroupId : 
-		/// </summary>
-		[EnumTextValue("GroupId")]
-		[ColumnEnum("GroupId", typeof(System.Int32), System.Data.DbType.Int32, false, false, false)]
-		GroupId = 5,
 		/// <summary>
 		/// OrderNumber : 
 		/// </summary>
 		[EnumTextValue("OrderNumber")]
 		[ColumnEnum("OrderNumber", typeof(System.Int32), System.Data.DbType.Int32, false, false, true)]
-		OrderNumber = 6
+		OrderNumber = 5,
+		/// <summary>
+		/// GroupId : 
+		/// </summary>
+		[EnumTextValue("GroupId")]
+		[ColumnEnum("GroupId", typeof(System.Int32), System.Data.DbType.Int32, false, false, true)]
+		GroupId = 6,
+		/// <summary>
+		/// CreatedDate : 
+		/// </summary>
+		[EnumTextValue("CreatedDate")]
+		[ColumnEnum("CreatedDate", typeof(System.DateTime), System.Data.DbType.DateTime, false, false, true)]
+		CreatedDate = 7,
+		/// <summary>
+		/// CreatedBy : 
+		/// </summary>
+		[EnumTextValue("CreatedBy")]
+		[ColumnEnum("CreatedBy", typeof(System.String), System.Data.DbType.String, false, false, true, 1024)]
+		CreatedBy = 8,
+		/// <summary>
+		/// UpdatedDate : 
+		/// </summary>
+		[EnumTextValue("UpdatedDate")]
+		[ColumnEnum("UpdatedDate", typeof(System.DateTime), System.Data.DbType.DateTime, false, false, true)]
+		UpdatedDate = 9,
+		/// <summary>
+		/// UpdatedBy : 
+		/// </summary>
+		[EnumTextValue("UpdatedBy")]
+		[ColumnEnum("UpdatedBy", typeof(System.String), System.Data.DbType.String, false, false, true, 1024)]
+		UpdatedBy = 10,
+		/// <summary>
+		/// QuestionTitle : 
+		/// </summary>
+		[EnumTextValue("QuestionTitle")]
+		[ColumnEnum("QuestionTitle", typeof(System.String), System.Data.DbType.String, false, false, true, 1024)]
+		QuestionTitle = 11
 	}//End enum
 
 	#endregion QuestionDetailsColumn Enum

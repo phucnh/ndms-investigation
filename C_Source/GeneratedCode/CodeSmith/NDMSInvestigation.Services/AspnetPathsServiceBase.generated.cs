@@ -53,12 +53,14 @@ namespace NDMSInvestigation.Services
 		/// A simple factory method to create a new <see cref="AspnetPaths"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_pathId"></param>
 		///<param name="_path"></param>
 		///<param name="_loweredPath"></param>
-		public static AspnetPaths CreateAspnetPaths(System.Guid _applicationId, System.String _path, System.String _loweredPath)
+		public static AspnetPaths CreateAspnetPaths(System.Guid _applicationId, System.Guid _pathId, System.String _path, System.String _loweredPath)
 		{
 			AspnetPaths newEntityAspnetPaths = new AspnetPaths();
 			newEntityAspnetPaths.ApplicationId  = _applicationId;
+			newEntityAspnetPaths.PathId  = _pathId;
 			newEntityAspnetPaths.Path  = _path;
 			newEntityAspnetPaths.LoweredPath  = _loweredPath;
 			return newEntityAspnetPaths;

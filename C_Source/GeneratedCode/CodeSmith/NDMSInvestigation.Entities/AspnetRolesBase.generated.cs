@@ -84,16 +84,18 @@ namespace NDMSInvestigation.Entities
 		/// Creates a new <see cref="AspnetRolesBase"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_roleId"></param>
 		///<param name="_roleName"></param>
 		///<param name="_loweredRoleName"></param>
 		///<param name="_description"></param>
-		public AspnetRolesBase(System.Guid _applicationId, System.String _roleName, System.String _loweredRoleName, 
-			System.String _description)
+		public AspnetRolesBase(System.Guid _applicationId, System.Guid _roleId, System.String _roleName, 
+			System.String _loweredRoleName, System.String _description)
 		{
 			this.entityData = new AspnetRolesEntityData();
 			this.backupData = null;
 
 			this.ApplicationId = _applicationId;
+			this.RoleId = _roleId;
 			this.RoleName = _roleName;
 			this.LoweredRoleName = _loweredRoleName;
 			this.Description = _description;
@@ -103,14 +105,16 @@ namespace NDMSInvestigation.Entities
 		/// A simple factory method to create a new <see cref="AspnetRoles"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_roleId"></param>
 		///<param name="_roleName"></param>
 		///<param name="_loweredRoleName"></param>
 		///<param name="_description"></param>
-		public static AspnetRoles CreateAspnetRoles(System.Guid _applicationId, System.String _roleName, System.String _loweredRoleName, 
-			System.String _description)
+		public static AspnetRoles CreateAspnetRoles(System.Guid _applicationId, System.Guid _roleId, System.String _roleName, 
+			System.String _loweredRoleName, System.String _description)
 		{
 			AspnetRoles newAspnetRoles = new AspnetRoles();
 			newAspnetRoles.ApplicationId = _applicationId;
+			newAspnetRoles.RoleId = _roleId;
 			newAspnetRoles.RoleName = _roleName;
 			newAspnetRoles.LoweredRoleName = _loweredRoleName;
 			newAspnetRoles.Description = _description;
@@ -169,8 +173,8 @@ namespace NDMSInvestigation.Entities
 
 
 
-		[ReadOnlyAttribute(false)/*, XmlIgnoreAttribute()*/, DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(true, true, false)]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(true, false, false)]
 		public virtual System.Guid RoleId
 		{
 			get
@@ -191,6 +195,19 @@ namespace NDMSInvestigation.Entities
 				OnColumnChanged(AspnetRolesColumn.RoleId, this.entityData.RoleId);
 				OnPropertyChanged("RoleId");
 			}
+		}
+		
+		/// <summary>
+		/// 	Get the original value of the RoleId property.
+		///		
+		/// </summary>
+		/// <remarks>This is the original value of the RoleId property.</remarks>
+		/// <value>This type is uniqueidentifier</value>
+		[BrowsableAttribute(false)/*, XmlIgnoreAttribute()*/]
+		public  virtual System.Guid OriginalRoleId
+		{
+			get { return this.entityData.OriginalRoleId; }
+			set { this.entityData.OriginalRoleId = value; }
 		}
 		
 		/// <summary>
@@ -513,6 +530,7 @@ namespace NDMSInvestigation.Entities
 			copy.SuppressEntityEvents = true;
 				copy.ApplicationId = this.ApplicationId;
 				copy.RoleId = this.RoleId;
+					copy.OriginalRoleId = this.OriginalRoleId;
 				copy.RoleName = this.RoleName;
 				copy.LoweredRoleName = this.LoweredRoleName;
 				copy.Description = this.Description;
@@ -708,6 +726,7 @@ namespace NDMSInvestigation.Entities
 			if (_originalData != null)
 				return CreateAspnetRoles(
 				_originalData.ApplicationId,
+				_originalData.RoleId,
 				_originalData.RoleName,
 				_originalData.LoweredRoleName,
 				_originalData.Description
@@ -1035,6 +1054,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Roles"</remarks>
 		public System.Guid RoleId;
 			
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		public System.Guid OriginalRoleId;
+		
 		#endregion
 		
 		#region Non Primary key(s)
@@ -1144,6 +1168,7 @@ namespace NDMSInvestigation.Entities
 			AspnetRolesEntityData _tmp = new AspnetRolesEntityData();
 						
 			_tmp.RoleId = this.RoleId;
+			_tmp.OriginalRoleId = this.OriginalRoleId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.RoleName = this.RoleName;
@@ -1181,6 +1206,7 @@ namespace NDMSInvestigation.Entities
 			AspnetRolesEntityData _tmp = new AspnetRolesEntityData();
 						
 			_tmp.RoleId = this.RoleId;
+			_tmp.OriginalRoleId = this.OriginalRoleId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.RoleName = this.RoleName;
@@ -1576,7 +1602,7 @@ namespace NDMSInvestigation.Entities
 		/// RoleId : 
 		/// </summary>
 		[EnumTextValue("RoleId")]
-		[ColumnEnum("RoleId", typeof(System.Guid), System.Data.DbType.Guid, true, true, false)]
+		[ColumnEnum("RoleId", typeof(System.Guid), System.Data.DbType.Guid, true, false, false)]
 		RoleId = 2,
 		/// <summary>
 		/// RoleName : 

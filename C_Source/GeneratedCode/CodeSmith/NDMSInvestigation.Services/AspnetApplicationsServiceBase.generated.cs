@@ -54,12 +54,14 @@ namespace NDMSInvestigation.Services
 		///</summary>
 		///<param name="_applicationName"></param>
 		///<param name="_loweredApplicationName"></param>
+		///<param name="_applicationId"></param>
 		///<param name="_description"></param>
-		public static AspnetApplications CreateAspnetApplications(System.String _applicationName, System.String _loweredApplicationName, System.String _description)
+		public static AspnetApplications CreateAspnetApplications(System.String _applicationName, System.String _loweredApplicationName, System.Guid _applicationId, System.String _description)
 		{
 			AspnetApplications newEntityAspnetApplications = new AspnetApplications();
 			newEntityAspnetApplications.ApplicationName  = _applicationName;
 			newEntityAspnetApplications.LoweredApplicationName  = _loweredApplicationName;
+			newEntityAspnetApplications.ApplicationId  = _applicationId;
 			newEntityAspnetApplications.Description  = _description;
 			return newEntityAspnetApplications;
 		}

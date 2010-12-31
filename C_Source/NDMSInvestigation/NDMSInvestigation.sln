@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDMSInvestigation.Entities"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDMSInvestigation.Services", "..\GeneratedCode\CodeSmith\NDMSInvestigation.Services\NDMSInvestigation.Services.csproj", "{794327CE-DC0A-4381-89EE-4C00AFB08D5A}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NDMSInvestigation.Website", "..\GeneratedCode\CodeSmith\NDMSInvestigation.Website", "{8D660C6E-70D2-42B5-92CC-D2A01A98F3DF}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NDMSInvestigation.Website", "..\GeneratedCode\CodeSmith\NDMSInvestigation.Website\", "{8D660C6E-70D2-42B5-92CC-D2A01A98F3DF}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "3.5"
 		Debug.AspNetCompiler.VirtualPath = "/NDMSInvestigation.Website"
@@ -62,6 +62,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserControl", "UserControl", "{AD6A5FD7-E639-4896-A530-3B481F1CC0E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDMSInvestigation.Web", "..\GeneratedCode\CodeSmith\NDMSInvestigation.Web\NDMSInvestigation.Web.csproj", "{47FE3BE8-3E46-47CA-8494-473755867DD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FoundationModules", "FoundationModules", "{FAC56810-7087-4F65-9CBA-990B8D15B183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -294,6 +296,7 @@ Global
 		{59C6D948-D52E-4E12-B79E-2447BE0A098C} = {59BD516F-91B8-432A-94B0-260C1A66D6F5}
 		{489FD628-6E1F-43B0-A77C-F1E178DA10CE} = {ECDC6DF8-7C88-4264-AADB-2662E8EE6245}
 		{19526FB0-2F45-4BD2-80F1-61555A7C4A65} = {ECDC6DF8-7C88-4264-AADB-2662E8EE6245}
+		{FAC56810-7087-4F65-9CBA-990B8D15B183} = {ECDC6DF8-7C88-4264-AADB-2662E8EE6245}
 		{13E4FADE-4738-4292-9AFB-01A1664FE81B} = {19526FB0-2F45-4BD2-80F1-61555A7C4A65}
 		{EF11E5B8-6230-44FD-B175-29201768D66B} = {19526FB0-2F45-4BD2-80F1-61555A7C4A65}
 		{AD6A5FD7-E639-4896-A530-3B481F1CC0E8} = {19526FB0-2F45-4BD2-80F1-61555A7C4A65}
@@ -312,8 +315,8 @@ Global
 		{2E48BC14-64D1-4114-8252-6D203D3F9A30} = {AD6A5FD7-E639-4896-A530-3B481F1CC0E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RootNamespace = NDMSInvestigation
-		IsWCSFSolutionWAP = True
 		IsWCSFSolution = True
+		IsWCSFSolutionWAP = True
+		RootNamespace = NDMSInvestigation
 	EndGlobalSection
 EndGlobal

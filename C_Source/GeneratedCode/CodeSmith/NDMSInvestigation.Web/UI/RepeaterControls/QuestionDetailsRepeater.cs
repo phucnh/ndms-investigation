@@ -368,15 +368,6 @@ namespace NDMSInvestigation.Web.UI
 			get { return _entity.QuestionDescription; }
 		}
         /// <summary>
-        /// Gets the GroupId
-        /// </summary>
-        /// <value>The GroupId.</value>
-		[System.ComponentModel.Bindable(true)]
-		public System.Int32 GroupId
-		{
-			get { return _entity.GroupId; }
-		}
-        /// <summary>
         /// Gets the OrderNumber
         /// </summary>
         /// <value>The OrderNumber.</value>
@@ -384,6 +375,60 @@ namespace NDMSInvestigation.Web.UI
 		public System.Int32? OrderNumber
 		{
 			get { return _entity.OrderNumber; }
+		}
+        /// <summary>
+        /// Gets the GroupId
+        /// </summary>
+        /// <value>The GroupId.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.Int32? GroupId
+		{
+			get { return _entity.GroupId; }
+		}
+        /// <summary>
+        /// Gets the CreatedDate
+        /// </summary>
+        /// <value>The CreatedDate.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? CreatedDate
+		{
+			get { return _entity.CreatedDate; }
+		}
+        /// <summary>
+        /// Gets the CreatedBy
+        /// </summary>
+        /// <value>The CreatedBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String CreatedBy
+		{
+			get { return _entity.CreatedBy; }
+		}
+        /// <summary>
+        /// Gets the UpdatedDate
+        /// </summary>
+        /// <value>The UpdatedDate.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? UpdatedDate
+		{
+			get { return _entity.UpdatedDate; }
+		}
+        /// <summary>
+        /// Gets the UpdatedBy
+        /// </summary>
+        /// <value>The UpdatedBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String UpdatedBy
+		{
+			get { return _entity.UpdatedBy; }
+		}
+        /// <summary>
+        /// Gets the QuestionTitle
+        /// </summary>
+        /// <value>The QuestionTitle.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String QuestionTitle
+		{
+			get { return _entity.QuestionTitle; }
 		}
 
         /// <summary>

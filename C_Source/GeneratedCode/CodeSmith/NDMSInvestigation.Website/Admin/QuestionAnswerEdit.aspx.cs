@@ -20,7 +20,7 @@ public partial class QuestionAnswerEdit : System.Web.UI.Page
 		FormUtil.RedirectAfterInsertUpdate(FormView1, "QuestionAnswerEdit.aspx?{0}", QuestionAnswerDataSource);
 		FormUtil.RedirectAfterAddNew(FormView1, "QuestionAnswerEdit.aspx");
 		FormUtil.RedirectAfterCancel(FormView1, "QuestionAnswer.aspx");
-		FormUtil.SetDefaultMode(FormView1, "QuestionAnswerId");
+		FormUtil.SetDefaultMode(FormView1, "QuestionId");
 	}
 }
 

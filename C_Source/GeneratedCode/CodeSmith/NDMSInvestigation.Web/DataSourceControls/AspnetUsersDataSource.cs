@@ -221,9 +221,9 @@ namespace NDMSInvestigation.Web.Data
 					_roleId = ( values["RoleId"] != null ) ? (System.Guid) EntityUtil.ChangeType(values["RoleId"], typeof(System.Guid)) : Guid.Empty;
 					results = AspnetUsersProvider.GetByRoleIdFromAspnetUsersInRoles(_roleId, this.StartIndex, this.PageSize, out count);
 					break;
-				case AspnetUsersSelectMethod.GetByGroupIdFromResult:
+				case AspnetUsersSelectMethod.GetByGroupIdFromResults:
 					_groupId = ( values["GroupId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["GroupId"], typeof(System.Int32)) : (int)0;
-					results = AspnetUsersProvider.GetByGroupIdFromResult(_groupId, this.StartIndex, this.PageSize, out count);
+					results = AspnetUsersProvider.GetByGroupIdFromResults(_groupId, this.StartIndex, this.PageSize, out count);
 					break;
 				// Custom
 				default:
@@ -438,9 +438,9 @@ namespace NDMSInvestigation.Web.Data
 		/// </summary>
 		GetByRoleIdFromAspnetUsersInRoles,
 		/// <summary>
-		/// Represents the GetByGroupIdFromResult method.
+		/// Represents the GetByGroupIdFromResults method.
 		/// </summary>
-		GetByGroupIdFromResult
+		GetByGroupIdFromResults
 	}
 	
 	#endregion AspnetUsersSelectMethod

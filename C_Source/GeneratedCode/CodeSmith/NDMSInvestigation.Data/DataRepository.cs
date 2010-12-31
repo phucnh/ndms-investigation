@@ -418,18 +418,35 @@ namespace NDMSInvestigation.Data
 
 		#region Static properties
 		
-		#region QuestionGroupProvider
+		#region CompanyDetailsProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="QuestionGroup"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="CompanyDetails"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static QuestionGroupProviderBase QuestionGroupProvider
+		public static CompanyDetailsProviderBase CompanyDetailsProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.QuestionGroupProvider;
+				return _provider.CompanyDetailsProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region AspnetUsersInRolesProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetUsersInRoles"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.AspnetUsersInRolesProvider;
 			}
 		}
 		
@@ -469,35 +486,18 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
-		#region AspnetUsersInRolesProvider
+		#region QuestionGroupsProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetUsersInRoles"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="QuestionGroups"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider
+		public static QuestionGroupsProviderBase QuestionGroupsProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.AspnetUsersInRolesProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region ResultProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Result"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static ResultProviderBase ResultProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.ResultProvider;
+				return _provider.QuestionGroupsProvider;
 			}
 		}
 		
@@ -520,6 +520,23 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
+		#region AspnetUsersProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetUsers"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static AspnetUsersProviderBase AspnetUsersProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.AspnetUsersProvider;
+			}
+		}
+		
+		#endregion
+		
 		#region QuestionAnswerProvider
 
 		///<summary>
@@ -537,18 +554,18 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
-		#region AspnetUsersProvider
+		#region ResultsProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetUsers"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Results"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static AspnetUsersProviderBase AspnetUsersProvider
+		public static ResultsProviderBase ResultsProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.AspnetUsersProvider;
+				return _provider.ResultsProvider;
 			}
 		}
 		
@@ -588,23 +605,6 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
-		#region AspnetRolesProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetRoles"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static AspnetRolesProviderBase AspnetRolesProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.AspnetRolesProvider;
-			}
-		}
-		
-		#endregion
-		
 		#region AspnetMembershipProvider
 
 		///<summary>
@@ -639,23 +639,6 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
-		#region AspnetProfileProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetProfile"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static AspnetProfileProviderBase AspnetProfileProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.AspnetProfileProvider;
-			}
-		}
-		
-		#endregion
-		
 		#region AspnetPersonalizationAllUsersProvider
 
 		///<summary>
@@ -673,18 +656,18 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
-		#region UserProvider
+		#region AspnetRolesProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="User"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetRoles"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static UserProviderBase UserProvider
+		public static AspnetRolesProviderBase AspnetRolesProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.UserProvider;
+				return _provider.AspnetRolesProvider;
 			}
 		}
 		
@@ -707,79 +690,181 @@ namespace NDMSInvestigation.Data
 		
 		#endregion
 		
+		#region TraceChangeProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="TraceChange"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static TraceChangeProviderBase TraceChangeProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.TraceChangeProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region AspnetProfileProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="AspnetProfile"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static AspnetProfileProviderBase AspnetProfileProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.AspnetProfileProvider;
+			}
+		}
+		
+		#endregion
+		
 		
 		#endregion
 	}
 	
 	#region Query/Filters
 		
-	#region QuestionGroupFilters
+	#region CompanyDetailsFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="QuestionGroup"/> object.
+	/// that is used exclusively with a <see cref="CompanyDetails"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class QuestionGroupFilters : QuestionGroupFilterBuilder
+	public class CompanyDetailsFilters : CompanyDetailsFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupFilters class.
+		/// Initializes a new instance of the CompanyDetailsFilters class.
 		/// </summary>
-		public QuestionGroupFilters() : base() { }
+		public CompanyDetailsFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupFilters class.
+		/// Initializes a new instance of the CompanyDetailsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public QuestionGroupFilters(bool ignoreCase) : base(ignoreCase) { }
+		public CompanyDetailsFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupFilters class.
+		/// Initializes a new instance of the CompanyDetailsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public QuestionGroupFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public CompanyDetailsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion QuestionGroupFilters
+	#endregion CompanyDetailsFilters
 	
-	#region QuestionGroupQuery
+	#region CompanyDetailsQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="QuestionGroupParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="QuestionGroup"/> object.
+	/// A strongly-typed instance of the <see cref="CompanyDetailsParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="CompanyDetails"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class QuestionGroupQuery : QuestionGroupParameterBuilder
+	public class CompanyDetailsQuery : CompanyDetailsParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupQuery class.
+		/// Initializes a new instance of the CompanyDetailsQuery class.
 		/// </summary>
-		public QuestionGroupQuery() : base() { }
+		public CompanyDetailsQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupQuery class.
+		/// Initializes a new instance of the CompanyDetailsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public QuestionGroupQuery(bool ignoreCase) : base(ignoreCase) { }
+		public CompanyDetailsQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the QuestionGroupQuery class.
+		/// Initializes a new instance of the CompanyDetailsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public QuestionGroupQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public CompanyDetailsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion QuestionGroupQuery
+	#endregion CompanyDetailsQuery
+		
+	#region AspnetUsersInRolesFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="AspnetUsersInRoles"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetUsersInRolesFilters : AspnetUsersInRolesFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// </summary>
+		public AspnetUsersInRolesFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetUsersInRolesFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetUsersInRolesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetUsersInRolesFilters
+	
+	#region AspnetUsersInRolesQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="AspnetUsersInRolesParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="AspnetUsersInRoles"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetUsersInRolesQuery : AspnetUsersInRolesParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// </summary>
+		public AspnetUsersInRolesQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetUsersInRolesQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetUsersInRolesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetUsersInRolesQuery
 		
 	#region AnswerDetailsFilters
 	
@@ -917,141 +1002,73 @@ namespace NDMSInvestigation.Data
 
 	#endregion AspnetWebEventEventsQuery
 		
-	#region AspnetUsersInRolesFilters
+	#region QuestionGroupsFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="AspnetUsersInRoles"/> object.
+	/// that is used exclusively with a <see cref="QuestionGroups"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class AspnetUsersInRolesFilters : AspnetUsersInRolesFilterBuilder
+	public class QuestionGroupsFilters : QuestionGroupsFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// Initializes a new instance of the QuestionGroupsFilters class.
 		/// </summary>
-		public AspnetUsersInRolesFilters() : base() { }
+		public QuestionGroupsFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// Initializes a new instance of the QuestionGroupsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetUsersInRolesFilters(bool ignoreCase) : base(ignoreCase) { }
+		public QuestionGroupsFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesFilters class.
+		/// Initializes a new instance of the QuestionGroupsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetUsersInRolesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public QuestionGroupsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion AspnetUsersInRolesFilters
+	#endregion QuestionGroupsFilters
 	
-	#region AspnetUsersInRolesQuery
+	#region QuestionGroupsQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="AspnetUsersInRolesParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="AspnetUsersInRoles"/> object.
+	/// A strongly-typed instance of the <see cref="QuestionGroupsParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="QuestionGroups"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class AspnetUsersInRolesQuery : AspnetUsersInRolesParameterBuilder
+	public class QuestionGroupsQuery : QuestionGroupsParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// Initializes a new instance of the QuestionGroupsQuery class.
 		/// </summary>
-		public AspnetUsersInRolesQuery() : base() { }
+		public QuestionGroupsQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// Initializes a new instance of the QuestionGroupsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetUsersInRolesQuery(bool ignoreCase) : base(ignoreCase) { }
+		public QuestionGroupsQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersInRolesQuery class.
+		/// Initializes a new instance of the QuestionGroupsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetUsersInRolesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public QuestionGroupsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion AspnetUsersInRolesQuery
-		
-	#region ResultFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Result"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class ResultFilters : ResultFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the ResultFilters class.
-		/// </summary>
-		public ResultFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the ResultFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public ResultFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the ResultFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public ResultFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion ResultFilters
-	
-	#region ResultQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="ResultParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Result"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class ResultQuery : ResultParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the ResultQuery class.
-		/// </summary>
-		public ResultQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the ResultQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public ResultQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the ResultQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public ResultQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion ResultQuery
+	#endregion QuestionGroupsQuery
 		
 	#region QuestionDetailsFilters
 	
@@ -1121,6 +1138,74 @@ namespace NDMSInvestigation.Data
 
 	#endregion QuestionDetailsQuery
 		
+	#region AspnetUsersFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="AspnetUsers"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetUsersFilters : AspnetUsersFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// </summary>
+		public AspnetUsersFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetUsersFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetUsersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetUsersFilters
+	
+	#region AspnetUsersQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="AspnetUsersParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="AspnetUsers"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetUsersQuery : AspnetUsersParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// </summary>
+		public AspnetUsersQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetUsersQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetUsersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetUsersQuery
+		
 	#region QuestionAnswerFilters
 	
 	/// <summary>
@@ -1189,73 +1274,73 @@ namespace NDMSInvestigation.Data
 
 	#endregion QuestionAnswerQuery
 		
-	#region AspnetUsersFilters
+	#region ResultsFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="AspnetUsers"/> object.
+	/// that is used exclusively with a <see cref="Results"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class AspnetUsersFilters : AspnetUsersFilterBuilder
+	public class ResultsFilters : ResultsFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// Initializes a new instance of the ResultsFilters class.
 		/// </summary>
-		public AspnetUsersFilters() : base() { }
+		public ResultsFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// Initializes a new instance of the ResultsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetUsersFilters(bool ignoreCase) : base(ignoreCase) { }
+		public ResultsFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersFilters class.
+		/// Initializes a new instance of the ResultsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetUsersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public ResultsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion AspnetUsersFilters
+	#endregion ResultsFilters
 	
-	#region AspnetUsersQuery
+	#region ResultsQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="AspnetUsersParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="AspnetUsers"/> object.
+	/// A strongly-typed instance of the <see cref="ResultsParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Results"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class AspnetUsersQuery : AspnetUsersParameterBuilder
+	public class ResultsQuery : ResultsParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// Initializes a new instance of the ResultsQuery class.
 		/// </summary>
-		public AspnetUsersQuery() : base() { }
+		public ResultsQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// Initializes a new instance of the ResultsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetUsersQuery(bool ignoreCase) : base(ignoreCase) { }
+		public ResultsQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the AspnetUsersQuery class.
+		/// Initializes a new instance of the ResultsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetUsersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public ResultsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion AspnetUsersQuery
+	#endregion ResultsQuery
 		
 	#region AspnetSchemaVersionsFilters
 	
@@ -1393,74 +1478,6 @@ namespace NDMSInvestigation.Data
 
 	#endregion AspnetApplicationsQuery
 		
-	#region AspnetRolesFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="AspnetRoles"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class AspnetRolesFilters : AspnetRolesFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesFilters class.
-		/// </summary>
-		public AspnetRolesFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetRolesFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetRolesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion AspnetRolesFilters
-	
-	#region AspnetRolesQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="AspnetRolesParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="AspnetRoles"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class AspnetRolesQuery : AspnetRolesParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesQuery class.
-		/// </summary>
-		public AspnetRolesQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetRolesQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetRolesQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetRolesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion AspnetRolesQuery
-		
 	#region AspnetMembershipFilters
 	
 	/// <summary>
@@ -1597,74 +1614,6 @@ namespace NDMSInvestigation.Data
 
 	#endregion AspnetPathsQuery
 		
-	#region AspnetProfileFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="AspnetProfile"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class AspnetProfileFilters : AspnetProfileFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileFilters class.
-		/// </summary>
-		public AspnetProfileFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetProfileFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetProfileFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion AspnetProfileFilters
-	
-	#region AspnetProfileQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="AspnetProfileParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="AspnetProfile"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class AspnetProfileQuery : AspnetProfileParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileQuery class.
-		/// </summary>
-		public AspnetProfileQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public AspnetProfileQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the AspnetProfileQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public AspnetProfileQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion AspnetProfileQuery
-		
 	#region AspnetPersonalizationAllUsersFilters
 	
 	/// <summary>
@@ -1733,73 +1682,73 @@ namespace NDMSInvestigation.Data
 
 	#endregion AspnetPersonalizationAllUsersQuery
 		
-	#region UserFilters
+	#region AspnetRolesFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="User"/> object.
+	/// that is used exclusively with a <see cref="AspnetRoles"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class UserFilters : UserFilterBuilder
+	public class AspnetRolesFilters : AspnetRolesFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the UserFilters class.
+		/// Initializes a new instance of the AspnetRolesFilters class.
 		/// </summary>
-		public UserFilters() : base() { }
+		public AspnetRolesFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the UserFilters class.
+		/// Initializes a new instance of the AspnetRolesFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public UserFilters(bool ignoreCase) : base(ignoreCase) { }
+		public AspnetRolesFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the UserFilters class.
+		/// Initializes a new instance of the AspnetRolesFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public UserFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public AspnetRolesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion UserFilters
+	#endregion AspnetRolesFilters
 	
-	#region UserQuery
+	#region AspnetRolesQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="UserParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="User"/> object.
+	/// A strongly-typed instance of the <see cref="AspnetRolesParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="AspnetRoles"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class UserQuery : UserParameterBuilder
+	public class AspnetRolesQuery : AspnetRolesParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the UserQuery class.
+		/// Initializes a new instance of the AspnetRolesQuery class.
 		/// </summary>
-		public UserQuery() : base() { }
+		public AspnetRolesQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the UserQuery class.
+		/// Initializes a new instance of the AspnetRolesQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public UserQuery(bool ignoreCase) : base(ignoreCase) { }
+		public AspnetRolesQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the UserQuery class.
+		/// Initializes a new instance of the AspnetRolesQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public UserQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public AspnetRolesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion UserQuery
+	#endregion AspnetRolesQuery
 		
 	#region AspnetPersonalizationPerUserFilters
 	
@@ -1868,6 +1817,142 @@ namespace NDMSInvestigation.Data
 	}
 
 	#endregion AspnetPersonalizationPerUserQuery
+		
+	#region TraceChangeFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="TraceChange"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class TraceChangeFilters : TraceChangeFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeFilters class.
+		/// </summary>
+		public TraceChangeFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public TraceChangeFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public TraceChangeFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion TraceChangeFilters
+	
+	#region TraceChangeQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="TraceChangeParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="TraceChange"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class TraceChangeQuery : TraceChangeParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeQuery class.
+		/// </summary>
+		public TraceChangeQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public TraceChangeQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the TraceChangeQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public TraceChangeQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion TraceChangeQuery
+		
+	#region AspnetProfileFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="AspnetProfile"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetProfileFilters : AspnetProfileFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileFilters class.
+		/// </summary>
+		public AspnetProfileFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetProfileFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetProfileFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetProfileFilters
+	
+	#region AspnetProfileQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="AspnetProfileParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="AspnetProfile"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class AspnetProfileQuery : AspnetProfileParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileQuery class.
+		/// </summary>
+		public AspnetProfileQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public AspnetProfileQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the AspnetProfileQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public AspnetProfileQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion AspnetProfileQuery
 	#endregion
 
 	

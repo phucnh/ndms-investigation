@@ -818,7 +818,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			
 			database.AddInParameter(commandWrapper, "@ApplicationName", DbType.String, entity.ApplicationName );
 			database.AddInParameter(commandWrapper, "@LoweredApplicationName", DbType.String, entity.LoweredApplicationName );
-			database.AddOutParameter(commandWrapper, "@ApplicationId", DbType.Guid, 16);
+			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
 			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
 			
 			int results = 0;
@@ -835,9 +835,8 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _applicationId = database.GetParameterValue(commandWrapper, "@ApplicationId");
-			entity.ApplicationId = (System.Guid)_applicationId;
 			
+			entity.OriginalApplicationId = entity.ApplicationId;
 			
 			entity.AcceptChanges();
 	
@@ -871,6 +870,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			database.AddInParameter(commandWrapper, "@ApplicationName", DbType.String, entity.ApplicationName );
 			database.AddInParameter(commandWrapper, "@LoweredApplicationName", DbType.String, entity.LoweredApplicationName );
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
+			database.AddInParameter(commandWrapper, "@OriginalApplicationId", DbType.Guid, entity.OriginalApplicationId);
 			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
 			
 			int results = 0;
@@ -891,6 +891,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalApplicationId = entity.ApplicationId;
 			
 			entity.AcceptChanges();
 			

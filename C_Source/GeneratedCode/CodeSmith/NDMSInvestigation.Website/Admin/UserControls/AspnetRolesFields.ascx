@@ -4,6 +4,25 @@
 	<ItemTemplate>
 		<table border="0" cellpadding="3" cellspacing="1">
 			<tr>
+        <td class="literal"><asp:Label ID="lbldataApplicationId" runat="server" Text="Application Id:" AssociatedControlID="dataApplicationId" /></td>
+        <td>
+					<data:EntityDropDownList runat="server" ID="dataApplicationId" DataSourceID="ApplicationIdAspnetApplicationsDataSource" DataTextField="ApplicationName" DataValueField="ApplicationId" SelectedValue='<%# Bind("ApplicationId") %>' AppendNullItem="true" Required="true" NullItemText="< Please Choose ...>" ErrorText="Required" />
+					<data:AspnetApplicationsDataSource ID="ApplicationIdAspnetApplicationsDataSource" runat="server" SelectMethod="GetAll"  />
+				</td>
+			</tr>
+			<tr>
+        <td class="literal"><asp:Label ID="lbldataRoleId" runat="server" Text="Role Id:" AssociatedControlID="dataRoleId" /></td>
+        <td>
+					<asp:HiddenField runat="server" id="dataRoleId" Value='<%# Bind("RoleId") %>'></asp:HiddenField>
+				</td>
+			</tr>
+			<tr>
+        <td class="literal"><asp:Label ID="lbldataRoleName" runat="server" Text="Role Name:" AssociatedControlID="dataRoleName" /></td>
+        <td>
+					<asp:TextBox runat="server" ID="dataRoleName" Text='<%# Bind("RoleName") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataRoleName" runat="server" Display="Dynamic" ControlToValidate="dataRoleName" ErrorMessage="Required"></asp:RequiredFieldValidator>
+				</td>
+			</tr>
+			<tr>
         <td class="literal"><asp:Label ID="lbldataLoweredRoleName" runat="server" Text="Lowered Role Name:" AssociatedControlID="dataLoweredRoleName" /></td>
         <td>
 					<asp:TextBox runat="server" ID="dataLoweredRoleName" Text='<%# Bind("LoweredRoleName") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataLoweredRoleName" runat="server" Display="Dynamic" ControlToValidate="dataLoweredRoleName" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -13,19 +32,6 @@
         <td class="literal"><asp:Label ID="lbldataDescription" runat="server" Text="Description:" AssociatedControlID="dataDescription" /></td>
         <td>
 					<asp:TextBox runat="server" ID="dataDescription" Text='<%# Bind("Description") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox>
-				</td>
-			</tr>
-			<tr>
-        <td class="literal"><asp:Label ID="lbldataApplicationId" runat="server" Text="Application Id:" AssociatedControlID="dataApplicationId" /></td>
-        <td>
-					<data:EntityDropDownList runat="server" ID="dataApplicationId" DataSourceID="ApplicationIdAspnetApplicationsDataSource" DataTextField="ApplicationName" DataValueField="ApplicationId" SelectedValue='<%# Bind("ApplicationId") %>' AppendNullItem="true" Required="true" NullItemText="< Please Choose ...>" ErrorText="Required" />
-					<data:AspnetApplicationsDataSource ID="ApplicationIdAspnetApplicationsDataSource" runat="server" SelectMethod="GetAll"  />
-				</td>
-			</tr>
-			<tr>
-        <td class="literal"><asp:Label ID="lbldataRoleName" runat="server" Text="Role Name:" AssociatedControlID="dataRoleName" /></td>
-        <td>
-					<asp:TextBox runat="server" ID="dataRoleName" Text='<%# Bind("RoleName") %>'  TextMode="MultiLine"  Width="250px" Rows="5"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataRoleName" runat="server" Display="Dynamic" ControlToValidate="dataRoleName" ErrorMessage="Required"></asp:RequiredFieldValidator>
 				</td>
 			</tr>
 			<tr>

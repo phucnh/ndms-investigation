@@ -17,9 +17,9 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<data:BoundRadioButtonField DataField="IsCurrentVersion" HeaderText="Is Current Version" SortExpression="[IsCurrentVersion]"  />
-				<asp:BoundField DataField="CompatibleSchemaVersion" HeaderText="Compatible Schema Version" SortExpression="[CompatibleSchemaVersion]" ReadOnly="True" />
 				<asp:BoundField DataField="Feature" HeaderText="Feature" SortExpression="[Feature]" ReadOnly="True" />
+				<asp:BoundField DataField="CompatibleSchemaVersion" HeaderText="Compatible Schema Version" SortExpression="[CompatibleSchemaVersion]" ReadOnly="True" />
+				<data:BoundRadioButtonField DataField="IsCurrentVersion" HeaderText="Is Current Version" SortExpression="[IsCurrentVersion]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetSchemaVersions Found!</b>

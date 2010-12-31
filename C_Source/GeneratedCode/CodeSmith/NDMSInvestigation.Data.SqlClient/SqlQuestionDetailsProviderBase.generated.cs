@@ -97,6 +97,69 @@ namespace NDMSInvestigation.Data.SqlClient
 	#endregion
 	
 		#region Get Many To Many Relationship Functions
+	
+		#region GetByAnswerIdFromQuestionAnswer
+		/// <summary>
+		///		Gets QuestionDetails objects from the datasource by AnswerId in the
+		///		QuestionAnswer table. Table QuestionDetails is related to table AnswerDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
+		/// <param name="_answerId"></param>
+		/// <param name="start">Row number at which to start reading.</param>
+		/// <param name="pageLength">Number of rows to return.</param>
+		/// <param name="count">out parameter to get total records for query.</param>
+		/// <returns>Returns a <c>TList</c> of QuestionDetails objects.</returns>
+		public override TList<QuestionDetails> GetByAnswerIdFromQuestionAnswer(TransactionManager transactionManager, System.Int32 _answerId, int start, int pageLength, out int count)
+		{
+			SqlDatabase database = new SqlDatabase(this._connectionString);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionDetails_GetByAnswerIdFromQuestionAnswer", _useStoredProcedure);
+			
+			database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, _answerId);
+			
+			IDataReader reader = null;
+			// Create collection and fill
+			TList<QuestionDetails> rows = new TList<QuestionDetails>();
+			
+			try
+			{
+				// Provider Data Requesting Command Event
+				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByAnswerIdFromQuestionAnswer", rows)); 
+	
+				if (transactionManager != null)
+				{
+					reader = Utility.ExecuteReader(transactionManager, commandWrapper);
+				}
+				else
+				{
+					reader = Utility.ExecuteReader(database, commandWrapper);
+				}		
+				Fill(reader, rows, start, pageLength);
+				count = -1;
+				if(reader.NextResult())
+				{
+					if(reader.Read())
+					{
+						count = reader.GetInt32(0);
+					}
+				}
+					
+				// Provider Data Requested Command Event
+				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByAnswerIdFromQuestionAnswer", rows)); 
+
+			}
+			finally 
+			{
+				if (reader != null) 
+					reader.Close();
+					
+				commandWrapper = null;
+			}
+			return rows; 
+		}
+		
+		#endregion GetByAnswerIdFromQuestionAnswer
+		
 		#endregion
 	
 		#region Delete Functions
@@ -179,8 +242,13 @@ namespace NDMSInvestigation.Data.SqlClient
 		database.AddInParameter(commandWrapper, "@QuestionContent", DbType.String, DBNull.Value);
 		database.AddInParameter(commandWrapper, "@QuestionSuggest", DbType.String, DBNull.Value);
 		database.AddInParameter(commandWrapper, "@QuestionDescription", DbType.String, DBNull.Value);
-		database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, DBNull.Value);
 		database.AddInParameter(commandWrapper, "@OrderNumber", DbType.Int32, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@UpdatedDate", DbType.DateTime, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@QuestionTitle", DbType.String, DBNull.Value);
 	
 			// replace all instances of 'AND' and 'OR' because we already set searchUsingOR
 			whereClause = whereClause.Replace(" AND ", "|").Replace(" OR ", "|") ; 
@@ -219,16 +287,46 @@ namespace NDMSInvestigation.Data.SqlClient
 						clause.Trim().Remove(0,19).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
 					continue;
 				}
+				if (clause.Trim().StartsWith("ordernumber ") || clause.Trim().StartsWith("ordernumber="))
+				{
+					database.SetParameterValue(commandWrapper, "@OrderNumber", 
+						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
 				if (clause.Trim().StartsWith("groupid ") || clause.Trim().StartsWith("groupid="))
 				{
 					database.SetParameterValue(commandWrapper, "@GroupId", 
 						clause.Trim().Remove(0,7).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
 					continue;
 				}
-				if (clause.Trim().StartsWith("ordernumber ") || clause.Trim().StartsWith("ordernumber="))
+				if (clause.Trim().StartsWith("createddate ") || clause.Trim().StartsWith("createddate="))
 				{
-					database.SetParameterValue(commandWrapper, "@OrderNumber", 
+					database.SetParameterValue(commandWrapper, "@CreatedDate", 
 						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("createdby ") || clause.Trim().StartsWith("createdby="))
+				{
+					database.SetParameterValue(commandWrapper, "@CreatedBy", 
+						clause.Trim().Remove(0,9).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("updateddate ") || clause.Trim().StartsWith("updateddate="))
+				{
+					database.SetParameterValue(commandWrapper, "@UpdatedDate", 
+						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("updatedby ") || clause.Trim().StartsWith("updatedby="))
+				{
+					database.SetParameterValue(commandWrapper, "@UpdatedBy", 
+						clause.Trim().Remove(0,9).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("questiontitle ") || clause.Trim().StartsWith("questiontitle="))
+				{
+					database.SetParameterValue(commandWrapper, "@QuestionTitle", 
+						clause.Trim().Remove(0,13).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
 					continue;
 				}
 	
@@ -517,7 +615,7 @@ namespace NDMSInvestigation.Data.SqlClient
         /// <exception cref="System.Exception">The command could not be executed.</exception>
         /// <exception cref="System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
         /// <exception cref="System.Data.Common.DbException">The command could not be executed.</exception>
-		public override TList<QuestionDetails> GetByGroupId(TransactionManager transactionManager, System.Int32 _groupId, int start, int pageLength, out int count)
+		public override TList<QuestionDetails> GetByGroupId(TransactionManager transactionManager, System.Int32? _groupId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionDetails_GetByGroupId", _useStoredProcedure);
@@ -569,14 +667,14 @@ namespace NDMSInvestigation.Data.SqlClient
 	
 		#region Get By Index Functions
 
-		#region GetByGroupIdOrderNumber
+		#region GetByOrderNumberGroupId
 					
 		/// <summary>
 		/// 	Gets rows from the datasource based on the IX_QuestionDetails index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_groupId"></param>
 		/// <param name="_orderNumber"></param>
+		/// <param name="_groupId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="count">out parameter to get total records for query.</param>
@@ -585,20 +683,20 @@ namespace NDMSInvestigation.Data.SqlClient
         /// <exception cref="System.Exception">The command could not be executed.</exception>
         /// <exception cref="System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
         /// <exception cref="System.Data.Common.DbException">The command could not be executed.</exception>
-		public override NDMSInvestigation.Entities.QuestionDetails GetByGroupIdOrderNumber(TransactionManager transactionManager, System.Int32 _groupId, System.Int32? _orderNumber, int start, int pageLength, out int count)
+		public override NDMSInvestigation.Entities.QuestionDetails GetByOrderNumberGroupId(TransactionManager transactionManager, System.Int32? _orderNumber, System.Int32? _groupId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionDetails_GetByGroupIdOrderNumber", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionDetails_GetByOrderNumberGroupId", _useStoredProcedure);
 			
-				database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, _groupId);
 				database.AddInParameter(commandWrapper, "@OrderNumber", DbType.Int32, _orderNumber);
+				database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, _groupId);
 			
 			IDataReader reader = null;
 			TList<QuestionDetails> tmp = new TList<QuestionDetails>();
 			try
 			{
 				//Provider Data Requesting Command Event
-				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByGroupIdOrderNumber", tmp)); 
+				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByOrderNumberGroupId", tmp)); 
 
 				if (transactionManager != null)
 				{
@@ -621,7 +719,7 @@ namespace NDMSInvestigation.Data.SqlClient
 				}
 				
 				//Provider Data Requested Command Event
-				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByGroupIdOrderNumber", tmp));
+				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByOrderNumberGroupId", tmp));
 			}
 			finally 
 			{
@@ -653,7 +751,7 @@ namespace NDMSInvestigation.Data.SqlClient
 		#region GetByQuestionId
 					
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_QuestionDetails_1 index.
+		/// 	Gets rows from the datasource based on the PK_QuestionDetails index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_questionId"></param>
@@ -764,22 +862,37 @@ namespace NDMSInvestigation.Data.SqlClient
 			DataColumn col0 = dataTable.Columns.Add("QuestionId", typeof(System.Int32));
 			col0.AllowDBNull = false;		
 			DataColumn col1 = dataTable.Columns.Add("QuestionContent", typeof(System.String));
-			col1.AllowDBNull = true;		
+			col1.AllowDBNull = false;		
 			DataColumn col2 = dataTable.Columns.Add("QuestionSuggest", typeof(System.String));
 			col2.AllowDBNull = true;		
 			DataColumn col3 = dataTable.Columns.Add("QuestionDescription", typeof(System.String));
 			col3.AllowDBNull = true;		
-			DataColumn col4 = dataTable.Columns.Add("GroupId", typeof(System.Int32));
-			col4.AllowDBNull = false;		
-			DataColumn col5 = dataTable.Columns.Add("OrderNumber", typeof(System.Int32));
+			DataColumn col4 = dataTable.Columns.Add("OrderNumber", typeof(System.Int32));
+			col4.AllowDBNull = true;		
+			DataColumn col5 = dataTable.Columns.Add("GroupId", typeof(System.Int32));
 			col5.AllowDBNull = true;		
+			DataColumn col6 = dataTable.Columns.Add("CreatedDate", typeof(System.DateTime));
+			col6.AllowDBNull = true;		
+			DataColumn col7 = dataTable.Columns.Add("CreatedBy", typeof(System.String));
+			col7.AllowDBNull = true;		
+			DataColumn col8 = dataTable.Columns.Add("UpdatedDate", typeof(System.DateTime));
+			col8.AllowDBNull = true;		
+			DataColumn col9 = dataTable.Columns.Add("UpdatedBy", typeof(System.String));
+			col9.AllowDBNull = true;		
+			DataColumn col10 = dataTable.Columns.Add("QuestionTitle", typeof(System.String));
+			col10.AllowDBNull = true;		
 			
 			bulkCopy.ColumnMappings.Add("QuestionId", "QuestionId");
 			bulkCopy.ColumnMappings.Add("QuestionContent", "QuestionContent");
 			bulkCopy.ColumnMappings.Add("QuestionSuggest", "QuestionSuggest");
 			bulkCopy.ColumnMappings.Add("QuestionDescription", "QuestionDescription");
-			bulkCopy.ColumnMappings.Add("GroupId", "GroupId");
 			bulkCopy.ColumnMappings.Add("OrderNumber", "OrderNumber");
+			bulkCopy.ColumnMappings.Add("GroupId", "GroupId");
+			bulkCopy.ColumnMappings.Add("CreatedDate", "CreatedDate");
+			bulkCopy.ColumnMappings.Add("CreatedBy", "CreatedBy");
+			bulkCopy.ColumnMappings.Add("UpdatedDate", "UpdatedDate");
+			bulkCopy.ColumnMappings.Add("UpdatedBy", "UpdatedBy");
+			bulkCopy.ColumnMappings.Add("QuestionTitle", "QuestionTitle");
 			
 			foreach(NDMSInvestigation.Entities.QuestionDetails entity in entities)
 			{
@@ -800,10 +913,25 @@ namespace NDMSInvestigation.Data.SqlClient
 					row["QuestionDescription"] = entity.QuestionDescription;
 							
 				
-					row["GroupId"] = entity.GroupId;
+					row["OrderNumber"] = entity.OrderNumber.HasValue ? (object) entity.OrderNumber  : System.DBNull.Value;
 							
 				
-					row["OrderNumber"] = entity.OrderNumber.HasValue ? (object) entity.OrderNumber  : System.DBNull.Value;
+					row["GroupId"] = entity.GroupId.HasValue ? (object) entity.GroupId  : System.DBNull.Value;
+							
+				
+					row["CreatedDate"] = entity.CreatedDate.HasValue ? (object) entity.CreatedDate  : System.DBNull.Value;
+							
+				
+					row["CreatedBy"] = entity.CreatedBy;
+							
+				
+					row["UpdatedDate"] = entity.UpdatedDate.HasValue ? (object) entity.UpdatedDate  : System.DBNull.Value;
+							
+				
+					row["UpdatedBy"] = entity.UpdatedBy;
+							
+				
+					row["QuestionTitle"] = entity.QuestionTitle;
 							
 				
 				dataTable.Rows.Add(row);
@@ -844,8 +972,13 @@ namespace NDMSInvestigation.Data.SqlClient
 			database.AddInParameter(commandWrapper, "@QuestionContent", DbType.String, entity.QuestionContent );
 			database.AddInParameter(commandWrapper, "@QuestionSuggest", DbType.String, entity.QuestionSuggest );
 			database.AddInParameter(commandWrapper, "@QuestionDescription", DbType.String, entity.QuestionDescription );
-			database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, entity.GroupId );
 			database.AddInParameter(commandWrapper, "@OrderNumber", DbType.Int32, (entity.OrderNumber.HasValue ? (object) entity.OrderNumber  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, (entity.GroupId.HasValue ? (object) entity.GroupId  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, (entity.CreatedDate.HasValue ? (object) entity.CreatedDate  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, entity.CreatedBy );
+			database.AddInParameter(commandWrapper, "@UpdatedDate", DbType.DateTime, (entity.UpdatedDate.HasValue ? (object) entity.UpdatedDate  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, entity.UpdatedBy );
+			database.AddInParameter(commandWrapper, "@QuestionTitle", DbType.String, entity.QuestionTitle );
 			
 			int results = 0;
 			
@@ -898,8 +1031,13 @@ namespace NDMSInvestigation.Data.SqlClient
 			database.AddInParameter(commandWrapper, "@QuestionContent", DbType.String, entity.QuestionContent );
 			database.AddInParameter(commandWrapper, "@QuestionSuggest", DbType.String, entity.QuestionSuggest );
 			database.AddInParameter(commandWrapper, "@QuestionDescription", DbType.String, entity.QuestionDescription );
-			database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, entity.GroupId );
 			database.AddInParameter(commandWrapper, "@OrderNumber", DbType.Int32, (entity.OrderNumber.HasValue ? (object) entity.OrderNumber : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, (entity.GroupId.HasValue ? (object) entity.GroupId : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, (entity.CreatedDate.HasValue ? (object) entity.CreatedDate : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, entity.CreatedBy );
+			database.AddInParameter(commandWrapper, "@UpdatedDate", DbType.DateTime, (entity.UpdatedDate.HasValue ? (object) entity.UpdatedDate : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, entity.UpdatedBy );
+			database.AddInParameter(commandWrapper, "@QuestionTitle", DbType.String, entity.QuestionTitle );
 			
 			int results = 0;
 			

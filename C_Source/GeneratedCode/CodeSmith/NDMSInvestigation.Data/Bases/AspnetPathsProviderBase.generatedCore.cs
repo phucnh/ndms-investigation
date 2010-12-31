@@ -391,6 +391,7 @@ namespace NDMSInvestigation.Data.Bases
 					c.SuppressEntityEvents = true;
 					c.ApplicationId = (System.Guid)reader[((int)AspnetPathsColumn.ApplicationId - 1)];
 					c.PathId = (System.Guid)reader[((int)AspnetPathsColumn.PathId - 1)];
+					c.OriginalPathId = c.PathId;
 					c.Path = (System.String)reader[((int)AspnetPathsColumn.Path - 1)];
 					c.LoweredPath = (System.String)reader[((int)AspnetPathsColumn.LoweredPath - 1)];
 					c.EntityTrackingKey = key;
@@ -412,6 +413,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)reader[((int)AspnetPathsColumn.ApplicationId - 1)];
 			entity.PathId = (System.Guid)reader[((int)AspnetPathsColumn.PathId - 1)];
+			entity.OriginalPathId = (System.Guid)reader["PathId"];
 			entity.Path = (System.String)reader[((int)AspnetPathsColumn.Path - 1)];
 			entity.LoweredPath = (System.String)reader[((int)AspnetPathsColumn.LoweredPath - 1)];
 			entity.AcceptChanges();
@@ -428,6 +430,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)dataRow["ApplicationId"];
 			entity.PathId = (System.Guid)dataRow["PathId"];
+			entity.OriginalPathId = (System.Guid)dataRow["PathId"];
 			entity.Path = (System.String)dataRow["Path"];
 			entity.LoweredPath = (System.String)dataRow["LoweredPath"];
 			entity.AcceptChanges();

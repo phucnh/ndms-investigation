@@ -84,14 +84,17 @@ namespace NDMSInvestigation.Entities
 		/// Creates a new <see cref="AspnetPathsBase"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_pathId"></param>
 		///<param name="_path"></param>
 		///<param name="_loweredPath"></param>
-		public AspnetPathsBase(System.Guid _applicationId, System.String _path, System.String _loweredPath)
+		public AspnetPathsBase(System.Guid _applicationId, System.Guid _pathId, System.String _path, 
+			System.String _loweredPath)
 		{
 			this.entityData = new AspnetPathsEntityData();
 			this.backupData = null;
 
 			this.ApplicationId = _applicationId;
+			this.PathId = _pathId;
 			this.Path = _path;
 			this.LoweredPath = _loweredPath;
 		}
@@ -100,12 +103,15 @@ namespace NDMSInvestigation.Entities
 		/// A simple factory method to create a new <see cref="AspnetPaths"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_pathId"></param>
 		///<param name="_path"></param>
 		///<param name="_loweredPath"></param>
-		public static AspnetPaths CreateAspnetPaths(System.Guid _applicationId, System.String _path, System.String _loweredPath)
+		public static AspnetPaths CreateAspnetPaths(System.Guid _applicationId, System.Guid _pathId, System.String _path, 
+			System.String _loweredPath)
 		{
 			AspnetPaths newAspnetPaths = new AspnetPaths();
 			newAspnetPaths.ApplicationId = _applicationId;
+			newAspnetPaths.PathId = _pathId;
 			newAspnetPaths.Path = _path;
 			newAspnetPaths.LoweredPath = _loweredPath;
 			return newAspnetPaths;
@@ -163,8 +169,8 @@ namespace NDMSInvestigation.Entities
 
 
 
-		[ReadOnlyAttribute(false)/*, XmlIgnoreAttribute()*/, DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(true, true, false)]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(true, false, false)]
 		public virtual System.Guid PathId
 		{
 			get
@@ -185,6 +191,19 @@ namespace NDMSInvestigation.Entities
 				OnColumnChanged(AspnetPathsColumn.PathId, this.entityData.PathId);
 				OnPropertyChanged("PathId");
 			}
+		}
+		
+		/// <summary>
+		/// 	Get the original value of the PathId property.
+		///		
+		/// </summary>
+		/// <remarks>This is the original value of the PathId property.</remarks>
+		/// <value>This type is uniqueidentifier</value>
+		[BrowsableAttribute(false)/*, XmlIgnoreAttribute()*/]
+		public  virtual System.Guid OriginalPathId
+		{
+			get { return this.entityData.OriginalPathId; }
+			set { this.entityData.OriginalPathId = value; }
 		}
 		
 		/// <summary>
@@ -471,6 +490,7 @@ namespace NDMSInvestigation.Entities
 			copy.SuppressEntityEvents = true;
 				copy.ApplicationId = this.ApplicationId;
 				copy.PathId = this.PathId;
+					copy.OriginalPathId = this.OriginalPathId;
 				copy.Path = this.Path;
 				copy.LoweredPath = this.LoweredPath;
 			
@@ -662,6 +682,7 @@ namespace NDMSInvestigation.Entities
 			if (_originalData != null)
 				return CreateAspnetPaths(
 				_originalData.ApplicationId,
+				_originalData.PathId,
 				_originalData.Path,
 				_originalData.LoweredPath
 				);
@@ -971,6 +992,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Paths"</remarks>
 		public System.Guid PathId;
 			
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		public System.Guid OriginalPathId;
+		
 		#endregion
 		
 		#region Non Primary key(s)
@@ -1067,6 +1093,7 @@ namespace NDMSInvestigation.Entities
 			AspnetPathsEntityData _tmp = new AspnetPathsEntityData();
 						
 			_tmp.PathId = this.PathId;
+			_tmp.OriginalPathId = this.OriginalPathId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.Path = this.Path;
@@ -1103,6 +1130,7 @@ namespace NDMSInvestigation.Entities
 			AspnetPathsEntityData _tmp = new AspnetPathsEntityData();
 						
 			_tmp.PathId = this.PathId;
+			_tmp.OriginalPathId = this.OriginalPathId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.Path = this.Path;
@@ -1497,7 +1525,7 @@ namespace NDMSInvestigation.Entities
 		/// PathId : 
 		/// </summary>
 		[EnumTextValue("PathId")]
-		[ColumnEnum("PathId", typeof(System.Guid), System.Data.DbType.Guid, true, true, false)]
+		[ColumnEnum("PathId", typeof(System.Guid), System.Data.DbType.Guid, true, false, false)]
 		PathId = 2,
 		/// <summary>
 		/// Path : 

@@ -1,29 +1,30 @@
-﻿
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{794327CE-DC0A-4381-89EE-4C00AFB08D5A}</ProjectGuid>
     <ProjectType>Local</ProjectType>
-	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OutputType>Library</OutputType>
     <ApplicationIcon>
-	</ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
-	</AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
     <AssemblyName>NDMSInvestigation.Services</AssemblyName>
     <AssemblyOriginatorKeyFile>..\NDMSInvestigation.snk</AssemblyOriginatorKeyFile>
-	<SignAssembly>false</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <RootNamespace>NDMSInvestigation.Services</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject></StartupObject>
-    <FileUpgradeFlags></FileUpgradeFlags>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -54,7 +55,7 @@
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>NDMSInvestigation.Services.xml</DocumentationFile>
-	 <DebugType>pdbonly</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -87,24 +88,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-	<Reference Include="System.Core">
-		<RequiredTargetFramework>3.5</RequiredTargetFramework>
-	</Reference>
-    <Reference Include="System.Web"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Design"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
     </Reference>
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>    
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
@@ -113,276 +114,261 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll</HintPath>
     </Reference>
-	<Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
     </Reference>
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
-	</Reference>
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
-	</Reference>
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-	</Reference>
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
-	</Reference>	
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
-	</Reference>	
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
-	</Reference>
-     
-	<ProjectReference Include="..\NDMSInvestigation.Entities\NDMSInvestigation.Entities.csproj">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\NDMSInvestigation.Entities\NDMSInvestigation.Entities.csproj">
       <Name>NDMSInvestigation.Entities</Name>
       <Project>{20E43088-4618-4F4A-B8AD-FC31B50D94CD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-	
-	
     <ProjectReference Include="..\NDMSInvestigation.Data\NDMSInvestigation.Data.csproj">
-        <Name>NDMSInvestigation.Data</Name>
-        <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
-        <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"</Package>
+      <Name>NDMSInvestigation.Data</Name>
+      <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"</Package>
     </ProjectReference>
-	
-	
-    
-    	
-	
-	
-	
-	</ItemGroup>
-	
-		
-	<!-- Custom code folder: D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.Services\App_Code -->
-	<ItemGroup>	
-		<Folder Include="App_Code\" />
-        <Compile Include="App_Code\**\*.cs">
-          <SubType>Code</SubType>
-        </Compile>		
-	</ItemGroup>
-
-	<!-- Include any user files -->
-	<ItemGroup>	
-		<Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**" >
-          <SubType>Code</SubType>
-        </Compile>		
-	</ItemGroup>
-	
-	<ItemGroup>
-		<Compile Include="AnswerDetailsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AnswerDetailsServiceBase.generated.cs">
-		  <DependentUpon>AnswerDetailsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetApplicationsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetApplicationsServiceBase.generated.cs">
-		  <DependentUpon>AspnetApplicationsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetMembershipService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetMembershipServiceBase.generated.cs">
-		  <DependentUpon>AspnetMembershipService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetPathsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetPathsServiceBase.generated.cs">
-		  <DependentUpon>AspnetPathsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetPersonalizationAllUsersService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetPersonalizationAllUsersServiceBase.generated.cs">
-		  <DependentUpon>AspnetPersonalizationAllUsersService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetPersonalizationPerUserService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetPersonalizationPerUserServiceBase.generated.cs">
-		  <DependentUpon>AspnetPersonalizationPerUserService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetProfileService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetProfileServiceBase.generated.cs">
-		  <DependentUpon>AspnetProfileService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetRolesService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetRolesServiceBase.generated.cs">
-		  <DependentUpon>AspnetRolesService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetSchemaVersionsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetSchemaVersionsServiceBase.generated.cs">
-		  <DependentUpon>AspnetSchemaVersionsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetUsersService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetUsersServiceBase.generated.cs">
-		  <DependentUpon>AspnetUsersService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetUsersInRolesService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetUsersInRolesServiceBase.generated.cs">
-		  <DependentUpon>AspnetUsersInRolesService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="AspnetWebEventEventsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="AspnetWebEventEventsServiceBase.generated.cs">
-		  <DependentUpon>AspnetWebEventEventsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="QuestionAnswerService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="QuestionAnswerServiceBase.generated.cs">
-		  <DependentUpon>QuestionAnswerService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="QuestionDetailsService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="QuestionDetailsServiceBase.generated.cs">
-		  <DependentUpon>QuestionDetailsService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="QuestionGroupService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="QuestionGroupServiceBase.generated.cs">
-		  <DependentUpon>QuestionGroupService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="ResultService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="ResultServiceBase.generated.cs">
-		  <DependentUpon>ResultService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="UserService.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Include="UserServiceBase.generated.cs">
-		  <DependentUpon>UserService.cs</DependentUpon>
-		  <SubType>Code</SubType>
-		</Compile>	
-		<Compile Include="..\AssemblyInfo.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-			
-		<!-- 
+  </ItemGroup>
+  <!-- Custom code folder: B:\Tai Lieu\CTy\NDMS\C_Source\GeneratedCode\CodeSmith\NDMSInvestigation.Services\App_Code -->
+  <ItemGroup>
+    <Compile Include="App_Code\**\*.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include any user files -->
+  <ItemGroup>
+    <Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnswerDetailsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AnswerDetailsServiceBase.generated.cs">
+      <DependentUpon>AnswerDetailsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetApplicationsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetApplicationsServiceBase.generated.cs">
+      <DependentUpon>AspnetApplicationsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetMembershipService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetMembershipServiceBase.generated.cs">
+      <DependentUpon>AspnetMembershipService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPathsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPathsServiceBase.generated.cs">
+      <DependentUpon>AspnetPathsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPersonalizationAllUsersService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPersonalizationAllUsersServiceBase.generated.cs">
+      <DependentUpon>AspnetPersonalizationAllUsersService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPersonalizationPerUserService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetPersonalizationPerUserServiceBase.generated.cs">
+      <DependentUpon>AspnetPersonalizationPerUserService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetProfileService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetProfileServiceBase.generated.cs">
+      <DependentUpon>AspnetProfileService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetRolesService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetRolesServiceBase.generated.cs">
+      <DependentUpon>AspnetRolesService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetSchemaVersionsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetSchemaVersionsServiceBase.generated.cs">
+      <DependentUpon>AspnetSchemaVersionsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetUsersService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetUsersServiceBase.generated.cs">
+      <DependentUpon>AspnetUsersService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetUsersInRolesService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetUsersInRolesServiceBase.generated.cs">
+      <DependentUpon>AspnetUsersInRolesService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetWebEventEventsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AspnetWebEventEventsServiceBase.generated.cs">
+      <DependentUpon>AspnetWebEventEventsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CompanyDetailsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CompanyDetailsServiceBase.generated.cs">
+      <DependentUpon>CompanyDetailsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionAnswerService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionAnswerServiceBase.generated.cs">
+      <DependentUpon>QuestionAnswerService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionDetailsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionDetailsServiceBase.generated.cs">
+      <DependentUpon>QuestionDetailsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionGroupsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuestionGroupsServiceBase.generated.cs">
+      <DependentUpon>QuestionGroupsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ResultsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ResultsServiceBase.generated.cs">
+      <DependentUpon>ResultsService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TraceChangeService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TraceChangeServiceBase.generated.cs">
+      <DependentUpon>TraceChangeService.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- 
 			<Compile Include="Processors\**\*.cs">
 			   <SubType>Code</SubType>
 			</Compile>		
 		 -->
-			<Compile Include="Processors\GenericProcessorResult.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="Processors\IProcessor.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="Processors\IProcessorResult.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="Processors\ProcessorBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			
-			<Compile Include="SecurityContext.cs">
-			  <SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="SecurityContextBase.generated.cs">
-			  <DependentUpon>SecurityContext.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="ContextView.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="DomainUtil.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IConnectionScope.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ConnectionScope.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ConnectionScopeBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ServiceResult.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ServiceBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ServiceBaseCore.generated.cs">
-			  <SubType>Code</SubType>
-			  <DependentUpon>ServiceBase.cs</DependentUpon>
-			</Compile>
-			<Compile Include="IComponentService.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="Views\ServiceViewBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Views\ServiceViewBaseCore.generated.cs">
-			  <SubType>Code</SubType>
-			  <DependentUpon>ServiceViewBase.cs</DependentUpon>
-			</Compile>
-
-		
-		
-
-		
-		
-		
-		
-		 <AppDesigner Include="Properties\" />
-	</ItemGroup>
-	
-	
-	
-	
+    <Compile Include="Processors\GenericProcessorResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processors\IProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processors\IProcessorResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processors\ProcessorBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecurityContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecurityContextBase.generated.cs">
+      <DependentUpon>SecurityContext.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContextView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IConnectionScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConnectionScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConnectionScopeBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceBaseCore.generated.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ServiceBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IComponentService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceViewBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceViewBaseCore.generated.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ServiceViewBase.cs</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\NDMSInvestigation.snk">
+      <Link>NDMSInvestigation.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-	<PostBuildEvent>
-	</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
-
 </Project>
