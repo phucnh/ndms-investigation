@@ -17,8 +17,8 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<data:HyperLinkField HeaderText="Role Id" DataNavigateUrlFormatString="AspnetRolesEdit.aspx?RoleId={0}" DataNavigateUrlFields="RoleId" DataContainer="RoleIdSource" DataTextField="RoleName" />
 				<data:HyperLinkField HeaderText="User Id" DataNavigateUrlFormatString="AspnetUsersEdit.aspx?UserId={0}" DataNavigateUrlFields="UserId" DataContainer="UserIdSource" DataTextField="UserName" />
+				<data:HyperLinkField HeaderText="Role Id" DataNavigateUrlFormatString="AspnetRolesEdit.aspx?RoleId={0}" DataNavigateUrlFields="RoleId" DataContainer="RoleIdSource" DataTextField="RoleName" />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetUsersInRoles Found!</b>

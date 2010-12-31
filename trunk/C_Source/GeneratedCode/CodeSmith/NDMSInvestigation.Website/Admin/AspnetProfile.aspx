@@ -17,11 +17,11 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="PropertyValuesBinary" HeaderText="Property Values Binary" SortExpression="[PropertyValuesBinary]"  />
-				<asp:BoundField DataField="LastUpdatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Last Updated Date" SortExpression="[LastUpdatedDate]"  />
-				<asp:BoundField DataField="PropertyValuesString" HeaderText="Property Values String" SortExpression=""  />
 				<data:HyperLinkField HeaderText="User Id" DataNavigateUrlFormatString="AspnetUsersEdit.aspx?UserId={0}" DataNavigateUrlFields="UserId" DataContainer="UserIdSource" DataTextField="UserName" />
 				<asp:BoundField DataField="PropertyNames" HeaderText="Property Names" SortExpression=""  />
+				<asp:BoundField DataField="PropertyValuesString" HeaderText="Property Values String" SortExpression=""  />
+				<asp:BoundField DataField="PropertyValuesBinary" HeaderText="Property Values Binary" SortExpression="[PropertyValuesBinary]"  />
+				<asp:BoundField DataField="LastUpdatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Last Updated Date" SortExpression="[LastUpdatedDate]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetProfile Found!</b>

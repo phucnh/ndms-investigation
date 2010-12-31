@@ -891,7 +891,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_Roles_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
-			database.AddOutParameter(commandWrapper, "@RoleId", DbType.Guid, 16);
+			database.AddInParameter(commandWrapper, "@RoleId", DbType.Guid, entity.RoleId );
 			database.AddInParameter(commandWrapper, "@RoleName", DbType.String, entity.RoleName );
 			database.AddInParameter(commandWrapper, "@LoweredRoleName", DbType.String, entity.LoweredRoleName );
 			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
@@ -910,9 +910,8 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _roleId = database.GetParameterValue(commandWrapper, "@RoleId");
-			entity.RoleId = (System.Guid)_roleId;
 			
+			entity.OriginalRoleId = entity.RoleId;
 			
 			entity.AcceptChanges();
 	
@@ -945,6 +944,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
 			database.AddInParameter(commandWrapper, "@RoleId", DbType.Guid, entity.RoleId );
+			database.AddInParameter(commandWrapper, "@OriginalRoleId", DbType.Guid, entity.OriginalRoleId);
 			database.AddInParameter(commandWrapper, "@RoleName", DbType.String, entity.RoleName );
 			database.AddInParameter(commandWrapper, "@LoweredRoleName", DbType.String, entity.LoweredRoleName );
 			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
@@ -967,6 +967,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalRoleId = entity.RoleId;
 			
 			entity.AcceptChanges();
 			

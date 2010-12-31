@@ -160,9 +160,8 @@ namespace NDMSInvestigation.Web.Data
 			QuestionAnswer item;
 			count = 0;
 			
-			System.Int32 _questionAnswerId;
-			System.Int32 _answerId;
 			System.Int32 _questionId;
+			System.Int32 _answerId;
 
 			switch ( SelectMethod )
 			{
@@ -187,9 +186,10 @@ namespace NDMSInvestigation.Web.Data
 						results = QuestionAnswerProvider.Find(WhereClause, StartIndex, PageSize, out count);
                     break;
 				// PK
-				case QuestionAnswerSelectMethod.GetByQuestionAnswerId:
-					_questionAnswerId = ( values["QuestionAnswerId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["QuestionAnswerId"], typeof(System.Int32)) : (int)0;
-					item = QuestionAnswerProvider.GetByQuestionAnswerId(_questionAnswerId);
+				case QuestionAnswerSelectMethod.GetByQuestionIdAnswerId:
+					_questionId = ( values["QuestionId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["QuestionId"], typeof(System.Int32)) : (int)0;
+					_answerId = ( values["AnswerId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["AnswerId"], typeof(System.Int32)) : (int)0;
+					item = QuestionAnswerProvider.GetByQuestionIdAnswerId(_questionId, _answerId);
 					results = new TList<QuestionAnswer>();
 					if ( item != null ) results.Add(item);
 					count = results.Count;
@@ -234,7 +234,7 @@ namespace NDMSInvestigation.Web.Data
 		/// <param name="values">An IDictionary object of name/value pairs.</param>
 		protected override void GetSelectParameters(IDictionary values)
 		{
-			if ( SelectMethod == QuestionAnswerSelectMethod.Get || SelectMethod == QuestionAnswerSelectMethod.GetByQuestionAnswerId )
+			if ( SelectMethod == QuestionAnswerSelectMethod.Get || SelectMethod == QuestionAnswerSelectMethod.GetByQuestionIdAnswerId )
 			{
 				EntityId = GetEntityKey(values);
 			}
@@ -385,9 +385,9 @@ namespace NDMSInvestigation.Web.Data
 		/// </summary>
 		Find,
 		/// <summary>
-		/// Represents the GetByQuestionAnswerId method.
+		/// Represents the GetByQuestionIdAnswerId method.
 		/// </summary>
-		GetByQuestionAnswerId,
+		GetByQuestionIdAnswerId,
 		/// <summary>
 		/// Represents the GetByAnswerId method.
 		/// </summary>

@@ -15,12 +15,12 @@ namespace NDMSInvestigation.UserControl.Views
         // NOTE: Uncomment the following code if you want ObjectBuilder to inject the module controller
         //       The code will not work in the Shell module, as a module controller is not created by default
         //
-        private NDMSInvestigation.Services.UserService _userService;
+        private NDMSInvestigation.Services.CompanyDetailsService _userService;
         private IUserControlController _controller;
 
         public RegisterPresenter(
             [CreateNew] IUserControlController controller,
-            [ServiceDependency] NDMSInvestigation.Services.UserService userService
+            [ServiceDependency] NDMSInvestigation.Services.CompanyDetailsService userService
             )
         {
             _controller = controller;
@@ -37,7 +37,7 @@ namespace NDMSInvestigation.UserControl.Views
             // TODO: Implement code that will be executed the first time the view loads
         }
 
-        public void Insert(NDMSInvestigation.Entities.User user)
+        public void Insert(CompanyDetails user)
         {
             _userService.Insert(user);
         }

@@ -17,9 +17,10 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="Description" HeaderText="Description" SortExpression="[Description]"  />
-				<asp:BoundField DataField="LoweredApplicationName" HeaderText="Lowered Application Name" SortExpression="[LoweredApplicationName]"  />
 				<asp:BoundField DataField="ApplicationName" HeaderText="Application Name" SortExpression="[ApplicationName]"  />
+				<asp:BoundField DataField="LoweredApplicationName" HeaderText="Lowered Application Name" SortExpression="[LoweredApplicationName]"  />
+				<asp:BoundField DataField="ApplicationId" HeaderText="Application Id" SortExpression="[ApplicationId]" ReadOnly="True" />
+				<asp:BoundField DataField="Description" HeaderText="Description" SortExpression="[Description]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetApplications Found!</b>

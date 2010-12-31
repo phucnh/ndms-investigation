@@ -85,15 +85,17 @@ namespace NDMSInvestigation.Entities
 		///</summary>
 		///<param name="_applicationName"></param>
 		///<param name="_loweredApplicationName"></param>
+		///<param name="_applicationId"></param>
 		///<param name="_description"></param>
 		public AspnetApplicationsBase(System.String _applicationName, System.String _loweredApplicationName, 
-			System.String _description)
+			System.Guid _applicationId, System.String _description)
 		{
 			this.entityData = new AspnetApplicationsEntityData();
 			this.backupData = null;
 
 			this.ApplicationName = _applicationName;
 			this.LoweredApplicationName = _loweredApplicationName;
+			this.ApplicationId = _applicationId;
 			this.Description = _description;
 		}
 		
@@ -102,13 +104,15 @@ namespace NDMSInvestigation.Entities
 		///</summary>
 		///<param name="_applicationName"></param>
 		///<param name="_loweredApplicationName"></param>
+		///<param name="_applicationId"></param>
 		///<param name="_description"></param>
 		public static AspnetApplications CreateAspnetApplications(System.String _applicationName, System.String _loweredApplicationName, 
-			System.String _description)
+			System.Guid _applicationId, System.String _description)
 		{
 			AspnetApplications newAspnetApplications = new AspnetApplications();
 			newAspnetApplications.ApplicationName = _applicationName;
 			newAspnetApplications.LoweredApplicationName = _loweredApplicationName;
+			newAspnetApplications.ApplicationId = _applicationId;
 			newAspnetApplications.Description = _description;
 			return newAspnetApplications;
 		}
@@ -202,8 +206,8 @@ namespace NDMSInvestigation.Entities
 
 
 
-		[ReadOnlyAttribute(false)/*, XmlIgnoreAttribute()*/, DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(true, true, false)]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(true, false, false)]
 		public virtual System.Guid ApplicationId
 		{
 			get
@@ -224,6 +228,19 @@ namespace NDMSInvestigation.Entities
 				OnColumnChanged(AspnetApplicationsColumn.ApplicationId, this.entityData.ApplicationId);
 				OnPropertyChanged("ApplicationId");
 			}
+		}
+		
+		/// <summary>
+		/// 	Get the original value of the ApplicationId property.
+		///		
+		/// </summary>
+		/// <remarks>This is the original value of the ApplicationId property.</remarks>
+		/// <value>This type is uniqueidentifier</value>
+		[BrowsableAttribute(false)/*, XmlIgnoreAttribute()*/]
+		public  virtual System.Guid OriginalApplicationId
+		{
+			get { return this.entityData.OriginalApplicationId; }
+			set { this.entityData.OriginalApplicationId = value; }
 		}
 		
 		/// <summary>
@@ -486,6 +503,7 @@ namespace NDMSInvestigation.Entities
 				copy.ApplicationName = this.ApplicationName;
 				copy.LoweredApplicationName = this.LoweredApplicationName;
 				copy.ApplicationId = this.ApplicationId;
+					copy.OriginalApplicationId = this.OriginalApplicationId;
 				copy.Description = this.Description;
 			
 		
@@ -675,6 +693,7 @@ namespace NDMSInvestigation.Entities
 				return CreateAspnetApplications(
 				_originalData.ApplicationName,
 				_originalData.LoweredApplicationName,
+				_originalData.ApplicationId,
 				_originalData.Description
 				);
 				
@@ -990,6 +1009,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Applications"</remarks>
 		public System.Guid ApplicationId;
 			
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		public System.Guid OriginalApplicationId;
+		
 		#endregion
 		
 		#region Non Primary key(s)
@@ -1131,6 +1155,7 @@ namespace NDMSInvestigation.Entities
 			AspnetApplicationsEntityData _tmp = new AspnetApplicationsEntityData();
 						
 			_tmp.ApplicationId = this.ApplicationId;
+			_tmp.OriginalApplicationId = this.OriginalApplicationId;
 			
 			_tmp.ApplicationName = this.ApplicationName;
 			_tmp.LoweredApplicationName = this.LoweredApplicationName;
@@ -1169,6 +1194,7 @@ namespace NDMSInvestigation.Entities
 			AspnetApplicationsEntityData _tmp = new AspnetApplicationsEntityData();
 						
 			_tmp.ApplicationId = this.ApplicationId;
+			_tmp.OriginalApplicationId = this.OriginalApplicationId;
 			
 			_tmp.ApplicationName = this.ApplicationName;
 			_tmp.LoweredApplicationName = this.LoweredApplicationName;
@@ -1567,7 +1593,7 @@ namespace NDMSInvestigation.Entities
 		/// ApplicationId : 
 		/// </summary>
 		[EnumTextValue("ApplicationId")]
-		[ColumnEnum("ApplicationId", typeof(System.Guid), System.Data.DbType.Guid, true, true, false)]
+		[ColumnEnum("ApplicationId", typeof(System.Guid), System.Data.DbType.Guid, true, false, false)]
 		ApplicationId = 3,
 		/// <summary>
 		/// Description : 

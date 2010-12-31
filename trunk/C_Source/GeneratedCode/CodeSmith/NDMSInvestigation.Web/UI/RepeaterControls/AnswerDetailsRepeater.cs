@@ -367,6 +367,42 @@ namespace NDMSInvestigation.Web.UI
 		{
 			get { return _entity.AnswerDescription; }
 		}
+        /// <summary>
+        /// Gets the CreatedDate
+        /// </summary>
+        /// <value>The CreatedDate.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? CreatedDate
+		{
+			get { return _entity.CreatedDate; }
+		}
+        /// <summary>
+        /// Gets the CreatedBy
+        /// </summary>
+        /// <value>The CreatedBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String CreatedBy
+		{
+			get { return _entity.CreatedBy; }
+		}
+        /// <summary>
+        /// Gets the UpdateDate
+        /// </summary>
+        /// <value>The UpdateDate.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? UpdateDate
+		{
+			get { return _entity.UpdateDate; }
+		}
+        /// <summary>
+        /// Gets the UpdateBy
+        /// </summary>
+        /// <value>The UpdateBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String UpdateBy
+		{
+			get { return _entity.UpdateBy; }
+		}
 
         /// <summary>
         /// Gets a <see cref="T:NDMSInvestigation.Entities.AnswerDetails"></see> object

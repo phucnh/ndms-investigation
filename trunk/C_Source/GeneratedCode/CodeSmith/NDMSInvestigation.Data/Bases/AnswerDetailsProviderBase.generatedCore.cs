@@ -20,6 +20,105 @@ namespace NDMSInvestigation.Data.Bases
 	public abstract partial class AnswerDetailsProviderBaseCore : EntityProviderBase<NDMSInvestigation.Entities.AnswerDetails, NDMSInvestigation.Entities.AnswerDetailsKey>
 	{		
 		#region Get from Many To Many Relationship Functions
+		#region GetByQuestionIdFromQuestionAnswer
+		
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_questionId"></param>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		public TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(System.Int32 _questionId)
+		{
+			int count = -1;
+			return GetByQuestionIdFromQuestionAnswer(null,_questionId, 0, int.MaxValue, out count);
+			
+		}
+		
+		/// <summary>
+		///		Gets NDMSInvestigation.Entities.AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
+		/// <param name="pageLength">Number of rows to return.</param>
+		/// <param name="_questionId"></param>
+		/// <remarks></remarks>
+		/// <returns>Returns a TList of AnswerDetails objects.</returns>
+		public TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(System.Int32 _questionId, int start, int pageLength)
+		{
+			int count = -1;
+			return GetByQuestionIdFromQuestionAnswer(null, _questionId, start, pageLength, out count);
+		}
+		
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
+		/// <param name="_questionId"></param>
+		/// <remarks></remarks>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		public TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(TransactionManager transactionManager, System.Int32 _questionId)
+		{
+			int count = -1;
+			return GetByQuestionIdFromQuestionAnswer(transactionManager, _questionId, 0, int.MaxValue, out count);
+		}
+		
+		
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
+		/// <param name="_questionId"></param>
+		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
+		///  <param name="pageLength">Number of rows to return.</param>
+		/// <remarks></remarks>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		public TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(TransactionManager transactionManager, System.Int32 _questionId,int start, int pageLength)
+		{
+			int count = -1;
+			return GetByQuestionIdFromQuestionAnswer(transactionManager, _questionId, start, pageLength, out count);
+		}
+		
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_questionId"></param>
+		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
+		///  <param name="pageLength">Number of rows to return.</param>
+		/// <param name="count">out parameter to get total records for query</param>
+		/// <remarks></remarks>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		public TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(System.Int32 _questionId,int start, int pageLength, out int count)
+		{
+			
+			return GetByQuestionIdFromQuestionAnswer(null, _questionId, start, pageLength, out count);
+		}
+
+
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
+		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
+		/// <param name="pageLength">Number of rows to return.</param>
+		/// <param name="count">out parameter to get total records for query</param>
+		/// <param name="_questionId"></param>
+		/// <remarks></remarks>
+		/// <returns>Returns a TList of AnswerDetails objects.</returns>
+		public abstract TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(TransactionManager transactionManager,System.Int32 _questionId, int start, int pageLength, out int count);
+		
+		#endregion GetByQuestionIdFromQuestionAnswer
+		
 		#endregion	
 		
 		#region Delete Methods
@@ -220,9 +319,13 @@ namespace NDMSInvestigation.Data.Bases
 				{
 					c.SuppressEntityEvents = true;
 					c.AnswerId = (System.Int32)reader[((int)AnswerDetailsColumn.AnswerId - 1)];
-					c.AnswerContent = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerContent - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.AnswerContent - 1)];
+					c.AnswerContent = (System.String)reader[((int)AnswerDetailsColumn.AnswerContent - 1)];
 					c.AnswerMark = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerMark - 1)))?null:(System.Int32?)reader[((int)AnswerDetailsColumn.AnswerMark - 1)];
 					c.AnswerDescription = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerDescription - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.AnswerDescription - 1)];
+					c.CreatedDate = (reader.IsDBNull(((int)AnswerDetailsColumn.CreatedDate - 1)))?null:(System.DateTime?)reader[((int)AnswerDetailsColumn.CreatedDate - 1)];
+					c.CreatedBy = (reader.IsDBNull(((int)AnswerDetailsColumn.CreatedBy - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.CreatedBy - 1)];
+					c.UpdateDate = (reader.IsDBNull(((int)AnswerDetailsColumn.UpdateDate - 1)))?null:(System.DateTime?)reader[((int)AnswerDetailsColumn.UpdateDate - 1)];
+					c.UpdateBy = (reader.IsDBNull(((int)AnswerDetailsColumn.UpdateBy - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.UpdateBy - 1)];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -241,9 +344,13 @@ namespace NDMSInvestigation.Data.Bases
 			if (!reader.Read()) return;
 			
 			entity.AnswerId = (System.Int32)reader[((int)AnswerDetailsColumn.AnswerId - 1)];
-			entity.AnswerContent = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerContent - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.AnswerContent - 1)];
+			entity.AnswerContent = (System.String)reader[((int)AnswerDetailsColumn.AnswerContent - 1)];
 			entity.AnswerMark = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerMark - 1)))?null:(System.Int32?)reader[((int)AnswerDetailsColumn.AnswerMark - 1)];
 			entity.AnswerDescription = (reader.IsDBNull(((int)AnswerDetailsColumn.AnswerDescription - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.AnswerDescription - 1)];
+			entity.CreatedDate = (reader.IsDBNull(((int)AnswerDetailsColumn.CreatedDate - 1)))?null:(System.DateTime?)reader[((int)AnswerDetailsColumn.CreatedDate - 1)];
+			entity.CreatedBy = (reader.IsDBNull(((int)AnswerDetailsColumn.CreatedBy - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.CreatedBy - 1)];
+			entity.UpdateDate = (reader.IsDBNull(((int)AnswerDetailsColumn.UpdateDate - 1)))?null:(System.DateTime?)reader[((int)AnswerDetailsColumn.UpdateDate - 1)];
+			entity.UpdateBy = (reader.IsDBNull(((int)AnswerDetailsColumn.UpdateBy - 1)))?null:(System.String)reader[((int)AnswerDetailsColumn.UpdateBy - 1)];
 			entity.AcceptChanges();
 		}
 		
@@ -257,9 +364,13 @@ namespace NDMSInvestigation.Data.Bases
 			DataRow dataRow = dataSet.Tables[0].Rows[0];
 			
 			entity.AnswerId = (System.Int32)dataRow["AnswerId"];
-			entity.AnswerContent = Convert.IsDBNull(dataRow["AnswerContent"]) ? null : (System.String)dataRow["AnswerContent"];
+			entity.AnswerContent = (System.String)dataRow["AnswerContent"];
 			entity.AnswerMark = Convert.IsDBNull(dataRow["AnswerMark"]) ? null : (System.Int32?)dataRow["AnswerMark"];
 			entity.AnswerDescription = Convert.IsDBNull(dataRow["AnswerDescription"]) ? null : (System.String)dataRow["AnswerDescription"];
+			entity.CreatedDate = Convert.IsDBNull(dataRow["CreatedDate"]) ? null : (System.DateTime?)dataRow["CreatedDate"];
+			entity.CreatedBy = Convert.IsDBNull(dataRow["CreatedBy"]) ? null : (System.String)dataRow["CreatedBy"];
+			entity.UpdateDate = Convert.IsDBNull(dataRow["UpdateDate"]) ? null : (System.DateTime?)dataRow["UpdateDate"];
+			entity.UpdateBy = Convert.IsDBNull(dataRow["UpdateBy"]) ? null : (System.String)dataRow["UpdateBy"];
 			entity.AcceptChanges();
 		}
 		#endregion 
@@ -310,6 +421,28 @@ namespace NDMSInvestigation.Data.Bases
 			#endregion 
 			
 			
+			#region QuestionIdQuestionDetailsCollection_From_QuestionAnswer
+			// RelationshipType.ManyToMany
+			if (CanDeepLoad(entity, "List<QuestionDetails>|QuestionIdQuestionDetailsCollection_From_QuestionAnswer", deepLoadType, innerList))
+			{
+				entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer = DataRepository.QuestionDetailsProvider.GetByAnswerIdFromQuestionAnswer(transactionManager, entity.AnswerId);			 
+		
+				#if NETTIERS_DEBUG
+				System.Diagnostics.Debug.WriteLine("- property 'QuestionIdQuestionDetailsCollection_From_QuestionAnswer' loaded. key " + entity.EntityTrackingKey);
+				#endif 
+				
+				if (deep && entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer != null)
+				{
+					deepHandles.Add("QuestionIdQuestionDetailsCollection_From_QuestionAnswer",
+						new KeyValuePair<Delegate, object>((DeepLoadHandle< QuestionDetails >) DataRepository.QuestionDetailsProvider.DeepLoad,
+						new object[] { transactionManager, entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer, deep, deepLoadType, childTypes, innerList }
+					));
+				}
+			}
+			#endregion
+			
+			
+			
 			//Fire all DeepLoad Items
 			foreach(KeyValuePair<Delegate, object> pair in deepHandles.Values)
 		    {
@@ -347,6 +480,20 @@ namespace NDMSInvestigation.Data.Bases
 			
 			//used to hold DeepSave method delegates and fire after all the local children have been saved.
 			Dictionary<string, KeyValuePair<Delegate, object>> deepHandles = new Dictionary<string, KeyValuePair<Delegate, object>>();
+
+			#region QuestionIdQuestionDetailsCollection_From_QuestionAnswer>
+			if (CanDeepSave(entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer, "List<QuestionDetails>|QuestionIdQuestionDetailsCollection_From_QuestionAnswer", deepSaveType, innerList))
+			{
+				if (entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer.Count > 0 || entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer.DeletedItems.Count > 0)
+				{
+					DataRepository.QuestionDetailsProvider.Save(transactionManager, entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer); 
+					deepHandles.Add("QuestionIdQuestionDetailsCollection_From_QuestionAnswer",
+						new KeyValuePair<Delegate, object>((DeepSaveHandle<QuestionDetails>) DataRepository.QuestionDetailsProvider.DeepSave,
+						new object[] { transactionManager, entity.QuestionIdQuestionDetailsCollection_From_QuestionAnswer, deepSaveType, childTypes, innerList }
+					));
+				}
+			}
+			#endregion 
 	
 			#region List<QuestionAnswer>
 				if (CanDeepSave(entity.QuestionAnswerCollection, "List<QuestionAnswer>|QuestionAnswerCollection", deepSaveType, innerList)) 
@@ -356,11 +503,12 @@ namespace NDMSInvestigation.Data.Bases
 					{
 						if(child.AnswerIdSource != null)
 						{
-							child.AnswerId = child.AnswerIdSource.AnswerId;
+								child.AnswerId = child.AnswerIdSource.AnswerId;
 						}
-						else
+
+						if(child.QuestionIdSource != null)
 						{
-							child.AnswerId = entity.AnswerId;
+								child.QuestionId = child.QuestionIdSource.QuestionId;
 						}
 
 					}
@@ -409,6 +557,12 @@ namespace NDMSInvestigation.Data.Bases
 		///</summary>
 		[ChildEntityType(typeof(TList<QuestionAnswer>))]
 		QuestionAnswerCollection,
+
+		///<summary>
+		/// Collection of <c>AnswerDetails</c> as ManyToMany for QuestionDetailsCollection_From_QuestionAnswer
+		///</summary>
+		[ChildEntityType(typeof(TList<QuestionDetails>))]
+		QuestionIdQuestionDetailsCollection_From_QuestionAnswer,
 	}
 	
 	#endregion AnswerDetailsChildEntityTypes

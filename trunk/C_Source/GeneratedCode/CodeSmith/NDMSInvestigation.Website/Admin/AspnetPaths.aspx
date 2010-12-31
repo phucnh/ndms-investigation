@@ -17,9 +17,10 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="LoweredPath" HeaderText="Lowered Path" SortExpression="[LoweredPath]"  />
-				<asp:BoundField DataField="Path" HeaderText="Path" SortExpression="[Path]"  />
 				<data:HyperLinkField HeaderText="Application Id" DataNavigateUrlFormatString="AspnetApplicationsEdit.aspx?ApplicationId={0}" DataNavigateUrlFields="ApplicationId" DataContainer="ApplicationIdSource" DataTextField="ApplicationName" />
+				<asp:BoundField DataField="PathId" HeaderText="Path Id" SortExpression="[PathId]" ReadOnly="True" />
+				<asp:BoundField DataField="Path" HeaderText="Path" SortExpression="[Path]"  />
+				<asp:BoundField DataField="LoweredPath" HeaderText="Lowered Path" SortExpression="[LoweredPath]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetPaths Found!</b>

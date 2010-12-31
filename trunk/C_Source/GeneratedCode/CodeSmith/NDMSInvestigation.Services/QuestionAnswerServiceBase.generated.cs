@@ -30,7 +30,7 @@ namespace NDMSInvestigation.Services
 {		
 	
 	///<summary>
-	/// An object representation of the 'Question_Answer' table.
+	/// An object representation of the 'QuestionAnswer' table.
 	///</summary>
 	/// <remarks>
 	/// IMPORTANT!!! You should not modify this partial  class, modify the QuestionAnswer.cs file instead.
@@ -55,12 +55,22 @@ namespace NDMSInvestigation.Services
 		///<param name="_questionId"></param>
 		///<param name="_answerId"></param>
 		///<param name="_mark"></param>
-		public static QuestionAnswer CreateQuestionAnswer(System.Int32 _questionId, System.Int32 _answerId, System.Int32? _mark)
+		///<param name="_description"></param>
+		///<param name="_createdDate"></param>
+		///<param name="_createdBy"></param>
+		///<param name="_updateDated"></param>
+		///<param name="_updatedBy"></param>
+		public static QuestionAnswer CreateQuestionAnswer(System.Int32 _questionId, System.Int32 _answerId, System.Int32? _mark, System.String _description, System.DateTime? _createdDate, System.String _createdBy, System.DateTime? _updateDated, System.String _updatedBy)
 		{
 			QuestionAnswer newEntityQuestionAnswer = new QuestionAnswer();
 			newEntityQuestionAnswer.QuestionId  = _questionId;
 			newEntityQuestionAnswer.AnswerId  = _answerId;
 			newEntityQuestionAnswer.Mark  = _mark;
+			newEntityQuestionAnswer.Description  = _description;
+			newEntityQuestionAnswer.CreatedDate  = _createdDate;
+			newEntityQuestionAnswer.CreatedBy  = _createdBy;
+			newEntityQuestionAnswer.UpdateDated  = _updateDated;
+			newEntityQuestionAnswer.UpdatedBy  = _updatedBy;
 			return newEntityQuestionAnswer;
 		}
 		#endregion Constructors
@@ -90,8 +100,8 @@ namespace NDMSInvestigation.Services
 		
 		#region GetByForeignKey Methods
 		/// <summary>
-		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="_answerId"></param>
 		/// <returns>Returns a generic collection of QuestionAnswer objects.</returns>
@@ -132,8 +142,8 @@ namespace NDMSInvestigation.Services
 		}
 		
 		/// <summary>
-		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
@@ -177,8 +187,8 @@ namespace NDMSInvestigation.Services
 		}
 		
 		/// <summary>
-		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="_questionId"></param>
 		/// <returns>Returns a generic collection of QuestionAnswer objects.</returns>
@@ -219,8 +229,8 @@ namespace NDMSInvestigation.Services
 		}
 		
 		/// <summary>
-		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	public virtual method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="_questionId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
@@ -274,20 +284,21 @@ namespace NDMSInvestigation.Services
 		[DataObjectMethod(DataObjectMethodType.Select)]
 		public override QuestionAnswer Get(QuestionAnswerKey key)
 		{
-			return GetByQuestionAnswerId(key.QuestionAnswerId);
+			return GetByQuestionIdAnswerId(key.QuestionId, key.AnswerId);
 		}
 
 		/// <summary>
-		///  method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the primary key PK_Question_Answer index.
+		///  method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the primary key PK_QuestionAnswer index.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <returns>Returns an instance of the <see cref="QuestionAnswer"/> class.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionAnswer GetByQuestionAnswerId(System.Int32 _questionAnswerId)
+		public virtual QuestionAnswer GetByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByQuestionAnswerId");
+			SecurityContext.IsAuthorized("GetByQuestionIdAnswerId");
 			#endregion Security check
 			
 			#region Initialisation
@@ -301,7 +312,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 				
-				entity = dataProvider.QuestionAnswerProvider.GetByQuestionAnswerId(transactionManager, _questionAnswerId)   as QuestionAnswer;
+				entity = dataProvider.QuestionAnswerProvider.GetByQuestionIdAnswerId(transactionManager, _questionId, _answerId)   as QuestionAnswer;
 			}
             catch (Exception exc)
             {
@@ -319,19 +330,20 @@ namespace NDMSInvestigation.Services
 		}
 		
 		/// <summary>
-		///  Method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the primary key PK_Question_Answer index.
+		///  Method that Gets rows in a <see cref="TList{QuestionAnswer}" /> from the datasource based on the primary key PK_QuestionAnswer index.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Page length of records you would like to retrieve</param>
 		/// <param name="totalCount">out parameter, number of total rows in given query.</param>
 		/// <returns>Returns an instance of the <see cref="QuestionAnswer"/> class.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionAnswer GetByQuestionAnswerId(System.Int32 _questionAnswerId, int start, int pageLength, out int totalCount)
+		public virtual QuestionAnswer GetByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength, out int totalCount)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByQuestionAnswerId");
+			SecurityContext.IsAuthorized("GetByQuestionIdAnswerId");
 			#endregion Security check
 			
 			#region Initialisation
@@ -346,7 +358,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 				
-				entity = dataProvider.QuestionAnswerProvider.GetByQuestionAnswerId(transactionManager, _questionAnswerId, start, pageLength, out totalCount)   as QuestionAnswer;
+				entity = dataProvider.QuestionAnswerProvider.GetByQuestionIdAnswerId(transactionManager, _questionId, _answerId, start, pageLength, out totalCount)   as QuestionAnswer;
 			}
             catch (Exception exc)
             {
@@ -1390,17 +1402,18 @@ namespace NDMSInvestigation.Services
 		/// <returns>Returns true if operation suceeded.</returns>
 		public bool Delete(QuestionAnswerKey key)
 		{
-			return Delete(key.QuestionAnswerId );
+			return Delete(key.QuestionId, key.AnswerId );
 		}
 		
 		/// <summary>
-		/// 	Deletes a row from the DataSource based on the PK'S System.Int32 _questionAnswerId
+		/// 	Deletes a row from the DataSource based on the PK'S System.Int32 _questionId, System.Int32 _answerId
 		/// </summary>
-		/// <param name="_questionAnswerId">QuestionAnswer pk id.</param>
+		/// <param name="_questionId">QuestionAnswer pk id.</param>
+		/// <param name="_answerId">QuestionAnswer pk id.</param>
 		/// <remarks>Deletes based on primary key(s).</remarks>
 		/// <returns>Returns true if operation suceeded.</returns>
 		[DataObjectMethod(DataObjectMethodType.Delete)]
-		public virtual bool Delete(System.Int32 _questionAnswerId)
+		public virtual bool Delete(System.Int32 _questionId, System.Int32 _answerId)
 		{
 			#region Security check
 			// throws security exception if not authorized
@@ -1422,7 +1435,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction();
 				dataProvider = ConnectionScope.Current.DataProvider;
 
-				result = dataProvider.QuestionAnswerProvider.Delete(transactionManager, _questionAnswerId);
+				result = dataProvider.QuestionAnswerProvider.Delete(transactionManager, _questionId, _answerId);
 				
 				if (!isBorrowedTransaction && transactionManager != null && transactionManager.IsOpen)
 					transactionManager.Commit();
@@ -1457,19 +1470,20 @@ namespace NDMSInvestigation.Services
 		/// public virtualDeep Loads the requested <see cref="QuestionAnswer"/> by the entity keys.  The criteria of the child 
 		/// property collections only N Levels Deep based on the <see cref="DeepLoadType"/>.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
 		/// <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
 		/// <param name="childTypes">QuestionAnswer Property Collection Type Array To Include or Exclude from Load</param>
 		/// <returns>Returns an instance of the <see cref="QuestionAnswer"/> class and DeepLoaded.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionAnswer DeepLoadByQuestionAnswerId(System.Int32 _questionAnswerId, bool deep, DeepLoadType deepLoadType, params System.Type[] childTypes)
+		public virtual QuestionAnswer DeepLoadByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId, bool deep, DeepLoadType deepLoadType, params System.Type[] childTypes)
 		{
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("DeepLoadByQuestionAnswerId");		    
+			SecurityContext.IsAuthorized("DeepLoadByQuestionIdAnswerId");		    
 			bool isBorrowedTransaction = ConnectionScope.Current.HasTransaction;				
 	
-			QuestionAnswer entity = GetByQuestionAnswerId(_questionAnswerId);
+			QuestionAnswer entity = GetByQuestionIdAnswerId(_questionId, _answerId);
 			
 			//Check to see if entity is not null, before attempting to Deep Load
 			if (entity != null)

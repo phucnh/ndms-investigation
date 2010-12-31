@@ -972,7 +972,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			SqlDatabase database = new SqlDatabase(this._connectionString);
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_PersonalizationPerUser_Insert", _useStoredProcedure);
 			
-			database.AddOutParameter(commandWrapper, "@Id", DbType.Guid, 16);
+			database.AddInParameter(commandWrapper, "@Id", DbType.Guid, entity.Id );
 			database.AddInParameter(commandWrapper, "@PathId", DbType.Guid, (entity.PathId.HasValue ? (object) entity.PathId  : System.DBNull.Value));
 			database.AddInParameter(commandWrapper, "@UserId", DbType.Guid, (entity.UserId.HasValue ? (object) entity.UserId  : System.DBNull.Value));
 			database.AddInParameter(commandWrapper, "@PageSettings", DbType.Binary, entity.PageSettings );
@@ -992,9 +992,8 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _id = database.GetParameterValue(commandWrapper, "@Id");
-			entity.Id = (System.Guid)_id;
 			
+			entity.OriginalId = entity.Id;
 			
 			entity.AcceptChanges();
 	
@@ -1026,6 +1025,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_PersonalizationPerUser_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@Id", DbType.Guid, entity.Id );
+			database.AddInParameter(commandWrapper, "@OriginalId", DbType.Guid, entity.OriginalId);
 			database.AddInParameter(commandWrapper, "@PathId", DbType.Guid, (entity.PathId.HasValue ? (object) entity.PathId : System.DBNull.Value) );
 			database.AddInParameter(commandWrapper, "@UserId", DbType.Guid, (entity.UserId.HasValue ? (object) entity.UserId : System.DBNull.Value) );
 			database.AddInParameter(commandWrapper, "@PageSettings", DbType.Binary, entity.PageSettings );
@@ -1049,6 +1049,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalId = entity.Id;
 			
 			entity.AcceptChanges();
 			

@@ -490,6 +490,7 @@ namespace NDMSInvestigation.Data.Bases
 					c.SuppressEntityEvents = true;
 					c.ApplicationId = (System.Guid)reader[((int)AspnetRolesColumn.ApplicationId - 1)];
 					c.RoleId = (System.Guid)reader[((int)AspnetRolesColumn.RoleId - 1)];
+					c.OriginalRoleId = c.RoleId;
 					c.RoleName = (System.String)reader[((int)AspnetRolesColumn.RoleName - 1)];
 					c.LoweredRoleName = (System.String)reader[((int)AspnetRolesColumn.LoweredRoleName - 1)];
 					c.Description = (reader.IsDBNull(((int)AspnetRolesColumn.Description - 1)))?null:(System.String)reader[((int)AspnetRolesColumn.Description - 1)];
@@ -512,6 +513,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)reader[((int)AspnetRolesColumn.ApplicationId - 1)];
 			entity.RoleId = (System.Guid)reader[((int)AspnetRolesColumn.RoleId - 1)];
+			entity.OriginalRoleId = (System.Guid)reader["RoleId"];
 			entity.RoleName = (System.String)reader[((int)AspnetRolesColumn.RoleName - 1)];
 			entity.LoweredRoleName = (System.String)reader[((int)AspnetRolesColumn.LoweredRoleName - 1)];
 			entity.Description = (reader.IsDBNull(((int)AspnetRolesColumn.Description - 1)))?null:(System.String)reader[((int)AspnetRolesColumn.Description - 1)];
@@ -529,6 +531,7 @@ namespace NDMSInvestigation.Data.Bases
 			
 			entity.ApplicationId = (System.Guid)dataRow["ApplicationId"];
 			entity.RoleId = (System.Guid)dataRow["RoleId"];
+			entity.OriginalRoleId = (System.Guid)dataRow["RoleId"];
 			entity.RoleName = (System.String)dataRow["RoleName"];
 			entity.LoweredRoleName = (System.String)dataRow["LoweredRoleName"];
 			entity.Description = Convert.IsDBNull(dataRow["Description"]) ? null : (System.String)dataRow["Description"];

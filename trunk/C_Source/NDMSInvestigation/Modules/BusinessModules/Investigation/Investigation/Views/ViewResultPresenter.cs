@@ -17,14 +17,14 @@ namespace NDMSInvestigation.Investigation.Views
         //       The code will not work in the Shell module, as a module controller is not created by default
         //
 
-        private ResultService _resultService;
-        private QuestionGroupService _questionGroupService;
+        private ResultsService _resultService;
+        private QuestionGroupsService _questionGroupService;
         private IInvestigationController _controller;
         
         public ViewResultPresenter(
             [CreateNew] IInvestigationController controller,
-            [ServiceDependency] QuestionGroupService questionGroupService,
-            [ServiceDependency] ResultService resultService
+            [ServiceDependency] QuestionGroupsService questionGroupService,
+            [ServiceDependency] ResultsService resultService
             )
         {
             _controller = controller;
@@ -47,9 +47,9 @@ namespace NDMSInvestigation.Investigation.Views
         /// Gets all group.
         /// </summary>
         /// <returns></returns>
-        public TList<QuestionGroup> GetAllGroup()
+        public TList<QuestionGroups> GetAllGroup()
         {
-            TList<QuestionGroup> questionGroupCollection;
+            TList<QuestionGroups> questionGroupCollection;
             questionGroupCollection = _questionGroupService.GetAll();
 
             //Microsoft.Practices.CompositeWeb.Utility.Guard.ArgumentNotNull(questionGroupCollection, "questionGroupCollection");
@@ -57,9 +57,9 @@ namespace NDMSInvestigation.Investigation.Views
             return questionGroupCollection;
         }
 
-        public TList<Result> GetAllResultByUserId(Guid userId)
+        public TList<Results> GetAllResultByUserId(Guid userId)
         {
-            TList<Result> resultCollection;
+            TList<Results> resultCollection;
             resultCollection = _resultService.GetByUserId(userId);
 
             return resultCollection;

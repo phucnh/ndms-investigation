@@ -161,6 +161,7 @@ namespace NDMSInvestigation.Web.Data
 			count = 0;
 			
 			System.Int32 _answerId;
+			System.Int32 _questionId;
 
 			switch ( SelectMethod )
 			{
@@ -195,6 +196,10 @@ namespace NDMSInvestigation.Web.Data
 				// IX
 				// FK
 				// M:M
+				case AnswerDetailsSelectMethod.GetByQuestionIdFromQuestionAnswer:
+					_questionId = ( values["QuestionId"] != null ) ? (System.Int32) EntityUtil.ChangeType(values["QuestionId"], typeof(System.Int32)) : (int)0;
+					results = AnswerDetailsProvider.GetByQuestionIdFromQuestionAnswer(_questionId, this.StartIndex, this.PageSize, out count);
+					break;
 				// Custom
 				default:
 					break;
@@ -377,7 +382,11 @@ namespace NDMSInvestigation.Web.Data
 		/// <summary>
 		/// Represents the GetByAnswerId method.
 		/// </summary>
-		GetByAnswerId
+		GetByAnswerId,
+		/// <summary>
+		/// Represents the GetByQuestionIdFromQuestionAnswer method.
+		/// </summary>
+		GetByQuestionIdFromQuestionAnswer
 	}
 	
 	#endregion AnswerDetailsSelectMethod

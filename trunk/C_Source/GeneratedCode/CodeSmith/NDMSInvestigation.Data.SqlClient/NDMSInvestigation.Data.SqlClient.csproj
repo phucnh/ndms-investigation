@@ -1,29 +1,30 @@
-﻿
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8996A7B4-57D3-440B-A545-A701844B8C4A}</ProjectGuid>
     <ProjectType>Local</ProjectType>
-	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OutputType>Library</OutputType>
     <ApplicationIcon>
-	</ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
-	</AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
     <AssemblyName>NDMSInvestigation.Data.SqlClient</AssemblyName>
     <AssemblyOriginatorKeyFile>..\NDMSInvestigation.snk</AssemblyOriginatorKeyFile>
-	<SignAssembly>false</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <RootNamespace>NDMSInvestigation.Data.SqlClient</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject></StartupObject>
-    <FileUpgradeFlags></FileUpgradeFlags>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -54,7 +55,7 @@
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>NDMSInvestigation.Data.SqlClient.xml</DocumentationFile>
-	 <DebugType>pdbonly</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -87,246 +88,212 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-	<Reference Include="System.Core">
-		<RequiredTargetFramework>3.5</RequiredTargetFramework>
-	</Reference>
-    <Reference Include="System.Web"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Design"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>    
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-	<Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
     </Reference>
-     
-	<ProjectReference Include="..\NDMSInvestigation.Entities\NDMSInvestigation.Entities.csproj">
+    <ProjectReference Include="..\NDMSInvestigation.Entities\NDMSInvestigation.Entities.csproj">
       <Name>NDMSInvestigation.Entities</Name>
       <Project>{20E43088-4618-4F4A-B8AD-FC31B50D94CD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-	
     <ProjectReference Include="..\NDMSInvestigation.Data\NDMSInvestigation.Data.csproj">
-        <Name>NDMSInvestigation.Data</Name>
-        <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
-        <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>NDMSInvestigation.Data</Name>
+      <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-	
-	
-	
-    
-    	
-	
-	
-	
-	</ItemGroup>
-	
-		
-	<!-- Custom code folder: D:\TaiLieu\Cty\NDMSInvestigaion\GeneratedCode\CodeSmith\NDMSInvestigation.Data.SqlClient\App_Code -->
-	<ItemGroup>	
-		<Folder Include="App_Code\" />
-        <Compile Include="App_Code\**\*.cs">
-          <SubType>Code</SubType>
-        </Compile>		
-	</ItemGroup>
-
-	<!-- Include any user files -->
-	<ItemGroup>	
-		<Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**" >
-          <SubType>Code</SubType>
-        </Compile>		
-	</ItemGroup>
-	
-	<ItemGroup>
-			<Compile Include="SqlAnswerDetailsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAnswerDetailsProviderBase.generated.cs">
-			  <DependentUpon>SqlAnswerDetailsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetApplicationsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetApplicationsProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetApplicationsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetMembershipProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetMembershipProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetMembershipProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetPathsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetPathsProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetPathsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetPersonalizationAllUsersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetPersonalizationAllUsersProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetPersonalizationAllUsersProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetPersonalizationPerUserProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetPersonalizationPerUserProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetPersonalizationPerUserProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetProfileProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetProfileProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetProfileProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetRolesProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetRolesProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetRolesProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetSchemaVersionsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetSchemaVersionsProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetSchemaVersionsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetUsersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetUsersProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetUsersProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetUsersInRolesProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetUsersInRolesProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetUsersInRolesProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlAspnetWebEventEventsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlAspnetWebEventEventsProviderBase.generated.cs">
-			  <DependentUpon>SqlAspnetWebEventEventsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlQuestionAnswerProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlQuestionAnswerProviderBase.generated.cs">
-			  <DependentUpon>SqlQuestionAnswerProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlQuestionDetailsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlQuestionDetailsProviderBase.generated.cs">
-			  <DependentUpon>SqlQuestionDetailsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlQuestionGroupProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlQuestionGroupProviderBase.generated.cs">
-			  <DependentUpon>SqlQuestionGroupProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlResultProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlResultProviderBase.generated.cs">
-			  <DependentUpon>SqlResultProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlUserProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlUserProviderBase.generated.cs">
-			  <DependentUpon>SqlUserProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		<Compile Include="..\AssemblyInfo.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-			
-
-			<Compile Include="SqlNetTiersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<!--<Compile Include="SqlDataRepository.cs">
+  </ItemGroup>
+  <!-- Custom code folder: B:\Tai Lieu\CTy\NDMS\C_Source\GeneratedCode\CodeSmith\NDMSInvestigation.Data.SqlClient\App_Code -->
+  <ItemGroup>
+    <Compile Include="App_Code\**\*.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include any user files -->
+  <ItemGroup>
+    <Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SqlAnswerDetailsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAnswerDetailsProviderBase.generated.cs">
+      <DependentUpon>SqlAnswerDetailsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetApplicationsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetApplicationsProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetApplicationsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetMembershipProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetMembershipProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetMembershipProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPathsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPathsProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetPathsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPersonalizationAllUsersProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPersonalizationAllUsersProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetPersonalizationAllUsersProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPersonalizationPerUserProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetPersonalizationPerUserProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetPersonalizationPerUserProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetProfileProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetProfileProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetProfileProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetRolesProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetRolesProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetRolesProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetSchemaVersionsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetSchemaVersionsProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetSchemaVersionsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetUsersProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetUsersProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetUsersProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetUsersInRolesProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetUsersInRolesProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetUsersInRolesProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetWebEventEventsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlAspnetWebEventEventsProviderBase.generated.cs">
+      <DependentUpon>SqlAspnetWebEventEventsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlCompanyDetailsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlCompanyDetailsProviderBase.generated.cs">
+      <DependentUpon>SqlCompanyDetailsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionAnswerProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionAnswerProviderBase.generated.cs">
+      <DependentUpon>SqlQuestionAnswerProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionDetailsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionDetailsProviderBase.generated.cs">
+      <DependentUpon>SqlQuestionDetailsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionGroupsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlQuestionGroupsProviderBase.generated.cs">
+      <DependentUpon>SqlQuestionGroupsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlResultsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlResultsProviderBase.generated.cs">
+      <DependentUpon>SqlResultsProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlTraceChangeProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlTraceChangeProviderBase.generated.cs">
+      <DependentUpon>SqlTraceChangeProvider.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlNetTiersProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!--<Compile Include="SqlDataRepository.cs">
 			  <SubType>Code</SubType>
 			</Compile>-->
-						
-			<EmbeddedResource Include="Procedures.xml">
-		      <SubType>EmbeddedResource</SubType>
-		    </EmbeddedResource>
-			
-			<Compile Include="StoredProcedureProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>			
-		
-		
-
-		
-		
-		
-		
-		 <AppDesigner Include="Properties\" />
-	</ItemGroup>
-	
-	
-	
-	
+    <EmbeddedResource Include="Procedures.xml">
+      <SubType>EmbeddedResource</SubType>
+    </EmbeddedResource>
+    <Compile Include="StoredProcedureProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\NDMSInvestigation.snk">
+      <Link>NDMSInvestigation.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-	<PostBuildEvent>
-	</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
-
 </Project>

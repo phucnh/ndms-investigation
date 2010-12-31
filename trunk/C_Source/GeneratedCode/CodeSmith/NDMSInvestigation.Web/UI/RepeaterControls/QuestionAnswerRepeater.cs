@@ -359,13 +359,49 @@ namespace NDMSInvestigation.Web.UI
 			get { return _entity.Mark; }
 		}
         /// <summary>
-        /// Gets the QuestionAnswerId
+        /// Gets the Description
         /// </summary>
-        /// <value>The QuestionAnswerId.</value>
+        /// <value>The Description.</value>
 		[System.ComponentModel.Bindable(true)]
-		public System.Int32 QuestionAnswerId
+		public System.String Description
 		{
-			get { return _entity.QuestionAnswerId; }
+			get { return _entity.Description; }
+		}
+        /// <summary>
+        /// Gets the CreatedDate
+        /// </summary>
+        /// <value>The CreatedDate.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? CreatedDate
+		{
+			get { return _entity.CreatedDate; }
+		}
+        /// <summary>
+        /// Gets the CreatedBy
+        /// </summary>
+        /// <value>The CreatedBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String CreatedBy
+		{
+			get { return _entity.CreatedBy; }
+		}
+        /// <summary>
+        /// Gets the UpdateDated
+        /// </summary>
+        /// <value>The UpdateDated.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.DateTime? UpdateDated
+		{
+			get { return _entity.UpdateDated; }
+		}
+        /// <summary>
+        /// Gets the UpdatedBy
+        /// </summary>
+        /// <value>The UpdatedBy.</value>
+		[System.ComponentModel.Bindable(true)]
+		public System.String UpdatedBy
+		{
+			get { return _entity.UpdatedBy; }
 		}
 
         /// <summary>

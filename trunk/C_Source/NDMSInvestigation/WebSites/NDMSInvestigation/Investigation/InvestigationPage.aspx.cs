@@ -47,7 +47,7 @@ namespace NDMSInvestigation.Investigation.Views
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Int32 sum = new Int32();
-            TList<NDMSInvestigation.Entities.Result> resultCollection = Presenter.GetResultByCustomerId(new Guid(hidUserId.Value));
+            TList<NDMSInvestigation.Entities.Results> resultCollection = Presenter.GetResultByCustomerId(new Guid(hidUserId.Value));
 
             foreach (Control rptQuestionGroupControl in rptQuestionGroup.Controls)
             {
@@ -66,32 +66,32 @@ namespace NDMSInvestigation.Investigation.Views
 
                 if (resultCollection != null)
                 {
-                    NDMSInvestigation.Entities.Result result = resultCollection.Find(ResultColumn.GroupId, Int32.Parse(hiddenField.Value));
+                    Results result = resultCollection.Find(ResultsColumn.GroupId, Int32.Parse(hiddenField.Value));
                     if (result != null)
                     {
                         result.GroupMark = sumGroup;
-                        result.UpdateDay = DateTime.Now;
+                        result.CreatedDate = DateTime.Now;
                     }
                     else
                     {
-                        result = new NDMSInvestigation.Entities.Result();
+                        result = new Results();
 
                         result.GroupId = Int32.Parse(hiddenField.Value);
                         result.UserId = new Guid(hidUserId.Value); 
                         result.GroupMark = sumGroup;
-                        result.UpdateDay = DateTime.Now;
+                        result.CreatedDate = DateTime.Now;
 
                         resultCollection.Add(result);
                     }
                 }
                 else
                 {
-                    NDMSInvestigation.Entities.Result result = new NDMSInvestigation.Entities.Result();
+                    Results result = new Results();
 
                     result.GroupId = Int32.Parse(hiddenField.Value);
                     result.UserId = new Guid(hidUserId.Value);
                     result.GroupMark = sumGroup;
-                    result.UpdateDay = DateTime.Now;
+                    result.CreatedDate = DateTime.Now;
 
                     resultCollection.Add(result);
                 }

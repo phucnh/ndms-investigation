@@ -192,40 +192,79 @@ namespace NDMSInvestigation.Data.SqlClient
 		}
 
 		
-		#region "QuestionGroupProvider"
+		#region "CompanyDetailsProvider"
 			
-		private SqlQuestionGroupProvider innerSqlQuestionGroupProvider;
+		private SqlCompanyDetailsProvider innerSqlCompanyDetailsProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="QuestionGroup"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="CompanyDetails"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override QuestionGroupProviderBase QuestionGroupProvider
+		public override CompanyDetailsProviderBase CompanyDetailsProvider
 		{
 			get
 			{
-				if (innerSqlQuestionGroupProvider == null) 
+				if (innerSqlCompanyDetailsProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlQuestionGroupProvider == null)
+						if (innerSqlCompanyDetailsProvider == null)
 						{
-							this.innerSqlQuestionGroupProvider = new SqlQuestionGroupProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+							this.innerSqlCompanyDetailsProvider = new SqlCompanyDetailsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
 						}
 					}
 				}
-				return innerSqlQuestionGroupProvider;
+				return innerSqlCompanyDetailsProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <c cref="SqlQuestionGroupProvider"/>.
+		/// Gets the current <c cref="SqlCompanyDetailsProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlQuestionGroupProvider SqlQuestionGroupProvider
+		public SqlCompanyDetailsProvider SqlCompanyDetailsProvider
 		{
-			get {return QuestionGroupProvider as SqlQuestionGroupProvider;}
+			get {return CompanyDetailsProvider as SqlCompanyDetailsProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "AspnetUsersInRolesProvider"
+			
+		private SqlAspnetUsersInRolesProvider innerSqlAspnetUsersInRolesProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="AspnetUsersInRoles"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider
+		{
+			get
+			{
+				if (innerSqlAspnetUsersInRolesProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlAspnetUsersInRolesProvider == null)
+						{
+							this.innerSqlAspnetUsersInRolesProvider = new SqlAspnetUsersInRolesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+						}
+					}
+				}
+				return innerSqlAspnetUsersInRolesProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <c cref="SqlAspnetUsersInRolesProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlAspnetUsersInRolesProvider SqlAspnetUsersInRolesProvider
+		{
+			get {return AspnetUsersInRolesProvider as SqlAspnetUsersInRolesProvider;}
 		}
 		
 		#endregion
@@ -309,79 +348,40 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
-		#region "AspnetUsersInRolesProvider"
+		#region "QuestionGroupsProvider"
 			
-		private SqlAspnetUsersInRolesProvider innerSqlAspnetUsersInRolesProvider;
+		private SqlQuestionGroupsProvider innerSqlQuestionGroupsProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="AspnetUsersInRoles"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="QuestionGroups"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider
+		public override QuestionGroupsProviderBase QuestionGroupsProvider
 		{
 			get
 			{
-				if (innerSqlAspnetUsersInRolesProvider == null) 
+				if (innerSqlQuestionGroupsProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlAspnetUsersInRolesProvider == null)
+						if (innerSqlQuestionGroupsProvider == null)
 						{
-							this.innerSqlAspnetUsersInRolesProvider = new SqlAspnetUsersInRolesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+							this.innerSqlQuestionGroupsProvider = new SqlQuestionGroupsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
 						}
 					}
 				}
-				return innerSqlAspnetUsersInRolesProvider;
+				return innerSqlQuestionGroupsProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <c cref="SqlAspnetUsersInRolesProvider"/>.
+		/// Gets the current <c cref="SqlQuestionGroupsProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlAspnetUsersInRolesProvider SqlAspnetUsersInRolesProvider
+		public SqlQuestionGroupsProvider SqlQuestionGroupsProvider
 		{
-			get {return AspnetUsersInRolesProvider as SqlAspnetUsersInRolesProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "ResultProvider"
-			
-		private SqlResultProvider innerSqlResultProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Result"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override ResultProviderBase ResultProvider
-		{
-			get
-			{
-				if (innerSqlResultProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlResultProvider == null)
-						{
-							this.innerSqlResultProvider = new SqlResultProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-						}
-					}
-				}
-				return innerSqlResultProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <c cref="SqlResultProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlResultProvider SqlResultProvider
-		{
-			get {return ResultProvider as SqlResultProvider;}
+			get {return QuestionGroupsProvider as SqlQuestionGroupsProvider;}
 		}
 		
 		#endregion
@@ -426,6 +426,45 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
+		#region "AspnetUsersProvider"
+			
+		private SqlAspnetUsersProvider innerSqlAspnetUsersProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="AspnetUsers"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override AspnetUsersProviderBase AspnetUsersProvider
+		{
+			get
+			{
+				if (innerSqlAspnetUsersProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlAspnetUsersProvider == null)
+						{
+							this.innerSqlAspnetUsersProvider = new SqlAspnetUsersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+						}
+					}
+				}
+				return innerSqlAspnetUsersProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <c cref="SqlAspnetUsersProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlAspnetUsersProvider SqlAspnetUsersProvider
+		{
+			get {return AspnetUsersProvider as SqlAspnetUsersProvider;}
+		}
+		
+		#endregion
+		
+		
 		#region "QuestionAnswerProvider"
 			
 		private SqlQuestionAnswerProvider innerSqlQuestionAnswerProvider;
@@ -465,40 +504,40 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
-		#region "AspnetUsersProvider"
+		#region "ResultsProvider"
 			
-		private SqlAspnetUsersProvider innerSqlAspnetUsersProvider;
+		private SqlResultsProvider innerSqlResultsProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="AspnetUsers"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="Results"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override AspnetUsersProviderBase AspnetUsersProvider
+		public override ResultsProviderBase ResultsProvider
 		{
 			get
 			{
-				if (innerSqlAspnetUsersProvider == null) 
+				if (innerSqlResultsProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlAspnetUsersProvider == null)
+						if (innerSqlResultsProvider == null)
 						{
-							this.innerSqlAspnetUsersProvider = new SqlAspnetUsersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+							this.innerSqlResultsProvider = new SqlResultsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
 						}
 					}
 				}
-				return innerSqlAspnetUsersProvider;
+				return innerSqlResultsProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <c cref="SqlAspnetUsersProvider"/>.
+		/// Gets the current <c cref="SqlResultsProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlAspnetUsersProvider SqlAspnetUsersProvider
+		public SqlResultsProvider SqlResultsProvider
 		{
-			get {return AspnetUsersProvider as SqlAspnetUsersProvider;}
+			get {return ResultsProvider as SqlResultsProvider;}
 		}
 		
 		#endregion
@@ -582,45 +621,6 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
-		#region "AspnetRolesProvider"
-			
-		private SqlAspnetRolesProvider innerSqlAspnetRolesProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="AspnetRoles"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override AspnetRolesProviderBase AspnetRolesProvider
-		{
-			get
-			{
-				if (innerSqlAspnetRolesProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlAspnetRolesProvider == null)
-						{
-							this.innerSqlAspnetRolesProvider = new SqlAspnetRolesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-						}
-					}
-				}
-				return innerSqlAspnetRolesProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <c cref="SqlAspnetRolesProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlAspnetRolesProvider SqlAspnetRolesProvider
-		{
-			get {return AspnetRolesProvider as SqlAspnetRolesProvider;}
-		}
-		
-		#endregion
-		
-		
 		#region "AspnetMembershipProvider"
 			
 		private SqlAspnetMembershipProvider innerSqlAspnetMembershipProvider;
@@ -699,45 +699,6 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
-		#region "AspnetProfileProvider"
-			
-		private SqlAspnetProfileProvider innerSqlAspnetProfileProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="AspnetProfile"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override AspnetProfileProviderBase AspnetProfileProvider
-		{
-			get
-			{
-				if (innerSqlAspnetProfileProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlAspnetProfileProvider == null)
-						{
-							this.innerSqlAspnetProfileProvider = new SqlAspnetProfileProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-						}
-					}
-				}
-				return innerSqlAspnetProfileProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <c cref="SqlAspnetProfileProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlAspnetProfileProvider SqlAspnetProfileProvider
-		{
-			get {return AspnetProfileProvider as SqlAspnetProfileProvider;}
-		}
-		
-		#endregion
-		
-		
 		#region "AspnetPersonalizationAllUsersProvider"
 			
 		private SqlAspnetPersonalizationAllUsersProvider innerSqlAspnetPersonalizationAllUsersProvider;
@@ -777,40 +738,40 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion
 		
 		
-		#region "UserProvider"
+		#region "AspnetRolesProvider"
 			
-		private SqlUserProvider innerSqlUserProvider;
+		private SqlAspnetRolesProvider innerSqlAspnetRolesProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="User"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="AspnetRoles"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override UserProviderBase UserProvider
+		public override AspnetRolesProviderBase AspnetRolesProvider
 		{
 			get
 			{
-				if (innerSqlUserProvider == null) 
+				if (innerSqlAspnetRolesProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlUserProvider == null)
+						if (innerSqlAspnetRolesProvider == null)
 						{
-							this.innerSqlUserProvider = new SqlUserProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+							this.innerSqlAspnetRolesProvider = new SqlAspnetRolesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
 						}
 					}
 				}
-				return innerSqlUserProvider;
+				return innerSqlAspnetRolesProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <c cref="SqlUserProvider"/>.
+		/// Gets the current <c cref="SqlAspnetRolesProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlUserProvider SqlUserProvider
+		public SqlAspnetRolesProvider SqlAspnetRolesProvider
 		{
-			get {return UserProvider as SqlUserProvider;}
+			get {return AspnetRolesProvider as SqlAspnetRolesProvider;}
 		}
 		
 		#endregion
@@ -850,6 +811,84 @@ namespace NDMSInvestigation.Data.SqlClient
 		public SqlAspnetPersonalizationPerUserProvider SqlAspnetPersonalizationPerUserProvider
 		{
 			get {return AspnetPersonalizationPerUserProvider as SqlAspnetPersonalizationPerUserProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "TraceChangeProvider"
+			
+		private SqlTraceChangeProvider innerSqlTraceChangeProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="TraceChange"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override TraceChangeProviderBase TraceChangeProvider
+		{
+			get
+			{
+				if (innerSqlTraceChangeProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlTraceChangeProvider == null)
+						{
+							this.innerSqlTraceChangeProvider = new SqlTraceChangeProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+						}
+					}
+				}
+				return innerSqlTraceChangeProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <c cref="SqlTraceChangeProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlTraceChangeProvider SqlTraceChangeProvider
+		{
+			get {return TraceChangeProvider as SqlTraceChangeProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "AspnetProfileProvider"
+			
+		private SqlAspnetProfileProvider innerSqlAspnetProfileProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="AspnetProfile"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override AspnetProfileProviderBase AspnetProfileProvider
+		{
+			get
+			{
+				if (innerSqlAspnetProfileProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlAspnetProfileProvider == null)
+						{
+							this.innerSqlAspnetProfileProvider = new SqlAspnetProfileProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+						}
+					}
+				}
+				return innerSqlAspnetProfileProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <c cref="SqlAspnetProfileProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlAspnetProfileProvider SqlAspnetProfileProvider
+		{
+			get {return AspnetProfileProvider as SqlAspnetProfileProvider;}
 		}
 		
 		#endregion

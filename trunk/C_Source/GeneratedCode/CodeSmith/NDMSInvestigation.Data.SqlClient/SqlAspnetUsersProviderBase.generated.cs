@@ -161,11 +161,11 @@ namespace NDMSInvestigation.Data.SqlClient
 		#endregion GetByRoleIdFromAspnetUsersInRoles
 		
 	
-		#region GetByGroupIdFromResult
+		#region GetByGroupIdFromResults
 		/// <summary>
 		///		Gets AspnetUsers objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_groupId"></param>
@@ -173,10 +173,10 @@ namespace NDMSInvestigation.Data.SqlClient
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="count">out parameter to get total records for query.</param>
 		/// <returns>Returns a <c>TList</c> of AspnetUsers objects.</returns>
-		public override TList<AspnetUsers> GetByGroupIdFromResult(TransactionManager transactionManager, System.Int32 _groupId, int start, int pageLength, out int count)
+		public override TList<AspnetUsers> GetByGroupIdFromResults(TransactionManager transactionManager, System.Int32 _groupId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_Users_GetByGroupIdFromResult", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_Users_GetByGroupIdFromResults", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@GroupId", DbType.Int32, _groupId);
 			
@@ -187,7 +187,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			try
 			{
 				// Provider Data Requesting Command Event
-				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByGroupIdFromResult", rows)); 
+				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByGroupIdFromResults", rows)); 
 	
 				if (transactionManager != null)
 				{
@@ -208,7 +208,7 @@ namespace NDMSInvestigation.Data.SqlClient
 				}
 					
 				// Provider Data Requested Command Event
-				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByGroupIdFromResult", rows)); 
+				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByGroupIdFromResults", rows)); 
 
 			}
 			finally 
@@ -221,7 +221,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			return rows; 
 		}
 		
-		#endregion GetByGroupIdFromResult
+		#endregion GetByGroupIdFromResults
 		
 		#endregion
 	
@@ -1050,7 +1050,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_Users_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
-			database.AddOutParameter(commandWrapper, "@UserId", DbType.Guid, 16);
+			database.AddInParameter(commandWrapper, "@UserId", DbType.Guid, entity.UserId );
 			database.AddInParameter(commandWrapper, "@UserName", DbType.String, entity.UserName );
 			database.AddInParameter(commandWrapper, "@LoweredUserName", DbType.String, entity.LoweredUserName );
 			database.AddInParameter(commandWrapper, "@MobileAlias", DbType.String, entity.MobileAlias );
@@ -1071,9 +1071,8 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _userId = database.GetParameterValue(commandWrapper, "@UserId");
-			entity.UserId = (System.Guid)_userId;
 			
+			entity.OriginalUserId = entity.UserId;
 			
 			entity.AcceptChanges();
 	
@@ -1106,6 +1105,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
 			database.AddInParameter(commandWrapper, "@UserId", DbType.Guid, entity.UserId );
+			database.AddInParameter(commandWrapper, "@OriginalUserId", DbType.Guid, entity.OriginalUserId);
 			database.AddInParameter(commandWrapper, "@UserName", DbType.String, entity.UserName );
 			database.AddInParameter(commandWrapper, "@LoweredUserName", DbType.String, entity.LoweredUserName );
 			database.AddInParameter(commandWrapper, "@MobileAlias", DbType.String, entity.MobileAlias );
@@ -1130,6 +1130,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalUserId = entity.UserId;
 			
 			entity.AcceptChanges();
 			

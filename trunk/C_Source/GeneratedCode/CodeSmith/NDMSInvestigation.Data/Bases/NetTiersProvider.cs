@@ -21,9 +21,14 @@ namespace NDMSInvestigation.Data.Bases
 	{
 		
 		///<summary>
-		/// Current QuestionGroupProviderBase instance.
+		/// Current CompanyDetailsProviderBase instance.
 		///</summary>
-		public virtual QuestionGroupProviderBase QuestionGroupProvider{get {throw new NotImplementedException();}}
+		public virtual CompanyDetailsProviderBase CompanyDetailsProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current AspnetUsersInRolesProviderBase instance.
+		///</summary>
+		public virtual AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current AnswerDetailsProviderBase instance.
@@ -36,14 +41,9 @@ namespace NDMSInvestigation.Data.Bases
 		public virtual AspnetWebEventEventsProviderBase AspnetWebEventEventsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current AspnetUsersInRolesProviderBase instance.
+		/// Current QuestionGroupsProviderBase instance.
 		///</summary>
-		public virtual AspnetUsersInRolesProviderBase AspnetUsersInRolesProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current ResultProviderBase instance.
-		///</summary>
-		public virtual ResultProviderBase ResultProvider{get {throw new NotImplementedException();}}
+		public virtual QuestionGroupsProviderBase QuestionGroupsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current QuestionDetailsProviderBase instance.
@@ -51,14 +51,19 @@ namespace NDMSInvestigation.Data.Bases
 		public virtual QuestionDetailsProviderBase QuestionDetailsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
+		/// Current AspnetUsersProviderBase instance.
+		///</summary>
+		public virtual AspnetUsersProviderBase AspnetUsersProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
 		/// Current QuestionAnswerProviderBase instance.
 		///</summary>
 		public virtual QuestionAnswerProviderBase QuestionAnswerProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current AspnetUsersProviderBase instance.
+		/// Current ResultsProviderBase instance.
 		///</summary>
-		public virtual AspnetUsersProviderBase AspnetUsersProvider{get {throw new NotImplementedException();}}
+		public virtual ResultsProviderBase ResultsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current AspnetSchemaVersionsProviderBase instance.
@@ -71,11 +76,6 @@ namespace NDMSInvestigation.Data.Bases
 		public virtual AspnetApplicationsProviderBase AspnetApplicationsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current AspnetRolesProviderBase instance.
-		///</summary>
-		public virtual AspnetRolesProviderBase AspnetRolesProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
 		/// Current AspnetMembershipProviderBase instance.
 		///</summary>
 		public virtual AspnetMembershipProviderBase AspnetMembershipProvider{get {throw new NotImplementedException();}}
@@ -86,24 +86,29 @@ namespace NDMSInvestigation.Data.Bases
 		public virtual AspnetPathsProviderBase AspnetPathsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current AspnetProfileProviderBase instance.
-		///</summary>
-		public virtual AspnetProfileProviderBase AspnetProfileProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
 		/// Current AspnetPersonalizationAllUsersProviderBase instance.
 		///</summary>
 		public virtual AspnetPersonalizationAllUsersProviderBase AspnetPersonalizationAllUsersProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current UserProviderBase instance.
+		/// Current AspnetRolesProviderBase instance.
 		///</summary>
-		public virtual UserProviderBase UserProvider{get {throw new NotImplementedException();}}
+		public virtual AspnetRolesProviderBase AspnetRolesProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current AspnetPersonalizationPerUserProviderBase instance.
 		///</summary>
 		public virtual AspnetPersonalizationPerUserProviderBase AspnetPersonalizationPerUserProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current TraceChangeProviderBase instance.
+		///</summary>
+		public virtual TraceChangeProviderBase TraceChangeProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current AspnetProfileProviderBase instance.
+		///</summary>
+		public virtual AspnetProfileProviderBase AspnetProfileProvider{get {throw new NotImplementedException();}}
 		
 		
 	}

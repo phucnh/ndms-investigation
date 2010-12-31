@@ -55,16 +55,26 @@ namespace NDMSInvestigation.Services
 		///<param name="_questionContent"></param>
 		///<param name="_questionSuggest"></param>
 		///<param name="_questionDescription"></param>
-		///<param name="_groupId"></param>
 		///<param name="_orderNumber"></param>
-		public static QuestionDetails CreateQuestionDetails(System.String _questionContent, System.String _questionSuggest, System.String _questionDescription, System.Int32 _groupId, System.Int32? _orderNumber)
+		///<param name="_groupId"></param>
+		///<param name="_createdDate"></param>
+		///<param name="_createdBy"></param>
+		///<param name="_updatedDate"></param>
+		///<param name="_updatedBy"></param>
+		///<param name="_questionTitle"></param>
+		public static QuestionDetails CreateQuestionDetails(System.String _questionContent, System.String _questionSuggest, System.String _questionDescription, System.Int32? _orderNumber, System.Int32? _groupId, System.DateTime? _createdDate, System.String _createdBy, System.DateTime? _updatedDate, System.String _updatedBy, System.String _questionTitle)
 		{
 			QuestionDetails newEntityQuestionDetails = new QuestionDetails();
 			newEntityQuestionDetails.QuestionContent  = _questionContent;
 			newEntityQuestionDetails.QuestionSuggest  = _questionSuggest;
 			newEntityQuestionDetails.QuestionDescription  = _questionDescription;
-			newEntityQuestionDetails.GroupId  = _groupId;
 			newEntityQuestionDetails.OrderNumber  = _orderNumber;
+			newEntityQuestionDetails.GroupId  = _groupId;
+			newEntityQuestionDetails.CreatedDate  = _createdDate;
+			newEntityQuestionDetails.CreatedBy  = _createdBy;
+			newEntityQuestionDetails.UpdatedDate  = _updatedDate;
+			newEntityQuestionDetails.UpdatedBy  = _updatedBy;
+			newEntityQuestionDetails.QuestionTitle  = _questionTitle;
 			return newEntityQuestionDetails;
 		}
 		#endregion Constructors
@@ -100,7 +110,7 @@ namespace NDMSInvestigation.Services
 		/// <param name="_groupId"></param>
 		/// <returns>Returns a generic collection of QuestionDetails objects.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual TList<QuestionDetails> GetByGroupId(System.Int32 _groupId)
+		public virtual TList<QuestionDetails> GetByGroupId(System.Int32? _groupId)
 		{
 
 			#region Security check
@@ -145,7 +155,7 @@ namespace NDMSInvestigation.Services
 		/// <param name="totalCount">Out parameter, number of total rows in given query.</param>
 		/// <returns>Returns a collection <see cref="TList{QuestionDetails}" /> of <c>QuestionDetails</c> objects.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual TList<QuestionDetails> GetByGroupId(System.Int32 _groupId, int start, int pageLength, out int totalCount)
+		public virtual TList<QuestionDetails> GetByGroupId(System.Int32? _groupId, int start, int pageLength, out int totalCount)
 		{
 			#region Security check
 			// throws security exception if not authorized
@@ -197,15 +207,15 @@ namespace NDMSInvestigation.Services
 		/// <summary>
 		///  method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key IX_QuestionDetails index.
 		/// </summary>
-		/// <param name="_groupId"></param>
 		/// <param name="_orderNumber"></param>
+		/// <param name="_groupId"></param>
 		/// <returns>Returns an instance of the <see cref="QuestionDetails"/> class.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionDetails GetByGroupIdOrderNumber(System.Int32 _groupId, System.Int32? _orderNumber)
+		public virtual QuestionDetails GetByOrderNumberGroupId(System.Int32? _orderNumber, System.Int32? _groupId)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByGroupIdOrderNumber");
+			SecurityContext.IsAuthorized("GetByOrderNumberGroupId");
 			#endregion Security check
 			
 			#region Initialisation
@@ -219,7 +229,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 				
-				entity = dataProvider.QuestionDetailsProvider.GetByGroupIdOrderNumber(transactionManager, _groupId, _orderNumber)   as QuestionDetails;
+				entity = dataProvider.QuestionDetailsProvider.GetByOrderNumberGroupId(transactionManager, _orderNumber, _groupId)   as QuestionDetails;
 			}
             catch (Exception exc)
             {
@@ -239,18 +249,18 @@ namespace NDMSInvestigation.Services
 		/// <summary>
 		///  Method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key IX_QuestionDetails index.
 		/// </summary>
-		/// <param name="_groupId"></param>
 		/// <param name="_orderNumber"></param>
+		/// <param name="_groupId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Page length of records you would like to retrieve</param>
 		/// <param name="totalCount">out parameter, number of total rows in given query.</param>
 		/// <returns>Returns an instance of the <see cref="QuestionDetails"/> class.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionDetails GetByGroupIdOrderNumber(System.Int32 _groupId, System.Int32? _orderNumber, int start, int pageLength, out int totalCount)
+		public virtual QuestionDetails GetByOrderNumberGroupId(System.Int32? _orderNumber, System.Int32? _groupId, int start, int pageLength, out int totalCount)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByGroupIdOrderNumber");
+			SecurityContext.IsAuthorized("GetByOrderNumberGroupId");
 			#endregion Security check
 			
 			#region Initialisation
@@ -265,7 +275,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 				
-				entity = dataProvider.QuestionDetailsProvider.GetByGroupIdOrderNumber(transactionManager, _groupId, _orderNumber, start, pageLength, out totalCount)   as QuestionDetails;
+				entity = dataProvider.QuestionDetailsProvider.GetByOrderNumberGroupId(transactionManager, _orderNumber, _groupId, start, pageLength, out totalCount)   as QuestionDetails;
 			}
             catch (Exception exc)
             {
@@ -284,7 +294,7 @@ namespace NDMSInvestigation.Services
 	
 
 		/// <summary>
-		///  method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key PK_QuestionDetails_1 index.
+		///  method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key PK_QuestionDetails index.
 		/// </summary>
 		/// <param name="_questionId"></param>
 		/// <returns>Returns an instance of the <see cref="QuestionDetails"/> class.</returns>
@@ -325,7 +335,7 @@ namespace NDMSInvestigation.Services
 		}
 		
 		/// <summary>
-		///  Method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key PK_QuestionDetails_1 index.
+		///  Method that Gets rows in a <see cref="TList{QuestionDetails}" /> from the datasource based on the primary key PK_QuestionDetails index.
 		/// </summary>
 		/// <param name="_questionId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
@@ -1451,6 +1461,99 @@ namespace NDMSInvestigation.Services
 		#endregion 
 		
 		#region  GetBy m:m Aggregate Relationships
+		#region GetByAnswerIdFromQuestionAnswer
+		/// <summary>
+		///		Gets QuestionDetails objects from the datasource by AnswerId in the
+		///		QuestionAnswer table. Table QuestionDetails is related to table AnswerDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_answerId"></param>
+		/// <returns>Returns a typed collection of QuestionDetails objects.</returns>
+		[DataObjectMethod(DataObjectMethodType.Select)]
+		public virtual TList<QuestionDetails> GetByAnswerIdFromQuestionAnswer(System.Int32 _answerId)
+		{
+			#region Security check
+			// throws security exception if not authorized
+			SecurityContext.IsAuthorized("GetByAnswerIdFromQuestionAnswer");
+			#endregion Security check
+			
+			#region Initialisation
+			TList<QuestionDetails> list = null;
+			TransactionManager transactionManager = null; 
+			NetTiersProvider dataProvider = null;
+			#endregion Initialisation
+			
+			try
+            {	
+				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
+				dataProvider = ConnectionScope.Current.DataProvider;
+
+				list = dataProvider.QuestionDetailsProvider.GetByAnswerIdFromQuestionAnswer(transactionManager, _answerId);
+			}
+            catch (Exception exc)
+            {
+				#region Handle transaction rollback and exception
+                if (transactionManager != null && transactionManager.IsOpen) 
+					transactionManager.Rollback();
+				
+				//Handle exception based on policy
+                if (DomainUtil.HandleException(exc, layerExceptionPolicy)) 
+					throw;
+				#endregion Handle transaction rollback and exception
+            }
+			
+			return list;
+		}
+		
+		/// <summary>
+		///		Gets QuestionDetails objects from the datasource by AnswerId in the
+		///		QuestionAnswer table. Table QuestionDetails is related to table AnswerDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_answerId"></param>
+		/// <param name="start">Row number at which to start reading.</param>
+		/// <param name="pageLength">Number of rows to return.</param>
+		/// <param name="totalCount">Out param: Total Number of results returned.</param>
+		/// <remarks></remarks>
+		/// <returns>Returns a typed collection of QuestionDetails objects.</returns>
+		[DataObjectMethod(DataObjectMethodType.Select)]
+		public virtual TList<QuestionDetails> GetByAnswerIdFromQuestionAnswer(System.Int32 _answerId, int start, int pageLength, out int totalCount)
+		{
+			#region Security check
+			// throws security exception if not authorized
+			SecurityContext.IsAuthorized("GetByAnswerIdFromQuestionAnswer");
+			#endregion Security check
+			
+			#region Initialisation
+			totalCount = -1;
+			TList<QuestionDetails> list = null;
+			TransactionManager transactionManager = null; 
+			NetTiersProvider dataProvider = null;
+			#endregion Initialisation
+			
+			try
+            {	
+				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
+				dataProvider = ConnectionScope.Current.DataProvider;
+
+				list = dataProvider.QuestionDetailsProvider.GetByAnswerIdFromQuestionAnswer(transactionManager, _answerId, start,  pageLength, out totalCount);
+			}
+            catch (Exception exc)
+            {
+				#region Handle transaction rollback and exception
+                if (transactionManager != null && transactionManager.IsOpen) 
+					transactionManager.Rollback();
+				
+				//Handle exception based on policy
+                if (DomainUtil.HandleException(exc, layerExceptionPolicy)) 
+					throw;
+				#endregion Handle transaction rollback and exception
+            }
+			
+			return list;			
+		}
+		#endregion GetByAnswerIdFromQuestionAnswer
+		
 		#endregion	N2N Relationships
 
 		#region Custom Methods
@@ -1463,20 +1566,20 @@ namespace NDMSInvestigation.Services
 		/// public virtualDeep Loads the requested <see cref="QuestionDetails"/> by the entity keys.  The criteria of the child 
 		/// property collections only N Levels Deep based on the <see cref="DeepLoadType"/>.
 		/// </summary>
-		/// <param name="_groupId"></param>
 		/// <param name="_orderNumber"></param>
+		/// <param name="_groupId"></param>
 		/// <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
 		/// <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
 		/// <param name="childTypes">QuestionDetails Property Collection Type Array To Include or Exclude from Load</param>
 		/// <returns>Returns an instance of the <see cref="QuestionDetails"/> class and DeepLoaded.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual QuestionDetails DeepLoadByGroupIdOrderNumber(System.Int32 _groupId, System.Int32? _orderNumber, bool deep, DeepLoadType deepLoadType, params System.Type[] childTypes)
+		public virtual QuestionDetails DeepLoadByOrderNumberGroupId(System.Int32? _orderNumber, System.Int32? _groupId, bool deep, DeepLoadType deepLoadType, params System.Type[] childTypes)
 		{
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("DeepLoadByGroupIdOrderNumber");		    
+			SecurityContext.IsAuthorized("DeepLoadByOrderNumberGroupId");		    
 			bool isBorrowedTransaction = ConnectionScope.Current.HasTransaction;				
 	
-			QuestionDetails entity = GetByGroupIdOrderNumber(_groupId, _orderNumber);
+			QuestionDetails entity = GetByOrderNumberGroupId(_orderNumber, _groupId);
 			
 			//Check to see if entity is not null, before attempting to Deep Load
 			if (entity != null)

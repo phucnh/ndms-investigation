@@ -103,18 +103,20 @@ namespace NDMSInvestigation.Data.SqlClient
 		/// <summary>
 		/// 	Deletes a row from the DataSource.
 		/// </summary>
-		/// <param name="_questionAnswerId">. Primary Key.</param>	
+		/// <param name="_questionId">. Primary Key.</param>	
+		/// <param name="_answerId">. Primary Key.</param>	
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <remarks>Deletes based on primary key(s).</remarks>
 		/// <returns>Returns true if operation suceeded.</returns>
         /// <exception cref="System.Exception">The command could not be executed.</exception>
         /// <exception cref="System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
         /// <exception cref="System.Data.Common.DbException">The command could not be executed.</exception>
-		public override bool Delete(TransactionManager transactionManager, System.Int32 _questionAnswerId)
+		public override bool Delete(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Delete", _useStoredProcedure);
-			database.AddInParameter(commandWrapper, "@QuestionAnswerId", DbType.Int32, _questionAnswerId);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Delete", _useStoredProcedure);
+			database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, _questionId);
+			database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, _answerId);
 			
 			//Provider Data Requesting Command Event
 			OnDataRequesting(new CommandEventArgs(commandWrapper, "Delete")); 
@@ -134,7 +136,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 			{
 				string entityKey = EntityLocator.ConstructKeyFromPkItems(typeof(QuestionAnswer)
-					,_questionAnswerId);
+					,_questionId,_answerId);
 				EntityManager.StopTracking(entityKey);
 			}
 			
@@ -167,7 +169,7 @@ namespace NDMSInvestigation.Data.SqlClient
 				return new TList<QuestionAnswer>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -178,7 +180,11 @@ namespace NDMSInvestigation.Data.SqlClient
 		database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, DBNull.Value);
 		database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, DBNull.Value);
 		database.AddInParameter(commandWrapper, "@Mark", DbType.Int32, DBNull.Value);
-		database.AddInParameter(commandWrapper, "@QuestionAnswerId", DbType.Int32, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@Description", DbType.String, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@UpdateDated", DbType.DateTime, DBNull.Value);
+		database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, DBNull.Value);
 	
 			// replace all instances of 'AND' and 'OR' because we already set searchUsingOR
 			whereClause = whereClause.Replace(" AND ", "|").Replace(" OR ", "|") ; 
@@ -211,10 +217,34 @@ namespace NDMSInvestigation.Data.SqlClient
 						clause.Trim().Remove(0,4).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
 					continue;
 				}
-				if (clause.Trim().StartsWith("question_answerid ") || clause.Trim().StartsWith("question_answerid="))
+				if (clause.Trim().StartsWith("description ") || clause.Trim().StartsWith("description="))
 				{
-					database.SetParameterValue(commandWrapper, "@QuestionAnswerId", 
-						clause.Trim().Remove(0,17).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					database.SetParameterValue(commandWrapper, "@Description", 
+						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("createddate ") || clause.Trim().StartsWith("createddate="))
+				{
+					database.SetParameterValue(commandWrapper, "@CreatedDate", 
+						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("createdby ") || clause.Trim().StartsWith("createdby="))
+				{
+					database.SetParameterValue(commandWrapper, "@CreatedBy", 
+						clause.Trim().Remove(0,9).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("updatedated ") || clause.Trim().StartsWith("updatedated="))
+				{
+					database.SetParameterValue(commandWrapper, "@UpdateDated", 
+						clause.Trim().Remove(0,11).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
+					continue;
+				}
+				if (clause.Trim().StartsWith("updatedby ") || clause.Trim().StartsWith("updatedby="))
+				{
+					database.SetParameterValue(commandWrapper, "@UpdatedBy", 
+						clause.Trim().Remove(0,9).Trim().TrimStart(equalSign).Trim().Trim(singleQuote));
 					continue;
 				}
 	
@@ -287,7 +317,7 @@ namespace NDMSInvestigation.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Find_Dynamic", typeof(QuestionAnswerColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Find_Dynamic", typeof(QuestionAnswerColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -360,7 +390,7 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override TList<QuestionAnswer> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -422,7 +452,7 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override TList<QuestionAnswer> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -490,8 +520,8 @@ namespace NDMSInvestigation.Data.SqlClient
 
 		#region GetByAnswerId
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
@@ -506,7 +536,7 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override TList<QuestionAnswer> GetByAnswerId(TransactionManager transactionManager, System.Int32 _answerId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_GetByAnswerId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_GetByAnswerId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, _answerId);
 			
@@ -554,8 +584,8 @@ namespace NDMSInvestigation.Data.SqlClient
 
 		#region GetByQuestionId
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
@@ -570,7 +600,7 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override TList<QuestionAnswer> GetByQuestionId(TransactionManager transactionManager, System.Int32 _questionId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_GetByQuestionId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_GetByQuestionId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, _questionId);
 			
@@ -619,13 +649,14 @@ namespace NDMSInvestigation.Data.SqlClient
 	
 		#region Get By Index Functions
 
-		#region GetByQuestionAnswerId
+		#region GetByQuestionIdAnswerId
 					
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="count">out parameter to get total records for query.</param>
@@ -634,19 +665,20 @@ namespace NDMSInvestigation.Data.SqlClient
         /// <exception cref="System.Exception">The command could not be executed.</exception>
         /// <exception cref="System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
         /// <exception cref="System.Data.Common.DbException">The command could not be executed.</exception>
-		public override NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(TransactionManager transactionManager, System.Int32 _questionAnswerId, int start, int pageLength, out int count)
+		public override NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_GetByQuestionAnswerId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_GetByQuestionIdAnswerId", _useStoredProcedure);
 			
-				database.AddInParameter(commandWrapper, "@QuestionAnswerId", DbType.Int32, _questionAnswerId);
+				database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, _questionId);
+				database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, _answerId);
 			
 			IDataReader reader = null;
 			TList<QuestionAnswer> tmp = new TList<QuestionAnswer>();
 			try
 			{
 				//Provider Data Requesting Command Event
-				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByQuestionAnswerId", tmp)); 
+				OnDataRequesting(new CommandEventArgs(commandWrapper, "GetByQuestionIdAnswerId", tmp)); 
 
 				if (transactionManager != null)
 				{
@@ -669,7 +701,7 @@ namespace NDMSInvestigation.Data.SqlClient
 				}
 				
 				//Provider Data Requested Command Event
-				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByQuestionAnswerId", tmp));
+				OnDataRequested(new CommandEventArgs(commandWrapper, "GetByQuestionIdAnswerId", tmp));
 			}
 			finally 
 			{
@@ -727,7 +759,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			}
 			
 			bulkCopy.BulkCopyTimeout = 360;
-			bulkCopy.DestinationTableName = "Question_Answer";
+			bulkCopy.DestinationTableName = "QuestionAnswer";
 			
 			DataTable dataTable = new DataTable();
 			DataColumn col0 = dataTable.Columns.Add("QuestionId", typeof(System.Int32));
@@ -736,13 +768,25 @@ namespace NDMSInvestigation.Data.SqlClient
 			col1.AllowDBNull = false;		
 			DataColumn col2 = dataTable.Columns.Add("Mark", typeof(System.Int32));
 			col2.AllowDBNull = true;		
-			DataColumn col3 = dataTable.Columns.Add("Question_AnswerId", typeof(System.Int32));
-			col3.AllowDBNull = false;		
+			DataColumn col3 = dataTable.Columns.Add("Description", typeof(System.String));
+			col3.AllowDBNull = true;		
+			DataColumn col4 = dataTable.Columns.Add("CreatedDate", typeof(System.DateTime));
+			col4.AllowDBNull = true;		
+			DataColumn col5 = dataTable.Columns.Add("CreatedBy", typeof(System.String));
+			col5.AllowDBNull = true;		
+			DataColumn col6 = dataTable.Columns.Add("UpdateDated", typeof(System.DateTime));
+			col6.AllowDBNull = true;		
+			DataColumn col7 = dataTable.Columns.Add("UpdatedBy", typeof(System.String));
+			col7.AllowDBNull = true;		
 			
 			bulkCopy.ColumnMappings.Add("QuestionId", "QuestionId");
 			bulkCopy.ColumnMappings.Add("AnswerId", "AnswerId");
 			bulkCopy.ColumnMappings.Add("Mark", "Mark");
-			bulkCopy.ColumnMappings.Add("Question_AnswerId", "Question_AnswerId");
+			bulkCopy.ColumnMappings.Add("Description", "Description");
+			bulkCopy.ColumnMappings.Add("CreatedDate", "CreatedDate");
+			bulkCopy.ColumnMappings.Add("CreatedBy", "CreatedBy");
+			bulkCopy.ColumnMappings.Add("UpdateDated", "UpdateDated");
+			bulkCopy.ColumnMappings.Add("UpdatedBy", "UpdatedBy");
 			
 			foreach(NDMSInvestigation.Entities.QuestionAnswer entity in entities)
 			{
@@ -760,7 +804,19 @@ namespace NDMSInvestigation.Data.SqlClient
 					row["Mark"] = entity.Mark.HasValue ? (object) entity.Mark  : System.DBNull.Value;
 							
 				
-					row["Question_AnswerId"] = entity.QuestionAnswerId;
+					row["Description"] = entity.Description;
+							
+				
+					row["CreatedDate"] = entity.CreatedDate.HasValue ? (object) entity.CreatedDate  : System.DBNull.Value;
+							
+				
+					row["CreatedBy"] = entity.CreatedBy;
+							
+				
+					row["UpdateDated"] = entity.UpdateDated.HasValue ? (object) entity.UpdateDated  : System.DBNull.Value;
+							
+				
+					row["UpdatedBy"] = entity.UpdatedBy;
 							
 				
 				dataTable.Rows.Add(row);
@@ -795,12 +851,16 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, NDMSInvestigation.Entities.QuestionAnswer entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, entity.QuestionId );
 			database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, entity.AnswerId );
 			database.AddInParameter(commandWrapper, "@Mark", DbType.Int32, (entity.Mark.HasValue ? (object) entity.Mark  : System.DBNull.Value));
-			database.AddOutParameter(commandWrapper, "@QuestionAnswerId", DbType.Int32, 4);
+			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
+			database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, (entity.CreatedDate.HasValue ? (object) entity.CreatedDate  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, entity.CreatedBy );
+			database.AddInParameter(commandWrapper, "@UpdateDated", DbType.DateTime, (entity.UpdateDated.HasValue ? (object) entity.UpdateDated  : System.DBNull.Value));
+			database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, entity.UpdatedBy );
 			
 			int results = 0;
 			
@@ -816,9 +876,9 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _questionAnswerId = database.GetParameterValue(commandWrapper, "@QuestionAnswerId");
-			entity.QuestionAnswerId = (System.Int32)_questionAnswerId;
 			
+			entity.OriginalQuestionId = entity.QuestionId;
+			entity.OriginalAnswerId = entity.AnswerId;
 			
 			entity.AcceptChanges();
 	
@@ -847,12 +907,18 @@ namespace NDMSInvestigation.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, NDMSInvestigation.Entities.QuestionAnswer entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Question_Answer_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.QuestionAnswer_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@QuestionId", DbType.Int32, entity.QuestionId );
+			database.AddInParameter(commandWrapper, "@OriginalQuestionId", DbType.Int32, entity.OriginalQuestionId);
 			database.AddInParameter(commandWrapper, "@AnswerId", DbType.Int32, entity.AnswerId );
+			database.AddInParameter(commandWrapper, "@OriginalAnswerId", DbType.Int32, entity.OriginalAnswerId);
 			database.AddInParameter(commandWrapper, "@Mark", DbType.Int32, (entity.Mark.HasValue ? (object) entity.Mark : System.DBNull.Value) );
-			database.AddInParameter(commandWrapper, "@QuestionAnswerId", DbType.Int32, entity.QuestionAnswerId );
+			database.AddInParameter(commandWrapper, "@Description", DbType.String, entity.Description );
+			database.AddInParameter(commandWrapper, "@CreatedDate", DbType.DateTime, (entity.CreatedDate.HasValue ? (object) entity.CreatedDate : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@CreatedBy", DbType.String, entity.CreatedBy );
+			database.AddInParameter(commandWrapper, "@UpdateDated", DbType.DateTime, (entity.UpdateDated.HasValue ? (object) entity.UpdateDated : System.DBNull.Value) );
+			database.AddInParameter(commandWrapper, "@UpdatedBy", DbType.String, entity.UpdatedBy );
 			
 			int results = 0;
 			
@@ -872,6 +938,8 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalQuestionId = entity.QuestionId;
+			entity.OriginalAnswerId = entity.AnswerId;
 			
 			entity.AcceptChanges();
 			

@@ -560,6 +560,7 @@ namespace NDMSInvestigation.Data.Bases
 				{
 					c.SuppressEntityEvents = true;
 					c.Id = (System.Guid)reader[((int)AspnetPersonalizationPerUserColumn.Id - 1)];
+					c.OriginalId = c.Id;
 					c.PathId = (reader.IsDBNull(((int)AspnetPersonalizationPerUserColumn.PathId - 1)))?null:(System.Guid?)reader[((int)AspnetPersonalizationPerUserColumn.PathId - 1)];
 					c.UserId = (reader.IsDBNull(((int)AspnetPersonalizationPerUserColumn.UserId - 1)))?null:(System.Guid?)reader[((int)AspnetPersonalizationPerUserColumn.UserId - 1)];
 					c.PageSettings = (System.Byte[])reader[((int)AspnetPersonalizationPerUserColumn.PageSettings - 1)];
@@ -582,6 +583,7 @@ namespace NDMSInvestigation.Data.Bases
 			if (!reader.Read()) return;
 			
 			entity.Id = (System.Guid)reader[((int)AspnetPersonalizationPerUserColumn.Id - 1)];
+			entity.OriginalId = (System.Guid)reader["Id"];
 			entity.PathId = (reader.IsDBNull(((int)AspnetPersonalizationPerUserColumn.PathId - 1)))?null:(System.Guid?)reader[((int)AspnetPersonalizationPerUserColumn.PathId - 1)];
 			entity.UserId = (reader.IsDBNull(((int)AspnetPersonalizationPerUserColumn.UserId - 1)))?null:(System.Guid?)reader[((int)AspnetPersonalizationPerUserColumn.UserId - 1)];
 			entity.PageSettings = (System.Byte[])reader[((int)AspnetPersonalizationPerUserColumn.PageSettings - 1)];
@@ -599,6 +601,7 @@ namespace NDMSInvestigation.Data.Bases
 			DataRow dataRow = dataSet.Tables[0].Rows[0];
 			
 			entity.Id = (System.Guid)dataRow["Id"];
+			entity.OriginalId = (System.Guid)dataRow["Id"];
 			entity.PathId = Convert.IsDBNull(dataRow["PathId"]) ? null : (System.Guid?)dataRow["PathId"];
 			entity.UserId = Convert.IsDBNull(dataRow["UserId"]) ? null : (System.Guid?)dataRow["UserId"];
 			entity.PageSettings = (System.Byte[])dataRow["PageSettings"];

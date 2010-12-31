@@ -17,11 +17,16 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<data:HyperLinkField HeaderText="Group Id" DataNavigateUrlFormatString="QuestionGroupEdit.aspx?GroupId={0}" DataNavigateUrlFields="GroupId" DataContainer="GroupIdSource" DataTextField="GroupName" />
-				<asp:BoundField DataField="OrderNumber" HeaderText="Order Number" SortExpression="[OrderNumber]"  />
-				<asp:BoundField DataField="QuestionDescription" HeaderText="Question Description" SortExpression="[QuestionDescription]"  />
 				<asp:BoundField DataField="QuestionContent" HeaderText="Question Content" SortExpression="[QuestionContent]"  />
 				<asp:BoundField DataField="QuestionSuggest" HeaderText="Question Suggest" SortExpression="[QuestionSuggest]"  />
+				<asp:BoundField DataField="QuestionDescription" HeaderText="Question Description" SortExpression="[QuestionDescription]"  />
+				<asp:BoundField DataField="OrderNumber" HeaderText="Order Number" SortExpression="[OrderNumber]"  />
+				<data:HyperLinkField HeaderText="Group Id" DataNavigateUrlFormatString="QuestionGroupsEdit.aspx?GroupId={0}" DataNavigateUrlFields="GroupId" DataContainer="GroupIdSource" DataTextField="GroupName" />
+				<asp:BoundField DataField="CreatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Created Date" SortExpression="[CreatedDate]"  />
+				<asp:BoundField DataField="CreatedBy" HeaderText="Created By" SortExpression="[CreatedBy]"  />
+				<asp:BoundField DataField="UpdatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Updated Date" SortExpression="[UpdatedDate]"  />
+				<asp:BoundField DataField="UpdatedBy" HeaderText="Updated By" SortExpression="[UpdatedBy]"  />
+				<asp:BoundField DataField="QuestionTitle" HeaderText="Question Title" SortExpression="[QuestionTitle]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No QuestionDetails Found!</b>
@@ -37,8 +42,9 @@
 			>
 			<DeepLoadProperties Method="IncludeChildren" Recursive="False">
 	            <Types>
-					<data:QuestionDetailsProperty Name="QuestionGroup"/> 
+					<data:QuestionDetailsProperty Name="QuestionGroups"/> 
 					<%--<data:QuestionDetailsProperty Name="QuestionAnswerCollection" />--%>
+					<%--<data:QuestionDetailsProperty Name="AnswerIdAnswerDetailsCollection_From_QuestionAnswer" />--%>
 				</Types>
 			</DeepLoadProperties>
 			<Parameters>

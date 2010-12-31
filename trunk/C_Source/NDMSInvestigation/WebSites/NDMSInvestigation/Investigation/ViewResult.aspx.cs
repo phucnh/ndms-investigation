@@ -27,8 +27,8 @@ namespace NDMSInvestigation.Investigation.Views
 
         private void LoadChart()
         {
-            TList<NDMSInvestigation.Entities.QuestionGroup> questionGroupCollection = GetAllGroup();
-            TList<NDMSInvestigation.Entities.Result> resultCollection = GetAllResultByUserId();
+            TList<NDMSInvestigation.Entities.QuestionGroups> questionGroupCollection = GetAllGroup();
+            TList<NDMSInvestigation.Entities.Results> resultCollection = GetAllResultByUserId();
 
             if (
                 ((questionGroupCollection != null) && (questionGroupCollection.Count != 0)) ||
@@ -41,12 +41,12 @@ namespace NDMSInvestigation.Investigation.Views
                 questionGroupCollection.Sort("GroupId");
                 resultCollection.Sort("GroupId");
 
-                foreach (NDMSInvestigation.Entities.QuestionGroup questionGroup in questionGroupCollection)
+                foreach (NDMSInvestigation.Entities.QuestionGroups questionGroup in questionGroupCollection)
                 {
                     groupName.Add(questionGroup.GroupName);
                 }
 
-                foreach (NDMSInvestigation.Entities.Result result in resultCollection)
+                foreach (NDMSInvestigation.Entities.Results result in resultCollection)
                 {
                     groupMark.Add((int)result.GroupMark);
                 }
@@ -89,12 +89,12 @@ namespace NDMSInvestigation.Investigation.Views
         /// Gets all group.
         /// </summary>
         /// <returns></returns>
-        public TList<NDMSInvestigation.Entities.QuestionGroup> GetAllGroup()
+        public TList<QuestionGroups> GetAllGroup()
         {
             return Presenter.GetAllGroup();
         }
 
-        public TList<NDMSInvestigation.Entities.Result> GetAllResultByUserId()
+        public TList<Results> GetAllResultByUserId()
         {
             return Presenter.GetAllResultByUserId(new Guid(hidUserId.Value));
         }

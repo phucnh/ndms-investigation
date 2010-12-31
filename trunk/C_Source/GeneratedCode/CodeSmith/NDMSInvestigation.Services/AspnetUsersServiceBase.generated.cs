@@ -53,15 +53,17 @@ namespace NDMSInvestigation.Services
 		/// A simple factory method to create a new <see cref="AspnetUsers"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_userId"></param>
 		///<param name="_userName"></param>
 		///<param name="_loweredUserName"></param>
 		///<param name="_mobileAlias"></param>
 		///<param name="_isAnonymous"></param>
 		///<param name="_lastActivityDate"></param>
-		public static AspnetUsers CreateAspnetUsers(System.Guid _applicationId, System.String _userName, System.String _loweredUserName, System.String _mobileAlias, System.Boolean _isAnonymous, System.DateTime _lastActivityDate)
+		public static AspnetUsers CreateAspnetUsers(System.Guid _applicationId, System.Guid _userId, System.String _userName, System.String _loweredUserName, System.String _mobileAlias, System.Boolean _isAnonymous, System.DateTime _lastActivityDate)
 		{
 			AspnetUsers newEntityAspnetUsers = new AspnetUsers();
 			newEntityAspnetUsers.ApplicationId  = _applicationId;
+			newEntityAspnetUsers.UserId  = _userId;
 			newEntityAspnetUsers.UserName  = _userName;
 			newEntityAspnetUsers.LoweredUserName  = _loweredUserName;
 			newEntityAspnetUsers.MobileAlias  = _mobileAlias;
@@ -1635,20 +1637,20 @@ namespace NDMSInvestigation.Services
 		}
 		#endregion GetByRoleIdFromAspnetUsersInRoles
 		
-		#region GetByGroupIdFromResult
+		#region GetByGroupIdFromResults
 		/// <summary>
 		///		Gets aspnet_Users objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="_groupId"></param>
 		/// <returns>Returns a typed collection of AspnetUsers objects.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual TList<AspnetUsers> GetByGroupIdFromResult(System.Int32 _groupId)
+		public virtual TList<AspnetUsers> GetByGroupIdFromResults(System.Int32 _groupId)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByGroupIdFromResult");
+			SecurityContext.IsAuthorized("GetByGroupIdFromResults");
 			#endregion Security check
 			
 			#region Initialisation
@@ -1662,7 +1664,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 
-				list = dataProvider.AspnetUsersProvider.GetByGroupIdFromResult(transactionManager, _groupId);
+				list = dataProvider.AspnetUsersProvider.GetByGroupIdFromResults(transactionManager, _groupId);
 			}
             catch (Exception exc)
             {
@@ -1681,8 +1683,8 @@ namespace NDMSInvestigation.Services
 		
 		/// <summary>
 		///		Gets aspnet_Users objects from the datasource by GroupId in the
-		///		Result table. Table aspnet_Users is related to table QuestionGroup
-		///		through the (M:N) relationship defined in the Result table.
+		///		Results table. Table aspnet_Users is related to table QuestionGroups
+		///		through the (M:N) relationship defined in the Results table.
 		/// </summary>
 		/// <param name="_groupId"></param>
 		/// <param name="start">Row number at which to start reading.</param>
@@ -1691,11 +1693,11 @@ namespace NDMSInvestigation.Services
 		/// <remarks></remarks>
 		/// <returns>Returns a typed collection of AspnetUsers objects.</returns>
 		[DataObjectMethod(DataObjectMethodType.Select)]
-		public virtual TList<AspnetUsers> GetByGroupIdFromResult(System.Int32 _groupId, int start, int pageLength, out int totalCount)
+		public virtual TList<AspnetUsers> GetByGroupIdFromResults(System.Int32 _groupId, int start, int pageLength, out int totalCount)
 		{
 			#region Security check
 			// throws security exception if not authorized
-			SecurityContext.IsAuthorized("GetByGroupIdFromResult");
+			SecurityContext.IsAuthorized("GetByGroupIdFromResults");
 			#endregion Security check
 			
 			#region Initialisation
@@ -1710,7 +1712,7 @@ namespace NDMSInvestigation.Services
 				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
 				dataProvider = ConnectionScope.Current.DataProvider;
 
-				list = dataProvider.AspnetUsersProvider.GetByGroupIdFromResult(transactionManager, _groupId, start,  pageLength, out totalCount);
+				list = dataProvider.AspnetUsersProvider.GetByGroupIdFromResults(transactionManager, _groupId, start,  pageLength, out totalCount);
 			}
             catch (Exception exc)
             {
@@ -1726,7 +1728,7 @@ namespace NDMSInvestigation.Services
 			
 			return list;			
 		}
-		#endregion GetByGroupIdFromResult
+		#endregion GetByGroupIdFromResults
 		
 		#endregion	N2N Relationships
 

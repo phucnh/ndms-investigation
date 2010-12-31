@@ -15,10 +15,11 @@
 	<siteMapNode url="~/Admin/AspnetUsers.aspx" title="Aspnet Users"  description="" />
 	<siteMapNode url="~/Admin/AspnetUsersInRoles.aspx" title="Aspnet Users In Roles"  description="" />
 	<siteMapNode url="~/Admin/AspnetWebEventEvents.aspx" title="Aspnet Web Event Events"  description="" />
+	<siteMapNode url="~/Admin/CompanyDetails.aspx" title="Company Details"  description="" />
 	<siteMapNode url="~/Admin/QuestionAnswer.aspx" title="Question Answer"  description="" />
 	<siteMapNode url="~/Admin/QuestionDetails.aspx" title="Question Details"  description="" />
-	<siteMapNode url="~/Admin/QuestionGroup.aspx" title="Question Group"  description="" />
-	<siteMapNode url="~/Admin/Result.aspx" title="Result"  description="" />
-	<siteMapNode url="~/Admin/User.aspx" title="User"  description="" />
+	<siteMapNode url="~/Admin/QuestionGroups.aspx" title="Question Groups"  description="" />
+	<siteMapNode url="~/Admin/Results.aspx" title="Results"  description="" />
+	<siteMapNode url="~/Admin/TraceChange.aspx" title="Trace Change"  description="" />
         </siteMapNode>              
 </siteMap>

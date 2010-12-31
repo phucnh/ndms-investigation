@@ -815,7 +815,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.aspnet_Paths_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
-			database.AddOutParameter(commandWrapper, "@PathId", DbType.Guid, 16);
+			database.AddInParameter(commandWrapper, "@PathId", DbType.Guid, entity.PathId );
 			database.AddInParameter(commandWrapper, "@Path", DbType.String, entity.Path );
 			database.AddInParameter(commandWrapper, "@LoweredPath", DbType.String, entity.LoweredPath );
 			
@@ -833,9 +833,8 @@ namespace NDMSInvestigation.Data.SqlClient
 				results = Utility.ExecuteNonQuery(database,commandWrapper);
 			}
 					
-			object _pathId = database.GetParameterValue(commandWrapper, "@PathId");
-			entity.PathId = (System.Guid)_pathId;
 			
+			entity.OriginalPathId = entity.PathId;
 			
 			entity.AcceptChanges();
 	
@@ -868,6 +867,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			
 			database.AddInParameter(commandWrapper, "@ApplicationId", DbType.Guid, entity.ApplicationId );
 			database.AddInParameter(commandWrapper, "@PathId", DbType.Guid, entity.PathId );
+			database.AddInParameter(commandWrapper, "@OriginalPathId", DbType.Guid, entity.OriginalPathId);
 			database.AddInParameter(commandWrapper, "@Path", DbType.String, entity.Path );
 			database.AddInParameter(commandWrapper, "@LoweredPath", DbType.String, entity.LoweredPath );
 			
@@ -889,6 +889,7 @@ namespace NDMSInvestigation.Data.SqlClient
 			if (DataRepository.Provider.EnableEntityTracking)
 				EntityManager.StopTracking(entity.EntityTrackingKey);
 			
+			entity.OriginalPathId = entity.PathId;
 			
 			entity.AcceptChanges();
 			

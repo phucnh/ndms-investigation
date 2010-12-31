@@ -53,13 +53,15 @@ namespace NDMSInvestigation.Services
 		/// A simple factory method to create a new <see cref="AspnetRoles"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_roleId"></param>
 		///<param name="_roleName"></param>
 		///<param name="_loweredRoleName"></param>
 		///<param name="_description"></param>
-		public static AspnetRoles CreateAspnetRoles(System.Guid _applicationId, System.String _roleName, System.String _loweredRoleName, System.String _description)
+		public static AspnetRoles CreateAspnetRoles(System.Guid _applicationId, System.Guid _roleId, System.String _roleName, System.String _loweredRoleName, System.String _description)
 		{
 			AspnetRoles newEntityAspnetRoles = new AspnetRoles();
 			newEntityAspnetRoles.ApplicationId  = _applicationId;
+			newEntityAspnetRoles.RoleId  = _roleId;
 			newEntityAspnetRoles.RoleName  = _roleName;
 			newEntityAspnetRoles.LoweredRoleName  = _loweredRoleName;
 			newEntityAspnetRoles.Description  = _description;

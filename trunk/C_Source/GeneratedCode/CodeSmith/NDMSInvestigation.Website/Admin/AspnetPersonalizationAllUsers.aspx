@@ -17,9 +17,9 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="LastUpdatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Last Updated Date" SortExpression="[LastUpdatedDate]"  />
-				<asp:BoundField DataField="PageSettings" HeaderText="Page Settings" SortExpression="[PageSettings]"  />
 				<data:HyperLinkField HeaderText="Path Id" DataNavigateUrlFormatString="AspnetPathsEdit.aspx?PathId={0}" DataNavigateUrlFields="PathId" DataContainer="PathIdSource" DataTextField="Path" />
+				<asp:BoundField DataField="PageSettings" HeaderText="Page Settings" SortExpression="[PageSettings]"  />
+				<asp:BoundField DataField="LastUpdatedDate" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Last Updated Date" SortExpression="[LastUpdatedDate]"  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetPersonalizationAllUsers Found!</b>

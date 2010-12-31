@@ -33,6 +33,26 @@ namespace NDMSInvestigation.Entities
 		/// AnswerDescription : 
 		/// </summary>
 		System.String  AnswerDescription  { get; set; }
+		
+		/// <summary>
+		/// CreatedDate : 
+		/// </summary>
+		System.DateTime?  CreatedDate  { get; set; }
+		
+		/// <summary>
+		/// CreatedBy : 
+		/// </summary>
+		System.String  CreatedBy  { get; set; }
+		
+		/// <summary>
+		/// UpdateDate : 
+		/// </summary>
+		System.DateTime?  UpdateDate  { get; set; }
+		
+		/// <summary>
+		/// UpdateBy : 
+		/// </summary>
+		System.String  UpdateBy  { get; set; }
 			
 		/// <summary>
 		/// Creates a new object that is a copy of the current instance.
@@ -48,6 +68,13 @@ namespace NDMSInvestigation.Entities
 		///	which are related to this object through the relation _questionAnswerAnswerId
 		/// </summary>	
 		TList<QuestionAnswer> QuestionAnswerCollection {  get;  set;}	
+
+		
+		/// <summary>
+		///	Holds a collection of entity objects
+		///	which are related to this object through the junction table questionIdQuestionDetailsCollectionFromQuestionAnswer
+		/// </summary>	
+		TList<QuestionDetails> QuestionIdQuestionDetailsCollection_From_QuestionAnswer { get; set; }	
 
 		#endregion Data Properties
 

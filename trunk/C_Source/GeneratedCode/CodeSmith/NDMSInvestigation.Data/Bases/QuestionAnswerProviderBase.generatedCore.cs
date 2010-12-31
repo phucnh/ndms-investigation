@@ -32,36 +32,38 @@ namespace NDMSInvestigation.Data.Bases
 		/// <returns>Returns true if operation suceeded.</returns>
 		public override bool Delete(TransactionManager transactionManager, NDMSInvestigation.Entities.QuestionAnswerKey key)
 		{
-			return Delete(transactionManager, key.QuestionAnswerId);
+			return Delete(transactionManager, key.QuestionId, key.AnswerId);
 		}
 		
 		/// <summary>
 		/// 	Deletes a row from the DataSource.
 		/// </summary>
-		/// <param name="_questionAnswerId">. Primary Key.</param>
+		/// <param name="_questionId">. Primary Key.</param>
+		/// <param name="_answerId">. Primary Key.</param>
 		/// <remarks>Deletes based on primary key(s).</remarks>
 		/// <returns>Returns true if operation suceeded.</returns>
-		public bool Delete(System.Int32 _questionAnswerId)
+		public bool Delete(System.Int32 _questionId, System.Int32 _answerId)
 		{
-			return Delete(null, _questionAnswerId);
+			return Delete(null, _questionId, _answerId);
 		}
 		
 		/// <summary>
 		/// 	Deletes a row from the DataSource.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_questionAnswerId">. Primary Key.</param>
+		/// <param name="_questionId">. Primary Key.</param>
+		/// <param name="_answerId">. Primary Key.</param>
 		/// <remarks>Deletes based on primary key(s).</remarks>
 		/// <returns>Returns true if operation suceeded.</returns>
-		public abstract bool Delete(TransactionManager transactionManager, System.Int32 _questionAnswerId);		
+		public abstract bool Delete(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId);		
 		
 		#endregion Delete Methods
 		
 		#region Get By Foreign Key Functions
 	
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="_answerId"></param>
 		/// <returns>Returns a typed collection of NDMSInvestigation.Entities.QuestionAnswer objects.</returns>
@@ -72,8 +74,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_answerId"></param>
@@ -86,8 +88,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 			/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_answerId"></param>
@@ -102,7 +104,7 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
 		///		fkQuestionAnswerAnswerDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -117,7 +119,7 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
 		///		fkQuestionAnswerAnswerDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -132,8 +134,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 						
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_AnswerDetails key.
-		///		FK_Question_Answer_AnswerDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_AnswerDetails key.
+		///		FK_QuestionAnswer_AnswerDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_answerId"></param>
@@ -145,8 +147,8 @@ namespace NDMSInvestigation.Data.Bases
 		
 	
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="_questionId"></param>
 		/// <returns>Returns a typed collection of NDMSInvestigation.Entities.QuestionAnswer objects.</returns>
@@ -157,8 +159,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_questionId"></param>
@@ -171,8 +173,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 			/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_questionId"></param>
@@ -187,7 +189,7 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
 		///		fkQuestionAnswerQuestionDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -202,7 +204,7 @@ namespace NDMSInvestigation.Data.Bases
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
 		///		fkQuestionAnswerQuestionDetails Description: 
 		/// </summary>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
@@ -217,8 +219,8 @@ namespace NDMSInvestigation.Data.Bases
 		}
 						
 		/// <summary>
-		/// 	Gets rows from the datasource based on the FK_Question_Answer_QuestionDetails key.
-		///		FK_Question_Answer_QuestionDetails Description: 
+		/// 	Gets rows from the datasource based on the FK_QuestionAnswer_QuestionDetails key.
+		///		FK_QuestionAnswer_QuestionDetails Description: 
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
 		/// <param name="_questionId"></param>
@@ -242,87 +244,93 @@ namespace NDMSInvestigation.Data.Bases
 		/// <returns>Returns an instance of the Entity class.</returns>
 		public override NDMSInvestigation.Entities.QuestionAnswer Get(TransactionManager transactionManager, NDMSInvestigation.Entities.QuestionAnswerKey key, int start, int pageLength)
 		{
-			return GetByQuestionAnswerId(transactionManager, key.QuestionAnswerId, start, pageLength);
+			return GetByQuestionIdAnswerId(transactionManager, key.QuestionId, key.AnswerId, start, pageLength);
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the primary key PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the primary key PK_QuestionAnswer index.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(System.Int32 _questionAnswerId)
+		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId)
 		{
 			int count = -1;
-			return GetByQuestionAnswerId(null,_questionAnswerId, 0, int.MaxValue, out count);
+			return GetByQuestionIdAnswerId(null,_questionId, _answerId, 0, int.MaxValue, out count);
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <remarks></remarks>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(System.Int32 _questionAnswerId, int start, int pageLength)
+		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength)
 		{
 			int count = -1;
-			return GetByQuestionAnswerId(null, _questionAnswerId, start, pageLength, out count);
+			return GetByQuestionIdAnswerId(null, _questionId, _answerId, start, pageLength, out count);
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <remarks></remarks>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(TransactionManager transactionManager, System.Int32 _questionAnswerId)
+		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId)
 		{
 			int count = -1;
-			return GetByQuestionAnswerId(transactionManager, _questionAnswerId, 0, int.MaxValue, out count);
+			return GetByQuestionIdAnswerId(transactionManager, _questionId, _answerId, 0, int.MaxValue, out count);
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <remarks></remarks>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(TransactionManager transactionManager, System.Int32 _questionAnswerId, int start, int pageLength)
+		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength)
 		{
 			int count = -1;
-			return GetByQuestionAnswerId(transactionManager, _questionAnswerId, start, pageLength, out count);
+			return GetByQuestionIdAnswerId(transactionManager, _questionId, _answerId, start, pageLength, out count);
 		}
 		
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="count">out parameter to get total records for query</param>
 		/// <remarks></remarks>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(System.Int32 _questionAnswerId, int start, int pageLength, out int count)
+		public NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength, out int count)
 		{
-			return GetByQuestionAnswerId(null, _questionAnswerId, start, pageLength, out count);
+			return GetByQuestionIdAnswerId(null, _questionId, _answerId, start, pageLength, out count);
 		}
 		
 				
 		/// <summary>
-		/// 	Gets rows from the datasource based on the PK_Question_Answer index.
+		/// 	Gets rows from the datasource based on the PK_QuestionAnswer index.
 		/// </summary>
 		/// <param name="transactionManager"><see cref="TransactionManager"/> object</param>
-		/// <param name="_questionAnswerId"></param>
+		/// <param name="_questionId"></param>
+		/// <param name="_answerId"></param>
 		/// <param name="start">Row number at which to start reading, the first row is 0.</param>
 		/// <param name="pageLength">Number of rows to return.</param>
 		/// <param name="count">The total number of records.</param>
 		/// <returns>Returns an instance of the <see cref="NDMSInvestigation.Entities.QuestionAnswer"/> class.</returns>
-		public abstract NDMSInvestigation.Entities.QuestionAnswer GetByQuestionAnswerId(TransactionManager transactionManager, System.Int32 _questionAnswerId, int start, int pageLength, out int count);
+		public abstract NDMSInvestigation.Entities.QuestionAnswer GetByQuestionIdAnswerId(TransactionManager transactionManager, System.Int32 _questionId, System.Int32 _answerId, int start, int pageLength, out int count);
 						
 		#endregion "Get By Index Functions"
 	
@@ -366,7 +374,8 @@ namespace NDMSInvestigation.Data.Bases
 				if (useEntityFactory)
 				{
 					key = new System.Text.StringBuilder("QuestionAnswer")
-					.Append("|").Append((System.Int32)reader[((int)QuestionAnswerColumn.QuestionAnswerId - 1)]).ToString();
+					.Append("|").Append((System.Int32)reader[((int)QuestionAnswerColumn.QuestionId - 1)])
+					.Append("|").Append((System.Int32)reader[((int)QuestionAnswerColumn.AnswerId - 1)]).ToString();
 					c = EntityManager.LocateOrCreate<QuestionAnswer>(
 					key.ToString(), // EntityTrackingKey
 					"QuestionAnswer",  //Creational Type
@@ -390,9 +399,15 @@ namespace NDMSInvestigation.Data.Bases
 				{
 					c.SuppressEntityEvents = true;
 					c.QuestionId = (System.Int32)reader[((int)QuestionAnswerColumn.QuestionId - 1)];
+					c.OriginalQuestionId = c.QuestionId;
 					c.AnswerId = (System.Int32)reader[((int)QuestionAnswerColumn.AnswerId - 1)];
+					c.OriginalAnswerId = c.AnswerId;
 					c.Mark = (reader.IsDBNull(((int)QuestionAnswerColumn.Mark - 1)))?null:(System.Int32?)reader[((int)QuestionAnswerColumn.Mark - 1)];
-					c.QuestionAnswerId = (System.Int32)reader[((int)QuestionAnswerColumn.QuestionAnswerId - 1)];
+					c.Description = (reader.IsDBNull(((int)QuestionAnswerColumn.Description - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.Description - 1)];
+					c.CreatedDate = (reader.IsDBNull(((int)QuestionAnswerColumn.CreatedDate - 1)))?null:(System.DateTime?)reader[((int)QuestionAnswerColumn.CreatedDate - 1)];
+					c.CreatedBy = (reader.IsDBNull(((int)QuestionAnswerColumn.CreatedBy - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.CreatedBy - 1)];
+					c.UpdateDated = (reader.IsDBNull(((int)QuestionAnswerColumn.UpdateDated - 1)))?null:(System.DateTime?)reader[((int)QuestionAnswerColumn.UpdateDated - 1)];
+					c.UpdatedBy = (reader.IsDBNull(((int)QuestionAnswerColumn.UpdatedBy - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.UpdatedBy - 1)];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -411,9 +426,15 @@ namespace NDMSInvestigation.Data.Bases
 			if (!reader.Read()) return;
 			
 			entity.QuestionId = (System.Int32)reader[((int)QuestionAnswerColumn.QuestionId - 1)];
+			entity.OriginalQuestionId = (System.Int32)reader["QuestionId"];
 			entity.AnswerId = (System.Int32)reader[((int)QuestionAnswerColumn.AnswerId - 1)];
+			entity.OriginalAnswerId = (System.Int32)reader["AnswerId"];
 			entity.Mark = (reader.IsDBNull(((int)QuestionAnswerColumn.Mark - 1)))?null:(System.Int32?)reader[((int)QuestionAnswerColumn.Mark - 1)];
-			entity.QuestionAnswerId = (System.Int32)reader[((int)QuestionAnswerColumn.QuestionAnswerId - 1)];
+			entity.Description = (reader.IsDBNull(((int)QuestionAnswerColumn.Description - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.Description - 1)];
+			entity.CreatedDate = (reader.IsDBNull(((int)QuestionAnswerColumn.CreatedDate - 1)))?null:(System.DateTime?)reader[((int)QuestionAnswerColumn.CreatedDate - 1)];
+			entity.CreatedBy = (reader.IsDBNull(((int)QuestionAnswerColumn.CreatedBy - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.CreatedBy - 1)];
+			entity.UpdateDated = (reader.IsDBNull(((int)QuestionAnswerColumn.UpdateDated - 1)))?null:(System.DateTime?)reader[((int)QuestionAnswerColumn.UpdateDated - 1)];
+			entity.UpdatedBy = (reader.IsDBNull(((int)QuestionAnswerColumn.UpdatedBy - 1)))?null:(System.String)reader[((int)QuestionAnswerColumn.UpdatedBy - 1)];
 			entity.AcceptChanges();
 		}
 		
@@ -427,9 +448,15 @@ namespace NDMSInvestigation.Data.Bases
 			DataRow dataRow = dataSet.Tables[0].Rows[0];
 			
 			entity.QuestionId = (System.Int32)dataRow["QuestionId"];
+			entity.OriginalQuestionId = (System.Int32)dataRow["QuestionId"];
 			entity.AnswerId = (System.Int32)dataRow["AnswerId"];
+			entity.OriginalAnswerId = (System.Int32)dataRow["AnswerId"];
 			entity.Mark = Convert.IsDBNull(dataRow["Mark"]) ? null : (System.Int32?)dataRow["Mark"];
-			entity.QuestionAnswerId = (System.Int32)dataRow["Question_AnswerId"];
+			entity.Description = Convert.IsDBNull(dataRow["Description"]) ? null : (System.String)dataRow["Description"];
+			entity.CreatedDate = Convert.IsDBNull(dataRow["CreatedDate"]) ? null : (System.DateTime?)dataRow["CreatedDate"];
+			entity.CreatedBy = Convert.IsDBNull(dataRow["CreatedBy"]) ? null : (System.String)dataRow["CreatedBy"];
+			entity.UpdateDated = Convert.IsDBNull(dataRow["UpdateDated"]) ? null : (System.DateTime?)dataRow["UpdateDated"];
+			entity.UpdatedBy = Convert.IsDBNull(dataRow["UpdatedBy"]) ? null : (System.String)dataRow["UpdatedBy"];
 			entity.AcceptChanges();
 		}
 		#endregion 

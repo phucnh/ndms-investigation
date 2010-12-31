@@ -29,10 +29,10 @@ namespace NDMSInvestigation.Shell
         {
             globalServices.AddNew<EnterpriseLibraryAuthorizationService, IAuthorizationService>();
             globalServices.AddNew<SiteMapBuilderService, ISiteMapBuilderService>();
-            globalServices.AddNew<QuestionGroupService>();
+            globalServices.AddNew<QuestionGroupsService>();
             globalServices.AddNew<AnswerDetailsService>();
-            globalServices.AddNew<ResultService>();
-            globalServices.AddNew<UserService>();
+            globalServices.AddNew<ResultsService>();
+            globalServices.AddNew<CompanyDetailsService>();
         }
 
         protected virtual void AddModuleServices(IServiceCollection moduleServices)

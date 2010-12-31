@@ -84,18 +84,21 @@ namespace NDMSInvestigation.Entities
 		/// Creates a new <see cref="AspnetUsersBase"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_userId"></param>
 		///<param name="_userName"></param>
 		///<param name="_loweredUserName"></param>
 		///<param name="_mobileAlias"></param>
 		///<param name="_isAnonymous"></param>
 		///<param name="_lastActivityDate"></param>
-		public AspnetUsersBase(System.Guid _applicationId, System.String _userName, System.String _loweredUserName, 
-			System.String _mobileAlias, System.Boolean _isAnonymous, System.DateTime _lastActivityDate)
+		public AspnetUsersBase(System.Guid _applicationId, System.Guid _userId, System.String _userName, 
+			System.String _loweredUserName, System.String _mobileAlias, System.Boolean _isAnonymous, 
+			System.DateTime _lastActivityDate)
 		{
 			this.entityData = new AspnetUsersEntityData();
 			this.backupData = null;
 
 			this.ApplicationId = _applicationId;
+			this.UserId = _userId;
 			this.UserName = _userName;
 			this.LoweredUserName = _loweredUserName;
 			this.MobileAlias = _mobileAlias;
@@ -107,16 +110,19 @@ namespace NDMSInvestigation.Entities
 		/// A simple factory method to create a new <see cref="AspnetUsers"/> instance.
 		///</summary>
 		///<param name="_applicationId"></param>
+		///<param name="_userId"></param>
 		///<param name="_userName"></param>
 		///<param name="_loweredUserName"></param>
 		///<param name="_mobileAlias"></param>
 		///<param name="_isAnonymous"></param>
 		///<param name="_lastActivityDate"></param>
-		public static AspnetUsers CreateAspnetUsers(System.Guid _applicationId, System.String _userName, System.String _loweredUserName, 
-			System.String _mobileAlias, System.Boolean _isAnonymous, System.DateTime _lastActivityDate)
+		public static AspnetUsers CreateAspnetUsers(System.Guid _applicationId, System.Guid _userId, System.String _userName, 
+			System.String _loweredUserName, System.String _mobileAlias, System.Boolean _isAnonymous, 
+			System.DateTime _lastActivityDate)
 		{
 			AspnetUsers newAspnetUsers = new AspnetUsers();
 			newAspnetUsers.ApplicationId = _applicationId;
+			newAspnetUsers.UserId = _userId;
 			newAspnetUsers.UserName = _userName;
 			newAspnetUsers.LoweredUserName = _loweredUserName;
 			newAspnetUsers.MobileAlias = _mobileAlias;
@@ -177,8 +183,8 @@ namespace NDMSInvestigation.Entities
 
 
 
-		[ReadOnlyAttribute(false)/*, XmlIgnoreAttribute()*/, DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(true, true, false)]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(true, false, false)]
 		public virtual System.Guid UserId
 		{
 			get
@@ -199,6 +205,19 @@ namespace NDMSInvestigation.Entities
 				OnColumnChanged(AspnetUsersColumn.UserId, this.entityData.UserId);
 				OnPropertyChanged("UserId");
 			}
+		}
+		
+		/// <summary>
+		/// 	Get the original value of the UserId property.
+		///		
+		/// </summary>
+		/// <remarks>This is the original value of the UserId property.</remarks>
+		/// <value>This type is uniqueidentifier</value>
+		[BrowsableAttribute(false)/*, XmlIgnoreAttribute()*/]
+		public  virtual System.Guid OriginalUserId
+		{
+			get { return this.entityData.OriginalUserId; }
+			set { this.entityData.OriginalUserId = value; }
 		}
 		
 		/// <summary>
@@ -421,14 +440,14 @@ namespace NDMSInvestigation.Entities
 		}
 
 		/// <summary>
-		///	Holds a collection of QuestionGroupFromResult objects
-		///	which are related to this object through the junction table Result
+		///	Holds a collection of QuestionGroupsFromResults objects
+		///	which are related to this object through the junction table Results
 		/// </summary>	
 		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
-		public virtual TList<QuestionGroup> GroupIdQuestionGroupCollection_From_Result
+		public virtual TList<QuestionGroups> GroupIdQuestionGroupsCollection_From_Results
 		{
-			get { return entityData.GroupIdQuestionGroupCollection_From_Result; }
-			set { entityData.GroupIdQuestionGroupCollection_From_Result = value; }	
+			get { return entityData.GroupIdQuestionGroupsCollection_From_Results; }
+			set { entityData.GroupIdQuestionGroupsCollection_From_Results = value; }	
 		}
 	
 		/// <summary>
@@ -452,27 +471,27 @@ namespace NDMSInvestigation.Entities
 			get { return entityData.AspnetUsersInRolesCollection; }
 			set { entityData.AspnetUsersInRolesCollection = value; }	
 		}
-
-		/// <summary>
-		///	Holds a User object
-		///	which is related to this object through the relation User
-		/// </summary>
-		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
-		public virtual User User
-		{
-			get { return entityData.User; }
-			set { entityData.User = value; }	
-		}
 	
 		/// <summary>
-		///	Holds a collection of Result objects
-		///	which are related to this object through the relation FK_Result_aspnet_Users
+		///	Holds a collection of Results objects
+		///	which are related to this object through the relation FK_Results_aspnet_Users
 		/// </summary>	
 		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
-		public virtual TList<Result> ResultCollection
+		public virtual TList<Results> ResultsCollection
 		{
-			get { return entityData.ResultCollection; }
-			set { entityData.ResultCollection = value; }	
+			get { return entityData.ResultsCollection; }
+			set { entityData.ResultsCollection = value; }	
+		}
+
+		/// <summary>
+		///	Holds a CompanyDetails object
+		///	which is related to this object through the relation CompanyDetails
+		/// </summary>
+		[System.ComponentModel.Bindable(System.ComponentModel.BindableSupport.Yes)]
+		public virtual CompanyDetails CompanyDetails
+		{
+			get { return entityData.CompanyDetails; }
+			set { entityData.CompanyDetails = value; }	
 		}
 
 		/// <summary>
@@ -657,6 +676,7 @@ namespace NDMSInvestigation.Entities
 			copy.SuppressEntityEvents = true;
 				copy.ApplicationId = this.ApplicationId;
 				copy.UserId = this.UserId;
+					copy.OriginalUserId = this.OriginalUserId;
 				copy.UserName = this.UserName;
 				copy.LoweredUserName = this.LoweredUserName;
 				copy.MobileAlias = this.MobileAlias;
@@ -671,11 +691,11 @@ namespace NDMSInvestigation.Entities
 			//deep copy nested objects
 			copy.AspnetMembership = (AspnetMembership) MakeCopyOf(this.AspnetMembership, existingCopies); 
 			copy.AspnetProfile = (AspnetProfile) MakeCopyOf(this.AspnetProfile, existingCopies); 
-			copy.GroupIdQuestionGroupCollection_From_Result = (TList<QuestionGroup>) MakeCopyOf(this.GroupIdQuestionGroupCollection_From_Result, existingCopies); 
+			copy.GroupIdQuestionGroupsCollection_From_Results = (TList<QuestionGroups>) MakeCopyOf(this.GroupIdQuestionGroupsCollection_From_Results, existingCopies); 
 			copy.AspnetPersonalizationPerUserCollection = (TList<AspnetPersonalizationPerUser>) MakeCopyOf(this.AspnetPersonalizationPerUserCollection, existingCopies); 
 			copy.AspnetUsersInRolesCollection = (TList<AspnetUsersInRoles>) MakeCopyOf(this.AspnetUsersInRolesCollection, existingCopies); 
-			copy.User = (User) MakeCopyOf(this.User, existingCopies); 
-			copy.ResultCollection = (TList<Result>) MakeCopyOf(this.ResultCollection, existingCopies); 
+			copy.ResultsCollection = (TList<Results>) MakeCopyOf(this.ResultsCollection, existingCopies); 
+			copy.CompanyDetails = (CompanyDetails) MakeCopyOf(this.CompanyDetails, existingCopies); 
 			copy.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles = (TList<AspnetRoles>) MakeCopyOf(this.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles, existingCopies); 
 			copy.EntityState = this.EntityState;
 			copy.SuppressEntityEvents = false;
@@ -866,6 +886,7 @@ namespace NDMSInvestigation.Entities
 			if (_originalData != null)
 				return CreateAspnetUsers(
 				_originalData.ApplicationId,
+				_originalData.UserId,
 				_originalData.UserName,
 				_originalData.LoweredUserName,
 				_originalData.MobileAlias,
@@ -1215,6 +1236,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Users"</remarks>
 		public System.Guid UserId;
 			
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		public System.Guid OriginalUserId;
+		
 		#endregion
 		
 		#region Non Primary key(s)
@@ -1305,27 +1331,27 @@ namespace NDMSInvestigation.Entities
 		
 		#endregion 
 
-		#region GroupIdQuestionGroupCollection_From_Result
+		#region GroupIdQuestionGroupsCollection_From_Results
 		
-		private TList<QuestionGroup> groupIdQuestionGroupCollectionFromResult;
+		private TList<QuestionGroups> groupIdQuestionGroupsCollectionFromResults;
 		
 		/// <summary>
 		///	Holds a collection of entity objects
-		///	which are related to this object through the junction table groupIdQuestionGroupCollectionFromResult
+		///	which are related to this object through the junction table groupIdQuestionGroupsCollectionFromResults
 		/// </summary>
 		
-		public TList<QuestionGroup> GroupIdQuestionGroupCollection_From_Result
+		public TList<QuestionGroups> GroupIdQuestionGroupsCollection_From_Results
 		{
 			get
 			{
-				if (groupIdQuestionGroupCollectionFromResult == null)
+				if (groupIdQuestionGroupsCollectionFromResults == null)
 				{
-				groupIdQuestionGroupCollectionFromResult = new TList<QuestionGroup>();
+				groupIdQuestionGroupsCollectionFromResults = new TList<QuestionGroups>();
 				}
 	
-				return groupIdQuestionGroupCollectionFromResult;
+				return groupIdQuestionGroupsCollectionFromResults;
 			}
-			set { groupIdQuestionGroupCollectionFromResult = value; }
+			set { groupIdQuestionGroupsCollectionFromResults = value; }
 		}
 		
 		#endregion 
@@ -1380,47 +1406,47 @@ namespace NDMSInvestigation.Entities
 		
 		#endregion
 
-		#region User
+		#region ResultsCollection
 		
-		private User _userUserId;
-		
-		/// <summary>
-		///	Holds a  User entity object
-		///	which is related to this object through the relation _userUserId
-		/// </summary>
-		
-		public User User
-		{
-			get {		return _userUserId;		}
-			set { 	_userUserId = value; 	}
-		}
-		
-		#endregion 
-
-		#region ResultCollection
-		
-		private TList<Result> _resultUserId;
+		private TList<Results> _resultsUserId;
 		
 		/// <summary>
 		///	Holds a collection of entity objects
-		///	which are related to this object through the relation _resultUserId
+		///	which are related to this object through the relation _resultsUserId
 		/// </summary>
 		
-		public TList<Result> ResultCollection
+		public TList<Results> ResultsCollection
 		{
 			get
 			{
-				if (_resultUserId == null)
+				if (_resultsUserId == null)
 				{
-				_resultUserId = new TList<Result>();
+				_resultsUserId = new TList<Results>();
 				}
 	
-				return _resultUserId;
+				return _resultsUserId;
 			}
-			set { _resultUserId = value; }
+			set { _resultsUserId = value; }
 		}
 		
 		#endregion
+
+		#region CompanyDetails
+		
+		private CompanyDetails _companyDetailsUserId;
+		
+		/// <summary>
+		///	Holds a  CompanyDetails entity object
+		///	which is related to this object through the relation _companyDetailsUserId
+		/// </summary>
+		
+		public CompanyDetails CompanyDetails
+		{
+			get {		return _companyDetailsUserId;		}
+			set { 	_companyDetailsUserId = value; 	}
+		}
+		
+		#endregion 
 
 		#region RoleIdAspnetRolesCollection_From_AspnetUsersInRoles
 		
@@ -1460,6 +1486,7 @@ namespace NDMSInvestigation.Entities
 			AspnetUsersEntityData _tmp = new AspnetUsersEntityData();
 						
 			_tmp.UserId = this.UserId;
+			_tmp.OriginalUserId = this.OriginalUserId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.UserName = this.UserName;
@@ -1479,16 +1506,16 @@ namespace NDMSInvestigation.Entities
 				_tmp.AspnetMembership = (AspnetMembership) MakeCopyOf(this.AspnetMembership); 
 			if (this._aspnetProfileUserId != null)
 				_tmp.AspnetProfile = (AspnetProfile) MakeCopyOf(this.AspnetProfile); 
-			if (this.groupIdQuestionGroupCollectionFromResult != null)
-				_tmp.GroupIdQuestionGroupCollection_From_Result = (TList<QuestionGroup>) MakeCopyOf(this.GroupIdQuestionGroupCollection_From_Result); 
+			if (this.groupIdQuestionGroupsCollectionFromResults != null)
+				_tmp.GroupIdQuestionGroupsCollection_From_Results = (TList<QuestionGroups>) MakeCopyOf(this.GroupIdQuestionGroupsCollection_From_Results); 
 			if (this._aspnetPersonalizationPerUserUserId != null)
 				_tmp.AspnetPersonalizationPerUserCollection = (TList<AspnetPersonalizationPerUser>) MakeCopyOf(this.AspnetPersonalizationPerUserCollection); 
 			if (this._aspnetUsersInRolesUserId != null)
 				_tmp.AspnetUsersInRolesCollection = (TList<AspnetUsersInRoles>) MakeCopyOf(this.AspnetUsersInRolesCollection); 
-			if (this._userUserId != null)
-				_tmp.User = (User) MakeCopyOf(this.User); 
-			if (this._resultUserId != null)
-				_tmp.ResultCollection = (TList<Result>) MakeCopyOf(this.ResultCollection); 
+			if (this._resultsUserId != null)
+				_tmp.ResultsCollection = (TList<Results>) MakeCopyOf(this.ResultsCollection); 
+			if (this._companyDetailsUserId != null)
+				_tmp.CompanyDetails = (CompanyDetails) MakeCopyOf(this.CompanyDetails); 
 			if (this.roleIdAspnetRolesCollectionFromAspnetUsersInRoles != null)
 				_tmp.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles = (TList<AspnetRoles>) MakeCopyOf(this.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles); 
 			#endregion Child Collections
@@ -1511,6 +1538,7 @@ namespace NDMSInvestigation.Entities
 			AspnetUsersEntityData _tmp = new AspnetUsersEntityData();
 						
 			_tmp.UserId = this.UserId;
+			_tmp.OriginalUserId = this.OriginalUserId;
 			
 			_tmp.ApplicationId = this.ApplicationId;
 			_tmp.UserName = this.UserName;
@@ -1530,11 +1558,11 @@ namespace NDMSInvestigation.Entities
 			//deep copy nested objects
 			_tmp.AspnetMembership = (AspnetMembership) MakeCopyOf(this.AspnetMembership, existingCopies); 
 			_tmp.AspnetProfile = (AspnetProfile) MakeCopyOf(this.AspnetProfile, existingCopies); 
-			_tmp.GroupIdQuestionGroupCollection_From_Result = (TList<QuestionGroup>) MakeCopyOf(this.GroupIdQuestionGroupCollection_From_Result, existingCopies); 
+			_tmp.GroupIdQuestionGroupsCollection_From_Results = (TList<QuestionGroups>) MakeCopyOf(this.GroupIdQuestionGroupsCollection_From_Results, existingCopies); 
 			_tmp.AspnetPersonalizationPerUserCollection = (TList<AspnetPersonalizationPerUser>) MakeCopyOf(this.AspnetPersonalizationPerUserCollection, existingCopies); 
 			_tmp.AspnetUsersInRolesCollection = (TList<AspnetUsersInRoles>) MakeCopyOf(this.AspnetUsersInRolesCollection, existingCopies); 
-			_tmp.User = (User) MakeCopyOf(this.User, existingCopies); 
-			_tmp.ResultCollection = (TList<Result>) MakeCopyOf(this.ResultCollection, existingCopies); 
+			_tmp.ResultsCollection = (TList<Results>) MakeCopyOf(this.ResultsCollection, existingCopies); 
+			_tmp.CompanyDetails = (CompanyDetails) MakeCopyOf(this.CompanyDetails, existingCopies); 
 			_tmp.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles = (TList<AspnetRoles>) MakeCopyOf(this.RoleIdAspnetRolesCollection_From_AspnetUsersInRoles, existingCopies); 
 			#endregion Child Collections
 			
@@ -1914,7 +1942,7 @@ namespace NDMSInvestigation.Entities
 		/// UserId : 
 		/// </summary>
 		[EnumTextValue("UserId")]
-		[ColumnEnum("UserId", typeof(System.Guid), System.Data.DbType.Guid, true, true, false)]
+		[ColumnEnum("UserId", typeof(System.Guid), System.Data.DbType.Guid, true, false, false)]
 		UserId = 2,
 		/// <summary>
 		/// UserName : 

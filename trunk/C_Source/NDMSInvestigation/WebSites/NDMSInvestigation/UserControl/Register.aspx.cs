@@ -3,6 +3,7 @@ using System.Security;
 using Microsoft.Practices.ObjectBuilder;
 
 using NDMSInvestigation.Entities;
+
 using System.Web.Security;
 using System.Web.UI.WebControls;
 
@@ -41,11 +42,11 @@ namespace NDMSInvestigation.UserControl.Views
         protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
         {
             MembershipUser membership = Membership.GetUser(CreateUserWizard1.UserName);
-            NDMSInvestigation.Entities.User user = new NDMSInvestigation.Entities.User();
+            CompanyDetails user = new CompanyDetails();
  
             #region Find control from interface
-            TextBox CompanyName = CreateUserWizard1.FindControl("CompanyName");
-            TextBox Phone = CreateUserWizard1.FindControl("Phone");
+            TextBox CompanyName = (TextBox) CreateUserWizard1.FindControl("CompanyName");
+            TextBox Phone = (TextBox)CreateUserWizard1.FindControl("Phone");
             #endregion
 
             user.UserId = new Guid(membership.ProviderUserKey.ToString());

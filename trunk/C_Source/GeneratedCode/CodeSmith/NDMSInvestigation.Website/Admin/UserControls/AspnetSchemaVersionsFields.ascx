@@ -4,9 +4,9 @@
 	<ItemTemplate>
 		<table border="0" cellpadding="3" cellspacing="1">
 			<tr>
-        <td class="literal"><asp:Label ID="lbldataIsCurrentVersion" runat="server" Text="Is Current Version:" AssociatedControlID="dataIsCurrentVersion" /></td>
+        <td class="literal"><asp:Label ID="lbldataFeature" runat="server" Text="Feature:" AssociatedControlID="dataFeature" /></td>
         <td>
-					<asp:RadioButtonList runat="server" ID="dataIsCurrentVersion" SelectedValue='<%# Bind("IsCurrentVersion") %>' RepeatDirection="Horizontal"><asp:ListItem Value="True" Text="Yes" Selected="True"></asp:ListItem><asp:ListItem Value="False" Text="No"></asp:ListItem></asp:RadioButtonList>
+					<asp:TextBox runat="server" ID="dataFeature" Text='<%# Bind("Feature") %>' MaxLength="128"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataFeature" runat="server" Display="Dynamic" ControlToValidate="dataFeature" ErrorMessage="Required"></asp:RequiredFieldValidator>
 				</td>
 			</tr>
 			<tr>
@@ -16,9 +16,9 @@
 				</td>
 			</tr>
 			<tr>
-        <td class="literal"><asp:Label ID="lbldataFeature" runat="server" Text="Feature:" AssociatedControlID="dataFeature" /></td>
+        <td class="literal"><asp:Label ID="lbldataIsCurrentVersion" runat="server" Text="Is Current Version:" AssociatedControlID="dataIsCurrentVersion" /></td>
         <td>
-					<asp:TextBox runat="server" ID="dataFeature" Text='<%# Bind("Feature") %>' MaxLength="128"></asp:TextBox><asp:RequiredFieldValidator ID="ReqVal_dataFeature" runat="server" Display="Dynamic" ControlToValidate="dataFeature" ErrorMessage="Required"></asp:RequiredFieldValidator>
+					<asp:RadioButtonList runat="server" ID="dataIsCurrentVersion" SelectedValue='<%# Bind("IsCurrentVersion") %>' RepeatDirection="Horizontal"><asp:ListItem Value="True" Text="Yes" Selected="True"></asp:ListItem><asp:ListItem Value="False" Text="No"></asp:ListItem></asp:RadioButtonList>
 				</td>
 			</tr>
 			

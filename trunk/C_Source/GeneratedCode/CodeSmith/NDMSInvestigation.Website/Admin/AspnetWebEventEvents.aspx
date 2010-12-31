@@ -17,21 +17,21 @@
 			>
 			<Columns>
 				<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				
-				<asp:BoundField DataField="ApplicationVirtualPath" HeaderText="Application Virtual Path" SortExpression="[ApplicationVirtualPath]"  />
-				<asp:BoundField DataField="ApplicationPath" HeaderText="Application Path" SortExpression="[ApplicationPath]"  />
-				<asp:BoundField DataField="Message" HeaderText="Message" SortExpression="[Message]"  />
-				<asp:BoundField DataField="MachineName" HeaderText="Machine Name" SortExpression="[MachineName]"  />
-				<asp:BoundField DataField="Details" HeaderText="Details" SortExpression=""  />
-				<asp:BoundField DataField="ExceptionType" HeaderText="Exception Type" SortExpression="[ExceptionType]"  />
-				<asp:BoundField DataField="RequestUrl" HeaderText="Request Url" SortExpression="[RequestUrl]"  />
-				<asp:BoundField DataField="EventDetailCode" HeaderText="Event Detail Code" SortExpression="[EventDetailCode]"  />
-				<asp:BoundField DataField="EventTime" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Event Time" SortExpression="[EventTime]"  />
-				<asp:BoundField DataField="EventTimeUtc" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Event Time Utc" SortExpression="[EventTimeUtc]"  />
 				<asp:BoundField DataField="EventId" HeaderText="Event Id" SortExpression="[EventId]" ReadOnly="True" />
+				<asp:BoundField DataField="EventTimeUtc" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Event Time Utc" SortExpression="[EventTimeUtc]"  />
+				<asp:BoundField DataField="EventTime" DataFormatString="{0:d}" HtmlEncode="False" HeaderText="Event Time" SortExpression="[EventTime]"  />
 				<asp:BoundField DataField="EventType" HeaderText="Event Type" SortExpression="[EventType]"  />
-				<asp:BoundField DataField="EventCode" HeaderText="Event Code" SortExpression="[EventCode]"  />
-				<asp:BoundField DataField="EventOccurrence" HeaderText="Event Occurrence" SortExpression="[EventOccurrence]"  />
 				<asp:BoundField DataField="EventSequence" HeaderText="Event Sequence" SortExpression="[EventSequence]"  />
+				<asp:BoundField DataField="EventOccurrence" HeaderText="Event Occurrence" SortExpression="[EventOccurrence]"  />
+				<asp:BoundField DataField="EventCode" HeaderText="Event Code" SortExpression="[EventCode]"  />
+				<asp:BoundField DataField="EventDetailCode" HeaderText="Event Detail Code" SortExpression="[EventDetailCode]"  />
+				<asp:BoundField DataField="Message" HeaderText="Message" SortExpression="[Message]"  />
+				<asp:BoundField DataField="ApplicationPath" HeaderText="Application Path" SortExpression="[ApplicationPath]"  />
+				<asp:BoundField DataField="ApplicationVirtualPath" HeaderText="Application Virtual Path" SortExpression="[ApplicationVirtualPath]"  />
+				<asp:BoundField DataField="MachineName" HeaderText="Machine Name" SortExpression="[MachineName]"  />
+				<asp:BoundField DataField="RequestUrl" HeaderText="Request Url" SortExpression="[RequestUrl]"  />
+				<asp:BoundField DataField="ExceptionType" HeaderText="Exception Type" SortExpression="[ExceptionType]"  />
+				<asp:BoundField DataField="Details" HeaderText="Details" SortExpression=""  />
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No AspnetWebEventEvents Found!</b>

@@ -28,7 +28,7 @@ public partial class QuestionGroupEdit {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NDMSInvestigation.Web.Data.QuestionGroupDataSource QuestionGroupDataSource;
+    protected global::NDMSInvestigation.Web.Data.QuestionGroupsDataSource QuestionGroupDataSource;
     
     /// <summary>
     /// GridViewQuestionDetails1 control.

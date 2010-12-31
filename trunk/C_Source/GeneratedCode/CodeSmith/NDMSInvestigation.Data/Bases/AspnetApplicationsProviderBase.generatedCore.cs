@@ -380,6 +380,7 @@ namespace NDMSInvestigation.Data.Bases
 					c.ApplicationName = (System.String)reader[((int)AspnetApplicationsColumn.ApplicationName - 1)];
 					c.LoweredApplicationName = (System.String)reader[((int)AspnetApplicationsColumn.LoweredApplicationName - 1)];
 					c.ApplicationId = (System.Guid)reader[((int)AspnetApplicationsColumn.ApplicationId - 1)];
+					c.OriginalApplicationId = c.ApplicationId;
 					c.Description = (reader.IsDBNull(((int)AspnetApplicationsColumn.Description - 1)))?null:(System.String)reader[((int)AspnetApplicationsColumn.Description - 1)];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
@@ -401,6 +402,7 @@ namespace NDMSInvestigation.Data.Bases
 			entity.ApplicationName = (System.String)reader[((int)AspnetApplicationsColumn.ApplicationName - 1)];
 			entity.LoweredApplicationName = (System.String)reader[((int)AspnetApplicationsColumn.LoweredApplicationName - 1)];
 			entity.ApplicationId = (System.Guid)reader[((int)AspnetApplicationsColumn.ApplicationId - 1)];
+			entity.OriginalApplicationId = (System.Guid)reader["ApplicationId"];
 			entity.Description = (reader.IsDBNull(((int)AspnetApplicationsColumn.Description - 1)))?null:(System.String)reader[((int)AspnetApplicationsColumn.Description - 1)];
 			entity.AcceptChanges();
 		}
@@ -417,6 +419,7 @@ namespace NDMSInvestigation.Data.Bases
 			entity.ApplicationName = (System.String)dataRow["ApplicationName"];
 			entity.LoweredApplicationName = (System.String)dataRow["LoweredApplicationName"];
 			entity.ApplicationId = (System.Guid)dataRow["ApplicationId"];
+			entity.OriginalApplicationId = (System.Guid)dataRow["ApplicationId"];
 			entity.Description = Convert.IsDBNull(dataRow["Description"]) ? null : (System.String)dataRow["Description"];
 			entity.AcceptChanges();
 		}

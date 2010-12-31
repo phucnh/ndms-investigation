@@ -17,13 +17,13 @@ namespace NDMSInvestigation.Investigation.Views
         //
 
         private AnswerDetailsService _answerDetailsService;
-        private ResultService _resultService;
+        private ResultsService _resultService;
         private IInvestigationController _controller;
 
         public InvestigationPagePresenter(
             [CreateNew] IInvestigationController controller,
             [ServiceDependency] AnswerDetailsService answerDetailsService,
-            [ServiceDependency] ResultService resultService
+            [ServiceDependency] ResultsService resultService
             )
         {
             _controller = controller;
@@ -46,12 +46,12 @@ namespace NDMSInvestigation.Investigation.Views
             return _answerDetailsService.GetByAnswerId(answerId);
         }
 
-        public TList<Result> GetResultByCustomerId(Guid userId)
+        public TList<Results> GetResultByCustomerId(Guid userId)
         {
             return _resultService.GetByUserId(userId);
         }
 
-        public void Save(TList<Result> resultCollection)
+        public void Save(TList<Results> resultCollection)
         {
             _resultService.Save(resultCollection);
         }

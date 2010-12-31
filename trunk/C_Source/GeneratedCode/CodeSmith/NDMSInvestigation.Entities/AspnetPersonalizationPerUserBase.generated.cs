@@ -83,16 +83,18 @@ namespace NDMSInvestigation.Entities
 		///<summary>
 		/// Creates a new <see cref="AspnetPersonalizationPerUserBase"/> instance.
 		///</summary>
+		///<param name="_id"></param>
 		///<param name="_pathId"></param>
 		///<param name="_userId"></param>
 		///<param name="_pageSettings"></param>
 		///<param name="_lastUpdatedDate"></param>
-		public AspnetPersonalizationPerUserBase(System.Guid? _pathId, System.Guid? _userId, 
-			System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
+		public AspnetPersonalizationPerUserBase(System.Guid _id, System.Guid? _pathId, 
+			System.Guid? _userId, System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
 		{
 			this.entityData = new AspnetPersonalizationPerUserEntityData();
 			this.backupData = null;
 
+			this.Id = _id;
 			this.PathId = _pathId;
 			this.UserId = _userId;
 			this.PageSettings = _pageSettings;
@@ -102,14 +104,16 @@ namespace NDMSInvestigation.Entities
 		///<summary>
 		/// A simple factory method to create a new <see cref="AspnetPersonalizationPerUser"/> instance.
 		///</summary>
+		///<param name="_id"></param>
 		///<param name="_pathId"></param>
 		///<param name="_userId"></param>
 		///<param name="_pageSettings"></param>
 		///<param name="_lastUpdatedDate"></param>
-		public static AspnetPersonalizationPerUser CreateAspnetPersonalizationPerUser(System.Guid? _pathId, System.Guid? _userId, 
-			System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
+		public static AspnetPersonalizationPerUser CreateAspnetPersonalizationPerUser(System.Guid _id, System.Guid? _pathId, 
+			System.Guid? _userId, System.Byte[] _pageSettings, System.DateTime _lastUpdatedDate)
 		{
 			AspnetPersonalizationPerUser newAspnetPersonalizationPerUser = new AspnetPersonalizationPerUser();
+			newAspnetPersonalizationPerUser.Id = _id;
 			newAspnetPersonalizationPerUser.PathId = _pathId;
 			newAspnetPersonalizationPerUser.UserId = _userId;
 			newAspnetPersonalizationPerUser.PageSettings = _pageSettings;
@@ -134,8 +138,8 @@ namespace NDMSInvestigation.Entities
 
 
 
-		[ReadOnlyAttribute(false)/*, XmlIgnoreAttribute()*/, DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
-		[DataObjectField(true, true, false)]
+		[DescriptionAttribute(@""), System.ComponentModel.Bindable( System.ComponentModel.BindableSupport.Yes)]
+		[DataObjectField(true, false, false)]
 		public virtual System.Guid Id
 		{
 			get
@@ -156,6 +160,19 @@ namespace NDMSInvestigation.Entities
 				OnColumnChanged(AspnetPersonalizationPerUserColumn.Id, this.entityData.Id);
 				OnPropertyChanged("Id");
 			}
+		}
+		
+		/// <summary>
+		/// 	Get the original value of the Id property.
+		///		
+		/// </summary>
+		/// <remarks>This is the original value of the Id property.</remarks>
+		/// <value>This type is uniqueidentifier</value>
+		[BrowsableAttribute(false)/*, XmlIgnoreAttribute()*/]
+		public  virtual System.Guid OriginalId
+		{
+			get { return this.entityData.OriginalId; }
+			set { this.entityData.OriginalId = value; }
 		}
 		
 		/// <summary>
@@ -503,6 +520,7 @@ namespace NDMSInvestigation.Entities
 			existingCopies.Add(this, copy);
 			copy.SuppressEntityEvents = true;
 				copy.Id = this.Id;
+					copy.OriginalId = this.OriginalId;
 				copy.PathId = this.PathId;
 				copy.UserId = this.UserId;
 				copy.PageSettings = this.PageSettings;
@@ -699,6 +717,7 @@ namespace NDMSInvestigation.Entities
 		{
 			if (_originalData != null)
 				return CreateAspnetPersonalizationPerUser(
+				_originalData.Id,
 				_originalData.PathId,
 				_originalData.UserId,
 				_originalData.PageSettings,
@@ -1030,6 +1049,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_PersonalizationPerUser"</remarks>
 		public System.Guid Id;
 			
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		public System.Guid OriginalId;
+		
 		#endregion
 		
 		#region Non Primary key(s)
@@ -1102,6 +1126,7 @@ namespace NDMSInvestigation.Entities
 			AspnetPersonalizationPerUserEntityData _tmp = new AspnetPersonalizationPerUserEntityData();
 						
 			_tmp.Id = this.Id;
+			_tmp.OriginalId = this.OriginalId;
 			
 			_tmp.PathId = this.PathId;
 			_tmp.UserId = this.UserId;
@@ -1136,6 +1161,7 @@ namespace NDMSInvestigation.Entities
 			AspnetPersonalizationPerUserEntityData _tmp = new AspnetPersonalizationPerUserEntityData();
 						
 			_tmp.Id = this.Id;
+			_tmp.OriginalId = this.OriginalId;
 			
 			_tmp.PathId = this.PathId;
 			_tmp.UserId = this.UserId;
@@ -1526,7 +1552,7 @@ namespace NDMSInvestigation.Entities
 		/// Id : 
 		/// </summary>
 		[EnumTextValue("Id")]
-		[ColumnEnum("Id", typeof(System.Guid), System.Data.DbType.Guid, true, true, false)]
+		[ColumnEnum("Id", typeof(System.Guid), System.Data.DbType.Guid, true, false, false)]
 		Id = 1,
 		/// <summary>
 		/// PathId : 

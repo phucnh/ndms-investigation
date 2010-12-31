@@ -17,6 +17,11 @@ namespace NDMSInvestigation.Entities
 		/// <remarks>Member of the primary key of the underlying table "aspnet_Applications"</remarks>
 		System.Guid ApplicationId { get; set; }
 				
+		/// <summary>
+		/// keep a copy of the original so it can be used for editable primary keys.
+		/// </summary>
+		System.Guid OriginalApplicationId { get; set; }
+			
 		
 		
 		/// <summary>

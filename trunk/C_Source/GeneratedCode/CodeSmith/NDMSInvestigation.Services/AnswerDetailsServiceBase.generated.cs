@@ -55,12 +55,20 @@ namespace NDMSInvestigation.Services
 		///<param name="_answerContent"></param>
 		///<param name="_answerMark"></param>
 		///<param name="_answerDescription"></param>
-		public static AnswerDetails CreateAnswerDetails(System.String _answerContent, System.Int32? _answerMark, System.String _answerDescription)
+		///<param name="_createdDate"></param>
+		///<param name="_createdBy"></param>
+		///<param name="_updateDate"></param>
+		///<param name="_updateBy"></param>
+		public static AnswerDetails CreateAnswerDetails(System.String _answerContent, System.Int32? _answerMark, System.String _answerDescription, System.DateTime? _createdDate, System.String _createdBy, System.DateTime? _updateDate, System.String _updateBy)
 		{
 			AnswerDetails newEntityAnswerDetails = new AnswerDetails();
 			newEntityAnswerDetails.AnswerContent  = _answerContent;
 			newEntityAnswerDetails.AnswerMark  = _answerMark;
 			newEntityAnswerDetails.AnswerDescription  = _answerDescription;
+			newEntityAnswerDetails.CreatedDate  = _createdDate;
+			newEntityAnswerDetails.CreatedBy  = _createdBy;
+			newEntityAnswerDetails.UpdateDate  = _updateDate;
+			newEntityAnswerDetails.UpdateBy  = _updateBy;
 			return newEntityAnswerDetails;
 		}
 		#endregion Constructors
@@ -1271,6 +1279,99 @@ namespace NDMSInvestigation.Services
 		#endregion 
 		
 		#region  GetBy m:m Aggregate Relationships
+		#region GetByQuestionIdFromQuestionAnswer
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_questionId"></param>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		[DataObjectMethod(DataObjectMethodType.Select)]
+		public virtual TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(System.Int32 _questionId)
+		{
+			#region Security check
+			// throws security exception if not authorized
+			SecurityContext.IsAuthorized("GetByQuestionIdFromQuestionAnswer");
+			#endregion Security check
+			
+			#region Initialisation
+			TList<AnswerDetails> list = null;
+			TransactionManager transactionManager = null; 
+			NetTiersProvider dataProvider = null;
+			#endregion Initialisation
+			
+			try
+            {	
+				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
+				dataProvider = ConnectionScope.Current.DataProvider;
+
+				list = dataProvider.AnswerDetailsProvider.GetByQuestionIdFromQuestionAnswer(transactionManager, _questionId);
+			}
+            catch (Exception exc)
+            {
+				#region Handle transaction rollback and exception
+                if (transactionManager != null && transactionManager.IsOpen) 
+					transactionManager.Rollback();
+				
+				//Handle exception based on policy
+                if (DomainUtil.HandleException(exc, layerExceptionPolicy)) 
+					throw;
+				#endregion Handle transaction rollback and exception
+            }
+			
+			return list;
+		}
+		
+		/// <summary>
+		///		Gets AnswerDetails objects from the datasource by QuestionId in the
+		///		QuestionAnswer table. Table AnswerDetails is related to table QuestionDetails
+		///		through the (M:N) relationship defined in the QuestionAnswer table.
+		/// </summary>
+		/// <param name="_questionId"></param>
+		/// <param name="start">Row number at which to start reading.</param>
+		/// <param name="pageLength">Number of rows to return.</param>
+		/// <param name="totalCount">Out param: Total Number of results returned.</param>
+		/// <remarks></remarks>
+		/// <returns>Returns a typed collection of AnswerDetails objects.</returns>
+		[DataObjectMethod(DataObjectMethodType.Select)]
+		public virtual TList<AnswerDetails> GetByQuestionIdFromQuestionAnswer(System.Int32 _questionId, int start, int pageLength, out int totalCount)
+		{
+			#region Security check
+			// throws security exception if not authorized
+			SecurityContext.IsAuthorized("GetByQuestionIdFromQuestionAnswer");
+			#endregion Security check
+			
+			#region Initialisation
+			totalCount = -1;
+			TList<AnswerDetails> list = null;
+			TransactionManager transactionManager = null; 
+			NetTiersProvider dataProvider = null;
+			#endregion Initialisation
+			
+			try
+            {	
+				transactionManager = ConnectionScope.ValidateOrCreateTransaction(noTranByDefault);
+				dataProvider = ConnectionScope.Current.DataProvider;
+
+				list = dataProvider.AnswerDetailsProvider.GetByQuestionIdFromQuestionAnswer(transactionManager, _questionId, start,  pageLength, out totalCount);
+			}
+            catch (Exception exc)
+            {
+				#region Handle transaction rollback and exception
+                if (transactionManager != null && transactionManager.IsOpen) 
+					transactionManager.Rollback();
+				
+				//Handle exception based on policy
+                if (DomainUtil.HandleException(exc, layerExceptionPolicy)) 
+					throw;
+				#endregion Handle transaction rollback and exception
+            }
+			
+			return list;			
+		}
+		#endregion GetByQuestionIdFromQuestionAnswer
+		
 		#endregion	N2N Relationships
 
 		#region Custom Methods
