@@ -24,12 +24,12 @@
     </data:EntityGridView>
     <br />
     <%--<asp:Button runat="server" ID="btnResult" OnClientClick="javascript:location.href='ResultEdit.aspx'; return false;" Text="Add New"></asp:Button>--%>
-    <data:ResultDataSource ID="ResultDataSource" runat="server" SelectMethod="GetPaged"
+    <data:ResultsDataSource ID="ResultDataSource" runat="server" SelectMethod="GetPaged"
         EnablePaging="True" EnableSorting="True" EnableDeepLoad="True">
         <DeepLoadProperties Method="IncludeChildren" Recursive="False">
             <Types>
-                <data:ResultProperty Name="AspnetUsers" />
-                <data:ResultProperty Name="QuestionGroup" />
+                <data:ResultsProperty Name="AspnetUsers" />
+                <data:ResultsProperty Name="QuestionGroups" />
             </Types>
         </DeepLoadProperties>
         <Parameters>
@@ -41,5 +41,5 @@
                 Type="Int32" />
             <data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
         </Parameters>
-    </data:ResultDataSource>
+    </data:ResultsDataSource>
 </asp:Content>

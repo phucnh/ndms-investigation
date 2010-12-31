@@ -15,7 +15,7 @@
         <ItemTemplate>
             <div>
                 <div style="width: 10%; float: left; clip: rect(auto, 5%, auto, 5%); text-align: right;">
-                    <asp:Literal runat="Server" ID="ltrGroupName" Text='<%# DataBinder.Eval(((Result)Container.DataItem).GroupIdSource,"GroupName") %>' />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Literal runat="Server" ID="ltrGroupName" Text='<%# DataBinder.Eval(((Results)Container.DataItem).GroupIdSource,"GroupName") %>' />&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div style="width: 90%; float: right; clip: rect(auto, 5%, auto, 5%)">
                     <asp:Literal runat="Server" ID="ltrMark" Text='<%# Bind("GroupMark") %>' />
@@ -26,18 +26,18 @@
     </asp:Repeater>
     <br />
     <br />
-    <data:ResultDataSource runat="Server" ID="ResultDataSource" SelectMethod="GetByUserId"
+    <data:ResultsDataSource runat="Server" ID="ResultDataSource" SelectMethod="GetByUserId"
         EnableDeepLoad="True">
         <DeepLoadProperties Method="IncludeChildren" Recursive="False">
             <Types>
-                <data:ResultProperty Name="AspnetUsers" />
-                <data:ResultProperty Name="QuestionGroup" />
+                <data:ResultsProperty Name="AspnetUsers" />
+                <data:ResultsProperty Name="QuestionGroups" />
             </Types>
         </DeepLoadProperties>
         <Parameters>
             <asp:ControlParameter Name="UserId" DbType="String" ControlID="hidUserId" />
         </Parameters>
-    </data:ResultDataSource>
+    </data:ResultsDataSource>
     <div style="vertical-align: middle; text-align: center;">
         <asp:Chart ID="ChartResult" runat="server" Height="500px" Width="500px" ImageType="Png"
             Palette="BrightPastel" BackColor="#F3DFC1" BorderColor="181, 64, 1" BorderDashStyle="Solid"

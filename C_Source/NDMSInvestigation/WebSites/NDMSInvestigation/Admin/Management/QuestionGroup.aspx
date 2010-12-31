@@ -27,7 +27,7 @@
 		</data:EntityGridView>
 		<br />
 		<asp:Button runat="server" ID="btnQuestionGroup" OnClientClick="javascript:location.href='QuestionGroupEdit.aspx'; return false;" Text="Add New"></asp:Button>
-		<data:QuestionGroupDataSource ID="QuestionGroupDataSource" runat="server"
+		<data:QuestionGroupsDataSource ID="QuestionGroupDataSource" runat="server"
 			SelectMethod="GetPaged"
 			EnablePaging="True"
 			EnableSorting="True"
@@ -39,7 +39,7 @@
 				<asp:ControlParameter Name="PageSize" ControlID="GridView1" PropertyName="PageSize" Type="Int32" />
 				<data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
 			</Parameters>
-		</data:QuestionGroupDataSource>
+		</data:QuestionGroupsDataSource>
 	    		
 </asp:Content>
 

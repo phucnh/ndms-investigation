@@ -74,11 +74,11 @@
             <br />
         </ItemTemplate>
     </asp:Repeater>
-    <data:QuestionGroupDataSource ID="QuestionGroupDataSource" runat="server" SelectMethod="GetAll">
+    <data:QuestionGroupsDataSource ID="QuestionGroupDataSource" runat="server" SelectMethod="GetAll">
         <Parameters>
             <data:CustomParameter Name="OrderByClause" Value="OrderNumber" ConvertEmptyStringToNull="false" />
         </Parameters>
-    </data:QuestionGroupDataSource>
+    </data:QuestionGroupsDataSource>
     <br />
     <br />
     <asp:Button  runat="Server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" />
