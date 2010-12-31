@@ -13,7 +13,7 @@
 			</InsertItemTemplatePaths>
 		
 			<EmptyDataTemplate>
-				<b>QuestionGroup not found!</b>
+				<b>Question Groups not found!</b>
 			</EmptyDataTemplate>
 			
 			<FooterTemplate>
@@ -24,14 +24,14 @@
 
 		</data:MultiFormView>
 		
-		<data:QuestionGroupDataSource ID="QuestionGroupDataSource" runat="server"
+		<data:QuestionGroupsDataSource ID="QuestionGroupDataSource" runat="server"
 			SelectMethod="GetByGroupId"
 		>
 			<Parameters>
 				<asp:QueryStringParameter Name="GroupId" QueryStringField="GroupId" Type="String" />
 
 			</Parameters>
-		</data:QuestionGroupDataSource>
+		</data:QuestionGroupsDataSource>
 		
 		<br />
 
@@ -64,7 +64,7 @@
 			>
 			<DeepLoadProperties Method="IncludeChildren" Recursive="False">
 	            <Types>
-					<data:QuestionDetailsProperty Name="QuestionGroup"/> 
+					<data:QuestionDetailsProperty Name="QuestionGroups"/> 
 					<%--<data:QuestionDetailsProperty Name="QuestionAnswerCollection" />--%>
 				</Types>
 			</DeepLoadProperties>

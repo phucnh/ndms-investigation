@@ -78,9 +78,9 @@ namespace NDMSInvestigation.Admin
             SiteMapNodeInfo questionAnswerEditNode = new SiteMapNodeInfo("QuestionAnswerEdit", "~/Admin/Management/QuestionAnswerEdit.aspx", "Question Answer Edit");
             siteMapBuilderService.AddNode(questionAnswerEditNode, questionAnswerNode);
 
-            SiteMapNodeInfo resultNode = new SiteMapNodeInfo("Result", "~/Admin/Management/Result.aspx", "Result");
+            SiteMapNodeInfo resultNode = new SiteMapNodeInfo("Result", "~/Admin/Management/Result.aspx", "Results");
             siteMapBuilderService.AddNode(resultNode, managementNode);
-            SiteMapNodeInfo userNode = new SiteMapNodeInfo("User", "~/Admin/Management/User.aspx", "User");
+            SiteMapNodeInfo userNode = new SiteMapNodeInfo("CompanyDetails", "~/Admin/Management/CompanyDetails.aspx", "Company Details");
             siteMapBuilderService.AddNode(userNode, managementNode);
 
             // TODO: register other site map nodes that Admin module might provide            

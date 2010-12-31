@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" Theme="Default" MasterPageFile="~/Shared/DefaultMaster.master"
-    AutoEventWireup="true" Inherits="User" Title="User List" CodeBehind="User.aspx.cs" %>
+    AutoEventWireup="true" CodeFile="CompanyDetails.aspx.cs" Inherits="CompanyDetails"
+    Title="CompanyDetails List" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="DefaultContent" runat="Server">
     <data:GridViewSearchPanel ID="GridViewSearchPanel1" runat="server" GridViewControlID="GridView1"
         PersistenceMethod="Session" />
     <br />
     <data:EntityGridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
-        DataSourceID="UserDataSource" DataKeyNames="UserId" AllowMultiColumnSorting="false"
+        DataSourceID="CompanyDetailsDataSource" DataKeyNames="UserId" AllowMultiColumnSorting="false"
         DefaultSortColumnName="" DefaultSortDirection="Ascending" ExcelExportFileName="Export_User.xls">
         <Columns>
             <%--<asp:CommandField ShowSelectButton="True" ShowEditButton="True" />				--%>
@@ -28,19 +29,21 @@
     </data:EntityGridView>
     <br />
     <%--<asp:Button runat="server" ID="btnUser" OnClientClick="javascript:location.href='UserEdit.aspx'; return false;" Text="Add New"></asp:Button>--%>
-    <data:UserDataSource ID="UserDataSource" runat="server" SelectMethod="GetPaged" EnablePaging="True"
-        EnableSorting="True" EnableDeepLoad="True">
-        <deeploadproperties method="IncludeChildren" recursive="False">
-	            <Types>
-					<data:UserProperty Name="AspnetUsers"/> 
-				</Types>
-			</deeploadproperties>
-        <parameters>
-				<data:CustomParameter Name="WhereClause" Value="" ConvertEmptyStringToNull="false" />
-				<data:CustomParameter Name="OrderByClause" Value="" ConvertEmptyStringToNull="false" />
-				<asp:ControlParameter Name="PageIndex" ControlID="GridView1" PropertyName="PageIndex" Type="Int32" />
-				<asp:ControlParameter Name="PageSize" ControlID="GridView1" PropertyName="PageSize" Type="Int32" />
-				<data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
-			</parameters>
-    </data:UserDataSource>
+    <data:CompanyDetailsDataSource ID="CompanyDetailsDataSource" runat="server" SelectMethod="GetPaged"
+        EnablePaging="True" EnableSorting="True" EnableDeepLoad="True">
+        <DeepLoadProperties Method="IncludeChildren" Recursive="False">
+            <Types>
+                <data:CompanyDetailsProperty Name="AspnetUsers" />
+            </Types>
+        </DeepLoadProperties>
+        <Parameters>
+            <data:CustomParameter Name="WhereClause" Value="" ConvertEmptyStringToNull="false" />
+            <data:CustomParameter Name="OrderByClause" Value="" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter Name="PageIndex" ControlID="GridView1" PropertyName="PageIndex"
+                Type="Int32" />
+            <asp:ControlParameter Name="PageSize" ControlID="GridView1" PropertyName="PageSize"
+                Type="Int32" />
+            <data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
+        </Parameters>
+    </data:CompanyDetailsDataSource>
 </asp:Content>

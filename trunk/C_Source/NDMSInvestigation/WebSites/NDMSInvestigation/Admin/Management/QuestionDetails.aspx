@@ -36,7 +36,7 @@
 			>
 			<DeepLoadProperties Method="IncludeChildren" Recursive="False">
 	            <Types>
-					<data:QuestionDetailsProperty Name="QuestionGroup"/> 
+					<data:QuestionDetailsProperty Name="QuestionGroups"/> 
 					<%--<data:QuestionDetailsProperty Name="QuestionAnswerCollection" />--%>
 				</Types>
 			</DeepLoadProperties>

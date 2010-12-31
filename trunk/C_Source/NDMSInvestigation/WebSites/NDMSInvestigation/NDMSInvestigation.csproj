@@ -119,6 +119,13 @@
     <Compile Include="Admin\Management\AnswerDetailsEdit.aspx.designer.cs">
       <DependentUpon>AnswerDetailsEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Management\CompanyDetails.aspx.cs">
+      <DependentUpon>CompanyDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Management\CompanyDetails.aspx.designer.cs">
+      <DependentUpon>CompanyDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Management\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +330,7 @@
   <ItemGroup>
     <Content Include="Admin\Management\AnswerDetails.aspx" />
     <Content Include="Admin\Management\AnswerDetailsEdit.aspx" />
+    <Content Include="Admin\Management\CompanyDetails.aspx" />
     <Content Include="Admin\Management\Default.aspx" />
     <Content Include="Admin\Management\QuestionAnswer.aspx" />
     <Content Include="Admin\Management\QuestionAnswerEdit.aspx" />
