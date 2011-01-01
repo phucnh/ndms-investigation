@@ -41,7 +41,7 @@ namespace NDMSInvestigation.Investigation
 
             SiteMapNodeInfo investigationNode = new SiteMapNodeInfo("InvestigationPage", "~/Investigation/InvestigationPage.aspx", "Investigation");
             siteMapBuilderService.AddNode(investigationNode, moduleNode);
-            SiteMapNodeInfo resultNode = new SiteMapNodeInfo("ViewResult", "~/Investigation/ViewResult.aspx", "Result");
+            SiteMapNodeInfo resultNode = new SiteMapNodeInfo("ViewResult", "~/Investigation/ViewResult.aspx", "My Result");
             siteMapBuilderService.AddNode(resultNode, moduleNode);
 
             // TODO: register other site map nodes that Investigation module might provide            
