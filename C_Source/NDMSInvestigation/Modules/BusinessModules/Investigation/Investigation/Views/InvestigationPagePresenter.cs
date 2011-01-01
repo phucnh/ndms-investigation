@@ -41,11 +41,21 @@ namespace NDMSInvestigation.Investigation.Views
             // TODO: Implement code that will be executed the first time the view loads
         }
 
+        /// <summary>
+        /// Gets the content of the answer.
+        /// </summary>
+        /// <param name="answerId">The answer id.</param>
+        /// <returns></returns>
         public AnswerDetails GetAnswerContent(int answerId)
         {
             return _answerDetailsService.GetByAnswerId(answerId);
         }
 
+        /// <summary>
+        /// Gets the result by customer id.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <returns></returns>
         public TList<Results> GetResultByCustomerId(Guid userId)
         {
             return _resultService.GetByUserId(userId);
@@ -54,6 +64,23 @@ namespace NDMSInvestigation.Investigation.Views
         public void Save(TList<Results> resultCollection)
         {
             _resultService.Save(resultCollection);
+        }
+
+        /// <summary>
+        /// Calculates the sum mark.
+        /// </summary>
+        /// <param name="groupMarks">The group marks.</param>
+        /// <returns></returns>
+        public Int32 CalculateSumMark(Int32[] groupMarks)
+        {
+            Int32 sumMark = 0;
+
+            foreach (Int32 groupMark in groupMarks)
+            {
+                sumMark += groupMark;
+            }
+
+            return sumMark;
         }
         // TODO: Handle other view events and set state in the view
     }
