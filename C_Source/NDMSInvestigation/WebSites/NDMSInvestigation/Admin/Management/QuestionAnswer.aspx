@@ -8,7 +8,6 @@
 				AutoGenerateColumns="False"					
 				OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
 				DataSourceID="QuestionAnswerDataSource"
-				DataKeyNames="QuestionAnswerId"
 				AllowMultiColumnSorting="false"
 				DefaultSortColumnName="" 
 				DefaultSortDirection="Ascending"	

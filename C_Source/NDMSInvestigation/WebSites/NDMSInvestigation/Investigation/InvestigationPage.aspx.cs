@@ -51,88 +51,55 @@ namespace NDMSInvestigation.Investigation.Views
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Int32 sum = new Int32();
-            TList<NDMSInvestigation.Entities.Results> resultCollection = Presenter.GetResultByCustomerId(new Guid(hidUserId.Value));
+            int totalMark = 0;
 
             foreach (Control rptQuestionGroupControl in rptQuestionGroup.Controls)
             {
                 Repeater rptQuestionDetails = (Repeater)rptQuestionGroupControl.FindControl("rptQuestionDetails");
-                HiddenField hiddenField = (HiddenField)rptQuestionGroupControl.FindControl("hidGroupId");
+                HiddenField hidGroupId = (HiddenField)rptQuestionGroupControl.FindControl("hidGroupId");
 
-                Int32 sumGroup = new Int32();
+                int sumGroup = 0;
 
                 foreach (Control rptQuestionDetailsControl in rptQuestionDetails.Controls)
                 {
                     //EntityDropDownList ddlQuestionAnswer = (EntityDropDownList)rptQuestionDetailsControl.FindControl("ddlQuestionAnswer");
                     RadioButtonList radioButtonList = (RadioButtonList)rptQuestionDetailsControl.FindControl("rblQuestionAnswer");
                     sumGroup += Int32.Parse(radioButtonList.SelectedValue);
-                    sum += Int32.Parse(radioButtonList.SelectedValue);
+                    totalMark += sumGroup;
                 }
 
-                if (resultCollection != null)
-                {
-                    Results result = resultCollection.Find(ResultsColumn.GroupId, Int32.Parse(hiddenField.Value));
-                    if (result != null)
-                    {
-                        result.GroupMark = sumGroup;
-                        result.CreatedDate = DateTime.Now;
-                    }
-                    else
-                    {
-                        result = new Results();
-
-                        result.GroupId = Int32.Parse(hiddenField.Value);
-                        result.UserId = new Guid(hidUserId.Value); 
-                        result.GroupMark = sumGroup;
-                        result.CreatedDate = DateTime.Now;
-
-                        resultCollection.Add(result);
-                    }
-                }
-                else
-                {
-                    Results result = new Results();
-
-                    result.GroupId = Int32.Parse(hiddenField.Value);
-                    result.UserId = new Guid(hidUserId.Value);
-                    result.GroupMark = sumGroup;
-                    result.CreatedDate = DateTime.Now;
-
-                    resultCollection.Add(result);
-                }
-
-                Presenter.Save(resultCollection);
+                Presenter.InsertNewGroupMark(new Guid(hidUserId.ToString()), Int32.Parse(hidGroupId.ToString()), sumGroup);
+                Presenter.UpdateCurrentTotalMark(new Guid(hidUserId.ToString()), totalMark);
             }
         }
 
-        public String GetAnswerContent(int answerId)
-        {
-            NDMSInvestigation.Entities.AnswerDetails answerDetails;
-            answerDetails = Presenter.GetAnswerContent(answerId);
 
-            Guard.ArgumentNotNull(answerDetails, "answerDetails");
-
-            if (!String.IsNullOrEmpty(answerDetails.AnswerContent))
-                return answerDetails.AnswerContent;
-            else
-                return "";
-        }
 
         protected void rptQuestionDetails_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
         {
             RadioButtonList radioButtonList = (RadioButtonList)e.Item.FindControl("rblQuestionAnswer");
-            Microsoft.Practices.CompositeWeb.Utility.Guard.ArgumentNotNull(radioButtonList, "radioButtonList");
+            Guard.ArgumentNotNull(radioButtonList, "radioButtonList");
 
-            NDMSInvestigation.Web.Data.QuestionAnswerDataSource questionAnswerDataSource = (NDMSInvestigation.Web.Data.QuestionAnswerDataSource)e.Item.FindControl("QuestionAnswerDataSource");
+            NDMSInvestigation.Web.Data.QuestionAnswerDataSource questionAnswerDataSource
+                = (NDMSInvestigation.Web.Data.QuestionAnswerDataSource)e.Item.FindControl("QuestionAnswerDataSource");
             Guard.ArgumentNotNull(questionAnswerDataSource, "questionAnswerDataSource");
 
-            TList<NDMSInvestigation.Entities.QuestionAnswer> tList = (TList<NDMSInvestigation.Entities.QuestionAnswer>)questionAnswerDataSource.GetEntityList();
-            Guard.ArgumentNotNull(tList, "tList");
+            HiddenField hidQuestionId = (HiddenField)e.Item.FindControl("hidQuestionId");
+            Guard.ArgumentNotNull(hidQuestionId, "hidQuestionId");
 
-            foreach (NDMSInvestigation.Entities.QuestionAnswer questionAnswer in tList)
+            //TList<NDMSInvestigation.Entities.QuestionAnswer> questionAnswers 
+            //= (TList<NDMSInvestigation.Entities.QuestionAnswer>)questionAnswerDataSource.GetEntityList();
+            TList<NDMSInvestigation.Entities.QuestionAnswer> questionAnswers
+                = Presenter.GetRandomQuestionAnswersList(Convert.ToInt32(hidQuestionId.Value));
+            Guard.ArgumentNotNull(questionAnswers, "questionAnswers");
+
+            //radioButtonList.DataSource = questionAnswers;
+            //radioButtonList.DataBind();
+
+            foreach (NDMSInvestigation.Entities.QuestionAnswer questionAnswer in questionAnswers)
             {
                 ListItem listItem = new ListItem();
-                listItem.Text = GetAnswerContent(questionAnswer.AnswerId);
+                listItem.Text = Presenter.GetAnswerContent(questionAnswer.AnswerId);
                 listItem.Value = questionAnswer.Mark.ToString();
                 radioButtonList.Items.Add(listItem);
             }

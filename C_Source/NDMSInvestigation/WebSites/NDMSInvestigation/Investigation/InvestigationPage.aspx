@@ -28,11 +28,15 @@
                     <asp:Repeater runat="Server" ID="rptQuestionDetails" DataMember="QuestionId" DataSourceID="QuestionDetailsDataSource"
                         OnItemDataBound="rptQuestionDetails_ItemDataBound">
                         <ItemTemplate>
+                            <asp:HiddenField runat="Server" ID="hidQuestionId" Value='<%# Eval("QuestionId") %>' />
                             <div>
-                                <asp:HiddenField runat="Server" ID="hidQuestionId" Value='<%# Eval("QuestionId") %>' />
-                                <asp:Label CssClass="question_text_content" runat="Server" ID="lblQuestionContent" Text='<%# Eval("QuestionContent") %>' /></div>
+                                <asp:Label CssClass="question_text_title" runat="Server" ID="lblQuestionTitile" Text='<%# Eval("QuestionTitle") %>' /></div>
                             <div>
-                                <asp:Label CssClass="question_text_suggest" runat="Server" ID="lblQuestionSuggest" Text='<%# Eval("QuestionSuggest") %>' /></div>
+                                <asp:Label CssClass="question_text_content" runat="Server" ID="lblQuestionContent"
+                                    Text='<%# Eval("QuestionContent") %>' /></div>
+                            <div>
+                                <asp:Label CssClass="question_text_suggest" runat="Server" ID="lblQuestionSuggest"
+                                    Text='<%# Eval("QuestionSuggest") %>' /></div>
                             <br />
                             <%--<asp:Repeater runat="Server" ID="rptQuestionAnswer" DataSourceID="QuestionAnswerDataSource">
                                 <ItemTemplate>
@@ -51,11 +55,12 @@
                             <asp:RadioButtonList runat="Server" ID="rblQuestionAnswer" />
                             <br />
                             <br />
+                            <%--phuc mod 2011113--%>
                             <data:QuestionAnswerDataSource runat="Server" ID="QuestionAnswerDataSource" SelectMethod="GetByQuestionId">
                                 <Parameters>
                                     <asp:ControlParameter runat="Server" ControlID="hidQuestionId" Name="QuestionId" />
                                 </Parameters>
-                            </data:QuestionAnswerDataSource>
+                            </data:QuestionAnswerDataSource><%--end phuc mod 2011113--%>
                             <%--<%# DataBinder.Eval(((NDSMInvestigation.Entities.QuestionAnswer)Container.DataItem).AnswerIdSource,"AnswerContent") %>--%>
                             <%--<%# GetAnswerContent(Int32.Parse(Eval("AnswerId"))) %>--%>
                             <%--<cc1:DropDownExtender ID="ddlAnswerDetails_DropDownExtender" runat="server" DynamicServicePath=""
@@ -65,7 +70,10 @@
                     </asp:Repeater>
                     <data:QuestionDetailsDataSource ID="QuestionDetailsDataSource" runat="Server" SelectMethod="GetByGroupId">
                         <Parameters>
-                            <asp:ControlParameter runat="Server" ControlID="hidGroupId" Name="GroupId" Type="Int32" />
+                            <asp:ControlParameter Name="GroupId" ControlID="hidGroupId"  Type="Int32" />
+                            <data:CustomParameter Name="PageIndex" Type="Int32" />
+                            <data:CustomParameter Name="PageSize" Type="Int32" />
+                            <data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
                         </Parameters>
                     </data:QuestionDetailsDataSource>
                 </div>
@@ -81,5 +89,5 @@
     </data:QuestionGroupsDataSource>
     <br />
     <br />
-    <asp:Button  runat="Server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" />
+    <asp:Button runat="Server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" />
 </asp:Content>

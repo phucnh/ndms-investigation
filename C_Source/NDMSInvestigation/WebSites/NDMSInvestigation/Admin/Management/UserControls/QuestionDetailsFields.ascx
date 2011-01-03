@@ -27,11 +27,24 @@
             </tr>
             <tr>
                 <td class="literal">
+                    <asp:Label ID="lbldataQuestionTitle" runat="server" Text="Question Title:" AssociatedControlID="dataQuestionTitle" />
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="dataQuestionTitle" Text='<%# Bind("QuestionTitle") %>'
+                        TextMode="MultiLine" Width="250px" Rows="5"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqVal_dataQuestionTitle" runat="server" Display="Dynamic"
+                        ControlToValidate="dataQuestionTitle" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="literal">
                     <asp:Label ID="lbldataQuestionContent" runat="server" Text="Question Content:" AssociatedControlID="dataQuestionContent" />
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="dataQuestionContent" Text='<%# Bind("QuestionContent") %>'
                         TextMode="MultiLine" Width="250px" Rows="5"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqVal_dataQuestionContent" runat="server" Display="Dynamic"
+                        ControlToValidate="dataQuestionContent" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -51,6 +64,18 @@
                 <td>
                     <asp:TextBox runat="server" ID="dataQuestionDescription" Text='<%# Bind("QuestionDescription") %>'
                         TextMode="MultiLine" Width="250px" Rows="5"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="literal">
+                    <asp:Label ID="lbldataGroupId" runat="server" Text="Group Id:" AssociatedControlID="dataGroupId" />
+                </td>
+                <td>
+                    <data:EntityDropDownList runat="server" ID="dataGroupId" DataSourceID="GroupIdQuestionGroupsDataSource"
+                        DataTextField="GroupName" DataValueField="GroupId" SelectedValue='<%# Bind("GroupId") %>'
+                        Required="true" NullItemText="< Please Choose ...>" />
+                    <data:QuestionGroupsDataSource ID="GroupIdQuestionGroupsDataSource" runat="server"
+                        SelectMethod="GetAll" />
                 </td>
             </tr>
         </table>

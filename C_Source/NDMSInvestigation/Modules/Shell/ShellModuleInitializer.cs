@@ -33,6 +33,7 @@ namespace NDMSInvestigation.Shell
             globalServices.AddNew<AnswerDetailsService>();
             globalServices.AddNew<ResultsService>();
             globalServices.AddNew<CompanyDetailsService>();
+            globalServices.AddNew<QuestionAnswerService>();
         }
 
         protected virtual void AddModuleServices(IServiceCollection moduleServices)
