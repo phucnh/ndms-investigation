@@ -42,11 +42,13 @@ namespace NDMSInvestigation.UserControl.Views
         protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
         {
             MembershipUser membership = Membership.GetUser(CreateUserWizard1.UserName);
-            CompanyDetails user = new CompanyDetails();
+            NDMSInvestigation.Entities.CompanyDetails user = new NDMSInvestigation.Entities.CompanyDetails();
  
             #region Find control from interface
             TextBox CompanyName = (TextBox) CreateUserWizard1.FindControl("CompanyName");
             TextBox Phone = (TextBox)CreateUserWizard1.FindControl("Phone");
+            TextBox Fax = (TextBox)CreateUserWizard1.FindControl("Fax");
+            TextBox Address = (TextBox)CreateUserWizard1.FindControl("Address");
             #endregion
 
             user.UserId = new Guid(membership.ProviderUserKey.ToString());

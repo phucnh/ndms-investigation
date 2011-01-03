@@ -27,8 +27,8 @@ namespace NDMSInvestigation.Investigation.Views
 
         private void LoadChart()
         {
-            TList<NDMSInvestigation.Entities.QuestionGroups> questionGroupCollection = GetAllGroup();
-            TList<NDMSInvestigation.Entities.Results> resultCollection = GetAllResultByUserId();
+            TList<QuestionGroups> questionGroupCollection = GetAllGroup();
+            TList<Results> resultCollection = GetAllResultByUserId();
 
             if (
                 ((questionGroupCollection != null) && (questionGroupCollection.Count != 0)) ||
@@ -41,12 +41,12 @@ namespace NDMSInvestigation.Investigation.Views
                 questionGroupCollection.Sort("GroupId");
                 resultCollection.Sort("GroupId");
 
-                foreach (NDMSInvestigation.Entities.QuestionGroups questionGroup in questionGroupCollection)
+                foreach (QuestionGroups questionGroup in questionGroupCollection)
                 {
                     groupName.Add(questionGroup.GroupName);
                 }
 
-                foreach (NDMSInvestigation.Entities.Results result in resultCollection)
+                foreach (Results result in resultCollection)
                 {
                     groupMark.Add((int)result.GroupMark);
                 }
