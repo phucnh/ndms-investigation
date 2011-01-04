@@ -32,8 +32,39 @@ namespace NDMSInvestigation.Services
 		/// </summary>
 		public CompanyDetailsService() : base()
 		{
+        }
+        #endregion Constructors
+
+        /// <summary>
+        /// Gets the company rank.
+        /// </summary>
+        /// <param name="companyId">The company id.</param>
+        /// <returns></returns>
+		public int GetCompanyRank(int companyId)
+		{
+			TList<CompanyDetails> companyDetailsCollection = GetAll();
+			int rank = 0;
+
+            // TODO: Sort Company CurrentMarkInHere
+
+            int lastCurrentTotalMark = 0;
+
+            companyDetailsCollection.Sort("order by CurrentTotalMark DESC");
+			
+			foreach (CompanyDetails companyDetails in companyDetailsCollection)
+			{
+				if (companyDetails.CurrentTotalMark.Value == 0)
+					continue;
+                if (companyDetails.CurrentTotalMark.Value != lastCurrentTotalMark)
+				{
+					rank++;
+					lastCurrentTotalMark = companyDetails.CurrentTotalMark.Value;
+				}
+			}
+			
+			return rank;
 		}
-		#endregion Constructors
+		
 		
 	}//End Class
 

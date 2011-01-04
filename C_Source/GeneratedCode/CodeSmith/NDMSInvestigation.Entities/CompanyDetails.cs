@@ -21,7 +21,35 @@ namespace NDMSInvestigation.Entities
 		///<summary>
 		/// Creates a new <see cref="CompanyDetails"/> instance.
 		///</summary>
-		public CompanyDetails():base(){}	
+		public CompanyDetails():base(){}
+
+        public CompanyDetails(
+            Guid userId,
+            string companyName,
+            string phone,
+            string fax,
+            string email,
+            string address,
+            int employeeNumber,
+            string director,
+            string country,
+            string city,
+            string district
+            )
+            : base()
+        {
+            base.UserId = userId;
+            base.CompanyName = companyName;
+            base.Phone = phone;
+            base.Fax = fax;
+            base.Email = email;
+            base.Address = address;
+            base.EmployeeNumber = employeeNumber;
+            base.Director = director;
+            base.Country = country;
+            base.City = city;
+            base.District = district;
+        }
 		
 		#endregion
 	}

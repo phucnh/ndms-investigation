@@ -39,21 +39,41 @@ namespace NDMSInvestigation.UserControl.Views
             }
         }
 
+        /// <summary>
+        /// Handles the CreatedUser event of the CreateUserWizard1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
         {
             MembershipUser membership = Membership.GetUser(CreateUserWizard1.UserName);
-            NDMSInvestigation.Entities.CompanyDetails user = new NDMSInvestigation.Entities.CompanyDetails();
- 
+
             #region Find control from interface
-            TextBox CompanyName = (TextBox) CreateUserWizard1.FindControl("CompanyName");
+            TextBox CompanyName = (TextBox)CreateUserWizard1.FindControl("CompanyName");
             TextBox Phone = (TextBox)CreateUserWizard1.FindControl("Phone");
             TextBox Fax = (TextBox)CreateUserWizard1.FindControl("Fax");
             TextBox Address = (TextBox)CreateUserWizard1.FindControl("Address");
+            TextBox District = (TextBox)CreateUserWizard1.FindControl("District");
+            TextBox City = (TextBox)CreateUserWizard1.FindControl("City");
+            TextBox Country = (TextBox)CreateUserWizard1.FindControl("Country");
+            TextBox Director = (TextBox)CreateUserWizard1.FindControl("Director");
+            TextBox EmployeeNumber = (TextBox)CreateUserWizard1.FindControl("EmployeeNumber");
             #endregion
-
-            user.UserId = new Guid(membership.ProviderUserKey.ToString());
             
-            Presenter.Insert(user);
+            NDMSInvestigation.Entities.CompanyDetails companyDetails = new NDMSInvestigation.Entities.CompanyDetails();
+
+            companyDetails.UserId = new Guid(membership.ProviderUserKey.ToString());
+            if (CompanyName != null) companyDetails.CompanyName = CompanyName.Text;
+            if (Phone != null) companyDetails.Phone = Phone.Text;
+            if (Fax != null) companyDetails.Fax = Fax.Text;
+            if (Address != null) companyDetails.Address = Address.Text;
+            if (District != null) companyDetails.District = District.Text;
+            if (City != null) companyDetails.City = City.Text;
+            if (Country != null) companyDetails.Country = Country.Text;
+            if (Director != null) companyDetails.Director = Director.Text;
+            if (EmployeeNumber != null) { companyDetails.EmployeeNumber = Convert.ToInt32(EmployeeNumber.Text); }
+
+            Presenter.Insert(companyDetails);
         }
 
         // TODO: Forward events to the presenter and show state to the user.
