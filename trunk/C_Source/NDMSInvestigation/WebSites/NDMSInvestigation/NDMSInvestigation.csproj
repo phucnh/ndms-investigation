@@ -350,6 +350,7 @@
     <Content Include="App_Themes\Default\DevCss.css" />
     <Content Include="Investigation\InvestigationPage.aspx" />
     <Content Include="Investigation\UserControls\ResultFields.ascx" />
+    <Content Include="Shared\script\jquery-1.4.4.min.js" />
     <Content Include="UserControl\Default.aspx" />
     <Content Include="UserControl\Register.aspx" />
     <Content Include="UserControl\UserControls\UserFields.ascx" />
@@ -361,7 +362,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\images\" />
-    <Folder Include="Shared\script\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
