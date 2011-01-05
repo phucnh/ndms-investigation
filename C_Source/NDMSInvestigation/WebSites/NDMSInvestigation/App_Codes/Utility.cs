@@ -18,7 +18,10 @@ namespace NDMSInvestigation.WCSF
         /// <returns></returns>
         public static String GetUserId()
         {
-            return Membership.GetUser().ProviderUserKey.ToString();
+            if (Membership.GetUser() != null)
+                return Membership.GetUser().ProviderUserKey.ToString();
+
+            return string.Empty;
         }
 
         /// <summary>

@@ -22,7 +22,7 @@
     <form id="mainForm" runat="server">
     <asp:ScriptManager ID="DefaultMasterScriptManager" runat="server">
         <Scripts>
-            <asp:ScriptReference />
+            <asp:ScriptReference Path="~/Shared/script/jquery-1.4.4.min.js" ScriptMode="Auto" />
         </Scripts>
     </asp:ScriptManager>
     &nbsp;

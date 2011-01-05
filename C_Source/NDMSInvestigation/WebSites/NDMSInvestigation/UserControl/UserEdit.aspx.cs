@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web;
+using System.Web.UI.WebControls;
 using Microsoft.Practices.ObjectBuilder;
 
 namespace NDMSInvestigation.UserControl.Views
@@ -6,6 +8,7 @@ namespace NDMSInvestigation.UserControl.Views
     public partial class UserEdit : Microsoft.Practices.CompositeWeb.Web.UI.Page, IUserEditView
     {
         private UserEditPresenter _presenter;
+        private string _pageMode = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -14,7 +17,21 @@ namespace NDMSInvestigation.UserControl.Views
                 this._presenter.OnViewInitialized();
             }
             this._presenter.OnViewLoaded();
+
             hidUserId.Value = NDMSInvestigation.WCSF.Utility.GetUserId();
+
+            if ((hidUserId == null) ||
+                (string.IsNullOrEmpty(hidUserId.Value)))
+                Response.Redirect("~/Admin/authenticated/login.aspx");
+
+            LoadMultiFormViewMode();
+        }
+
+        private void LoadMultiFormViewMode()
+        {
+            _pageMode = Request.QueryString["Mode"];
+            if (string.Compare(_pageMode, "Create") == 0)
+                FormView1.ChangeMode(FormViewMode.Insert);
         }
 
         [CreateNew]
@@ -31,6 +48,7 @@ namespace NDMSInvestigation.UserControl.Views
 
                 this._presenter = value;
                 this._presenter.View = this;
+                
             }
         }
 
@@ -40,6 +58,21 @@ namespace NDMSInvestigation.UserControl.Views
             {
                 Response.Redirect("~/UserControl/UserEdit.aspx");
             }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the InsertButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        protected void InsertButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/UserControl/UserEdit.aspx?Mode=" + "Create");
+        }
+
+        protected void CompanyDetailsDataSource_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+        {
+            e.InputParameters["UserId"] = new Guid(hidUserId.Value);
         }
 
         // TODO: Forward events to the presenter and show state to the user.
