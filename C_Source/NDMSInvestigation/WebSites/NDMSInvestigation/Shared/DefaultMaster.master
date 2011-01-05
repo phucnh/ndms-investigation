@@ -3,7 +3,6 @@
 
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
-
 <%--<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dx" %>--%>
 <%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
@@ -22,6 +21,9 @@
 <body>
     <form id="mainForm" runat="server">
     <asp:ScriptManager ID="DefaultMasterScriptManager" runat="server">
+        <Scripts>
+            <asp:ScriptReference />
+        </Scripts>
     </asp:ScriptManager>
     &nbsp;
     <div id="mainwrapper">
@@ -112,8 +114,8 @@
                 </ContentCollection>
             </dx:PopupWindow>
             <dx:PopupWindow AutoUpdatePosition="True" CloseAction="OuterMouseClick" Modal="True"
-                Name="Create User" PopupAction="LeftMouseClick" PopupElementID="aRegister"
-                ShowFooter="False" ShowHeader="True" Height="200px" Width="300px">
+                Name="Create User" PopupAction="LeftMouseClick" PopupElementID="aRegister" ShowFooter="False"
+                ShowHeader="True" Height="200px" Width="300px">
                 <HeaderStyle HorizontalAlign="Left" />
                 <ContentTemplate>
                     <asp:CreateUserWizard ID="CreateUserWizard2" runat="server">
@@ -133,6 +135,10 @@
         </Windows>
     </dx:ASPxPopupControl>
     &nbsp;
+
+    <script type="text/javascript">
+    </script>
+
     </form>
 </body>
 </html>
