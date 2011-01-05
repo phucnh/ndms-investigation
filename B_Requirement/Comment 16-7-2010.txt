@@ -14,7 +14,11 @@ Ve van de cau hoi - tra loi
 Trang phong van:
 	Chinh lai giao dien
 	Phan trang cac cau tra loi
-	
+
+Trang xem ket qua:
+	Cho nguoi dung xem ket qua duoi nhieu dang do thi khac nhau
+	Xem ket qua cua minh vs ket qua trung binh (theo tieu chuan)
+	Xem ket qua cua minh so sanh voi cong ty khac
 
 Nghiep vu thong ke: 
 
@@ -22,6 +26,11 @@ Thong ke lai so luong cong ty
 Danh gia thu hang cua cong ty
 Danh gia so voi tieu chuan
 Danh gia so voi nguoi tham gia
+
+Tu loc ra so luong cong ty
+	Theo xep loai ( top 5, top 10,... )
+	Bao nhieu cong ty duoi muc trung binh
+	Bao nhieu cong ty tren muc trung binh
 
 asp.net 3.5 sp1
 nettiers
