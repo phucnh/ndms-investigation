@@ -12,33 +12,36 @@
         OnDataBinding="ddlQuestionAnswer_DataBinding" OnDataBound="ddlQuestionAnswer_DataBound" />--%>
     <asp:Repeater runat="Server" DataSourceID="QuestionGroupDataSource" DataMember="GroupId"
         ID="rptQuestionGroup">
+        <HeaderTemplate>
+        </HeaderTemplate>
         <ItemTemplate>
-            <div>
+            <asp:Panel runat="server" ID="pnlQuestionGroup">
                 <div>
                     <div>
-                        <asp:HiddenField runat="Server" Value='<%# Bind("GroupId") %>' ID="hidGroupId" />
-                        <asp:Label CssClass="group_text_name" runat="Server" ID="lblGroupName" Text='<%# Eval("GroupName") %>' />
+                        <div>
+                            <asp:HiddenField runat="Server" Value='<%# Bind("GroupId") %>' ID="hidGroupId" />
+                            <asp:Label CssClass="group_text_name" runat="Server" ID="lblGroupName" Text='<%# Eval("GroupName") %>' />
+                        </div>
+                        <div>
+                            <asp:Label CssClass="group_text_desc" runat="Server" ID="lblGroupDesc" Text='<%# Eval("GroupDescription") %>' />
+                        </div>
+                        <br />
                     </div>
                     <div>
-                        <asp:Label CssClass="group_text_desc" runat="Server" ID="lblGroupDesc" Text='<%# Eval("GroupDescription") %>' />
-                    </div>
-                    <br />
-                </div>
-                <div>
-                    <asp:Repeater runat="Server" ID="rptQuestionDetails" DataMember="QuestionId" DataSourceID="QuestionDetailsDataSource"
-                        OnItemDataBound="rptQuestionDetails_ItemDataBound">
-                        <ItemTemplate>
-                            <asp:HiddenField runat="Server" ID="hidQuestionId" Value='<%# Eval("QuestionId") %>' />
-                            <div>
-                                <asp:Label CssClass="question_text_title" runat="Server" ID="lblQuestionTitile" Text='<%# Eval("QuestionTitle") %>' /></div>
-                            <div>
-                                <asp:Label CssClass="question_text_content" runat="Server" ID="lblQuestionContent"
-                                    Text='<%# Eval("QuestionContent") %>' /></div>
-                            <div>
-                                <asp:Label CssClass="question_text_suggest" runat="Server" ID="lblQuestionSuggest"
-                                    Text='<%# Eval("QuestionSuggest") %>' /></div>
-                            <br />
-                            <%--<asp:Repeater runat="Server" ID="rptQuestionAnswer" DataSourceID="QuestionAnswerDataSource">
+                        <asp:Repeater runat="Server" ID="rptQuestionDetails" DataMember="QuestionId" DataSourceID="QuestionDetailsDataSource"
+                            OnItemDataBound="rptQuestionDetails_ItemDataBound">
+                            <ItemTemplate>
+                                <asp:HiddenField runat="Server" ID="hidQuestionId" Value='<%# Eval("QuestionId") %>' />
+                                <div>
+                                    <asp:Label CssClass="question_text_title" runat="Server" ID="lblQuestionTitile" Text='<%# Eval("QuestionTitle") %>' /></div>
+                                <div>
+                                    <asp:Label CssClass="question_text_content" runat="Server" ID="lblQuestionContent"
+                                        Text='<%# Eval("QuestionContent") %>' /></div>
+                                <div>
+                                    <asp:Label CssClass="question_text_suggest" runat="Server" ID="lblQuestionSuggest"
+                                        Text='<%# Eval("QuestionSuggest") %>' /></div>
+                                <br />
+                                <%--<asp:Repeater runat="Server" ID="rptQuestionAnswer" DataSourceID="QuestionAnswerDataSource">
                                 <ItemTemplate>
                                     <asp:HiddenField runat="Server" ID="hidAnswerId" Value='<%# Bind("AnswerId") %>' />
                                     <data:EntityDropDownList DataMember="AnswerId" AppendNullItem="false" DataTextField="AnswerContent"
@@ -50,34 +53,33 @@
                                     </data:AnswerDetailsDataSource>
                                 </ItemTemplate>
                             </asp:Repeater>--%>
-                            <%--DataTextField='<%# GetAnswerContent(Int32.Parse(Eval("AnswerId").ToString())) %>'--%>
-                            <%--<data:EntityDropDownList Width="800px" runat="Server" ID="ddlQuestionAnswer" />--%>
-                            <asp:RadioButtonList runat="Server" ID="rblQuestionAnswer" />
-                            <br />
-                            <br />
-                            <%--phuc mod 2011113--%>
-                            <data:QuestionAnswerDataSource runat="Server" ID="QuestionAnswerDataSource" SelectMethod="GetByQuestionId">
-                                <Parameters>
-                                    <asp:ControlParameter runat="Server" ControlID="hidQuestionId" Name="QuestionId" />
-                                </Parameters>
-                            </data:QuestionAnswerDataSource><%--end phuc mod 2011113--%>
-                            <%--<%# DataBinder.Eval(((NDSMInvestigation.Entities.QuestionAnswer)Container.DataItem).AnswerIdSource,"AnswerContent") %>--%>
-                            <%--<%# GetAnswerContent(Int32.Parse(Eval("AnswerId"))) %>--%>
-                            <%--<cc1:DropDownExtender ID="ddlAnswerDetails_DropDownExtender" runat="server" DynamicServicePath=""
+                                <%--DataTextField='<%# GetAnswerContent(Int32.Parse(Eval("AnswerId").ToString())) %>'--%>
+                                <%--<data:EntityDropDownList Width="800px" runat="Server" ID="ddlQuestionAnswer" />--%>
+                                <asp:RadioButtonList runat="Server" ID="rblQuestionAnswer" />
+                                <br />
+                                <br />
+                                <%--phuc mod 2011113--%>
+                                <data:QuestionAnswerDataSource runat="Server" ID="QuestionAnswerDataSource" SelectMethod="GetByQuestionId">
+                                    <Parameters>
+                                        <asp:ControlParameter runat="Server" ControlID="hidQuestionId" Name="QuestionId" />
+                                    </Parameters>
+                                </data:QuestionAnswerDataSource>
+                                <%--end phuc mod 2011113--%>
+                                <%--<%# DataBinder.Eval(((NDSMInvestigation.Entities.QuestionAnswer)Container.DataItem).AnswerIdSource,"AnswerContent") %>--%>
+                                <%--<%# GetAnswerContent(Int32.Parse(Eval("AnswerId"))) %>--%>
+                                <%--<cc1:DropDownExtender ID="ddlAnswerDetails_DropDownExtender" runat="server" DynamicServicePath=""
                                 Enabled="True" TargetControlID="ddlQuestionAnswer">
                             </cc1:DropDownExtender>--%>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <data:QuestionDetailsDataSource ID="QuestionDetailsDataSource" runat="Server" SelectMethod="GetByGroupId">
-                        <Parameters>
-                            <asp:ControlParameter Name="GroupId" ControlID="hidGroupId"  Type="Int32" />
-                            <data:CustomParameter Name="PageIndex" Type="Int32" />
-                            <data:CustomParameter Name="PageSize" Type="Int32" />
-                            <data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
-                        </Parameters>
-                    </data:QuestionDetailsDataSource>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <data:QuestionDetailsDataSource ID="QuestionDetailsDataSource" runat="Server" SelectMethod="GetByGroupId">
+                            <Parameters>
+                                <asp:ControlParameter Name="GroupId" ControlID="hidGroupId" Type="Int32" />
+                            </Parameters>
+                        </data:QuestionDetailsDataSource>
+                    </div>
                 </div>
-            </div>
+            </asp:Panel>
             <hr />
             <br />
         </ItemTemplate>
@@ -85,6 +87,9 @@
     <data:QuestionGroupsDataSource ID="QuestionGroupDataSource" runat="server" SelectMethod="GetAll">
         <Parameters>
             <data:CustomParameter Name="OrderByClause" Value="OrderNumber" ConvertEmptyStringToNull="false" />
+            <data:CustomParameter Name="PageIndex" Type="Int32" Value="0" />
+            <data:CustomParameter Name="PageSize" Type="Int32" Value="0" />
+            <data:CustomParameter Name="RecordCount" Value="0" Type="Int32" />
         </Parameters>
     </data:QuestionGroupsDataSource>
     <br />
