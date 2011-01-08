@@ -14,6 +14,15 @@ namespace NDMSInvestigation.Investigation.Views {
     public partial class ViewResult {
         
         /// <summary>
+        /// litHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litHeader;
+        
+        /// <summary>
         /// hidUserId control.
         /// </summary>
         /// <remarks>
@@ -23,13 +32,67 @@ namespace NDMSInvestigation.Investigation.Views {
         protected global::System.Web.UI.WebControls.HiddenField hidUserId;
         
         /// <summary>
-        /// rptResultDataSource control.
+        /// panelCompanyDetailsHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptResultDataSource;
+        protected global::System.Web.UI.WebControls.Panel panelCompanyDetailsHeader;
+        
+        /// <summary>
+        /// lblCompanyDetailsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCompanyDetailsPanel;
+        
+        /// <summary>
+        /// lblCompanyDetailsPanelCollapse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCompanyDetailsPanelCollapse;
+        
+        /// <summary>
+        /// imgCollaspe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCollaspe;
+        
+        /// <summary>
+        /// pnlCompanyDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCompanyDetails;
+        
+        /// <summary>
+        /// grdResultCompany control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdResultCompany;
+        
+        /// <summary>
+        /// collapseCompanyDetailsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender collapseCompanyDetailsPanel;
         
         /// <summary>
         /// ResultDataSource control.
@@ -41,6 +104,123 @@ namespace NDMSInvestigation.Investigation.Views {
         protected global::NDMSInvestigation.Web.Data.ResultsDataSource ResultDataSource;
         
         /// <summary>
+        /// pnlAdvancedOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAdvancedOptions;
+        
+        /// <summary>
+        /// lnlAdvancedOptionsHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lnlAdvancedOptionsHeader;
+        
+        /// <summary>
+        /// lblAdvancedOptionsCollapse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdvancedOptionsCollapse;
+        
+        /// <summary>
+        /// imgCollaspe2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCollaspe2;
+        
+        /// <summary>
+        /// pnlAdvancedOptionsDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAdvancedOptionsDetails;
+        
+        /// <summary>
+        /// ltrChartType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrChartType;
+        
+        /// <summary>
+        /// ddlChartType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlChartType;
+        
+        /// <summary>
+        /// collapseAdvancedOptionsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender collapseAdvancedOptionsPanel;
+        
+        /// <summary>
+        /// pnlChartView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlChartView;
+        
+        /// <summary>
+        /// lblChartViewHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChartViewHeader;
+        
+        /// <summary>
+        /// lblChartViewCollapse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChartViewCollapse;
+        
+        /// <summary>
+        /// imgCollaspe3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCollaspe3;
+        
+        /// <summary>
+        /// pnlChartViewDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlChartViewDetails;
+        
+        /// <summary>
         /// ChartResult control.
         /// </summary>
         /// <remarks>
@@ -48,5 +228,14 @@ namespace NDMSInvestigation.Investigation.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart ChartResult;
+        
+        /// <summary>
+        /// collapseChartViewPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender collapseChartViewPanel;
     }
 }

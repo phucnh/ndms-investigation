@@ -22,6 +22,7 @@ namespace NDMSInvestigation.Investigation.Views
             this._presenter.OnViewLoaded();
 
             hidUserId.Value = NDMSInvestigation.WCSF.Utility.GetUserId();
+            litHeader.Text = GetCurrentCompanyName();
             LoadChart();
         }
 
@@ -99,10 +100,16 @@ namespace NDMSInvestigation.Investigation.Views
             return Presenter.GetAllResultByUserId(new Guid(hidUserId.Value));
         }
 
-        // TODO: Forward events to the presenter and show state to the user.
-        // For examples of this, see the View-Presenter (with Application Controller) QuickStart:
-        //		ms-help://MS.VSCC.v80/MS.VSIPCC.v80/ms.practices.wcsf.2007oct/wcsf/html/08da6294-8a4e-46b2-8bbe-ec94c06f1c30.html
-
+        public string GetCurrentCompanyName()
+        {
+            string currentCompanyName = string.Empty;
+            NDMSInvestigation.Entities.CompanyDetails currentCompanyDetails = _presenter.GetCompanyDetailsByUserId(new Guid(hidUserId.Value));
+            if (currentCompanyDetails != null)
+            {
+                currentCompanyName = String.Format(Resources.StringResource.ViewResult_Text_ViewResultHeader, currentCompanyDetails.CompanyName);
+            }
+            return currentCompanyName;
+        }
     }
 }
 
