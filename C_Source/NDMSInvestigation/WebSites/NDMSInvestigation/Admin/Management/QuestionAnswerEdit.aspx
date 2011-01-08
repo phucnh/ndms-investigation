@@ -3,7 +3,7 @@
     CodeBehind="QuestionAnswerEdit.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="DefaultContent" runat="Server">
-    <data:MultiFormView ID="FormView1" DataKeyNames="QuestionAnswerId" runat="server"
+    <data:MultiFormView ID="FormView1" DataKeyNames="QuestionId" runat="server"
         DataSourceID="QuestionAnswerDataSource">
         <EditItemTemplatePaths>
             <data:TemplatePath Path="~/Admin/Management/UserControls/QuestionAnswerFields.ascx" />
