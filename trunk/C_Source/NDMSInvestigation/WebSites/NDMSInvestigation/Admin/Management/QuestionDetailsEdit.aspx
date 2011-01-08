@@ -30,7 +30,7 @@
     <br />
     <data:EntityGridView ID="GridViewQuestionAnswer1" runat="server" AutoGenerateColumns="False"
         OnSelectedIndexChanged="GridViewQuestionAnswer1_SelectedIndexChanged" DataSourceID="QuestionAnswerDataSource1"
-        DataKeyNames="QuestionAnswerId" AllowMultiColumnSorting="false" DefaultSortColumnName=""
+        DataKeyNames="QuestionId" AllowMultiColumnSorting="false" DefaultSortColumnName=""
         DefaultSortDirection="Ascending" ExcelExportFileName="Export_QuestionAnswer.xls"
         Visible='<%# (FormView1.DefaultMode == FormViewMode.Insert) ? false : true %>'>
         <Columns>
@@ -43,7 +43,7 @@
         </Columns>
         <EmptyDataTemplate>
             <b>No Question Answer Found! </b>
-            <asp:HyperLink runat="server" ID="hypQuestionAnswer" NavigateUrl="~/admin/QuestionAnswerEdit.aspx">Add New</asp:HyperLink>
+            <asp:HyperLink runat="server" ID="hypQuestionAnswer" NavigateUrl="~/Admin/Management/QuestionAnswerEdit.aspx">Add New</asp:HyperLink>
         </EmptyDataTemplate>
     </data:EntityGridView>
     <data:QuestionAnswerDataSource ID="QuestionAnswerDataSource1" runat="server" SelectMethod="Find"

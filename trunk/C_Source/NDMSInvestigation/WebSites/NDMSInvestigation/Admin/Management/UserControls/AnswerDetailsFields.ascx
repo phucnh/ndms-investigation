@@ -8,7 +8,7 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="dataAnswerContent" Text='<%# Bind("AnswerContent") %>'
-                        MaxLength="10"></asp:TextBox>
+                        MaxLength="1024"></asp:TextBox>
                 </td>
             </tr>
             <tr>

@@ -205,13 +205,16 @@ namespace NDMSInvestigation.Investigation.Views
 
             do
             {
-                int index = rand.Next(questionAnswerCount - 1);
+                int index = rand.Next(questionAnswerCount);
 
                 if (!examinedIndex.Contains(index))
+                {
                     tempCollection.Add(questionAnswers[index]);
+                    examinedIndex.Add(index);
+                }
             }
-            while ((tempCollection.Count == 5) ||
-                (examinedIndex.Count == questionAnswerCount));
+            while ((tempCollection.Count < 5) &&
+                (examinedIndex.Count < questionAnswerCount));
 
             return tempCollection;
         }

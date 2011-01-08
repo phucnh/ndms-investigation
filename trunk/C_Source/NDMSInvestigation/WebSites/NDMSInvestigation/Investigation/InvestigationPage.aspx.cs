@@ -91,7 +91,8 @@ namespace NDMSInvestigation.Investigation.Views
             //= (TList<NDMSInvestigation.Entities.QuestionAnswer>)questionAnswerDataSource.GetEntityList();
             TList<NDMSInvestigation.Entities.QuestionAnswer> questionAnswers
                 = Presenter.GetRandomQuestionAnswersList(Convert.ToInt32(hidQuestionId.Value));
-            Guard.ArgumentNotNull(questionAnswers, "questionAnswers");
+
+            if (questionAnswers == null) return;
 
             //radioButtonList.DataSource = questionAnswers;
             //radioButtonList.DataBind();

@@ -38,7 +38,7 @@
 			AutoGenerateColumns="False"	
 			OnSelectedIndexChanged="GridViewQuestionAnswer1_SelectedIndexChanged"			 			 
 			DataSourceID="QuestionAnswerDataSource1"
-			DataKeyNames="QuestionAnswerId"
+			DataKeyNames="QuestionId"
 			AllowMultiColumnSorting="false"
 			DefaultSortColumnName="" 
 			DefaultSortDirection="Ascending"	
@@ -53,7 +53,7 @@
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No Question Answer Found! </b>
-				<asp:HyperLink runat="server" ID="hypQuestionAnswer" NavigateUrl="~/admin/QuestionAnswerEdit.aspx">Add New</asp:HyperLink>
+				<asp:HyperLink runat="server" ID="hypQuestionAnswer" NavigateUrl="~/Admin/Management/QuestionAnswerEdit.aspx">Add New</asp:HyperLink>
 			</EmptyDataTemplate>
 		</data:EntityGridView>					
 		

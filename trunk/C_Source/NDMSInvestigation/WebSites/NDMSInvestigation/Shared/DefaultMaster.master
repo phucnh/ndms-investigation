@@ -91,7 +91,7 @@
                             <asp:Login ID="Login2" runat="server" CreateUserText="Register" CreateUserUrl="~/UserControl/Register.aspx"
                                 DestinationPageUrl="~/Admin/authenticated/changepwd.aspx">
                             </asp:Login>
-                            <asp:HyperLink ID="HyperLink1" runat="Server" Text="Forgot your password?" NavigateUrl="~/Admin/authenticated/forgotpwd.aspx" />
+                            <asp:HyperLink ID="HyperLink1" runat="Server" Text="Forgot your password?" NavigateUrl="~/UserControl/UserEdit.aspx" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </ContentTemplate>
