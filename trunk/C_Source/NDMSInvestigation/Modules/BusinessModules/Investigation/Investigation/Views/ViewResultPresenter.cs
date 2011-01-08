@@ -19,16 +19,19 @@ namespace NDMSInvestigation.Investigation.Views
 
         private ResultsService _resultService;
         private QuestionGroupsService _questionGroupService;
+        private CompanyDetailsService _companyDetailsService;
         private IInvestigationController _controller;
         
         public ViewResultPresenter(
             [CreateNew] IInvestigationController controller,
             [ServiceDependency] QuestionGroupsService questionGroupService,
-            [ServiceDependency] ResultsService resultService
+            [ServiceDependency] ResultsService resultService,
+            [ServiceDependency] CompanyDetailsService companyDetailsService
             )
         {
             _controller = controller;
             _questionGroupService = questionGroupService;
+            _companyDetailsService = companyDetailsService;
             _resultService = resultService;
         }
 
@@ -65,7 +68,11 @@ namespace NDMSInvestigation.Investigation.Views
             return resultCollection;
         }
 
-        // TODO: Handle other view events and set state in the view
+        public CompanyDetails GetCompanyDetailsByUserId(Guid userId)
+        {
+            CompanyDetails currentCompanyDetails = _companyDetailsService.GetByUserId(userId);
+            return currentCompanyDetails;
+        }
     }
 }
 

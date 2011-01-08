@@ -55,7 +55,7 @@
 			</Columns>
 			<EmptyDataTemplate>
 				<b>No Question Details Found! </b>
-				<asp:HyperLink runat="server" ID="hypQuestionDetails" NavigateUrl="~/admin/QuestionDetailsEdit.aspx">Add New</asp:HyperLink>
+				<asp:HyperLink runat="server" ID="hypQuestionDetails" NavigateUrl="~/Admin/Management/QuestionDetailsEdit.aspx">Add New</asp:HyperLink>
 			</EmptyDataTemplate>
 		</data:EntityGridView>					
 		
