@@ -212,6 +212,15 @@ namespace NDMSInvestigation.Investigation.Views {
         protected global::System.Web.UI.WebControls.ImageButton imgCollaspe3;
         
         /// <summary>
+        /// ChartUserControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NDMSInvestigation.Investigation.Views.ChartUserControlBase ChartUserControl1;
+        
+        /// <summary>
         /// pnlChartViewDetails control.
         /// </summary>
         /// <remarks>
@@ -219,15 +228,6 @@ namespace NDMSInvestigation.Investigation.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlChartViewDetails;
-        
-        /// <summary>
-        /// ChartResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart ChartResult;
         
         /// <summary>
         /// collapseChartViewPanel control.

@@ -23,45 +23,45 @@ namespace NDMSInvestigation.Investigation.Views
 
             hidUserId.Value = NDMSInvestigation.WCSF.Utility.GetUserId();
             litHeader.Text = GetCurrentCompanyName();
-            LoadChart();
+            //LoadChart();
         }
 
-        private void LoadChart()
-        {
-            TList<QuestionGroups> questionGroupCollection = GetAllGroup();
-            TList<Results> resultCollection = GetAllResultByUserId();
+        //private void LoadChart()
+        //{
+        //    TList<QuestionGroups> questionGroupCollection = GetAllGroup();
+        //    TList<Results> resultCollection = GetAllResultByUserId();
 
-            if (
-                ((questionGroupCollection != null) && (questionGroupCollection.Count != 0)) ||
-                ((resultCollection != null) && (resultCollection.Count != 0))
-                )
-            {
-                List<String> groupName = new List<String>();
-                List<int> groupMark = new List<int>();
+        //    if (
+        //        ((questionGroupCollection != null) && (questionGroupCollection.Count != 0)) ||
+        //        ((resultCollection != null) && (resultCollection.Count != 0))
+        //        )
+        //    {
+        //        List<String> groupName = new List<String>();
+        //        List<int> groupMark = new List<int>();
 
-                questionGroupCollection.Sort("GroupId");
-                resultCollection.Sort("GroupId");
+        //        questionGroupCollection.Sort("GroupId");
+        //        resultCollection.Sort("GroupId");
 
-                foreach (QuestionGroups questionGroup in questionGroupCollection)
-                {
-                    groupName.Add(questionGroup.GroupName);
-                }
+        //        foreach (QuestionGroups questionGroup in questionGroupCollection)
+        //        {
+        //            groupName.Add(questionGroup.GroupName);
+        //        }
 
-                foreach (Results result in resultCollection)
-                {
-                    groupMark.Add((int)result.GroupMark);
-                }
+        //        foreach (Results result in resultCollection)
+        //        {
+        //            groupMark.Add((int)result.GroupMark);
+        //        }
 
-                int[] yValues = groupMark.ToArray();
-                String[] xValues = groupName.ToArray();
+        //        int[] yValues = groupMark.ToArray();
+        //        String[] xValues = groupName.ToArray();
 
-                ChartResult.Series["Series1"].Points.DataBindXY(xValues, yValues);
-                //ChartResult.Series["Series1"].ChartType = SeriesChartType.Radar;
-                ChartResult.Series["Series1"]["RadarDrawingStyle"] = "Area";
-                ChartResult.Series["Series1"]["AreaDrawingStyle"] = "Polygon";
-                ChartResult.Series["Series1"]["CircularLabelsStyle"] = "Horizontal";
-            }
-        }
+        //        ChartResult.Series["Series1"].Points.DataBindXY(xValues, yValues);
+        //        //ChartResult.Series["Series1"].ChartType = SeriesChartType.Radar;
+        //        ChartResult.Series["Series1"]["RadarDrawingStyle"] = "Area";
+        //        ChartResult.Series["Series1"]["AreaDrawingStyle"] = "Polygon";
+        //        ChartResult.Series["Series1"]["CircularLabelsStyle"] = "Horizontal";
+        //    }
+        //}
 
         protected ViewResult()
         {
@@ -109,6 +109,11 @@ namespace NDMSInvestigation.Investigation.Views
                 currentCompanyName = String.Format(Resources.StringResource.ViewResult_Text_ViewResultHeader, currentCompanyDetails.CompanyName);
             }
             return currentCompanyName;
+        }
+
+        protected void ddlChartType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
