@@ -9,6 +9,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="AjaxControlToolkit.WCSFExtensions" Namespace="AjaxControlToolkit.WCSFExtensions"
     TagPrefix="cc2" %>
+    <%@ Register TagName="ChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/ChartUserControlBase.ascx" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
         <asp:Literal ID="litHeader" runat="Server"></asp:Literal>
@@ -111,7 +112,8 @@
                 <tr>
                     <td>
                         <asp:Literal ID="ltrChartType" runat="Server" Text="<%$ Resources:StringResource, ViewResult_Text_ChartType %>"></asp:Literal>
-                        <asp:DropDownList ID="ddlChartType" runat="Server">
+                        <asp:DropDownList ID="ddlChartType" runat="Server" 
+                            onselectedindexchanged="ddlChartType_SelectedIndexChanged">
                             <asp:ListItem Value="0" Text="Choose...">
                             </asp:ListItem>
                         </asp:DropDownList>
@@ -146,23 +148,26 @@
             </div>
         </div>
     </asp:Panel>
+    <%--phuc add 20110109--%>
+    <uc1:ChartUserControl runat="Server" ID="ChartUserControl1" />
+    <%--end phuc add 20110109--%>
     <asp:Panel ID="pnlChartViewDetails" runat="Server">
         <div style="vertical-align: middle; text-align: center;">
-            <asp:Chart ID="ChartResult" runat="server" Height="500px" Width="500px" ImageType="Png"
+            <%--<asp:Chart ID="ChartResult" runat="server" Height="500px" Width="500px" ImageType="Png"
                 Palette="BrightPastel" BackColor="#F3DFC1" BorderColor="181, 64, 1" BorderDashStyle="Solid"
                 BackGradientStyle="TopBottom" BorderWidth="2">
                 <Titles>
                     <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3"
                         Text="Your Company Result" ForeColor="26, 59, 105">
                     </asp:Title>
-                </Titles>
+                </Titles>--%>
                 <%--<Legends>
                 <asp:Legend IsTextAutoFit="False" Name="Default" BackColor="Transparent" Font="Trebuchet MS, 8.25pt, style=Bold"
                     Alignment="Far">
                     <Position Y="74.08253" Height="14.23021" Width="19.34047" X="74.73474"></Position>
                 </asp:Legend>
             </Legends>--%>
-                <BorderSkin SkinStyle="Emboss"></BorderSkin>
+                <%--<BorderSkin SkinStyle="Emboss"></BorderSkin>
                 <Series>
                     <asp:Series MarkerBorderColor="64, 64, 64" MarkerSize="9" Name="Series1" ChartType="Radar"
                         BorderColor="180, 26, 59, 105" Color="220, 65, 140, 240" ShadowOffset="1">
@@ -186,7 +191,7 @@
                         </AxisX>
                     </asp:ChartArea>
                 </ChartAreas>
-            </asp:Chart>
+            </asp:Chart>--%>
         </div>
     </asp:Panel>
     <cc1:CollapsiblePanelExtender ID="collapseChartViewPanel" runat="Server" TargetControlID="pnlChartViewDetails"

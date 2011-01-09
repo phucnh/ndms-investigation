@@ -315,8 +315,8 @@ Global
 		{2E48BC14-64D1-4114-8252-6D203D3F9A30} = {AD6A5FD7-E639-4896-A530-3B481F1CC0E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		IsWCSFSolution = True
-		IsWCSFSolutionWAP = True
 		RootNamespace = NDMSInvestigation
+		IsWCSFSolutionWAP = True
+		IsWCSFSolution = True
 	EndGlobalSection
 EndGlobal
