@@ -22,7 +22,8 @@
     <form id="mainForm" runat="server">
     <asp:ScriptManager ID="DefaultMasterScriptManager" runat="server">
         <Scripts>
-            <asp:ScriptReference Path="~/Shared/script/jquery-1.4.4.min.js" ScriptMode="Auto" />
+            <asp:ScriptReference Path="~/Shared/script/jquery-1.4.4.min.js"/>
+            <asp:ScriptReference Path="~/Shared/script/jquery-ui-1.8.8.custom.min.js"/>
         </Scripts>
     </asp:ScriptManager>
     &nbsp;

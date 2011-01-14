@@ -24,6 +24,11 @@ namespace NDMSInvestigation.WCSF
             return string.Empty;
         }
 
+        public static int GetAllUsersCount()
+        {
+            return Membership.GetAllUsers().Count;
+        }
+
         /// <summary>
         /// Gets the control.
         /// </summary>
