@@ -79,6 +79,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chọn số năm trở lại đây.
+        /// </summary>
+        internal static string Reports_Text_NumberOfYearsLast {
+            get {
+                return ResourceManager.GetString("Reports_Text_NumberOfYearsLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Companies.
+        /// </summary>
+        internal static string Reports_Text_TotalCompanies {
+            get {
+                return ResourceManager.GetString("Reports_Text_TotalCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tổng số công ty hiện tại là {0} trên {1} người đăng ký.
+        /// </summary>
+        internal static string Reports_Text_TotalCompaniesNow {
+            get {
+                return ResourceManager.GetString("Reports_Text_TotalCompaniesNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        internal static string Reports_Text_Year {
+            get {
+                return ResourceManager.GetString("Reports_Text_Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tùy chọn nâng cao.
         /// </summary>
         internal static string ViewResult_Text_AdvancedOptionsHeader {

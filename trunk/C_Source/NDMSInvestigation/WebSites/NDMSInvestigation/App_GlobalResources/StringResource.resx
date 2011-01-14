@@ -123,6 +123,18 @@
   <data name="Common_Text_ExpandText" xml:space="preserve">
     <value>Mở rộng</value>
   </data>
+  <data name="Reports_Text_NumberOfYearsLast" xml:space="preserve">
+    <value>Chọn số năm trở lại đây</value>
+  </data>
+  <data name="Reports_Text_TotalCompanies" xml:space="preserve">
+    <value>Total Companies</value>
+  </data>
+  <data name="Reports_Text_TotalCompaniesNow" xml:space="preserve">
+    <value>Tổng số công ty hiện tại là {0} trên {1} người đăng ký</value>
+  </data>
+  <data name="Reports_Text_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
   <data name="ViewResult_Text_AdvancedOptionsHeader" xml:space="preserve">
     <value>Tùy chọn nâng cao</value>
   </data>
