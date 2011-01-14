@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Shared/DefaultMaster.master" %>
-<%@ Register TagPrefix="dc" TagName="alphalinks" Src="~/Admin/_controls/alphalinks.ascx" %>
+<%@ Register TagPrefix="dc" TagName="alphalinks" Src="~/Administrator/_controls/alphalinks.ascx" %>
 
 <script runat="server">
 	private void Page_PreRender()

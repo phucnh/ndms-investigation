@@ -66,7 +66,7 @@
 		FolderTree.Nodes.Add(root);
 		try
 		{
-            FolderTree.SelectedNode.ImageUrl = "/Admin/i/target.gif";
+            FolderTree.SelectedNode.ImageUrl = "/Administrator/i/target.gif";
 		}
 		catch { }
 	}
@@ -128,7 +128,7 @@
 		RuleCreationError.Visible = false;
 
 		ResetFolderImageUrls(FolderTree.Nodes[0]); // Restore previously selected folder's ImageUrl.
-        FolderTree.SelectedNode.ImageUrl = "/Admin/i/target.gif"; // Set the newly selected folder's ImageUrl.
+        FolderTree.SelectedNode.ImageUrl = "/Administrator/i/target.gif"; // Set the newly selected folder's ImageUrl.
 	}
 
 	private void ResetFolderImageUrls(TreeNode parentNode)
@@ -148,7 +148,7 @@
 		 * but nothing ever returned a valid node, whether I tried it in Page_Load or Page_PreRender.
 		 */
 
-        parentNode.ImageUrl = "/Admin/i/folder.gif";
+        parentNode.ImageUrl = "/Administrator/i/folder.gif";
 		
 		// Recurse through this node's child nodes.
 		TreeNodeCollection nodes = parentNode.ChildNodes;
@@ -427,9 +427,9 @@
 				<div class="treeview">
 				<asp:TreeView runat="server" ID="FolderTree"
 					OnSelectedNodeChanged="FolderTree_SelectedNodeChanged">
-					<RootNodeStyle ImageUrl="~/Admin/i/folder.gif" />
-					<ParentNodeStyle ImageUrl="~/Admin/i/folder.gif" />
-					<LeafNodeStyle ImageUrl="~/Admin/i/folder.gif" />
+					<RootNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
+					<ParentNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
+					<LeafNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
 					<SelectedNodeStyle Font-Underline="true" ForeColor="#A21818" />
 				</asp:TreeView>
 				</div> 

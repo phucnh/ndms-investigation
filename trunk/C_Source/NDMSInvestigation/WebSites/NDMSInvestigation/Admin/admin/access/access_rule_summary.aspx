@@ -80,7 +80,7 @@
 		
 		//  This is where I wanna adjust the folder name.
 		TreeNode node = new TreeNode(folder.Name + " (" + action + ")", virtualFolderPath);
-        node.ImageUrl = (action.Substring(0, 5) == "ALLOW") ? "/Admin/i/greenlight.gif" : "/Admin/i/redlight.gif";
+        node.ImageUrl = (action.Substring(0, 5) == "ALLOW") ? "/Administrator/i/greenlight.gif" : "/Administrator/i/redlight.gif";
 		node.NavigateUrl = "access_rules.aspx?selectedFolderName=" + folder.Name;
 		
 		// Recurse through this folder's subfolders
@@ -270,9 +270,9 @@
 				<asp:TreeView runat="server" ID="FolderTree"
 					OnSelectedNodeChanged="FolderTree_SelectedNodeChanged"
 					>
-					<RootNodeStyle ImageUrl="~/Admin/i/folder.gif" />
-					<ParentNodeStyle ImageUrl="~/Admin/i/folder.gif" />
-					<LeafNodeStyle ImageUrl="~/Admin/i/folder.gif" />
+					<RootNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
+					<ParentNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
+					<LeafNodeStyle ImageUrl="~/Administrator/i/folder.gif" />
 					<SelectedNodeStyle Font-Underline="true" ForeColor="#A21818" />
 				</asp:TreeView>
 				</div>
