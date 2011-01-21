@@ -31,7 +31,7 @@ namespace NDMSInvestigation.Reports.Views
             }
             this._presenter.OnViewLoaded();
 
-            LiteralNumberOfYearsLast.Text = string.Format(
+            TotalCompaniesLiteral.Text = string.Format(
                 Resources.StringResource.Reports_Text_TotalCompaniesNow,
                 Presenter.GetNumberOfCompanies(),
                 Utility.GetAllUsersCount()
@@ -70,6 +70,11 @@ namespace NDMSInvestigation.Reports.Views
                 );
         }
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the DropDownListYears control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void DropDownListYears_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!Int32.TryParse(DropDownListYears.SelectedValue, out _numberOfYears))

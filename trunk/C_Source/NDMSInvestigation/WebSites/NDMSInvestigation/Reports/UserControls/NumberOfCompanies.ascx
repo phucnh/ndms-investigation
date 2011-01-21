@@ -10,9 +10,8 @@
     <div>
         <asp:Label runat="Server" ID="lblNumberOfYearsLast" Text='<%$ Resources:StringResource, Reports_Text_NumberOfYearsLast %>' /></div>
     <div>
-        <asp:DropDownList ID="DropDownListYears" runat="server" OnSelectedIndexChanged="DropDownListYears_SelectedIndexChanged">
-            <asp:ListItem Enabled="true" Selected="True" Value="1" />
-            <asp:ListItem Enabled="true" Selected="False" Value="2" />
+        <asp:DropDownList ID="DropDownListYears" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListYears_SelectedIndexChanged">
+            <asp:ListItem Enabled="true" Selected="True" Value="2" />
             <asp:ListItem Enabled="true" Selected="False" Value="3" />
             <asp:ListItem Enabled="true" Selected="False" Value="4" />
             <asp:ListItem Enabled="true" Selected="False" Value="5" />
