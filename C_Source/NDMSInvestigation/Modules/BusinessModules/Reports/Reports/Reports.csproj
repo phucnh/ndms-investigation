@@ -72,6 +72,8 @@
     <Compile Include="ReportsModuleInitializer.cs" />
     <Compile Include="IReportsController.cs" />
     <Compile Include="ReportsController.cs" />
+    <Compile Include="Views\CompanyEstimationPresenter.cs" />
+    <Compile Include="Views\ICompanyEstimationView.cs" />
     <Compile Include="Views\IDefaultView.cs" />
     <Compile Include="Views\DefaultViewPresenter.cs" />
     <Compile Include="Views\INumberOfCompaniesView.cs" />

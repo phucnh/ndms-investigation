@@ -257,6 +257,13 @@
     <Compile Include="Reports\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\UserControls\CompanyEstimation.ascx.cs">
+      <DependentUpon>CompanyEstimation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UserControls\CompanyEstimation.ascx.designer.cs">
+      <DependentUpon>CompanyEstimation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\UserControls\NumberOfCompanies.ascx.cs">
       <DependentUpon>NumberOfCompanies.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -422,6 +429,7 @@
   <ItemGroup>
     <None Include="Investigation\UserControls\ChartControlDrg.cd" />
     <Content Include="Reports\Default.aspx" />
+    <Content Include="Reports\UserControls\CompanyEstimation.ascx" />
     <Content Include="Reports\UserControls\NumberOfCompanies.ascx" />
     <Content Include="Reports\Web.config" />
     <Content Include="Shared\script\jquery-ui-1.8.8.custom.min.js" />
