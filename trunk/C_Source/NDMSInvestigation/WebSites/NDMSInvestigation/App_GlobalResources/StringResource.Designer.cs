@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trang phỏng vấn.
+        /// </summary>
+        internal static string Investigation_Text_InvestigationTitle {
+            get {
+                return ResourceManager.GetString("Investigation_Text_InvestigationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Công ty {0} xếp thứ {1} trong tổng số {2} công ty.
         /// </summary>
         internal static string Reports_Text_CompanyRank {
@@ -88,11 +97,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chi tiết.
+        /// </summary>
+        internal static string Reports_Text_DetailTab {
+            get {
+                return ResourceManager.GetString("Reports_Text_DetailTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chọn số năm trở lại đây.
         /// </summary>
         internal static string Reports_Text_NumberOfYearsLast {
             get {
                 return ResourceManager.GetString("Reports_Text_NumberOfYearsLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tổng quan.
+        /// </summary>
+        internal static string Reports_Text_OverviewTab {
+            get {
+                return ResourceManager.GetString("Reports_Text_OverviewTab", resourceCulture);
             }
         }
         

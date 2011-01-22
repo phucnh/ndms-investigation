@@ -123,11 +123,20 @@
   <data name="Common_Text_ExpandText" xml:space="preserve">
     <value>Mở rộng</value>
   </data>
+  <data name="Investigation_Text_InvestigationTitle" xml:space="preserve">
+    <value>Trang phỏng vấn</value>
+  </data>
   <data name="Reports_Text_CompanyRank" xml:space="preserve">
     <value>Công ty {0} xếp thứ {1} trong tổng số {2} công ty</value>
   </data>
+  <data name="Reports_Text_DetailTab" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
   <data name="Reports_Text_NumberOfYearsLast" xml:space="preserve">
     <value>Chọn số năm trở lại đây</value>
+  </data>
+  <data name="Reports_Text_OverviewTab" xml:space="preserve">
+    <value>Tổng quan</value>
   </data>
   <data name="Reports_Text_TotalCompanies" xml:space="preserve">
     <value>Total Companies</value>

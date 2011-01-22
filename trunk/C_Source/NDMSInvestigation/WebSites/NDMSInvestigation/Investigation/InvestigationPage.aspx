@@ -1,12 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InvestigationPage.aspx.cs"
     Inherits="NDMSInvestigation.Investigation.Views.InvestigationPage" Title="InvestigationPage"
     MasterPageFile="~/Shared/DefaultMaster.master" %>
-
 <%@ Import Namespace="NDMSInvestigation.Entities" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
-        InvestigationPage</h1>
+        <asp:Literal ID="InvestigationTitle" runat="Server" Text='<%$ Resources:StringResource,Investigation_Text_InvestigationTitle %>' /></h1>
     <asp:HiddenField runat="Server" ID="hidUserId" Value='<%# NDMSInvestigation.WCSF.Utility.GetUserId() %>' />
     <%--<data:EntityDropDownList runat="Server" DataSourceID="QuestionAnswerDataSource" ID="ddlQuestionAnswer"
         OnDataBinding="ddlQuestionAnswer_DataBinding" OnDataBound="ddlQuestionAnswer_DataBound" />--%>
