@@ -22,7 +22,7 @@ namespace NDMSInvestigation.UserControl.Views
 
             if ((hidUserId == null) ||
                 (string.IsNullOrEmpty(hidUserId.Value)))
-                Response.Redirect("~/Admin/authenticated/login.aspx");
+                Response.Redirect("~/Shared/authenticated/login.aspx");
 
             LoadMultiFormViewMode();
         }
@@ -48,13 +48,13 @@ namespace NDMSInvestigation.UserControl.Views
 
                 this._presenter = value;
                 this._presenter.View = this;
-                
+
             }
         }
 
         protected void FormView1_ItemCommand(object sender, System.Web.UI.WebControls.FormViewCommandEventArgs e)
         {
-            if (String.Compare(e.CommandName,"Cancel") == 0)
+            if (String.Compare(e.CommandName, "Cancel") == 0)
             {
                 Response.Redirect("~/UserControl/UserEdit.aspx");
             }
