@@ -10,7 +10,7 @@
 	private void Page_Load(object sender, EventArgs e)
 	{
 		FormsAuthentication.SignOut();
-        Response.Redirect("~/Admin/authenticated/login.aspx");
+        Response.Redirect("~/Shared/authenticated/login.aspx");
 	}
 </script>
 <html>

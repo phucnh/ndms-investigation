@@ -59,13 +59,13 @@ namespace NDMSInvestigation.Shell.MasterPages {
         protected global::System.Web.UI.WebControls.LoginView ctlRightNavbar;
         
         /// <summary>
-        /// ASPxNavBar1 control.
+        /// mainMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxNavBar.ASPxNavBar ASPxNavBar1;
+        protected global::DevExpress.Web.ASPxMenu.ASPxMenu mainMenu;
         
         /// <summary>
         /// DefaultBreadCrumb control.
