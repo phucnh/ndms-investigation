@@ -363,10 +363,10 @@
     <Content Include="Admin\admin\access\_nav.aspx" />
     <Content Include="Admin\admin\access\_nav3.aspx" />
     <Content Include="Admin\admin\activity\site_activity.aspx" />
-    <Content Include="Admin\authenticated\changepwd.aspx" />
-    <Content Include="Admin\authenticated\forgotpwd.aspx" />
-    <Content Include="Admin\authenticated\login.aspx" />
-    <Content Include="Admin\authenticated\logout.aspx" />
+    <Content Include="Shared\authenticated\changepwd.aspx" />
+    <Content Include="Shared\authenticated\forgotpwd.aspx" />
+    <Content Include="Shared\authenticated\login.aspx" />
+    <Content Include="Shared\authenticated\logout.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\i\folder.gif" />
     <Content Include="Admin\i\greenlight.gif" />
