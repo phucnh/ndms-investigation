@@ -104,6 +104,7 @@ namespace NDMSInvestigation.Investigation.Views
         {
             string currentCompanyName = string.Empty;
             NDMSInvestigation.Entities.CompanyDetails currentCompanyDetails = _presenter.GetCompanyDetailsByUserId(new Guid(hidUserId.Value));
+
             if (currentCompanyDetails != null)
             {
                 currentCompanyName = String.Format(Resources.StringResource.ViewResult_Text_ViewResultHeader, currentCompanyDetails.CompanyName);

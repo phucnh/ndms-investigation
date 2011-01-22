@@ -3,10 +3,10 @@
 <h1>
     CompanyEstimation</h1>
 <data:EntityDropDownList runat="Server" ID="ddlCompanySelector" DataSourceID="CompanyDetailsDataSource1"
-    DataTextField="CompanyName" DataValueField="CompanyId" AutoPostBack="true"/>
+    DataTextField="CompanyName" DataValueField="CompanyId" AutoPostBack="true" />
 <div>
     <div>
-    <asp:Label runat="Server" ID="lblCompanyRank" />
+        <asp:Label runat="Server" ID="lblCompanyRank" />
     </div>
     <div>
     </div>

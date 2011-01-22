@@ -9,19 +9,14 @@
         Reports Default View</h1>
     <div>
         <cc1:TabContainer ID="TabContainer1" runat="server">
-            <cc1:TabPanel Id="TabNumberOfCompanies" runat="Server" HeaderText="">
+            <cc1:TabPanel Id="TabNumberOfCompanies" runat="Server" HeaderText='<%$ Resources:StringResource, Reports_Text_OverviewTab %>'>
                 <ContentTemplate>
                     <uc1:NumberOfCompanies runat="Server" ID="NumberOfCompaniesUserControl" NumberOfYears="3" />
                 </ContentTemplate>
             </cc1:TabPanel>
-            <cc1:TabPanel ID="TabCompanyEstimation" runat="Server" HeaderText="">
+            <cc1:TabPanel ID="TabCompanyEstimation" runat="Server" HeaderText='<%$ Resources:StringResource, Reports_Text_DetailTab %>'>
                 <ContentTemplate>
                     <uc1:CompanyEstimation runat="Server" ID="CompanyEstimationUserControl" />
-                </ContentTemplate>
-            </cc1:TabPanel>
-            <cc1:TabPanel ID="TabPanel1" runat="Server" HeaderText="">
-                <ContentTemplate>
-                    <uc1:CompanyEstimation runat="Server" ID="CompanyEstimation1" />
                 </ContentTemplate>
             </cc1:TabPanel>
         </cc1:TabContainer>
