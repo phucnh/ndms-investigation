@@ -8,19 +8,20 @@ using System.Collections.Generic;
 
 namespace NDMSInvestigation.Investigation.Views
 {
-    public partial class CircleChartUserControl : Microsoft.Practices.CompositeWeb.Web.UI.UserControl, ICircleChartUserControlView, IChartUserControl
+    public partial class ColumnChartUserControl : Microsoft.Practices.CompositeWeb.Web.UI.UserControl, IColumnChartUserControlView
     {
-        private CircleChartUserControlPresenter _presenter;
+        private ColumnChartUserControlPresenter _presenter;
 
         public Chart ChartControl
         {
-            get { return ChartCircle; }
-            set { ChartCircle = value; }
-        }
-
-        public Microsoft.Practices.CompositeWeb.Web.UI.UserControl UserControlInstance
-        {
-            get { return this; }
+            set
+            {
+                ChartColumn = value;
+            }
+            get
+            {
+                return ChartColumn;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace NDMSInvestigation.Investigation.Views
         }
 
         [CreateNew]
-        public CircleChartUserControlPresenter Presenter
+        public ColumnChartUserControlPresenter Presenter
         {
             get
             {
@@ -102,20 +103,30 @@ namespace NDMSInvestigation.Investigation.Views
                     yValues.SetValue(groupMark[i], i);
                 }
 
-                ChartCircle.Series["Series1"].Points.DataBindXY(xValues, yValues);
-                ChartCircle.Series["Series1"].ChartType = SeriesChartType.Radar;
-                ChartCircle.Series["Series1"]["AreaDrawingStyle"] = "Circle";
-                ChartCircle.Series["Series1"]["CircularLabelsStyle"] = "Horizontal";
-                ChartCircle.Series["Series1"].BorderColor = Color.Empty;
-                ChartCircle.Series["Series1"].BorderWidth = 2;
-                ChartCircle.Series["Series1"]["RadarDrawingStyle"] = ddlRadarType.SelectedItem.Text;
+                ChartColumn.Series["Series1"].Points.DataBindXY(xValues, yValues);
+                if (string.Compare(ChartType.SelectedItem.ToString(),"Column").Equals(0))
+                {
+                    ChartColumn.Series["Series1"].ChartType = SeriesChartType.Column;
+                }
+                if (string.Compare(ChartType.SelectedItem.ToString(), "Bar").Equals(0))
+                {
+                    ChartColumn.Series["Series1"].ChartType = SeriesChartType.Bar;
+                }
+
+                ChartColumn.Series["Series1"]["PointWidth"] = BarWidthList.SelectedItem.ToString();
+                ChartColumn.Series["Series1"]["DrawingStyle"] = "Cylinder";
+                ChartColumn.Series["Series1"].BorderColor = Color.Empty;
+                ChartColumn.Series["Series1"].BorderWidth = 1;
+                if (chkView3D.Checked)
+                {
+                    ChartColumn.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+                }
+                else
+                {
+                    ChartColumn.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
+                }
             }
         }
-
-        // TODO: Forward events to the presenter and show state to the user.
-        // For examples of this, see the View-Presenter (with Application Controller) QuickStart:
-        //		ms-help://MS.VSCC.v80/MS.VSIPCC.v80/ms.practices.wcsf.2007oct/wcsf/html/08da6294-8a4e-46b2-8bbe-ec94c06f1c30.html
-
     }
 }
 

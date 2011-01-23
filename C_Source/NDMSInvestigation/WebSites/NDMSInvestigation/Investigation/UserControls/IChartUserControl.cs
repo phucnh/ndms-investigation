@@ -8,15 +8,15 @@ namespace NDMSInvestigation.Investigation.Views
 {
     public interface IChartUserControl
     {
-        Chart ChartControl
-        {
-            set;
-            get;
-        }
-
-        //Microsoft.Practices.CompositeWeb.Web.UI.UserControl UserControlInstance
+        //Chart ChartControl
         //{
+        //    set;
         //    get;
         //}
+
+        Microsoft.Practices.CompositeWeb.Web.UI.UserControl UserControlInstance
+        {
+            get;
+        }
     }
 }

@@ -9,7 +9,10 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="AjaxControlToolkit.WCSFExtensions" Namespace="AjaxControlToolkit.WCSFExtensions"
     TagPrefix="cc2" %>
-    <%@ Register TagName="ChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/ChartUserControlBase.ascx" %>
+<%@ Register TagName="ChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/ChartUserControlBase.ascx" %>
+<%@ Register TagName="CircleChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/CircleChartUserControl.ascx" %>
+<%@ Register TagName="ColumnChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/ColumnChartUserControl.ascx" %>
+<%@ Register TagName="PieChartUserControl" TagPrefix="uc1" Src="~/Investigation/UserControls/PieChartUserControl.ascx" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
         <asp:Literal ID="litHeader" runat="Server"></asp:Literal>
@@ -112,10 +115,14 @@
                 <tr>
                     <td>
                         <asp:Literal ID="ltrChartType" runat="Server" Text="<%$ Resources:StringResource, ViewResult_Text_ChartType %>"></asp:Literal>
-                        <asp:DropDownList ID="ddlChartType" runat="Server" 
-                            onselectedindexchanged="ddlChartType_SelectedIndexChanged">
-                            <asp:ListItem Value="0" Text="Choose...">
+                        <asp:DropDownList ID="ddlChartType" runat="Server" AutoPostBack="true" NDMSChartType="true"
+                            OnSelectedIndexChanged="ddlChartType_SelectedIndexChanged">
+                            <asp:ListItem Value="0" Text="<%$ Resources:StringResource, Common_Text_ChooseType %>">
                             </asp:ListItem>
+                            <asp:ListItem Value="1" Text="Circle Chart">
+                            </asp:ListItem>
+                            <asp:ListItem Value="2" Text="Column Chart"></asp:ListItem>
+                            <asp:ListItem Value="3" Text="Pie Chart"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -148,54 +155,29 @@
             </div>
         </div>
     </asp:Panel>
-    <%--phuc add 20110109--%>
-    <uc1:ChartUserControl runat="Server" ID="ChartUserControl1" />
-    <%--end phuc add 20110109--%>
     <asp:Panel ID="pnlChartViewDetails" runat="Server">
-        <div style="vertical-align: middle; text-align: center;">
-            <%--<asp:Chart ID="ChartResult" runat="server" Height="500px" Width="500px" ImageType="Png"
-                Palette="BrightPastel" BackColor="#F3DFC1" BorderColor="181, 64, 1" BorderDashStyle="Solid"
-                BackGradientStyle="TopBottom" BorderWidth="2">
-                <Titles>
-                    <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3"
-                        Text="Your Company Result" ForeColor="26, 59, 105">
-                    </asp:Title>
-                </Titles>--%>
-                <%--<Legends>
-                <asp:Legend IsTextAutoFit="False" Name="Default" BackColor="Transparent" Font="Trebuchet MS, 8.25pt, style=Bold"
-                    Alignment="Far">
-                    <Position Y="74.08253" Height="14.23021" Width="19.34047" X="74.73474"></Position>
-                </asp:Legend>
-            </Legends>--%>
-                <%--<BorderSkin SkinStyle="Emboss"></BorderSkin>
-                <Series>
-                    <asp:Series MarkerBorderColor="64, 64, 64" MarkerSize="9" Name="Series1" ChartType="Radar"
-                        BorderColor="180, 26, 59, 105" Color="220, 65, 140, 240" ShadowOffset="1">
-                        <EmptyPointStyle LegendText="N/A" />
-                    </asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1" BorderColor="64, 64, 64, 64" BackSecondaryColor="White"
-                        BackColor="OldLace" ShadowColor="Transparent">
-                        <Area3DStyle Rotation="10" Perspective="10" Inclination="15" IsRightAngleAxes="False"
-                            WallWidth="0" IsClustered="False" />
-                        <Position Y="15" Height="78" Width="88" X="5"></Position>
-                        <AxisY LineColor="64, 64, 64, 64">
-                            <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
-                            <MajorGrid LineColor="64, 64, 64, 64" />
-                            <MajorTickMark Size="0.6" />
-                        </AxisY>
-                        <AxisX LineColor="64, 64, 64, 64">
-                            <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
-                            <MajorGrid LineColor="64, 64, 64, 64" />
-                        </AxisX>
-                    </asp:ChartArea>
-                </ChartAreas>
-            </asp:Chart>--%>
-        </div>
+        <asp:UpdatePanel ID="updatePanelChartControl" runat="Server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div style="vertical-align: middle; text-align: center;">
+                    <%--<uc1:ChartUserControl runat="Server" ID="ChartUserControl1" />--%>
+                    <asp:Panel ID="pnlCircleChart" runat="Server" NDMSCircleChartControl="true">
+                        <uc1:CircleChartUserControl ID="CircleChartUserControl" runat="Server" Visible="false" />
+                    </asp:Panel>
+                    <asp:Panel ID="pnlColumnChart" runat="Server" NDMSColumnChartControl="true">
+                        <uc1:ColumnChartUserControl ID="ColumnChartUserControl" runat="Server" Visible="false" />
+                    </asp:Panel>
+                    <asp:Panel ID="pnlPieChart" runat="Server" NDMSPieChartControl="true">
+                        <uc1:PieChartUserControl ID="PieChartUserControl" runat="Server" Visible="false" />
+                    </asp:Panel>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ddlChartType" EventName="SelectedIndexChanged" />
+            </Triggers>
+        </asp:UpdatePanel>
     </asp:Panel>
     <cc1:CollapsiblePanelExtender ID="collapseChartViewPanel" runat="Server" TargetControlID="pnlChartViewDetails"
-        ExpandControlID="pnlChartView" CollapseControlID="pnlChartView" Collapsed="true"
+        ExpandControlID="pnlChartView" CollapseControlID="pnlChartView" Collapsed="false"
         TextLabelID="lblChartViewCollapse" ImageControlID="imgCollaspe3" ExpandedImage="~/Shared/images/collapse_blue.jpg"
         CollapsedImage="~/Shared/images/expand_blue.jpg" SuppressPostBack="true" SkinID="collapsiblepaneldemo"
         ExpandedText="<%$ Resources:StringResource, Common_Text_CollapseText %>" CollapsedText="<%$ Resources:StringResource, Common_Text_ExpandText %>">

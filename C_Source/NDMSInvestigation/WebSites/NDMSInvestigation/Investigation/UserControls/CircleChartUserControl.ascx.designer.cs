@@ -14,6 +14,15 @@ namespace NDMSInvestigation.Investigation.Views {
     public partial class CircleChartUserControl {
         
         /// <summary>
+        /// hidUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidUserId;
+        
+        /// <summary>
         /// ChartCircle control.
         /// </summary>
         /// <remarks>
@@ -21,5 +30,23 @@ namespace NDMSInvestigation.Investigation.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart ChartCircle;
+        
+        /// <summary>
+        /// lblRadarType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRadarType;
+        
+        /// <summary>
+        /// ddlRadarType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRadarType;
     }
 }

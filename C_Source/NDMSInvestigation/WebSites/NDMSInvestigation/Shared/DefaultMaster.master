@@ -142,9 +142,39 @@
             </dx:PopupWindow>
         </Windows>
     </dx:ASPxPopupControl>
-    &nbsp;
+    <%if (false)
+      {%>
+
+    <script src="~/Shared/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+    <%}; %>
 
     <script type="text/javascript">
+        $.noConflict();
+        $(document).ready(function() {
+            $("[NDMSChartType='true']").change(function(){
+                if ($(this).attr('selectedIndex') == '0') {
+                    $("[NDMSCircleChartControl='true']").hide(1000);
+                    $("[NDMSColumnChartControl='true']").hide(1000);
+                    $("[NDMSPieChartControl='true']").hide(1000);
+                }
+                if ($(this).attr('selectedIndex') == '1') {
+                    $("[NDMSCircleChartControl='true']").slideDown(1000);
+                    $("[NDMSColumnChartControl='true']").slideUp(1000);
+                    $("[NDMSPieChartControl='true']").slideUp(1000);
+                }
+                if ($(this).attr('selectedIndex') == '2') {
+                    $("[NDMSCircleChartControl='true']").slideUp(1000);
+                    $("[NDMSColumnChartControl='true']").slideDown(1000);
+                    $("[NDMSPieChartControl='true']").slideUp(1000);
+                }
+                if ($(this).attr('selectedIndex') == '3') {
+                    $("[NDMSCircleChartControl='true']").slideUp(1000);
+                    $("[NDMSColumnChartControl='true']").slideUp(1000);
+                    $("[NDMSPieChartControl='true']").slideDown(1000);
+                }
+            });
+        });
     </script>
 
     </form>

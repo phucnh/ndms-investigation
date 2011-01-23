@@ -6,6 +6,9 @@ using System.Web.UI.DataVisualization.Charting;
 using Microsoft.Practices.ObjectBuilder;
 
 using NDMSInvestigation.Entities;
+using System.Web.UI.WebControls;
+using Microsoft.Practices.CompositeWeb.Web.UI;
+using Microsoft.Practices.CompositeWeb.Web;
 
 namespace NDMSInvestigation.Investigation.Views
 {
@@ -56,7 +59,7 @@ namespace NDMSInvestigation.Investigation.Views
         //        String[] xValues = groupName.ToArray();
 
         //        ChartResult.Series["Series1"].Points.DataBindXY(xValues, yValues);
-        //        //ChartResult.Series["Series1"].ChartType = SeriesChartType.Radar;
+        //        ChartResult.Series["Series1"].ChartType = SeriesChartType.Radar;
         //        ChartResult.Series["Series1"]["RadarDrawingStyle"] = "Area";
         //        ChartResult.Series["Series1"]["AreaDrawingStyle"] = "Polygon";
         //        ChartResult.Series["Series1"]["CircularLabelsStyle"] = "Horizontal";
@@ -114,7 +117,35 @@ namespace NDMSInvestigation.Investigation.Views
 
         protected void ddlChartType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            IChartUserControl iChartUserControl;
+            int chartType = this.ddlChartType.SelectedIndex;
+            switch (chartType)
+            {
+                case 0:
+                    CircleChartUserControl.Visible = false;
+                    ColumnChartUserControl.Visible = false;
+                    PieChartUserControl.Visible = false;
+                    break;
+                case 1:
+                    CircleChartUserControl.Visible = true;
+                    ColumnChartUserControl.Visible = false;
+                    PieChartUserControl.Visible = false;
+                    break;
+                case 2:
+                    CircleChartUserControl.Visible = false;
+                    ColumnChartUserControl.Visible = true;
+                    PieChartUserControl.Visible = false;
+                    break;
+                case 3:
+                    CircleChartUserControl.Visible = false;
+                    ColumnChartUserControl.Visible = false;
+                    PieChartUserControl.Visible = true;
+                    break;
+            }
 
+            //iChartUserControl = new NDMSInvestigation.Investigation.Views.CircleChartUserControl();
+            //ChartUserControl1.SetChartControl(iChartUserControl);
+            //ChartUserControl1.AddChart();
         }
     }
 }

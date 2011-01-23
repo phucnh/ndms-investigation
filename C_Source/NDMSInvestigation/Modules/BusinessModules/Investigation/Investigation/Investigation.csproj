@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E577B277-85AA-4324-B4A2-9093209CAD32}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -74,13 +74,17 @@
     <Compile Include="InvestigationController.cs" />
     <Compile Include="Views\ChartUserControlBasePresenter.cs" />
     <Compile Include="Views\CircleChartUserControlPresenter.cs" />
+    <Compile Include="Views\ColumnChartUserControlPresenter.cs" />
     <Compile Include="Views\IChartUserControlBaseView.cs" />
     <Compile Include="Views\ICircleChartUserControlView.cs" />
+    <Compile Include="Views\IColumnChartUserControlView.cs" />
     <Compile Include="Views\IDefaultView.cs" />
     <Compile Include="Views\DefaultViewPresenter.cs" />
     <Compile Include="Views\IInvestigationPageView.cs" />
     <Compile Include="Views\InvestigationPagePresenter.cs" />
+    <Compile Include="Views\IPieChartUserControlView.cs" />
     <Compile Include="Views\IViewResultView.cs" />
+    <Compile Include="Views\PieChartUserControlPresenter.cs" />
     <Compile Include="Views\ViewResultPresenter.cs" />
   </ItemGroup>
   <ItemGroup>

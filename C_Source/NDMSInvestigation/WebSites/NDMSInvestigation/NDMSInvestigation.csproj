@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{59C6D948-D52E-4E12-B79E-2447BE0A098C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -241,7 +241,21 @@
     <Compile Include="Investigation\UserControls\CircleChartUserControl.ascx.designer.cs">
       <DependentUpon>CircleChartUserControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Investigation\UserControls\ColumnChartUserControl.ascx.cs">
+      <DependentUpon>ColumnChartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Investigation\UserControls\ColumnChartUserControl.ascx.designer.cs">
+      <DependentUpon>ColumnChartUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Investigation\UserControls\IChartUserControl.cs" />
+    <Compile Include="Investigation\UserControls\PieChartUserControl.ascx.cs">
+      <DependentUpon>PieChartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Investigation\UserControls\PieChartUserControl.ascx.designer.cs">
+      <DependentUpon>PieChartUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Investigation\ViewResult.aspx.cs">
       <DependentUpon>ViewResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -428,6 +442,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Investigation\UserControls\ChartControlDrg.cd" />
+    <Content Include="Investigation\UserControls\ColumnChartUserControl.ascx" />
+    <Content Include="Investigation\UserControls\PieChartUserControl.ascx" />
     <Content Include="Reports\Default.aspx" />
     <Content Include="Reports\UserControls\CompanyEstimation.ascx" />
     <Content Include="Reports\UserControls\NumberOfCompanies.ascx" />
@@ -454,9 +470,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
