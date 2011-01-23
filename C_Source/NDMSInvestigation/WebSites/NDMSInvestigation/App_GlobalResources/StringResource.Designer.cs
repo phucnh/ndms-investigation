@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bạn hãy lần lượt làm qua từng câu hỏi.
+        /// </summary>
+        internal static string Investigation_Text_InvestigationDesc {
+            get {
+                return ResourceManager.GetString("Investigation_Text_InvestigationDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trang phỏng vấn.
         /// </summary>
         internal static string Investigation_Text_InvestigationTitle {
@@ -147,6 +156,24 @@ namespace Resources {
         internal static string Reports_Text_Year {
             get {
                 return ResourceManager.GetString("Reports_Text_Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin tài khoản.
+        /// </summary>
+        internal static string UserControl_Text_AuthenticatedDetails {
+            get {
+                return ResourceManager.GetString("UserControl_Text_AuthenticatedDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin công ty.
+        /// </summary>
+        internal static string UserControl_Text_CompanyDetails {
+            get {
+                return ResourceManager.GetString("UserControl_Text_CompanyDetails", resourceCulture);
             }
         }
         
