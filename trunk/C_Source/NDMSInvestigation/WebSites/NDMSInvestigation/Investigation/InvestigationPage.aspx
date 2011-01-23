@@ -1,25 +1,36 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InvestigationPage.aspx.cs"
     Inherits="NDMSInvestigation.Investigation.Views.InvestigationPage" Title="InvestigationPage"
     MasterPageFile="~/Shared/DefaultMaster.master" %>
+
 <%@ Import Namespace="NDMSInvestigation.Entities" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
         <asp:Literal ID="InvestigationTitle" runat="Server" Text='<%$ Resources:StringResource,Investigation_Text_InvestigationTitle %>' /></h1>
+        <asp:Literal ID="InvestigationDesc" runat="Server" Text='<%$ Resources:StringResource, Investigation_Text_InvestigationDesc %>' />
+        <br />
     <asp:HiddenField runat="Server" ID="hidUserId" Value='<%# NDMSInvestigation.WCSF.Utility.GetUserId() %>' />
     <%--<data:EntityDropDownList runat="Server" DataSourceID="QuestionAnswerDataSource" ID="ddlQuestionAnswer"
         OnDataBinding="ddlQuestionAnswer_DataBinding" OnDataBound="ddlQuestionAnswer_DataBound" />--%>
     <asp:Repeater runat="Server" DataSourceID="QuestionGroupDataSource" DataMember="GroupId"
         ID="rptQuestionGroup">
-        <HeaderTemplate>
-        </HeaderTemplate>
         <ItemTemplate>
+            <asp:Panel runat="server" ID="pnlGroupHeader">
+                <asp:Label CssClass="group_text_name" runat="Server" ID="LabelGroupNameHeader" Text='<%# Eval("GroupName") %>' />
+                <asp:ImageButton ID="imgCollaspe" OnClientClick="return false;" runat="server" ImageUrl="~/Shared/images/expand_blue.jpg" />
+            </asp:Panel>
+            <cc1:CollapsiblePanelExtender ID="collapseCompanyDetailsPanel" runat="Server" TargetControlID="pnlQuestionGroup"
+                ExpandControlID="pnlGroupHeader" CollapseControlID="pnlGroupHeader" Collapsed="true"
+                TextLabelID="lblCompanyDetailsPanelCollapse" ImageControlID="imgCollaspe" ExpandedImage="~/Shared/images/collapse_blue.jpg"
+                CollapsedImage="~/Shared/images/expand_blue.jpg" SuppressPostBack="true" ExpandedText="<%$ Resources:StringResource, Common_Text_CollapseText %>"
+                CollapsedText="<%$ Resources:StringResource, Common_Text_ExpandText %>">
+            </cc1:CollapsiblePanelExtender>
             <asp:Panel runat="server" ID="pnlQuestionGroup">
                 <div>
                     <div>
                         <div>
                             <asp:HiddenField runat="Server" Value='<%# Bind("GroupId") %>' ID="hidGroupId" />
-                            <asp:Label CssClass="group_text_name" runat="Server" ID="lblGroupName" Text='<%# Eval("GroupName") %>' />
+                            <%--<asp:Label CssClass="group_text_name" runat="Server" ID="lblGroupName" Text='<%# Eval("GroupName") %>' />--%>
                         </div>
                         <div>
                             <asp:Label CssClass="group_text_desc" runat="Server" ID="lblGroupDesc" Text='<%# Eval("GroupDescription") %>' />

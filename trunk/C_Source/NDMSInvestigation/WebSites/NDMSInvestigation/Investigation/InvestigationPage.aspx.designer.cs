@@ -23,6 +23,15 @@ namespace NDMSInvestigation.Investigation.Views {
         protected global::System.Web.UI.WebControls.Literal InvestigationTitle;
         
         /// <summary>
+        /// InvestigationDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal InvestigationDesc;
+        
+        /// <summary>
         /// hidUserId control.
         /// </summary>
         /// <remarks>

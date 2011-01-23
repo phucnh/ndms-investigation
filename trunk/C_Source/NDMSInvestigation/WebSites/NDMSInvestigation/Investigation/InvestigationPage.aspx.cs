@@ -55,21 +55,33 @@ namespace NDMSInvestigation.Investigation.Views
 
             foreach (Control rptQuestionGroupControl in rptQuestionGroup.Controls)
             {
-                Repeater rptQuestionDetails = (Repeater)rptQuestionGroupControl.FindControl("rptQuestionDetails");
-                HiddenField hidGroupId = (HiddenField)rptQuestionGroupControl.FindControl("hidGroupId");
+                
+                Panel pnlQuestionGroup = rptQuestionGroupControl.FindControl("pnlQuestionGroup") as Panel;
+                Guard.ArgumentNotNull(pnlQuestionGroup, "pnlQuestionGroup");
 
-                int sumGroup = 0;
-
-                foreach (Control rptQuestionDetailsControl in rptQuestionDetails.Controls)
+                foreach (Control pnlQuestionGroupControl in pnlQuestionGroup.Controls)
                 {
-                    //EntityDropDownList ddlQuestionAnswer = (EntityDropDownList)rptQuestionDetailsControl.FindControl("ddlQuestionAnswer");
-                    RadioButtonList radioButtonList = (RadioButtonList)rptQuestionDetailsControl.FindControl("rblQuestionAnswer");
-                    sumGroup += Int32.Parse(radioButtonList.SelectedValue);
-                    totalMark += sumGroup;
-                }
 
-                Presenter.InsertNewGroupMark(new Guid(hidUserId.ToString()), Int32.Parse(hidGroupId.ToString()), sumGroup);
-                Presenter.UpdateCurrentTotalMark(new Guid(hidUserId.ToString()), totalMark);
+
+                    Repeater rptQuestionDetails = (Repeater)pnlQuestionGroupControl.FindControl("rptQuestionDetails");
+                    Guard.ArgumentNotNull(rptQuestionDetails, "rptQuestionDetails");
+
+                    HiddenField hidGroupId = (HiddenField)pnlQuestionGroupControl.FindControl("hidGroupId");
+                    Guard.ArgumentNotNull(hidGroupId, "hidGroupId");
+
+                    int sumGroup = 0;
+
+                    foreach (Control rptQuestionDetailsControl in rptQuestionDetails.Controls)
+                    {
+                        //EntityDropDownList ddlQuestionAnswer = (EntityDropDownList)rptQuestionDetailsControl.FindControl("ddlQuestionAnswer");
+                        RadioButtonList radioButtonList = (RadioButtonList)rptQuestionDetailsControl.FindControl("rblQuestionAnswer");
+                        sumGroup += Int32.Parse(radioButtonList.SelectedValue);
+                        totalMark += sumGroup;
+                    }
+
+                    Presenter.InsertNewGroupMark(new Guid(hidUserId.ToString()), Int32.Parse(hidGroupId.ToString()), sumGroup);
+                    Presenter.UpdateCurrentTotalMark(new Guid(hidUserId.ToString()), totalMark);
+                }
             }
         }
 

@@ -123,6 +123,9 @@
   <data name="Common_Text_ExpandText" xml:space="preserve">
     <value>Mở rộng</value>
   </data>
+  <data name="Investigation_Text_InvestigationDesc" xml:space="preserve">
+    <value>Bạn hãy lần lượt làm qua từng câu hỏi</value>
+  </data>
   <data name="Investigation_Text_InvestigationTitle" xml:space="preserve">
     <value>Trang phỏng vấn</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="Reports_Text_Year" xml:space="preserve">
     <value>Year</value>
+  </data>
+  <data name="UserControl_Text_AuthenticatedDetails" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+  </data>
+  <data name="UserControl_Text_CompanyDetails" xml:space="preserve">
+    <value>Thông tin công ty</value>
   </data>
   <data name="ViewResult_Text_AdvancedOptionsHeader" xml:space="preserve">
     <value>Tùy chọn nâng cao</value>
