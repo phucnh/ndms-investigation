@@ -12,17 +12,17 @@ namespace NDMSInvestigation.Investigation.Views
 
         public void AddChart()
         {
-            if (_iChartUserControl.ChartControl != null)
-            {
-                ChartPanel.Controls.Clear();
-                ChartPanel.Controls.Add(_iChartUserControl.ChartControl);
-            }
-
-            //if (_iChartUserControl.UserControlInstance != null)
+            //if (_iChartUserControl.ChartControl != null)
             //{
             //    ChartPanel.Controls.Clear();
-            //    ChartPanel.Controls.Add(_iChartUserControl.UserControlInstance);
+            //    ChartPanel.Controls.Add(_iChartUserControl.ChartControl);
             //}
+
+            if (_iChartUserControl.UserControlInstance != null)
+            {
+                ChartPanel.Controls.Clear();
+                ChartPanel.Controls.Add(_iChartUserControl.UserControlInstance);
+            }
         }
 
         public void SetChartControl(IChartUserControl iChartUserControl)

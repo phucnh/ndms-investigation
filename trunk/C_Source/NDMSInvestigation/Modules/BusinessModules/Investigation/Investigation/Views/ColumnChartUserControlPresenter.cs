@@ -8,13 +8,13 @@ using NDMSInvestigation.Entities;
 
 namespace NDMSInvestigation.Investigation.Views
 {
-    public class CircleChartUserControlPresenter : Presenter<ICircleChartUserControlView>
+    public class ColumnChartUserControlPresenter : Presenter<IColumnChartUserControlView>
     {
-
         private IInvestigationController _controller;
         private ResultsService _resultService;
         private QuestionGroupsService _questionGroupService;
-        public CircleChartUserControlPresenter(
+
+        public ColumnChartUserControlPresenter(
             [CreateNew] IInvestigationController controller,
             [ServiceDependency] QuestionGroupsService questionGroupService,
             [ServiceDependency] ResultsService resultService)

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Common_Text_ChooseType" xml:space="preserve">
+    <value>Lựa chọn...</value>
+  </data>
   <data name="Common_Text_CollapseText" xml:space="preserve">
     <value>Thu nhỏ</value>
   </data>
@@ -165,6 +168,12 @@
   <data name="ViewResult_Text_ChartViewHeader" xml:space="preserve">
     <value>Biểu đồ trực quan</value>
   </data>
+  <data name="ViewResult_Text_ColumnChartView3D" xml:space="preserve">
+    <value>Xem đồ thị dạng 3D:</value>
+  </data>
+  <data name="ViewResult_Text_ColumnChartWidth" xml:space="preserve">
+    <value>Thay đổi kích thước cột: </value>
+  </data>
   <data name="ViewResult_Text_CompanyDetailsHeader" xml:space="preserve">
     <value>Thông tin chi tiết kết quả phỏng vấn</value>
   </data>
@@ -176,6 +185,18 @@
   </data>
   <data name="ViewResult_Text_GroupNameHeader" xml:space="preserve">
     <value>Nhóm câu hỏi</value>
+  </data>
+  <data name="ViewResult_Text_PieChartExplodedSelected" xml:space="preserve">
+    <value>Tách rời đối tượng: </value>
+  </data>
+  <data name="ViewResult_Text_PieChartLegendShow" xml:space="preserve">
+    <value>Hiển thị tên đối tượng: </value>
+  </data>
+  <data name="ViewResult_Text_PieChartTypeView" xml:space="preserve">
+    <value>Thay đổi kiểu hiển thị: </value>
+  </data>
+  <data name="ViewResult_Text_RadarChartTypeView" xml:space="preserve">
+    <value>Thay đổi kiểu hiển thị Radar:</value>
   </data>
   <data name="ViewResult_Text_TestTimesHeader" xml:space="preserve">
     <value>Số lần phỏng vấn</value>

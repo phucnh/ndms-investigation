@@ -8,19 +8,20 @@ using System.Collections.Generic;
 
 namespace NDMSInvestigation.Investigation.Views
 {
-    public partial class CircleChartUserControl : Microsoft.Practices.CompositeWeb.Web.UI.UserControl, ICircleChartUserControlView, IChartUserControl
+    public partial class PieChartUserControl : Microsoft.Practices.CompositeWeb.Web.UI.UserControl, IPieChartUserControlView
     {
-        private CircleChartUserControlPresenter _presenter;
+        private PieChartUserControlPresenter _presenter;
 
         public Chart ChartControl
         {
-            get { return ChartCircle; }
-            set { ChartCircle = value; }
-        }
-
-        public Microsoft.Practices.CompositeWeb.Web.UI.UserControl UserControlInstance
-        {
-            get { return this; }
+            set
+            {
+                ChartPie = value;
+            }
+            get
+            {
+                return ChartPie;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace NDMSInvestigation.Investigation.Views
         }
 
         [CreateNew]
-        public CircleChartUserControlPresenter Presenter
+        public PieChartUserControlPresenter Presenter
         {
             get
             {
@@ -102,19 +103,21 @@ namespace NDMSInvestigation.Investigation.Views
                     yValues.SetValue(groupMark[i], i);
                 }
 
-                ChartCircle.Series["Series1"].Points.DataBindXY(xValues, yValues);
-                ChartCircle.Series["Series1"].ChartType = SeriesChartType.Radar;
-                ChartCircle.Series["Series1"]["AreaDrawingStyle"] = "Circle";
-                ChartCircle.Series["Series1"]["CircularLabelsStyle"] = "Horizontal";
-                ChartCircle.Series["Series1"].BorderColor = Color.Empty;
-                ChartCircle.Series["Series1"].BorderWidth = 2;
-                ChartCircle.Series["Series1"]["RadarDrawingStyle"] = ddlRadarType.SelectedItem.Text;
+                ChartPie.Series["Series1"].Points.DataBindXY(xValues, yValues);
+                if (string.Compare(ddlPieChartType.SelectedItem.Text,"Doughnut").Equals(0))
+                {
+                    ChartPie.Series["Series1"].ChartType = SeriesChartType.Doughnut;
+                }
+                if (ddlPieChartType.SelectedItem.Text == "Pie")
+                {
+                    ChartPie.Series["Series1"].ChartType = SeriesChartType.Pie;
+                }
+                ChartPie.Series["Series1"]["PieDrawingStyle"] = "Concave";
+                ChartPie.Series["Series1"]["DoughnutRadius"] = "70";
+                ChartPie.Series["Series1"]["PieLabelStyle"] = ddlShowLegend.SelectedItem.Value.ToString();
+                ChartPie.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = chk3DView.Checked;
             }
         }
-
-        // TODO: Forward events to the presenter and show state to the user.
-        // For examples of this, see the View-Presenter (with Application Controller) QuickStart:
-        //		ms-help://MS.VSCC.v80/MS.VSIPCC.v80/ms.practices.wcsf.2007oct/wcsf/html/08da6294-8a4e-46b2-8bbe-ec94c06f1c30.html
 
     }
 }

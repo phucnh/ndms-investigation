@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lựa chọn....
+        /// </summary>
+        internal static string Common_Text_ChooseType {
+            get {
+                return ResourceManager.GetString("Common_Text_ChooseType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thu nhỏ.
         /// </summary>
         internal static string Common_Text_CollapseText {
@@ -205,6 +214,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xem đồ thị dạng 3D:.
+        /// </summary>
+        internal static string ViewResult_Text_ColumnChartView3D {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_ColumnChartView3D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thay đổi kích thước cột: .
+        /// </summary>
+        internal static string ViewResult_Text_ColumnChartWidth {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_ColumnChartWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thông tin chi tiết kết quả phỏng vấn.
         /// </summary>
         internal static string ViewResult_Text_CompanyDetailsHeader {
@@ -237,6 +264,42 @@ namespace Resources {
         internal static string ViewResult_Text_GroupNameHeader {
             get {
                 return ResourceManager.GetString("ViewResult_Text_GroupNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tách rời đối tượng: .
+        /// </summary>
+        internal static string ViewResult_Text_PieChartExplodedSelected {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_PieChartExplodedSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hiển thị tên đối tượng: .
+        /// </summary>
+        internal static string ViewResult_Text_PieChartLegendShow {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_PieChartLegendShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thay đổi kiểu hiển thị: .
+        /// </summary>
+        internal static string ViewResult_Text_PieChartTypeView {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_PieChartTypeView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thay đổi kiểu hiển thị Radar:.
+        /// </summary>
+        internal static string ViewResult_Text_RadarChartTypeView {
+            get {
+                return ResourceManager.GetString("ViewResult_Text_RadarChartTypeView", resourceCulture);
             }
         }
         
