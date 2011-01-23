@@ -8,7 +8,7 @@
     BackGradientStyle="TopBottom" BorderWidth="2" BorderColor="26, 59, 105">
     <Titles>
         <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3"
-            Text="Pie Chart" Name="Title1" ForeColor="26, 59, 105">
+            Text="" Name="Title1" ForeColor="26, 59, 105">
         </asp:Title>
     </Titles>
     <Legends>

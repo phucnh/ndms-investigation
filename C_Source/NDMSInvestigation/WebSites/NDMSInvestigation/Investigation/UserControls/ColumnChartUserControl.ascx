@@ -8,7 +8,7 @@
     BorderWidth="2" BorderColor="181, 64, 1" ImageType="Png">
     <Titles>
         <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3"
-            Text="Column Chart" Name="Title1" ForeColor="26, 59, 105">
+            Text="" Name="Title1" ForeColor="26, 59, 105">
         </asp:Title>
     </Titles>
     <Legends>

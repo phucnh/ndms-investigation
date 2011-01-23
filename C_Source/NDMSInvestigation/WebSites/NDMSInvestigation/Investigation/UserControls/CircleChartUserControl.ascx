@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CircleChartUserControl.ascx.cs"
     Inherits="NDMSInvestigation.Investigation.Views.CircleChartUserControl" %>
 <h1>
-    Radar Chart
+    Circle Chart
 </h1>
 <asp:HiddenField runat="Server" ID="hidUserId" Value='<%# NDMSInvestigation.WCSF.Utility.GetUserId() %>' />
 <asp:Chart ID="ChartCircle" runat="server" Height="500px" Width="500px" ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)"
@@ -9,7 +9,7 @@
     BorderDashStyle="Solid" BackGradientStyle="TopBottom" BorderWidth="2">
     <Titles>
         <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3"
-            Text="Your Company Result" ForeColor="26, 59, 105">
+            Text="" ForeColor="26, 59, 105">
         </asp:Title>
     </Titles>
     <Legends>
