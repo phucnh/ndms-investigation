@@ -2,18 +2,19 @@
     Inherits="NDMSInvestigation.Investigation.Views.InvestigationPage" Title="InvestigationPage"
     MasterPageFile="~/Shared/DefaultMaster.master" %>
 
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Import Namespace="NDMSInvestigation.Entities" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
         <asp:Literal ID="InvestigationTitle" runat="Server" Text='<%$ Resources:StringResource,Investigation_Text_InvestigationTitle %>' /></h1>
-        <asp:Literal ID="InvestigationDesc" runat="Server" Text='<%$ Resources:StringResource, Investigation_Text_InvestigationDesc %>' />
-        <br />
-    <asp:HiddenField runat="Server" ID="hidUserId" Value='<%# NDMSInvestigation.WCSF.Utility.GetUserId() %>' />
+    <asp:Literal ID="InvestigationDesc" runat="Server" Text='<%$ Resources:StringResource, Investigation_Text_InvestigationDesc %>' />
+    <br />
+    <%--<asp:HiddenField runat="Server" ID="hidUserId" Value='<%# NDMSInvestigation.WCSF.Utility.GetUserId() %>' />--%>
     <%--<data:EntityDropDownList runat="Server" DataSourceID="QuestionAnswerDataSource" ID="ddlQuestionAnswer"
         OnDataBinding="ddlQuestionAnswer_DataBinding" OnDataBound="ddlQuestionAnswer_DataBound" />--%>
     <asp:Repeater runat="Server" DataSourceID="QuestionGroupDataSource" DataMember="GroupId"
-        ID="rptQuestionGroup">
+        ID="rptQuestionGroup" OnItemCommand="rptQuestionGroup_ItemCommand">
         <ItemTemplate>
             <asp:Panel runat="server" ID="pnlGroupHeader">
                 <asp:Label CssClass="group_text_name" runat="Server" ID="LabelGroupNameHeader" Text='<%# Eval("GroupName") %>' />
@@ -68,13 +69,13 @@
                                 <asp:RadioButtonList runat="Server" ID="rblQuestionAnswer" />
                                 <br />
                                 <br />
-                                <%--phuc mod 2011113--%>
+                                <%--phuc mod 2011113
                                 <data:QuestionAnswerDataSource runat="Server" ID="QuestionAnswerDataSource" SelectMethod="GetByQuestionId">
                                     <Parameters>
                                         <asp:ControlParameter runat="Server" ControlID="hidQuestionId" Name="QuestionId" />
                                     </Parameters>
                                 </data:QuestionAnswerDataSource>
-                                <%--end phuc mod 2011113--%>
+								end phuc mod 2011113--%>
                                 <%--<%# DataBinder.Eval(((NDSMInvestigation.Entities.QuestionAnswer)Container.DataItem).AnswerIdSource,"AnswerContent") %>--%>
                                 <%--<%# GetAnswerContent(Int32.Parse(Eval("AnswerId"))) %>--%>
                                 <%--<cc1:DropDownExtender ID="ddlAnswerDetails_DropDownExtender" runat="server" DynamicServicePath=""
@@ -93,6 +94,11 @@
             <hr />
             <br />
         </ItemTemplate>
+        <FooterTemplate>
+            <telerik:RadButton ID="RadButtonSubmit" runat="server" CommandName="Submit" Text="Submit">
+            </telerik:RadButton>
+            <%--OnClick="btnSubmit_Click"--%>
+        </FooterTemplate>
     </asp:Repeater>
     <data:QuestionGroupsDataSource ID="QuestionGroupDataSource" runat="server" SelectMethod="GetAll">
         <Parameters>
@@ -104,5 +110,5 @@
     </data:QuestionGroupsDataSource>
     <br />
     <br />
-    <asp:Button runat="Server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" />
+    <%--<asp:Button runat="Server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" />--%>
 </asp:Content>

@@ -115,8 +115,7 @@
                 <tr>
                     <td>
                         <asp:Literal ID="ltrChartType" runat="Server" Text="<%$ Resources:StringResource, ViewResult_Text_ChartType %>"></asp:Literal>
-                        <asp:DropDownList ID="ddlChartType" runat="Server" AutoPostBack="true" NDMSChartType="true"
-                            OnSelectedIndexChanged="ddlChartType_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlChartType" runat="Server" AutoPostBack="True" OnSelectedIndexChanged="ddlChartType_SelectedIndexChanged">
                             <asp:ListItem Value="0" Text="<%$ Resources:StringResource, Common_Text_ChooseType %>">
                             </asp:ListItem>
                             <asp:ListItem Value="1" Text="Circle Chart">

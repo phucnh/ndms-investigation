@@ -143,6 +143,8 @@ namespace NDMSInvestigation.Investigation.Views
                     break;
             }
 
+
+
             //iChartUserControl = new NDMSInvestigation.Investigation.Views.CircleChartUserControl();
             //ChartUserControl1.SetChartControl(iChartUserControl);
             //ChartUserControl1.AddChart();

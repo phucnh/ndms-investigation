@@ -32,15 +32,6 @@ namespace NDMSInvestigation.Investigation.Views {
         protected global::System.Web.UI.WebControls.Literal InvestigationDesc;
         
         /// <summary>
-        /// hidUserId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidUserId;
-        
-        /// <summary>
         /// rptQuestionGroup control.
         /// </summary>
         /// <remarks>
@@ -57,14 +48,5 @@ namespace NDMSInvestigation.Investigation.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::NDMSInvestigation.Web.Data.QuestionGroupsDataSource QuestionGroupDataSource;
-        
-        /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

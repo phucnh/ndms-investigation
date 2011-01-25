@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Modules\Business
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Interface", "Modules\BusinessModules\Reports\Reports.Interface\Reports.Interface.csproj", "{A64BD857-4257-49CF-82FF-506B0B2444D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Modules\FoundationModules\Common\Common.csproj", "{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -341,6 +343,21 @@ Global
 		{A64BD857-4257-49CF-82FF-506B0B2444D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A64BD857-4257-49CF-82FF-506B0B2444D3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A64BD857-4257-49CF-82FF-506B0B2444D3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.GenerateDebug|.NET.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.GenerateDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.GenerateDebug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.GenerateDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.GenerateDebug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Release|.NET.ActiveCfg = Release|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,12 +385,13 @@ Global
 		{A8496D72-D08B-4C59-9965-F57BF2EEAE10} = {AD6A5FD7-E639-4896-A530-3B481F1CC0E8}
 		{2E48BC14-64D1-4114-8252-6D203D3F9A30} = {AD6A5FD7-E639-4896-A530-3B481F1CC0E8}
 		{AFD2C071-3243-40B0-B1E5-EA2BD3EABF89} = {FAC56810-7087-4F65-9CBA-990B8D15B183}
+		{8D7F69EF-0B4E-4491-8284-5BDC21F97A35} = {FAC56810-7087-4F65-9CBA-990B8D15B183}
 		{E834A026-91BC-439C-85C3-0C457C3BBA1E} = {2A35F885-017C-417D-B271-C7877B9FFDFE}
 		{A64BD857-4257-49CF-82FF-506B0B2444D3} = {2A35F885-017C-417D-B271-C7877B9FFDFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		IsWCSFSolution = True
-		IsWCSFSolutionWAP = True
 		RootNamespace = NDMSInvestigation
+		IsWCSFSolutionWAP = True
+		IsWCSFSolution = True
 	EndGlobalSection
 EndGlobal

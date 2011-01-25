@@ -10,6 +10,13 @@ using System.Web.UI.WebControls.WebParts;
 
 namespace NDMSInvestigation.WCSF
 {
+    public enum InvestigationEnum
+    {
+        Pre_Load = 0,
+        Loading = 1,
+        Submit = 2
+    }
+
     public class Utility
     {
         /// <summary>
@@ -49,4 +56,6 @@ namespace NDMSInvestigation.WCSF
             }
         }
     }
+
+    
 }

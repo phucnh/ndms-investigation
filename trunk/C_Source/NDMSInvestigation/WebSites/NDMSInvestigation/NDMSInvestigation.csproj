@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{59C6D948-D52E-4E12-B79E-2447BE0A098C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -92,6 +92,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
+    <Reference Include="Telerik.Web.UI, Version=2010.3.1109.35, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Telerik\RadControls for ASP.NET AJAX Q3 2010\Bin35\Telerik.Web.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Default\Default.css" />
@@ -351,6 +355,10 @@
       <Project>{2E48BC14-64D1-4114-8252-6D203D3F9A30}</Project>
       <Name>UserControl %28Modules\BusinessModules\UserControl\UserControl%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\FoundationModules\Common\Common.csproj">
+      <Project>{8D7F69EF-0B4E-4491-8284-5BDC21F97A35}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\FoundationModules\Navigator\Navigator.csproj">
       <Project>{AFD2C071-3243-40B0-B1E5-EA2BD3EABF89}</Project>
       <Name>Navigator</Name>
@@ -470,6 +478,9 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

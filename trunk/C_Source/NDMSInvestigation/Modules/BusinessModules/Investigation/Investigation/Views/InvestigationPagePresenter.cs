@@ -70,9 +70,9 @@ namespace NDMSInvestigation.Investigation.Views
         /// <param name="groupId">The group id.</param>
         /// <param name="sumGroup">The sum group.</param>
         /// <returns></returns>
-        public bool InsertNewGroupMark(Guid userId, int groupId, int sumGroup)
+        public bool InsertNewGroupMark(Guid userId, int groupId, int sumGroup, int currentTestTime)
         {
-            int testTime = GetCurrentTestTime(userId);
+            int testTime = currentTestTime; //GetCurrentTestTime(userId);
             Results _result = new Results();
 
             _result.UserId = userId;
@@ -105,7 +105,11 @@ namespace NDMSInvestigation.Investigation.Views
                     currentTestTime = _tempTestTime;
             }
 
-            return currentTestTime++;
+            if (currentTestTime == 0) return 1;
+
+            currentTestTime++;
+
+            return currentTestTime;
         }
 
         /// <summary>
@@ -177,6 +181,8 @@ namespace NDMSInvestigation.Investigation.Views
                     tempMark = questionAnswer.AnswerIdSource.AnswerMark.HasValue ?
                         questionAnswer.AnswerIdSource.AnswerMark.Value :
                         0;
+
+                    questionAnswer.Mark = tempMark;
                 }
 
                 if (!examinedMark.Contains(tempMark)) _tempCollection.Add(questionAnswer);
