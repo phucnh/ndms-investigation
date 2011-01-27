@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Common_Text_ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
   <data name="Common_Text_ChooseType" xml:space="preserve">
     <value>Lựa chọn...</value>
   </data>
@@ -125,6 +128,18 @@
   </data>
   <data name="Common_Text_ExpandText" xml:space="preserve">
     <value>Mở rộng</value>
+  </data>
+  <data name="Common_Text_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Common_Text_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Common_Text_Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Common_Text_SiteTitle" xml:space="preserve">
+    <value>NDMS Investigation</value>
   </data>
   <data name="Investigation_Text_InvestigationDesc" xml:space="preserve">
     <value>Bạn hãy lần lượt làm qua từng câu hỏi</value>

@@ -23,5 +23,34 @@
                 ForeColor="#284775" />
             <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <StepStyle BorderWidth="0px" />
-    </asp:CreateUserWizard>
+</asp:CreateUserWizard>
+    
+<asp:Login runat="server" BackColor="#F7F6F3" 
+        BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" 
+        Font-Names="Verdana" Font-Size="1em" ForeColor="#333333">
+        <TextBoxStyle Font-Size="1em" />
+        <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" 
+            BorderWidth="1px" Font-Names="Verdana" Font-Size="1em" ForeColor="#284775" />
+        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+        <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="1.1em" 
+            ForeColor="White" />
+</asp:Login>
    
+<asp:ChangePassword runat="server" BackColor="#F7F6F3" 
+        BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" 
+        Font-Names="Verdana" Font-Size="1em">
+        <CancelButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" 
+            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="1em" 
+            ForeColor="#284775" />
+        <PasswordHintStyle Font-Italic="True" ForeColor="#888888" />
+        <ContinueButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" 
+            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="1em" 
+            ForeColor="#284775" />
+        <ChangePasswordButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" 
+            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="1em" 
+            ForeColor="#284775" />
+        <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="1.1em" 
+            ForeColor="White" />
+        <TextBoxStyle Font-Size="1em" />
+        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+</asp:ChangePassword>

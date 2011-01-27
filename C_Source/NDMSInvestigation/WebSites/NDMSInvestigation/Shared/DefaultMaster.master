@@ -18,7 +18,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head" runat="server">
-    <title>NDMSInvestigation</title>
+    <title>NDMSInvestigationSite</title>
 </head>
 <body>
     <form id="mainForm" runat="server">
@@ -31,7 +31,7 @@
     &nbsp;
     <div id="mainwrapper">
         <div id="header">
-            <span>NDMS Investigation</span>
+            <span><asp:Label runat="Server" Id="lblSiteTitle" Text='<%$ Resources:StringResource, Common_Text_SiteTitle%>' /></span>
             <div style="float: right; font-size: 14px;">
                 <asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome {0}" />
                 <asp:LoginView ID="ctlRightNavbar" runat="server">
@@ -40,15 +40,15 @@
                         <%--<a id="aLogin" runat="Server" href="~/Shared/authenticated/login.aspx">
                             <asp:Literal ID="ltrLogin" Text="Login" runat="server"></asp:Literal></a>--%>
                         <a id="aLogin">
-                            <asp:Literal ID="ltrLogin" Text="Login" runat="server"></asp:Literal></a> &nbsp;|&nbsp
+                            <asp:Literal ID="ltrLogin" Text="<%$ Resources:StringResource,Common_Text_Login %>" runat="server"></asp:Literal></a> &nbsp;|&nbsp
                         <%--<a id="aRegister" runat="Server" href="~/UserControl/Register.aspx">--%>
                         <a id="aRegister">
-                            <asp:Literal ID="ltrRegister" runat="Server" Text="Register" /></a>
+                            <asp:Literal ID="ltrRegister" runat="Server" Text='<%$ Resources:StringResource,Common_Text_Registration %>' /></a>
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        <asp:HyperLink ID="HyperLink2" runat="server" Text="Logout" NavigateUrl="~/Shared/authenticated/logout.aspx"></asp:HyperLink>&nbsp;|&nbsp;
+                        <asp:HyperLink ID="HyperLink2" runat="server" Text="<%$ Resources:StringResource,Common_Text_Logout %>" NavigateUrl="~/Shared/authenticated/logout.aspx"></asp:HyperLink>&nbsp;|&nbsp;
                         <a id="aChangePass">
-                            <asp:Literal ID="ltrChangePass" Text="Change Password" runat="server"></asp:Literal></a>
+                            <asp:Literal ID="ltrChangePass" Text="<%$ Resources:StringResource,Common_Text_ChangePassword %>" runat="server"></asp:Literal></a>
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>

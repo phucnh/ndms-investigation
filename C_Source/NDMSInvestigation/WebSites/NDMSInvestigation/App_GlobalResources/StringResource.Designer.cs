@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        internal static string Common_Text_ChangePassword {
+            get {
+                return ResourceManager.GetString("Common_Text_ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lựa chọn....
         /// </summary>
         internal static string Common_Text_ChooseType {
@@ -84,6 +93,42 @@ namespace Resources {
         internal static string Common_Text_ExpandText {
             get {
                 return ResourceManager.GetString("Common_Text_ExpandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Common_Text_Login {
+            get {
+                return ResourceManager.GetString("Common_Text_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string Common_Text_Logout {
+            get {
+                return ResourceManager.GetString("Common_Text_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Common_Text_Registration {
+            get {
+                return ResourceManager.GetString("Common_Text_Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDMS Investigation.
+        /// </summary>
+        internal static string Common_Text_SiteTitle {
+            get {
+                return ResourceManager.GetString("Common_Text_SiteTitle", resourceCulture);
             }
         }
         
