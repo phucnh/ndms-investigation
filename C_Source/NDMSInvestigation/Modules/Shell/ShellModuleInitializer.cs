@@ -29,11 +29,6 @@ namespace NDMSInvestigation.Shell
         {
             globalServices.AddNew<EnterpriseLibraryAuthorizationService, IAuthorizationService>();
             globalServices.AddNew<SiteMapBuilderService, ISiteMapBuilderService>();
-            globalServices.AddNew<QuestionGroupsService>();
-            globalServices.AddNew<AnswerDetailsService>();
-            globalServices.AddNew<ResultsService>();
-            globalServices.AddNew<CompanyDetailsService>();
-            globalServices.AddNew<QuestionAnswerService>();
         }
 
         protected virtual void AddModuleServices(IServiceCollection moduleServices)
