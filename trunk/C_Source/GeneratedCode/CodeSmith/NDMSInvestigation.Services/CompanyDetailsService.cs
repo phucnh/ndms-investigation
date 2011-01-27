@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.Xml.Serialization;
 using System.Data;
+using System.Linq;
 
 using NDMSInvestigation.Entities;
 using NDMSInvestigation.Entities.Validation;
@@ -71,6 +72,34 @@ namespace NDMSInvestigation.Services
             }
 
             return rank;
+        }
+
+        /// <summary>
+        /// Gets the top mark companies.
+        /// </summary>
+        /// <param name="top">The top.</param>
+        /// <returns></returns>
+        public TList<CompanyDetails> GetTopMarkCompanies(int top)
+        {
+            TList<CompanyDetails> companyDetailsList = this.GetAll();
+
+            if (companyDetailsList == null) return null;
+
+            companyDetailsList = (from t in companyDetailsList
+                                  orderby t.CurrentTotalMark.HasValue ? t.CurrentTotalMark.Value : 0 descending
+                                  select t) as TList<CompanyDetails>;
+
+            TList<CompanyDetails> result = new TList<CompanyDetails>();
+            int count = 0;
+
+            foreach (CompanyDetails companyDetails in companyDetailsList)
+            {
+                if (count < top) result.Add(companyDetails);
+                count++;
+            }
+
+            // TODO: add code to GetTopMarkCompanies function
+            return result;
         }
 
 

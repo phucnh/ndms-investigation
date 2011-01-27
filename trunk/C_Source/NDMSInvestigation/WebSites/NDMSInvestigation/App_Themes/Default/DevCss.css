@@ -1,26 +1,45 @@
 ﻿.question_text_content
 {
-	font-size:medium;
+	font-size: medium;
 }
 
 .question_text_suggest
 {
-	font-size:small;
+	font-size: small;
 }
 
 .group_text_name
 {
-	font-size:large;
-	font-weight:bolder;
+	font-size: large;
+	font-weight: bolder;
 }
 
 .group_text_desc
 {
-	font-size:smaller;
+	font-size: smaller;
 }
 
 .question_text_title
 {
-	font-size:large;
-	font-weight:bold;
+	font-size: large;
+	font-weight: bold;
+}
+
+.reports_pageView
+{
+	border: 1px solid #898c95;
+	border-top: none;
+	margin-top: -1px;
+	height: 381px;
+}
+
+.reports_pageView img
+{
+	margin: 0;
+}
+
+.reports_wrapper
+{
+	padding: 10px;
+	float: left;
 }
