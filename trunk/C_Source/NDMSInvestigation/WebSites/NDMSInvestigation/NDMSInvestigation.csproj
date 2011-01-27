@@ -363,6 +363,10 @@
       <Project>{AFD2C071-3243-40B0-B1E5-EA2BD3EABF89}</Project>
       <Name>Navigator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\FoundationModules\ServiceRepository\ServiceRepository.csproj">
+      <Project>{A3492F7C-748B-4EA2-BB6A-71627BEF4492}</Project>
+      <Name>ServiceRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Shell\Shell.csproj">
       <Project>{489FD628-6E1F-43B0-A77C-F1E178DA10CE}</Project>
       <Name>Shell</Name>
