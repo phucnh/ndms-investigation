@@ -30,8 +30,10 @@ namespace NDMSInvestigation.UserControl.Views
         private void LoadMultiFormViewMode()
         {
             _pageMode = Request.QueryString["Mode"];
-            if (string.Compare(_pageMode, "Create") == 0)
+            if (string.Compare(_pageMode, "Insert") == 0)
                 FormView1.ChangeMode(FormViewMode.Insert);
+            if (string.Compare(_pageMode, "Update") == 0)
+                FormView1.ChangeMode(FormViewMode.Edit);
         }
 
         [CreateNew]
@@ -58,6 +60,10 @@ namespace NDMSInvestigation.UserControl.Views
             {
                 Response.Redirect("~/UserControl/UserEdit.aspx");
             }
+            if (String.Compare(e.CommandName, "Insert") == 0)
+            {
+                Response.Redirect("~/UserControl/UserEdit.aspx?Mode=Update");
+            }
         }
 
         /// <summary>
@@ -67,7 +73,7 @@ namespace NDMSInvestigation.UserControl.Views
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void InsertButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UserControl/UserEdit.aspx?Mode=" + "Create");
+            Response.Redirect("~/UserControl/UserEdit.aspx?Mode=" + "Insert");
         }
 
         protected void CompanyDetailsDataSource_Inserting(object sender, ObjectDataSourceMethodEventArgs e)

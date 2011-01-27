@@ -289,6 +289,13 @@
     <Compile Include="Reports\UserControls\NumberOfCompanies.ascx.designer.cs">
       <DependentUpon>NumberOfCompanies.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\UserControls\TopMarkCompanies.ascx.cs">
+      <DependentUpon>TopMarkCompanies.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UserControls\TopMarkCompanies.ascx.designer.cs">
+      <DependentUpon>TopMarkCompanies.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Shared\DefaultMaster.master.cs">
       <DependentUpon>DefaultMaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -459,6 +466,7 @@
     <Content Include="Reports\Default.aspx" />
     <Content Include="Reports\UserControls\CompanyEstimation.ascx" />
     <Content Include="Reports\UserControls\NumberOfCompanies.ascx" />
+    <Content Include="Reports\UserControls\TopMarkCompanies.ascx" />
     <Content Include="Reports\Web.config" />
     <Content Include="Shared\script\jquery-ui-1.8.8.custom.min.js" />
   </ItemGroup>

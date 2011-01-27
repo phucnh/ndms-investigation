@@ -77,7 +77,9 @@
     <Compile Include="Views\IDefaultView.cs" />
     <Compile Include="Views\DefaultViewPresenter.cs" />
     <Compile Include="Views\INumberOfCompaniesView.cs" />
+    <Compile Include="Views\ITopMarkCompaniesView.cs" />
     <Compile Include="Views\NumberOfCompaniesPresenter.cs" />
+    <Compile Include="Views\TopMarkCompaniesPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\GeneratedCode\CodeSmith\NDMSInvestigation.Data\NDMSInvestigation.Data.csproj">

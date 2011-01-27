@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Collections;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -48,14 +49,16 @@ namespace NDMSInvestigation.Services
 
             if (currentCompanyDetails == null) return -1;
 
-            TList<CompanyDetails> companyDetailsCollection = GetAll();
+            List<CompanyDetails> companyDetailsCollection = GetAll().ToList<CompanyDetails>();
             int rank = 0;
 
             // TODO: Sort Company CurrentMarkInHere
 
             int lastCurrentTotalMark = 0;
 
-            companyDetailsCollection.Sort("CurrentTotalMark");
+            companyDetailsCollection = (from t in companyDetailsCollection
+                                  orderby t.CurrentTotalMark.HasValue ? t.CurrentTotalMark.Value : 0 descending
+                                  select t).ToList<CompanyDetails>();
 
             foreach (CompanyDetails companyDetails in companyDetailsCollection)
             {
@@ -81,13 +84,13 @@ namespace NDMSInvestigation.Services
         /// <returns></returns>
         public TList<CompanyDetails> GetTopMarkCompanies(int top)
         {
-            TList<CompanyDetails> companyDetailsList = this.GetAll();
+            List<CompanyDetails> companyDetailsList = this.GetAll().ToList<CompanyDetails>();
 
             if (companyDetailsList == null) return null;
 
             companyDetailsList = (from t in companyDetailsList
                                   orderby t.CurrentTotalMark.HasValue ? t.CurrentTotalMark.Value : 0 descending
-                                  select t) as TList<CompanyDetails>;
+                                  select t).ToList<CompanyDetails>();
 
             TList<CompanyDetails> result = new TList<CompanyDetails>();
             int count = 0;
@@ -98,7 +101,6 @@ namespace NDMSInvestigation.Services
                 count++;
             }
 
-            // TODO: add code to GetTopMarkCompanies function
             return result;
         }
 
