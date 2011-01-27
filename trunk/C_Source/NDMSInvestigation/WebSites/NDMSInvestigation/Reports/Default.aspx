@@ -5,6 +5,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register TagPrefix="uc1" TagName="NumberOfCompanies" Src="~/Reports/UserControls/NumberOfCompanies.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="CompanyEstimation" Src="~/Reports/UserControls/CompanyEstimation.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="TopMarkCompanies" Src="~/Reports/UserControls/TopMarkCompanies.ascx" %>
 <asp:Content ID="content" ContentPlaceHolderID="DefaultContent" runat="Server">
     <h1>
         Reports Default View</h1>
@@ -13,6 +14,8 @@
             <cc1:TabPanel ID="TabNumberOfCompanies" runat="Server" HeaderText='<%$ Resources:StringResource, Reports_Text_OverviewTab %>'>
                 <ContentTemplate>
                     <uc1:NumberOfCompanies runat="Server" ID="NumberOfCompaniesUserControl" NumberOfYears="3" />
+                    <br />
+                    
                 </ContentTemplate>
             </cc1:TabPanel>
             <cc1:TabPanel ID="TabCompanyEstimation" runat="Server" HeaderText='<%$ Resources:StringResource, Reports_Text_DetailTab %>'>
@@ -21,6 +24,7 @@
                 </ContentTemplate>
             </cc1:TabPanel>
         </cc1:TabContainer>
+        <uc1:TopMarkCompanies runat="Server" ID="TopMarkCompaniesUserControl" />
         <%--<telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="RadMultiPageReports"
             SelectedIndex="0" Align="Justify" ReorderTabsOnSelect="true">
             <Tabs>

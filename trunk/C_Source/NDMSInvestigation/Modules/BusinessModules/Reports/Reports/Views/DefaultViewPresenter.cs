@@ -14,5 +14,6 @@ namespace NDMSInvestigation.Reports.Views
         {
             this._controller = controller;
         }
+
     }
 }
